@@ -874,7 +874,7 @@ To find out which folder \texttt{R} is currently using as your working directory
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{getwd}\NormalTok{()}
-\NormalTok{[}\DecValTok{1}\NormalTok{] }\StringTok{"C:/Users/htzt324/OneDrive {-} University of Leeds/Desktop/Nika/CongoFor1.5/bRazzaville\_training"}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\StringTok{"C:/Users/htzt324/OneDrive {-} University of Leeds/Desktop/Nika/CongoFor1.5/cbsi\_r\_training"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2219,7 +2219,7 @@ Here's an example of how this function works. This line of code will sample a si
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{,}\AttributeTok{size=}\DecValTok{1}\NormalTok{)}
-\NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{10}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{4}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2228,7 +2228,7 @@ This command will draw three random samples:
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{,}\AttributeTok{size=}\DecValTok{3}\NormalTok{)}
-\NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{3} \DecValTok{1} \DecValTok{5}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{9} \DecValTok{2} \DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2398,7 +2398,7 @@ This methods gets really useful when you are working with bigger datasets, such 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{range}\NormalTok{(y)}
-\NormalTok{[}\DecValTok{1}\NormalTok{]   }\DecValTok{1} \DecValTok{992}
+\NormalTok{[}\DecValTok{1}\NormalTok{]  }\DecValTok{11} \DecValTok{997}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2410,15 +2410,15 @@ First, develop your logical test, which will tell you whether each value in the 
 \begin{Highlighting}[]
 \CommentTok{\# Develop your logical test,}
 \NormalTok{y }\SpecialCharTok{\textgreater{}} \DecValTok{90}
-\NormalTok{  [}\DecValTok{1}\NormalTok{]  }\ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
+\NormalTok{  [}\DecValTok{1}\NormalTok{]  }\ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
 \NormalTok{ [}\DecValTok{13}\NormalTok{]  }\ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
-\NormalTok{ [}\DecValTok{25}\NormalTok{] }\ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE} \ConstantTok{FALSE}  \ConstantTok{TRUE} \ConstantTok{FALSE}
-\NormalTok{ [}\DecValTok{37}\NormalTok{]  }\ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
-\NormalTok{ [}\DecValTok{49}\NormalTok{] }\ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
-\NormalTok{ [}\DecValTok{61}\NormalTok{]  }\ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}
-\NormalTok{ [}\DecValTok{73}\NormalTok{]  }\ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
-\NormalTok{ [}\DecValTok{85}\NormalTok{]  }\ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
-\NormalTok{ [}\DecValTok{97}\NormalTok{] }\ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
+\NormalTok{ [}\DecValTok{25}\NormalTok{]  }\ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
+\NormalTok{ [}\DecValTok{37}\NormalTok{] }\ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
+\NormalTok{ [}\DecValTok{49}\NormalTok{]  }\ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
+\NormalTok{ [}\DecValTok{61}\NormalTok{]  }\ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}
+\NormalTok{ [}\DecValTok{73}\NormalTok{]  }\ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
+\NormalTok{ [}\DecValTok{85}\NormalTok{]  }\ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE} \ConstantTok{FALSE}  \ConstantTok{TRUE}
+\NormalTok{ [}\DecValTok{97}\NormalTok{]  }\ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}  \ConstantTok{TRUE}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2427,11 +2427,11 @@ Now, to get the values corresponding to each \texttt{TRUE} in this list, plug yo
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{y[y }\SpecialCharTok{\textgreater{}} \DecValTok{90}\NormalTok{]}
-\NormalTok{ [}\DecValTok{1}\NormalTok{] }\DecValTok{819} \DecValTok{710} \DecValTok{357} \DecValTok{361} \DecValTok{655} \DecValTok{914} \DecValTok{546} \DecValTok{238} \DecValTok{400} \DecValTok{169} \DecValTok{682} \DecValTok{607} \DecValTok{482} \DecValTok{452} \DecValTok{691} \DecValTok{894} \DecValTok{101} \DecValTok{950} \DecValTok{715}
-\NormalTok{[}\DecValTok{20}\NormalTok{] }\DecValTok{468} \DecValTok{106} \DecValTok{927} \DecValTok{187} \DecValTok{620} \DecValTok{370} \DecValTok{260} \DecValTok{737} \DecValTok{792} \DecValTok{807} \DecValTok{644} \DecValTok{706} \DecValTok{383} \DecValTok{665} \DecValTok{868} \DecValTok{480} \DecValTok{111} \DecValTok{766} \DecValTok{884}
-\NormalTok{[}\DecValTok{39}\NormalTok{] }\DecValTok{356} \DecValTok{871} \DecValTok{214} \DecValTok{915} \DecValTok{637} \DecValTok{103} \DecValTok{590} \DecValTok{292} \DecValTok{159} \DecValTok{611} \DecValTok{207} \DecValTok{310} \DecValTok{247} \DecValTok{270} \DecValTok{555} \DecValTok{190} \DecValTok{812} \DecValTok{848} \DecValTok{827}
-\NormalTok{[}\DecValTok{58}\NormalTok{] }\DecValTok{532} \DecValTok{788} \DecValTok{952} \DecValTok{472} \DecValTok{410} \DecValTok{605} \DecValTok{237} \DecValTok{501} \DecValTok{362} \DecValTok{720} \DecValTok{177} \DecValTok{397} \DecValTok{757}  \DecValTok{98} \DecValTok{803} \DecValTok{992} \DecValTok{139} \DecValTok{477} \DecValTok{862}
-\NormalTok{[}\DecValTok{77}\NormalTok{] }\DecValTok{557} \DecValTok{398} \DecValTok{337} \DecValTok{243} \DecValTok{639} \DecValTok{733} \DecValTok{929} \DecValTok{938} \DecValTok{442}
+\NormalTok{ [}\DecValTok{1}\NormalTok{] }\DecValTok{412} \DecValTok{581} \DecValTok{188} \DecValTok{445} \DecValTok{478} \DecValTok{223}  \DecValTok{98} \DecValTok{966} \DecValTok{709} \DecValTok{516} \DecValTok{224} \DecValTok{545} \DecValTok{669} \DecValTok{335} \DecValTok{528} \DecValTok{120} \DecValTok{323} \DecValTok{938} \DecValTok{630}
+\NormalTok{[}\DecValTok{20}\NormalTok{] }\DecValTok{409} \DecValTok{848} \DecValTok{210} \DecValTok{710} \DecValTok{331}  \DecValTok{94} \DecValTok{240} \DecValTok{979} \DecValTok{730} \DecValTok{917} \DecValTok{841} \DecValTok{319} \DecValTok{722}  \DecValTok{97} \DecValTok{897} \DecValTok{662} \DecValTok{615} \DecValTok{534} \DecValTok{734}
+\NormalTok{[}\DecValTok{39}\NormalTok{] }\DecValTok{842} \DecValTok{385} \DecValTok{435} \DecValTok{198} \DecValTok{895} \DecValTok{823} \DecValTok{326} \DecValTok{933} \DecValTok{413} \DecValTok{899} \DecValTok{402} \DecValTok{216} \DecValTok{584} \DecValTok{910} \DecValTok{242} \DecValTok{671} \DecValTok{171} \DecValTok{806} \DecValTok{237}
+\NormalTok{[}\DecValTok{58}\NormalTok{] }\DecValTok{997} \DecValTok{360} \DecValTok{573} \DecValTok{225} \DecValTok{182} \DecValTok{733} \DecValTok{805} \DecValTok{652} \DecValTok{117} \DecValTok{717} \DecValTok{666} \DecValTok{987} \DecValTok{627} \DecValTok{146} \DecValTok{845} \DecValTok{916} \DecValTok{513} \DecValTok{518} \DecValTok{650}
+\NormalTok{[}\DecValTok{77}\NormalTok{] }\DecValTok{703} \DecValTok{282} \DecValTok{659} \DecValTok{661} \DecValTok{213} \DecValTok{105} \DecValTok{898} \DecValTok{189} \DecValTok{438} \DecValTok{954} \DecValTok{205} \DecValTok{112} \DecValTok{287} \DecValTok{859} \DecValTok{566} \DecValTok{765} \DecValTok{688}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2444,11 +2444,11 @@ Here's another way you can do the same thing:
 
 \CommentTok{\# Use that vector to subset y}
 \NormalTok{y[verdicts]}
-\NormalTok{ [}\DecValTok{1}\NormalTok{] }\DecValTok{819} \DecValTok{710} \DecValTok{357} \DecValTok{361} \DecValTok{655} \DecValTok{914} \DecValTok{546} \DecValTok{238} \DecValTok{400} \DecValTok{169} \DecValTok{682} \DecValTok{607} \DecValTok{482} \DecValTok{452} \DecValTok{691} \DecValTok{894} \DecValTok{101} \DecValTok{950} \DecValTok{715}
-\NormalTok{[}\DecValTok{20}\NormalTok{] }\DecValTok{468} \DecValTok{106} \DecValTok{927} \DecValTok{187} \DecValTok{620} \DecValTok{370} \DecValTok{260} \DecValTok{737} \DecValTok{792} \DecValTok{807} \DecValTok{644} \DecValTok{706} \DecValTok{383} \DecValTok{665} \DecValTok{868} \DecValTok{480} \DecValTok{111} \DecValTok{766} \DecValTok{884}
-\NormalTok{[}\DecValTok{39}\NormalTok{] }\DecValTok{356} \DecValTok{871} \DecValTok{214} \DecValTok{915} \DecValTok{637} \DecValTok{103} \DecValTok{590} \DecValTok{292} \DecValTok{159} \DecValTok{611} \DecValTok{207} \DecValTok{310} \DecValTok{247} \DecValTok{270} \DecValTok{555} \DecValTok{190} \DecValTok{812} \DecValTok{848} \DecValTok{827}
-\NormalTok{[}\DecValTok{58}\NormalTok{] }\DecValTok{532} \DecValTok{788} \DecValTok{952} \DecValTok{472} \DecValTok{410} \DecValTok{605} \DecValTok{237} \DecValTok{501} \DecValTok{362} \DecValTok{720} \DecValTok{177} \DecValTok{397} \DecValTok{757}  \DecValTok{98} \DecValTok{803} \DecValTok{992} \DecValTok{139} \DecValTok{477} \DecValTok{862}
-\NormalTok{[}\DecValTok{77}\NormalTok{] }\DecValTok{557} \DecValTok{398} \DecValTok{337} \DecValTok{243} \DecValTok{639} \DecValTok{733} \DecValTok{929} \DecValTok{938} \DecValTok{442}
+\NormalTok{ [}\DecValTok{1}\NormalTok{] }\DecValTok{412} \DecValTok{581} \DecValTok{188} \DecValTok{445} \DecValTok{478} \DecValTok{223}  \DecValTok{98} \DecValTok{966} \DecValTok{709} \DecValTok{516} \DecValTok{224} \DecValTok{545} \DecValTok{669} \DecValTok{335} \DecValTok{528} \DecValTok{120} \DecValTok{323} \DecValTok{938} \DecValTok{630}
+\NormalTok{[}\DecValTok{20}\NormalTok{] }\DecValTok{409} \DecValTok{848} \DecValTok{210} \DecValTok{710} \DecValTok{331}  \DecValTok{94} \DecValTok{240} \DecValTok{979} \DecValTok{730} \DecValTok{917} \DecValTok{841} \DecValTok{319} \DecValTok{722}  \DecValTok{97} \DecValTok{897} \DecValTok{662} \DecValTok{615} \DecValTok{534} \DecValTok{734}
+\NormalTok{[}\DecValTok{39}\NormalTok{] }\DecValTok{842} \DecValTok{385} \DecValTok{435} \DecValTok{198} \DecValTok{895} \DecValTok{823} \DecValTok{326} \DecValTok{933} \DecValTok{413} \DecValTok{899} \DecValTok{402} \DecValTok{216} \DecValTok{584} \DecValTok{910} \DecValTok{242} \DecValTok{671} \DecValTok{171} \DecValTok{806} \DecValTok{237}
+\NormalTok{[}\DecValTok{58}\NormalTok{] }\DecValTok{997} \DecValTok{360} \DecValTok{573} \DecValTok{225} \DecValTok{182} \DecValTok{733} \DecValTok{805} \DecValTok{652} \DecValTok{117} \DecValTok{717} \DecValTok{666} \DecValTok{987} \DecValTok{627} \DecValTok{146} \DecValTok{845} \DecValTok{916} \DecValTok{513} \DecValTok{518} \DecValTok{650}
+\NormalTok{[}\DecValTok{77}\NormalTok{] }\DecValTok{703} \DecValTok{282} \DecValTok{659} \DecValTok{661} \DecValTok{213} \DecValTok{105} \DecValTok{898} \DecValTok{189} \DecValTok{438} \DecValTok{954} \DecValTok{205} \DecValTok{112} \DecValTok{287} \DecValTok{859} \DecValTok{566} \DecValTok{765} \DecValTok{688}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2458,7 +2458,7 @@ You can use double logical tests too. For example, what if you want all elements
 \begin{Highlighting}[]
 \NormalTok{verdicts }\OtherTok{\textless{}{-}}\NormalTok{ y }\SpecialCharTok{\textgreater{}} \DecValTok{70} \SpecialCharTok{\&}\NormalTok{ y }\SpecialCharTok{\textless{}} \DecValTok{90}
 \NormalTok{y[verdicts]}
-\FunctionTok{integer}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{79}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3305,7 +3305,7 @@ Most functions from external packages can be used by simply typing the name of t
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{random\_password}\NormalTok{(}\AttributeTok{length=}\DecValTok{24}\NormalTok{)}
-\NormalTok{[}\DecValTok{1}\NormalTok{] }\StringTok{"eEhly5.NFm,u\&Lx}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{qc$\textquotesingle{}n(\%g"}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\StringTok{"\textquotesingle{})RT\}Xv,\%+MiD z6\textasciitilde{}\{{-}slckN"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3314,7 +3314,7 @@ Sometimes, however, \texttt{R} can get confused if a new package contains a func
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{fun}\SpecialCharTok{::}\FunctionTok{random\_password}\NormalTok{(}\AttributeTok{length=}\DecValTok{24}\NormalTok{)}
-\NormalTok{[}\DecValTok{1}\NormalTok{] }\StringTok{"?t]vhC!inFZP}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Yu.|r8H=xJT"}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\StringTok{"V;\textgreater{}\}Q\{S0e\textless{}Cag9)tU3P/f]?4"}
 \end{Highlighting}
 \end{Shaded}
 
