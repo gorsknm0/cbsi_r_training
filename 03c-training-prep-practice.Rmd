@@ -1,0 +1,75 @@
+# Review your R Training Prep
+
+Prior to arriving in Brazzaville, we asked that you download R and RStudio and do some preparatory work. Let's work through some of that information together. 
+
+#### Exercises {-}
+
+**Use `R` like a calculator**  
+
+**1.** Type a command in the *Console* to determine the sum of 596 and 198.  
+
+**2.** Re-run the sum of 596 and 198 without re-typing it.  
+
+**3.** Recall the command again, but this time adjust the code to find the sum of 596 and 298.  
+
+**4.** Practice escaping an accidentally called command: recall your most recent command, then press the right key to clear the *Console*'s command line.  
+
+&nbsp;  
+**Recalling commands**  
+
+**5.** Find the sum of the ages of everyone in your immediate family.  
+
+**6.** Now recall that command and adjust it to determine the *average* age of the members of your family.  
+
+**7.** Find the square root of *pi* and round the answer to the 2 decimal places.
+
+&nbsp;    
+
+**Finding errors**  
+
+**8.** This line of code won't run; instead, `R` will wait for more with a `+` symbol. Find the problem and re-write the code so that it works.  
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+5 * 6 +
+```
+
+**9.** The same goes for this line of code. Fix it, too.  
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+sqrt(16
+```
+
+**10.** This line of code will trigger an error. Find the problem and re-write the code so that it works.
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+round(100/3,digits+3)
+```
+
+**11.** Type a command of your own into R that throws an error, then recall the command and revise so that `R` can understand it.
+
+&nbsp;  
+
+
+**Show that the following statements are TRUE:**
+
+**12.** `pi` is greater than the square root of 9  
+
+**13.** It is FALSE that the square root of 9 is greater than `pi`  
+
+**14.** `pi` rounded to the nearest whole number equals the square root of 9  
+
+&nbsp;  
+
+**Asking `TRUE` / `FALSE` questions**
+
+**15.** Write and run a line of code that asks whether these two calculations return the same result:
+
+```{r,eval=FALSE,echo=TRUE,collapse=TRUE}
+2*7 - 2*5 / 2
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+(2*7 - 2*5) / 2
+```
+
+**16.** Now write and run a line of code that asks whether the first calculation is larger than the second:
