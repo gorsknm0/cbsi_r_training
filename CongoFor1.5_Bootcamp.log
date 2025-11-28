@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.11.28)  28 NOV 2025 15:54
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.11.28)  28 NOV 2025 16:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1068,7 +1068,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: docs/img/csv_text_editor.png Graphic file (type bmp)
 <docs/img/csv_text_editor.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 3651--3653
+Underfull \hbox (badness 10000) in paragraph at lines 3647--3649
 [][]
  []
 
@@ -1165,7 +1165,7 @@ File: figures/unnamed-chunk-227-1.pdf Graphic file (type pdf)
 Underfull \vbox (badness 6493) has occurred while \output is active []
 
 [103] [104]
-Underfull \hbox (badness 10000) in paragraph at lines 4103--4105
+Underfull \hbox (badness 10000) in paragraph at lines 4099--4101
 
  []
 
@@ -1174,13 +1174,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 4103--4105
 ]
 Chapter 15.
 
-Package natbib Warning: Citation `layered-grammar' on page 107 undefined on input line 4143.
+Package natbib Warning: Citation `layered-grammar' on page 107 undefined on input line 4139.
 
 [107]
 File: docs/img/ggplot.png Graphic file (type bmp)
 <docs/img/ggplot.png>
 
-Package natbib Warning: Citation `10.5555/1088896' on page 108 undefined on input line 4171.
+Package natbib Warning: Citation `10.5555/1088896' on page 108 undefined on input line 4167.
 
 [108]
 File: figures/unnamed-chunk-233-1.pdf Graphic file (type pdf)
@@ -1268,6 +1268,16 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [122] [123] [124]
 Chapter 16.
 
+Underfull \hbox (badness 10000) in paragraph at lines 4567--4569
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4569--4571
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 4571--4573
 
  []
@@ -1284,16 +1294,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 4575--4577
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 4577--4579
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4579--4581
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4581--4583
 
  []
 
