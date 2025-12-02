@@ -733,7 +733,7 @@ x + y + z # Now get the sum of all three variables</code></pre>
 <p>When you work with data in <code>R</code>, <code>R</code> will need to know where in your computer to look for that data. The folder it looks in is known as your <strong>working directory</strong>.</p>
 <p>To find out which folder <code>R</code> is currently using as your working directory, use the function <code>getwd()</code>:</p>
 <pre class="r"><code>getwd()
-[1] &quot;C:/Users/htzt324/OneDrive - University of Leeds/Desktop/Nika/CongoFor1.5/cbsi_r_training&quot;</code></pre>
+[1] &quot;C:/Users/htzt324/OneDrive - University of Leeds/Desktop/Nika/CongoFor1.5/Git/cbsi_r_training&quot;</code></pre>
 <p>Almost always, you want to set your working directory to the folder your <code>R</code> script is in.</p>
 <div id="how-to-set-your-working-directory" class="section level3 unnumbered">
 <h3>How to set your working directory</h3>
@@ -1379,10 +1379,10 @@ socks &lt;- c(6,8,14,1,NA,4)</code></pre>
 <p><strong>26.</strong> Look up the help page for the function <code>sample()</code>.</p>
 <p>Here’s an example of how this function works. This line of code will sample a single random number from the vector <code>1:10</code>.</p>
 <pre class="r"><code>sample(1:10,size=1)
-[1] 6</code></pre>
+[1] 8</code></pre>
 <p>This command will draw three random samples:</p>
 <pre class="r"><code>sample(1:10,size=3)
-[1]  1 10  6</code></pre>
+[1] 7 3 8</code></pre>
 <p><strong>27.</strong> Use this function to simulate the rolling of a single die.</p>
 <p><strong>28.</strong> Now use this to simulate the rolling of a die 10 times. (<em>Note:</em> look at the <code>replace</code> input for <code>sample()</code>.)</p>
 <p><strong>29.</strong> Now use this to roll the die 10,000 times, and assign the result to a new variable. (<em>Note:</em> look at the <code>replace</code> input for <code>sample()</code>.)</p>
@@ -1473,42 +1473,42 @@ y &lt;- sample(1:1000,size=100)
 length(y)
 [1] 100</code></pre>
 <pre class="r"><code>range(y)
-[1]  16 990</code></pre>
+[1]   1 992</code></pre>
 <p>With a dataset like this, you can use a boolean filter to figure out how many values are greater than, say, 90.</p>
 <p>First, develop your logical test, which will tell you whether each value in the vector is greater than 90:</p>
 <pre class="r"><code># Develop your logical test,
 y &gt; 90
   [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE
- [25]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [37]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
- [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
- [73]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
- [85]  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [97]  TRUE  TRUE  TRUE  TRUE</code></pre>
+ [13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [25]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [37]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [73] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [85]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [97]  TRUE  TRUE FALSE  TRUE</code></pre>
 <p>Now, to get the values corresponding to each <code>TRUE</code> in this list, plug your logical test into your subsetting brackets.</p>
 <pre class="r"><code>y[y &gt; 90]
- [1] 402 975 160 708 489 784 650 426 424 124 276 678 946 295 502 534 568 596 867
-[20] 893 283 822 743 833 797 613  99 673 582 683 154 990 182 206 921 768 496 434
-[39] 268 899 416 933 760 840 706 701 950 252 919 357 270 439 843 907 666 223 118
-[58] 608 151 226 103 614 311 144 959 917 955 116 338 334 611 471 965 671 854 374
-[77] 330 542 392 711 257 293 267 486 409 632 200 922 498 545 181</code></pre>
+ [1] 392 644 405 161 532 789 630 273 542 649 636 399 680 422 156 946 157 454 135
+[20] 485 779 799 132 622 523 804 855 330 531 937 736 196 676 211 372 118 180 962
+[39] 536 407 349 687 749 845 228 336 440 990 448 814 285 847 338 522 418 438 352
+[58] 723 473 106  92 974 253 677 488 671 613 470 992 481 394 794 231 176 860 832
+[77] 303 227 376 553 153 958 206 435 177 506 507 667 744  94 164 299 538 571</code></pre>
 <p>Here’s another way you can do the same thing:</p>
 <pre class="r"><code># Save the result of your logical test in a new vector
 verdicts &lt;- y &gt; 90
 
 # Use that vector to subset y
 y[verdicts]
- [1] 402 975 160 708 489 784 650 426 424 124 276 678 946 295 502 534 568 596 867
-[20] 893 283 822 743 833 797 613  99 673 582 683 154 990 182 206 921 768 496 434
-[39] 268 899 416 933 760 840 706 701 950 252 919 357 270 439 843 907 666 223 118
-[58] 608 151 226 103 614 311 144 959 917 955 116 338 334 611 471 965 671 854 374
-[77] 330 542 392 711 257 293 267 486 409 632 200 922 498 545 181</code></pre>
+ [1] 392 644 405 161 532 789 630 273 542 649 636 399 680 422 156 946 157 454 135
+[20] 485 779 799 132 622 523 804 855 330 531 937 736 196 676 211 372 118 180 962
+[39] 536 407 349 687 749 845 228 336 440 990 448 814 285 847 338 522 418 438 352
+[58] 723 473 106  92 974 253 677 488 671 613 470 992 481 394 794 231 176 860 832
+[77] 303 227 376 553 153 958 206 435 177 506 507 667 744  94 164 299 538 571</code></pre>
 <p>You can use double logical tests too. For example, what if you want all elements between the values 70 and 90?</p>
 <pre class="r"><code>verdicts &lt;- y &gt; 70 &amp; y &lt; 90
 y[verdicts]
-integer(0)</code></pre>
+[1] 72</code></pre>
 <div id="review-assignment" class="section level3 unnumbered">
 <h3>Review assignment</h3>
 <p><strong>1.</strong> Create a vector named <code>nummies</code> of all numbers from 1 to 100</p>
@@ -2003,10 +2003,10 @@ library(wesanderson)</code></pre>
 <h2>Calling functions from a package</h2>
 <p>Most functions from external packages can be used by simply typing the name of the function. For example, the package <code>fun</code> contains a function for generating a random password:</p>
 <pre class="r"><code>random_password(length=24)
-[1] &quot;ZCiT/&amp;Dr91$:WU%,E}nQvt{N&quot;</code></pre>
+[1] &quot;.W*swrqN+20;Oa&lt;KbzovYc~V&quot;</code></pre>
 <p>Sometimes, however, <code>R</code> can get confused if a new package contains a function that has the same name of some function from a different package. If <code>R</code> seems confused about a function you are calling, it can help to specify which package the function can be found in. This is done using the syntax <code>&lt;package_name&gt;::&lt;function_name&gt;</code>. For example, the following command is a fine alternative to the command above:</p>
 <pre class="r"><code>fun::random_password(length=24)
-[1] &quot;QoL}PIjDRT#{5/9Gv[a)x:l&gt;&quot;</code></pre>
+[1] &quot;?VdzCZu0HQ}7LO(~x3U{S5&gt;4&quot;</code></pre>
 <p>Note that this was done in the example above using the <code>devtools</code> package.</p>
 <div id="side-notes" class="section level3 unnumbered">
 <h3>Side notes</h3>
