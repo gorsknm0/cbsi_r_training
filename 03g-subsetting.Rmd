@@ -1,5 +1,10 @@
 # Subsetting & filtering 
 
+**Greta** was *here*
+```{r}
+
+```
+
 #### Learning goals {-}
 
 * Understand how to subset / filter data

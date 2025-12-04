@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 9 Calling functions | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 9 Calling functions | R Training" />
   <meta property="og:type" content="book" />
@@ -53,8 +53,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -64,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -379,10 +380,10 @@ You conducted a survey of your peers in this class, asking each of them how many
 <p><strong>26.</strong> Look up the help page for the function <code>sample()</code>.</p>
 <p>Here’s an example of how this function works. This line of code will sample a single random number from the vector <code>1:10</code>.</p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="calling_functions.html#cb115-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">size=</span><span class="dv">1</span>)</span>
-<span id="cb115-2"><a href="calling_functions.html#cb115-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">9</span></span></code></pre></div>
+<span id="cb115-2"><a href="calling_functions.html#cb115-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span></span></code></pre></div>
 <p>This command will draw three random samples:</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="calling_functions.html#cb116-1" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">size=</span><span class="dv">3</span>)</span>
-<span id="cb116-2"><a href="calling_functions.html#cb116-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">6</span> <span class="dv">1</span> <span class="dv">4</span></span></code></pre></div>
+<span id="cb116-2"><a href="calling_functions.html#cb116-2" tabindex="-1"></a>[<span class="dv">1</span>]  <span class="dv">3</span> <span class="dv">10</span>  <span class="dv">8</span></span></code></pre></div>
 <p><strong>27.</strong> Use this function to simulate the rolling of a single die.</p>
 <p><strong>28.</strong> Now use this to simulate the rolling of a die 10 times. (<em>Note:</em> look at the <code>replace</code> input for <code>sample()</code>.)</p>
 <p><strong>29.</strong> Now use this to roll the die 10,000 times, and assign the result to a new variable. (<em>Note:</em> look at the <code>replace</code> input for <code>sample()</code>.)</p>

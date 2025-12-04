@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 5 Using RStudio &amp; R scripts | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 5 Using RStudio &amp; R scripts | R Training" />
   <meta property="og:type" content="book" />
@@ -53,8 +53,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -64,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -389,7 +390,7 @@ You now have a blank script to work in!</p>
 <p>When you work with data in <code>R</code>, <code>R</code> will need to know where in your computer to look for that data. The folder it looks in is known as your <strong>working directory</strong>.</p>
 <p>To find out which folder <code>R</code> is currently using as your working directory, use the function <code>getwd()</code>:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="using-rstudio-r-scripts.html#cb39-1" tabindex="-1"></a><span class="fu">getwd</span>()</span>
-<span id="cb39-2"><a href="using-rstudio-r-scripts.html#cb39-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;C:/Users/htzt324/OneDrive - University of Leeds/Desktop/Nika/CongoFor1.5/Git/cbsi_r_training&quot;</span></span></code></pre></div>
+<span id="cb39-2"><a href="using-rstudio-r-scripts.html#cb39-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;C:/Users/geogcd/Documents/cbsi_r_training&quot;</span></span></code></pre></div>
 <p>Almost always, you want to set your working directory to the folder your <code>R</code> script is in.</p>
 <div id="how-to-set-your-working-directory" class="section level3 unnumbered hasAnchor">
 <h3>How to set your working directory<a href="using-rstudio-r-scripts.html#how-to-set-your-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
