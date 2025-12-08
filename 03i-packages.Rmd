@@ -1,9 +1,5 @@
 # Packages
 
-```{r,echo=FALSE,eval=FALSE}
-is_teacher <- FALSE
-```
-
 
 #### Learning goals {-}
 

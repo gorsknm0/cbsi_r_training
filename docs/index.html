@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="R Training" />
   <meta property="og:type" content="book" />
@@ -53,9 +53,8 @@
 
 
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +64,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -136,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to the course!</a></li>
 <li class="part"><span><b>I Pre-Training Material</b></span></li>
 <li class="chapter" data-level="2" data-path="setting-up-your-computer.html"><a href="setting-up-your-computer.html"><i class="fa fa-check"></i><b>2</b> Setting up your computer</a>
 <ul>
@@ -155,11 +154,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#use-built-in-r-functions"><i class="fa fa-check"></i>Use built-in R functions</a></li>
 </ul></li>
 <li class="part"><span><b>II Getting Started</b></span></li>
-<li class="chapter" data-level="4" data-path="welcome-1.html"><a href="welcome-1.html"><i class="fa fa-check"></i><b>4</b> Welcome!</a>
+<li class="chapter" data-level="4" data-path="welcome.html"><a href="welcome.html"><i class="fa fa-check"></i><b>4</b> Welcome!</a>
 <ul>
-<li class="chapter" data-level="" data-path="welcome-1.html"><a href="welcome-1.html#what-this-is-and-what-it-isnt"><i class="fa fa-check"></i>What this is, and what it isn’t</a></li>
-<li class="chapter" data-level="" data-path="welcome-1.html"><a href="welcome-1.html#what-you-will-learn"><i class="fa fa-check"></i>What you will learn</a></li>
-<li class="chapter" data-level="" data-path="welcome-1.html"><a href="welcome-1.html#where-did-this-come-from"><i class="fa fa-check"></i>Where did this come from</a></li>
+<li class="chapter" data-level="" data-path="welcome.html"><a href="welcome.html#what-this-is-and-what-it-isnt"><i class="fa fa-check"></i>What this is, and what it isn’t</a></li>
+<li class="chapter" data-level="" data-path="welcome.html"><a href="welcome.html#what-you-will-learn"><i class="fa fa-check"></i>What you will learn</a></li>
+<li class="chapter" data-level="" data-path="welcome.html"><a href="welcome.html#where-did-this-come-from"><i class="fa fa-check"></i>Where did this come from</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html"><i class="fa fa-check"></i><b>5</b> Using <code>RStudio</code> &amp; <code>R</code> scripts</a>
 <ul>
@@ -219,7 +218,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>15</b> <code>ggplot</code></a>
 <ul>
 <li class="chapter" data-level="" data-path="ggplot.html"><a href="ggplot.html#what-is-ggplot2"><i class="fa fa-check"></i>What is <code>ggplot2</code>?</a></li>
-<li class="chapter" data-level="" data-path="ggplot.html"><a href="ggplot.html#scatter-plot"><i class="fa fa-check"></i>Scatter plot</a></li>
 <li class="chapter" data-level="" data-path="ggplot.html"><a href="ggplot.html#bar-plot"><i class="fa fa-check"></i>Bar plot</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>16</b> Dataframe wrangling</a>
@@ -228,7 +226,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#the-pipe"><i class="fa fa-check"></i>The <code>%&gt;%</code> pipe</a></li>
 <li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#dplyr-verbs"><i class="fa fa-check"></i><code>dplyr</code> verbs</a></li>
 </ul></li>
-<li class="part"><span><b>IV EXERCISES</b></span></li>
+<li class="chapter" data-level="17" data-path="rms-titanic.html"><a href="rms-titanic.html"><i class="fa fa-check"></i><b>17</b> <em>RMS Titanic</em></a></li>
+<li class="chapter" data-level="18" data-path="a-dplyr-survey.html"><a href="a-dplyr-survey.html"><i class="fa fa-check"></i><b>18</b> A <code>dplyr</code> survey</a></li>
+<li class="chapter" data-level="19" data-path="global-health-ggplot.html"><a href="global-health-ggplot.html"><i class="fa fa-check"></i><b>19</b> Global health &amp; <code>ggplot</code></a></li>
+<li class="chapter" data-level="20" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>20</b> Brazzaville’s climate</a></li>
+<li class="chapter" data-level="21" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>21</b> Cleaning messy data</a></li>
+<li class="part"><span><b>IV Extra Information</b></span></li>
+<li class="chapter" data-level="22" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>22</b> Working with dates &amp; times</a>
+<ul>
+<li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
+<li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>23</b> Working with text</a>
+<ul>
+<li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -249,9 +261,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">R Training</h1>
 </div>
-<div id="welcome" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Module 1</span> Welcome<a href="index.html#welcome" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Insert something overarching about the course here..</p>
+<div id="welcome-to-the-course" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Module 1</span> Welcome to the course!<a href="index.html#welcome-to-the-course" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This won’t be your standard classroom course where we formally teach you. Instead we will guide you through some things that we know and give you a chance to practice. Our aim is for you to feel confident from being able to write one line of code to calling yourself a proper researcher.</p>
+<p>If you have questions, ask. If you need someone to slow down or say it in a different way, then say so. Because if you’re thinking it, someone else probably is to.</p>
+<p>So buckle up, and let’s learn how to work with data.</p>
 
 </div>
 

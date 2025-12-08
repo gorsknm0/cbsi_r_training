@@ -259,12 +259,10 @@ people %>%
 
 Note the use of the function, **`n()`**. This simple function counts up the number of records in each group.  
 
-```{r, results = 'asis', eval = ifelse(exists('is_teacher'),is_teacher,TRUE),echo=FALSE}
-source('teacher_tip.R')
+```{r, include = FALSE
 
-tip <- 'To illustrate these `dplyr` verbs and re-energize the room, ask everyone to stand. Tell the students that they represent a dataframe called `people`. Now, write a `dplyr` command into your R Console and ask them to act out the command. After each command, give them time to move around to act it out. If they move around too slowly, egg them on: "Come on, you all are like the slowest computer ever!" <br><br> `people %>% arrange(shoe_size)` <br> `people %>% arrange(shoe_size) %>% filter(sex == "female")` <br> `people %>% arrange(hair_length)` <br> `people %>% arrange(desc(hair_length))` <br> `people %>% group_by(sex) %>% arrange(hair_length))` <br>`people %>% arrange(country_of_birth, shirt_color, desc(shoe_size))` <br><br> etc.'
+'To illustrate these `dplyr` verbs and re-energize the room, ask everyone to stand. Tell the students that they represent a dataframe called `people`. Now, write a `dplyr` command into your R Console and ask them to act out the command. After each command, give them time to move around to act it out. If they move around too slowly, egg them on: "Come on, you all are like the slowest computer ever!" <br><br> `people %>% arrange(shoe_size)` <br> `people %>% arrange(shoe_size) %>% filter(sex == "female")` <br> `people %>% arrange(hair_length)` <br> `people %>% arrange(desc(hair_length))` <br> `people %>% group_by(sex) %>% arrange(hair_length))` <br>`people %>% arrange(country_of_birth, shirt_color, desc(shoe_size))` <br><br> etc.'
 
-teacher_tip(tip)
 ```
 
 #### Exercises {-}
@@ -326,10 +324,8 @@ bn <- babynames
 **23.** Screenshot it and email it to your family.  
 
 
-```{r, results = 'asis', eval = ifelse(exists('is_teacher'),is_teacher,TRUE),echo=FALSE}
-source('teacher_tip.R')
+```{r, include = FALSE
 
-tip <- 'After completing the exercises here, it is worthwhile devoting time to the Review modules entitled, **"A `dplyr` mystery"**, **"A `dplyr` survey"**, and **"Global health and `ggplot`"**. Once students become comfortable with working with `dplyr`, they will be ready to work independently on projects, using the modules in the **Deep `R`** section for references.'
+'After completing the exercises here, it is worthwhile devoting time to the Review modules entitled, **"A `dplyr` mystery"**, **"A `dplyr` survey"**, and **"Global health and `ggplot`"**. Once students become comfortable with working with `dplyr`, they will be ready to work independently on projects, using the modules in the **Deep `R`** section for references.'
 
-teacher_tip(tip)
 ```

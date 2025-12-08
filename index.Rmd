@@ -30,6 +30,10 @@ opts_chunk$set(comment = NA,
 options(scipen=999)
 ```
 
-# Welcome
+# Welcome to the course!
 
-Insert something overarching about the course here..
+This won't be your standard classroom course where we formally teach you. Instead we will guide you through some things that we know and give you a chance to practice. Our aim is for you to feel confident from being able to write one line of code to calling yourself a proper researcher. 
+
+If you have questions, ask. If you need someone to slow down or say it in a different way, then say so. Because if you're thinking it, someone else probably is to. 
+
+So buckle up, and let's learn how to work with data.

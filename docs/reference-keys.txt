@@ -1,10 +1,10 @@
-welcome
+welcome-to-the-course
 part-pre-training-material
 setting-up-your-computer
 preparing-for-the-r-training
 running-r-code-in-the-console
 part-getting-started
-welcome-1
+welcome
 using-rstudio-r-scripts
 review-your-r-training-prep
 variables
@@ -18,4 +18,11 @@ importing-data
 base-plots
 ggplot
 dplyr
-part-exercises
+rms-titanic
+a-dplyr-survey
+global-health-ggplot
+brazzavilles-climate
+cleaning-messy-data
+part-extra-information
+dates
+text

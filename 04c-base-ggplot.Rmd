@@ -19,12 +19,10 @@ Because the syntax is so different from "base" `R`, it can give the impression o
 
 ### The name & concept  {-}
 
-```{r, results = 'asis', eval = ifelse(exists('is_teacher'),is_teacher,TRUE),echo=FALSE}
-source('teacher_tip.R')
+```{r, include = FALSE
 
-tip <- 'To demonstrate the ideas in this section, draw a rough plot on a whiteboard as you step through each layer.'
+'To demonstrate the ideas in this section, draw a rough plot on a whiteboard as you step through each layer.'
 
-teacher_tip(tip)
 ```
 
 The "`gg`" in `ggplot` stands for "grammar of graphics", with "grammar" meaning "the fundamental principles or rules of an art or science" [@layered-grammar]. Just as all languages share common principles of grammar and syntax, so too do the many forms of data visualization. The basic idea is that all graphs can be described using a _layered_ grammar: all graphs represent a dataset using the same layers of visual order. 
@@ -77,12 +75,10 @@ Download the `titanic` dataset, the manifest of *Titanic* passengers with detail
 titanic<- read_csv("https://raw.githubusercontent.com/databrew/intro-to-data-science/main/data/deaths.csv")
 ```
 
-```{r, results = 'asis', eval = ifelse(exists('is_teacher'),is_teacher,TRUE),echo=FALSE}
-source('teacher_tip.R')
+```{r, include = FALSE
 
-tip <- 'At this point it may be useful to emphasize that the name of the package is **`ggplot2`**, but the name of the function is just **`ggplot()`**.'
+'At this point it may be useful to emphasize that the name of the package is **`ggplot2`**, but the name of the function is just **`ggplot()`**.'
 
-teacher_tip(tip)
 ```
 
 
