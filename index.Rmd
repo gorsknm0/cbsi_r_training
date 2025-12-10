@@ -34,6 +34,14 @@ options(scipen=999)
 
 This won't be your standard classroom course where we formally teach you. Instead we will guide you through some things that we know and give you a chance to practice. Our aim is for you to feel confident from being able to write one line of code to calling yourself a proper researcher. 
 
-If you have questions, ask. If you need someone to slow down or say it in a different way, then say so. Because if you're thinking it, someone else probably is to. 
+If you have questions, ask. If you need someone to slow down or say it in a different way (comme le français), then say so. Because if you're thinking it, someone else probably is too. 
 
-So buckle up, and let's learn how to work with data.
+Follow along the next pages to get your computer up and running, and if you see a box, like the one below,
+
+```{r, eval = FALSE, echo = TRUE}
+be sure to type everything that you see in these boxes onto your own computer.
+```
+
+This course is about seeing **and doing**. Don't only read it. Do it.
+
+Now that the formalities are out of the way... Buckle up, and let's learn how to work with data.

@@ -139,18 +139,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>I Pre-Training Material</b></span></li>
 <li class="chapter" data-level="2" data-path="setting-up-your-computer.html"><a href="setting-up-your-computer.html"><i class="fa fa-check"></i><b>2</b> Setting up your computer</a>
 <ul>
-<li class="chapter" data-level="" data-path="setting-up-your-computer.html"><a href="setting-up-your-computer.html#install-r"><i class="fa fa-check"></i>Install R</a></li>
-<li class="chapter" data-level="" data-path="setting-up-your-computer.html"><a href="setting-up-your-computer.html#install-rstudio"><i class="fa fa-check"></i>Install RStudio</a></li>
 <li class="chapter" data-level="" data-path="setting-up-your-computer.html"><a href="setting-up-your-computer.html#install-packages"><i class="fa fa-check"></i>Install packages</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html"><i class="fa fa-check"></i><b>3</b> Preparing for the R Training</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#running-r-code-in-the-console"><i class="fa fa-check"></i><b>3.1</b> Running R code in the <em>Console</em></a></li>
-<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#r-as-a-calculator"><i class="fa fa-check"></i>R as a calculator</a></li>
-<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#re-running-code"><i class="fa fa-check"></i>Re-running code</a></li>
-<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#incomplete-commands"><i class="fa fa-check"></i>Incomplete commands</a></li>
-<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#getting-errors"><i class="fa fa-check"></i>Getting errors</a></li>
-<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#using-parentheses"><i class="fa fa-check"></i>Using parentheses</a></li>
+<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#running-r-code-in-the-console"><i class="fa fa-check"></i>Running R code in the <em>Console</em></a></li>
+<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#use-r-like-a-calculator"><i class="fa fa-check"></i>Use R like a calculator</a></li>
+<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#getting-along-with-r"><i class="fa fa-check"></i>Getting along with <code>R</code></a></li>
 <li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#use-built-in-r-functions"><i class="fa fa-check"></i>Use built-in R functions</a></li>
 </ul></li>
 <li class="part"><span><b>II Getting Started</b></span></li>
@@ -261,24 +256,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="setting-up-your-computer" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Module 2</span> Setting up your computer<a href="setting-up-your-computer.html#setting-up-your-computer" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>It’s time to set up your system. Ready? Let’s go.</p>
-<div id="install-r" class="section level2 unnumbered hasAnchor">
-<h2>Install R<a href="setting-up-your-computer.html#install-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>First, let’s get the right programs installed on your computer. Then we will explain what they are and why you need them.</p>
+<p>Let’s get the right programs installed on your computer. Then we will explain what they are and why you need them.</p>
 <p><strong>First, download and install <code>R</code>: </strong></p>
 <p>Go to the following website, click the <em>Download</em> button, and follow the website’s instructions from there.
 <a href="https://mirrors.nics.utk.edu/cran/" target="blank">https://mirrors.nics.utk.edu/cran/</a></p>
-</div>
-<div id="install-rstudio" class="section level2 unnumbered hasAnchor">
-<h2>Install RStudio<a href="setting-up-your-computer.html#install-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p> </p>
 <p><strong>Second, download and install <code>RStudio</code>:</strong></p>
 <p>Go to the following website and choose the free Desktop version:
 <a href="https://rstudio.com/products/rstudio/download/" target="blank">https://rstudio.com/products/rstudio/download/</a></p>
+<p> </p>
 <p><strong>Third, make sure <code>RStudio</code> opens successfully:</strong></p>
 <p>Open the <code>RStudio</code> app. A window should appear that looks like this:</p>
-<p><img src="docs/img/R-home-screen.png" /></p>
+<p><img src="docs/img/R-home-screen.png" />
+ </p>
 <p><strong>Fourth, make sure <code>R</code> is running correctly in the background:</strong></p>
 <p>In <code>RStudio</code>, in the pane on the left (the “Console”), type 2+2 and hit Enter.<br />
 If <code>R</code> is working properly, the number “4” will be printed in the next line down.</p>
+<p><img src="docs/img/rstudio_224.png" /></p>
+<p> </p>
 <p><strong>Finally, some minor adjustments to make <code>RStudio</code> run smoother (and look cooler):</strong></p>
 <p>Go to <code>Tools &gt; Global Options</code> and make sure your <code>General</code> settings match these exactly:</p>
 <p><img src="docs/img/rstudio-settings.png" /></p>
@@ -286,10 +281,11 @@ If <code>R</code> is working properly, the number “4” will be printed in the
 <p>Now go to the <code>Appearance</code> settings and choose a cool theme!</p>
 <p><img src="docs/img/rstudio-theme.png" /></p>
 <p><strong>Boom!</strong> You’ve got R up and running. Now it’s time to install some packages.</p>
-</div>
+<p> </p>
 <div id="install-packages" class="section level2 unnumbered hasAnchor">
 <h2>Install packages<a href="setting-up-your-computer.html#install-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Packages are what makes R so great. To install a package, open Rstudio, make sure you’re connected to Wi-Fi, and type the following code into the “Console” in the bottom left</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="setting-up-your-computer.html#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;packagename&#39;</span>)</span></code></pre></div>
 <p>Did that work? Probably not, because “packagename” is not a real R package. The packages we’ll be using are the following:</p>
 <pre><code>tidyverse
 RColorBrewer
@@ -298,9 +294,9 @@ ggthemes
 rmarkdown
 sp</code></pre>
 <p>To install all of these, you can run <code>install.packages</code> for each package:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="setting-up-your-computer.html#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
-<span id="cb2-2"><a href="setting-up-your-computer.html#cb2-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RColorBrewer&#39;</span>)</span>
-<span id="cb2-3"><a href="setting-up-your-computer.html#cb2-3" tabindex="-1"></a><span class="co"># etc., etc.</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="setting-up-your-computer.html#cb4-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
+<span id="cb4-2"><a href="setting-up-your-computer.html#cb4-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;RColorBrewer&#39;</span>)</span>
+<span id="cb4-3"><a href="setting-up-your-computer.html#cb4-3" tabindex="-1"></a><span class="co"># etc., etc.</span></span></code></pre></div>
 <p>So, now you’ve got R, RStudio, and some cool packages. Good job. You’re ready for the next module.</p>
 
 </div>

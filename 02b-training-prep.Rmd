@@ -15,7 +15,7 @@ When you open `RStudio`, you see several different panes within the program's wi
 `RStudio`'s *Console* is your window into `R`, the engine under the hood. The *Console* is where you type commands for `R` to run, and where `R` prints back the results of what you have told it to do. Think of the *Console* as a chatroom, where you and `R` talk back and forth.
 
 
-## Running R code in the *Console*
+## Running R code in the *Console* {-}
 
 Type your first command into the *Console*, then press `Enter`:
 
@@ -43,7 +43,7 @@ However, it is better to make your code as easy to read as possible, which usual
 
 Try typing in other basic calculations:
 
-## R as a calculator {.unnumbered}
+## Use R like a calculator {.unnumbered}
 
 As you can tell from those commands you just ran, `R` is, at heart, a fancy calculator.
 
@@ -56,7 +56,7 @@ Some calculations are straightforward, like addition and subtraction:
 490 - 1000
 ```
 
-Division is pretty straightfoward too:
+Division is pretty straightforward too:
 
 ```{r,echo=TRUE,collapse=TRUE}
 24 / 2
@@ -88,7 +88,9 @@ Finally, note that `R` is fine with negative numbers:
 9 + -100
 ```
 
-## Re-running code {.unnumbered}
+## Getting along with `R` {-}
+
+### Re-running code in the Console {.unnumbered}
 
 If you want to re-run the code you just ran, or if you want to recall the code so that you can adjust it slightly, click anywhere in the *Console* then press your keyboard's `Up` arrow.
 
@@ -96,7 +98,7 @@ If you keep pressing your `Up` arrow, `R` will present you with sequentially old
 
 If you accidentally recalled an old command without meaning to, you can reset the *Console*'s command line by pressing `Escape`.
 
-## Incomplete commands {.unnumbered}
+### Incomplete commands {.unnumbered}
 
 Similar to talking to a friend, if you start a sentence and don't finish it, your friend will get confused. `R` gets confused when you enter an incomplete command, and will wait for you to write the remainder of your command on the next line in the *Console* before doing anything.
 
@@ -112,7 +114,7 @@ If you want to complete your command, add a number (e.g., `3)` and hit `Enter`. 
 
 Or, if instead you want `R` to stop waiting and stop running, just press the `Escape` key.
 
-## Getting errors {.unnumbered}
+### Getting errors {.unnumbered}
 
 `R` only understands your commands if they follow the rules of the `R` language (often referred to as its *syntax*). If `R` does not understand your code, it will throw an error and give up on trying to execute that line of code. 
 
@@ -132,7 +134,7 @@ Here's another piece of code that will produce an error:
 dfjkltr9fitwt985ut9e3
 ```
 
-## Using parentheses {.unnumbered}
+### Using parentheses {.unnumbered}
 
 
 `R` is usually great about following classic rules for Order of Operations, and you can use parentheses to exert control over that order. For example, these two commands produce different results:  
@@ -154,6 +156,9 @@ The following line of code will return a plus sign, `+`, since `R` is waiting fo
 ```
 
 Remember: **parentheses come in pairs!** The same goes for other types of brackets: `{...}` and `[...]`.
+
+
+### Using operators in R {-}
 
 You can ask `R` basic questions using *operators*. 
 
@@ -209,6 +214,7 @@ Other commonly used operators in `R` include greater than / less than symbols (`
 (100 != 100) == FALSE
 ```
 
+
 ## Use built-in R functions {.unnumbered}
 
 R has some built-in “functions” for common calculations, such as finding square roots and logarithms. Functions are packages of code that take a given value, transform it according to some internal code instructions, and provide an output. You will learn more about functions in a few modules. 
@@ -261,6 +267,8 @@ pi
 &nbsp;
 
 #### Other Resources {-}
+
+[datascience.pizza](datascience.pizza)
 
 Hobbes Primer, Table 1 (Math Operators, pg. 18) and Table 2 (Logical operators, pg. 22)
 
