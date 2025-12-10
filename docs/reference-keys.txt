@@ -25,3 +25,4 @@ cleaning-messy-data
 part-extra-information
 dates
 text
+special-characters

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 15 ggplot | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 15 ggplot | R Training" />
   <meta property="og:type" content="book" />
@@ -53,8 +53,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -64,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -236,6 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
 </ul></li>
+<li class="chapter" data-level="24" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>24</b> Special Characters</a></li>
 </ul>
 
       </nav>
@@ -313,11 +315,15 @@ Let&#39;s learn by doing. First, install and load  `ggplot2` and associated pack
 
 ``` r
 library(ggplot2)
+Error in library(ggplot2): there is no package called &#39;ggplot2&#39;
 library(readr)
+Error in library(readr): there is no package called &#39;readr&#39;
 library(ggthemes)
+Error in library(ggthemes): there is no package called &#39;ggthemes&#39;
 library(dplyr)</code></pre>
 <p>Download the <code>titanic</code> dataset, the manifest of <em>Titanic</em> passengers with details such as as age, passenger class, fare paid, and whether or not they survived.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="ggplot.html#cb224-1" tabindex="-1"></a>titanic<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/databrew/intro-to-data-science/main/data/deaths.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="ggplot.html#cb226-1" tabindex="-1"></a>titanic<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/databrew/intro-to-data-science/main/data/deaths.csv&quot;</span>)</span>
+<span id="cb226-2"><a href="ggplot.html#cb226-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/databrew/intro-to-data-science/main/data/deaths.csv&quot;</span>)<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;read_csv&quot;</span></span></code></pre></div>
 <p>```{r, include = FALSE</p>
 <p>‘At this point it may be useful to emphasize that the name of the package is <strong><code>ggplot2</code></strong>, but the name of the function is just <strong><code>ggplot()</code></strong>.’</p>
 <pre><code>
@@ -330,137 +336,141 @@ Say you want to explore the relationship between passengers&#39; age and the far
 
 
 ``` r
-ggplot()</code></pre>
-<p><img src="figures/unnamed-chunk-231-1.png" width="925.44" /></p>
+ggplot()
+Error in ggplot(): could not find function &quot;ggplot&quot;</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Draw the axes</strong> and, 3., setup our <strong>landscape of coordinates</strong>. To do so, we need to feed <code>ggplot()</code> some data and tell it which columns should be mapped onto the axes.</li>
 </ol>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="ggplot.html#cb226-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, </span>
-<span id="cb226-2"><a href="ggplot.html#cb226-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Fare))</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-232-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="ggplot.html#cb228-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, </span>
+<span id="cb228-2"><a href="ggplot.html#cb228-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Fare))</span>
+<span id="cb228-3"><a href="ggplot.html#cb228-3" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Fare))<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;ggplot&quot;</span></span></code></pre></div>
 <p>That code looks a bit clunky, we know. The <code>aes()</code> input, which is short for <code>aesthetics</code>, is actually a function. Everything included in its parentheses will be used to <em>map your data to the plot’s aesthetic attributes</em>. So far we have simply said that <code>Age</code> should be mapped to the <em>x</em> axis and that <code>Fare</code> should be mapped to <em>y</em>.</p>
 <p>But let’s say we also want to color-code the points on our plot according to male/female. To do so, we will add specifications to this <code>aes()</code> function.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="ggplot.html#cb227-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, </span>
-<span id="cb227-2"><a href="ggplot.html#cb227-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Fare, <span class="at">color=</span>Sex))</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-233-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="ggplot.html#cb229-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, </span>
+<span id="cb229-2"><a href="ggplot.html#cb229-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Fare, <span class="at">color=</span>Sex))</span>
+<span id="cb229-3"><a href="ggplot.html#cb229-3" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Fare, <span class="at">color =</span> Sex))<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;ggplot&quot;</span></span></code></pre></div>
 <p>Your plot is still blank, but in the background <code>ggplot()</code> is all setup to make your plot. Since this <code>ggplot()</code> call is the basis of everything that will happen next – it contains the data and the way you want to map it to attributes of your plot – let’s save it to a variable for easy recall. We’ll use <code>p</code> for “plot”.</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="ggplot.html#cb228-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic, </span>
-<span id="cb228-2"><a href="ggplot.html#cb228-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Fare, <span class="at">color=</span>Sex))</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="ggplot.html#cb230-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic, </span>
+<span id="cb230-2"><a href="ggplot.html#cb230-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Fare, <span class="at">color=</span>Sex))</span>
+<span id="cb230-3"><a href="ggplot.html#cb230-3" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Fare, <span class="at">color =</span> Sex))<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;ggplot&quot;</span></span></code></pre></div>
 <p>Note that you don’t need to write out <code>titanic$Age</code> or <code>titanic$Fare</code>. You’ve told <code>ggplot</code> that your <code>data</code> is <code>titanic</code>, so it knows to look inside that dataframe for those columns.</p>
 <ol start="4" style="list-style-type: decimal">
 <li><strong>Map our data to geometric shapes</strong>. In this case, a scatter plot of points:</li>
 </ol>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="ggplot.html#cb229-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb229-2"><a href="ggplot.html#cb229-2" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-235-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="ggplot.html#cb231-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb231-2"><a href="ggplot.html#cb231-2" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;p&#39;</span> not found</span>
+<span id="cb231-3"><a href="ggplot.html#cb231-3" tabindex="-1"></a>p</span>
+<span id="cb231-4"><a href="ggplot.html#cb231-4" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;p&#39;</span> not found</span></code></pre></div>
 <p>Note the use of a plus sign, <code>+</code>. You are <em>adding</em> layers to your plot.</p>
 <ol start="5" style="list-style-type: decimal">
 <li><strong>Add some more labels</strong>. You see that <code>ggplot()</code> has automatically added axis titles and a legend, but we can add some more using the <code>labs()</code> function. Let’s add an overhead title, a sub-title, and a caption.</li>
 </ol>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="ggplot.html#cb230-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Relationship between Age, Fare, and Sex&#39;</span>,</span>
-<span id="cb230-2"><a href="ggplot.html#cb230-2" tabindex="-1"></a>              <span class="at">subtitle =</span> <span class="st">&#39;Passengers on the RMS Titanic&#39;</span>,</span>
-<span id="cb230-3"><a href="ggplot.html#cb230-3" tabindex="-1"></a>              <span class="at">caption =</span> <span class="st">&#39;Property of Eric Keen &amp; Hadley Whickham (2021)&#39;</span>)</span>
-<span id="cb230-4"><a href="ggplot.html#cb230-4" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-236-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="ggplot.html#cb232-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Relationship between Age, Fare, and Sex&#39;</span>,</span>
+<span id="cb232-2"><a href="ggplot.html#cb232-2" tabindex="-1"></a>              <span class="at">subtitle =</span> <span class="st">&#39;Passengers on the RMS Titanic&#39;</span>,</span>
+<span id="cb232-3"><a href="ggplot.html#cb232-3" tabindex="-1"></a>              <span class="at">caption =</span> <span class="st">&#39;Property of Eric Keen &amp; Hadley Whickham (2021)&#39;</span>)</span>
+<span id="cb232-4"><a href="ggplot.html#cb232-4" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;p&#39;</span> not found</span>
+<span id="cb232-5"><a href="ggplot.html#cb232-5" tabindex="-1"></a>p</span>
+<span id="cb232-6"><a href="ggplot.html#cb232-6" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;p&#39;</span> not found</span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li><strong>Add a statistical summary</strong>, like a smoothed regression line.</li>
 </ol>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="ggplot.html#cb231-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span>
-<span id="cb231-2"><a href="ggplot.html#cb231-2" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-237-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="ggplot.html#cb233-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span>
+<span id="cb233-2"><a href="ggplot.html#cb233-2" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;p&#39;</span> not found</span>
+<span id="cb233-3"><a href="ggplot.html#cb233-3" tabindex="-1"></a>p</span>
+<span id="cb233-4"><a href="ggplot.html#cb233-4" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;p&#39;</span> not found</span></code></pre></div>
 <p>Note that <code>ggplot()</code> automatically produced a different regression line for each sex. That’s nice, but now our plot is getting pretty cluttered.</p>
 <ol start="7" style="list-style-type: decimal">
 <li>Clean up the look by using <strong>facets</strong>: a separate plot for each sex.</li>
 </ol>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="ggplot.html#cb232-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Sex)</span>
-<span id="cb232-2"><a href="ggplot.html#cb232-2" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-238-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="ggplot.html#cb234-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Sex)</span>
+<span id="cb234-2"><a href="ggplot.html#cb234-2" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;p&#39;</span> not found</span>
+<span id="cb234-3"><a href="ggplot.html#cb234-3" tabindex="-1"></a>p</span>
+<span id="cb234-4"><a href="ggplot.html#cb234-4" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;p&#39;</span> not found</span></code></pre></div>
 <p>Beautiful!</p>
 <ol start="8" style="list-style-type: decimal">
 <li>Finally, let’s <strong>stylize</strong> the entire plot with a different <strong>theme</strong>. You can find theme options in the `<code>ggthemes</code> package.</li>
 </ol>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="ggplot.html#cb233-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme_economist_white</span>()</span>
-<span id="cb233-2"><a href="ggplot.html#cb233-2" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-239-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="ggplot.html#cb235-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme_economist_white</span>()</span>
+<span id="cb235-2"><a href="ggplot.html#cb235-2" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;p&#39;</span> not found</span>
+<span id="cb235-3"><a href="ggplot.html#cb235-3" tabindex="-1"></a>p</span>
+<span id="cb235-4"><a href="ggplot.html#cb235-4" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;p&#39;</span> not found</span></code></pre></div>
 </div>
 </div>
 <div id="bar-plot" class="section level2 unnumbered hasAnchor">
 <h2>Bar plot<a href="ggplot.html#bar-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In a bar plot, your data are mapped to bars instead of points. And, instead of showing every data point, you are summarizing the data in some way – i.e., displaying a <em>statistic</em>. That statistic is usually just a count of the number of data points in each subgroup.</p>
 <p>Let’s make a bar plot that compares the number of men and women on the <em>Titanic</em>:</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="ggplot.html#cb234-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, </span>
-<span id="cb234-2"><a href="ggplot.html#cb234-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Sex)) <span class="sc">+</span> </span>
-<span id="cb234-3"><a href="ggplot.html#cb234-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&#39;count&#39;</span>)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-240-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="ggplot.html#cb236-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic, </span>
+<span id="cb236-2"><a href="ggplot.html#cb236-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Sex)) <span class="sc">+</span> </span>
+<span id="cb236-3"><a href="ggplot.html#cb236-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&#39;count&#39;</span>)</span>
+<span id="cb236-4"><a href="ggplot.html#cb236-4" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic, <span class="fu">aes</span>(<span class="at">x =</span> Sex))<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;ggplot&quot;</span></span></code></pre></div>
 <p>Note that, for the <code>aes()</code> call, we only provided the <em>x</em> axis attribute: <code>Sex</code>.</p>
 <p>Then, in the <code>geom_bar()</code> call, we told <code>R</code> what <code>stat</code>istic should be represented by that bars: <code>'count'</code>.</p>
 <p>But you are allowed to explicitly set the bars’ heights (i.e., the <code>y</code> dimension) to represent a different statistic. Let’s say we wanted each bar to represent the mean age of men and women:</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="ggplot.html#cb235-1" tabindex="-1"></a><span class="co"># First, determine the mean age of each sex</span></span>
-<span id="cb235-2"><a href="ggplot.html#cb235-2" tabindex="-1"></a>mean_age_males <span class="ot">&lt;-</span> <span class="fu">mean</span>(titanic<span class="sc">$</span>Age[titanic<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">&#39;male&#39;</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb235-3"><a href="ggplot.html#cb235-3" tabindex="-1"></a>mean_age_females <span class="ot">&lt;-</span> <span class="fu">mean</span>(titanic<span class="sc">$</span>Age[titanic<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">&#39;female&#39;</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb235-4"><a href="ggplot.html#cb235-4" tabindex="-1"></a></span>
-<span id="cb235-5"><a href="ggplot.html#cb235-5" tabindex="-1"></a><span class="co"># Make a new dataframe with this summary data</span></span>
-<span id="cb235-6"><a href="ggplot.html#cb235-6" tabindex="-1"></a>titanic_age <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex =</span> <span class="fu">c</span>(<span class="st">&#39;male&#39;</span>,<span class="st">&#39;female&#39;</span>),</span>
-<span id="cb235-7"><a href="ggplot.html#cb235-7" tabindex="-1"></a>                          <span class="at">mean_age =</span> <span class="fu">c</span>(mean_age_males, mean_age_females))</span>
-<span id="cb235-8"><a href="ggplot.html#cb235-8" tabindex="-1"></a><span class="co"># Plot it</span></span>
-<span id="cb235-9"><a href="ggplot.html#cb235-9" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_age, </span>
-<span id="cb235-10"><a href="ggplot.html#cb235-10" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Sex,<span class="at">y=</span> mean_age)) <span class="sc">+</span> </span>
-<span id="cb235-11"><a href="ggplot.html#cb235-11" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-241-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="ggplot.html#cb237-1" tabindex="-1"></a><span class="co"># First, determine the mean age of each sex</span></span>
+<span id="cb237-2"><a href="ggplot.html#cb237-2" tabindex="-1"></a>mean_age_males <span class="ot">&lt;-</span> <span class="fu">mean</span>(titanic<span class="sc">$</span>Age[titanic<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">&#39;male&#39;</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb237-3"><a href="ggplot.html#cb237-3" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;titanic&#39;</span> not found</span>
+<span id="cb237-4"><a href="ggplot.html#cb237-4" tabindex="-1"></a>mean_age_females <span class="ot">&lt;-</span> <span class="fu">mean</span>(titanic<span class="sc">$</span>Age[titanic<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">&#39;female&#39;</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb237-5"><a href="ggplot.html#cb237-5" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;titanic&#39;</span> not found</span>
+<span id="cb237-6"><a href="ggplot.html#cb237-6" tabindex="-1"></a></span>
+<span id="cb237-7"><a href="ggplot.html#cb237-7" tabindex="-1"></a><span class="co"># Make a new dataframe with this summary data</span></span>
+<span id="cb237-8"><a href="ggplot.html#cb237-8" tabindex="-1"></a>titanic_age <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sex =</span> <span class="fu">c</span>(<span class="st">&#39;male&#39;</span>,<span class="st">&#39;female&#39;</span>),</span>
+<span id="cb237-9"><a href="ggplot.html#cb237-9" tabindex="-1"></a>                          <span class="at">mean_age =</span> <span class="fu">c</span>(mean_age_males, mean_age_females))</span>
+<span id="cb237-10"><a href="ggplot.html#cb237-10" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;mean_age_males&#39;</span> not found</span>
+<span id="cb237-11"><a href="ggplot.html#cb237-11" tabindex="-1"></a><span class="co"># Plot it</span></span>
+<span id="cb237-12"><a href="ggplot.html#cb237-12" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_age, </span>
+<span id="cb237-13"><a href="ggplot.html#cb237-13" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Sex,<span class="at">y=</span> mean_age)) <span class="sc">+</span> </span>
+<span id="cb237-14"><a href="ggplot.html#cb237-14" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>)</span>
+<span id="cb237-15"><a href="ggplot.html#cb237-15" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic_age, <span class="fu">aes</span>(<span class="at">x =</span> Sex, <span class="at">y =</span> mean_age))<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;ggplot&quot;</span></span></code></pre></div>
 <p>In this case, we are explicitly defining the <code>y</code> axis in the <code>aes()</code> call, and telling <code>geom_bar()</code> to just use the values we specified in <code>aes()</code> (that’s what <code>'identity'</code> means; you are telling <code>ggplot()</code> to just use what you already gave it.)</p>
 <p>You can specify other aesthetic attributes, <em>unrelated to the data</em>, within the <code>geom_bar()</code> call:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="ggplot.html#cb236-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_age, </span>
-<span id="cb236-2"><a href="ggplot.html#cb236-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Sex,<span class="at">y=</span> mean_age)) <span class="sc">+</span> </span>
-<span id="cb236-3"><a href="ggplot.html#cb236-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>, <span class="at">fill =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) </span></code></pre></div>
-<p><img src="figures/unnamed-chunk-242-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="ggplot.html#cb238-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_age, </span>
+<span id="cb238-2"><a href="ggplot.html#cb238-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Sex,<span class="at">y=</span> mean_age)) <span class="sc">+</span> </span>
+<span id="cb238-3"><a href="ggplot.html#cb238-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>, <span class="at">fill =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) </span>
+<span id="cb238-4"><a href="ggplot.html#cb238-4" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic_age, <span class="fu">aes</span>(<span class="at">x =</span> Sex, <span class="at">y =</span> mean_age))<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;ggplot&quot;</span></span></code></pre></div>
 <p>Now add better labels:</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="ggplot.html#cb237-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_age, </span>
-<span id="cb237-2"><a href="ggplot.html#cb237-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Sex,<span class="at">y=</span> mean_age)) <span class="sc">+</span> </span>
-<span id="cb237-3"><a href="ggplot.html#cb237-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>, <span class="at">fill =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb237-4"><a href="ggplot.html#cb237-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&#39;Mean age&#39;</span>, </span>
-<span id="cb237-5"><a href="ggplot.html#cb237-5" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Gender&#39;</span>,</span>
-<span id="cb237-6"><a href="ggplot.html#cb237-6" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&#39;Titanic passengers: Average age by sex&#39;</span>,</span>
-<span id="cb237-7"><a href="ggplot.html#cb237-7" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&#39;Do not steal, please&#39;</span>)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-243-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="ggplot.html#cb239-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_age, </span>
+<span id="cb239-2"><a href="ggplot.html#cb239-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Sex,<span class="at">y=</span> mean_age)) <span class="sc">+</span> </span>
+<span id="cb239-3"><a href="ggplot.html#cb239-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>, <span class="at">fill =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb239-4"><a href="ggplot.html#cb239-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&#39;Mean age&#39;</span>, </span>
+<span id="cb239-5"><a href="ggplot.html#cb239-5" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&#39;Gender&#39;</span>,</span>
+<span id="cb239-6"><a href="ggplot.html#cb239-6" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&#39;Titanic passengers: Average age by sex&#39;</span>,</span>
+<span id="cb239-7"><a href="ggplot.html#cb239-7" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&#39;Do not steal, please&#39;</span>)</span>
+<span id="cb239-8"><a href="ggplot.html#cb239-8" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic_age, <span class="fu">aes</span>(<span class="at">x =</span> Sex, <span class="at">y =</span> mean_age))<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;ggplot&quot;</span></span></code></pre></div>
 <p>You can add another variable to your bar plot as follows. Let’s say you want to see the average age in each sex, grouped by who survived and who didn’t:</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="ggplot.html#cb238-1" tabindex="-1"></a><span class="co"># First, produce your summary dataframe using some dplyr magic:</span></span>
-<span id="cb238-2"><a href="ggplot.html#cb238-2" tabindex="-1"></a>titanic_em <span class="ot">&lt;-</span> titanic <span class="sc">%&gt;%</span> </span>
-<span id="cb238-3"><a href="ggplot.html#cb238-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Survived) <span class="sc">%&gt;%</span> </span>
-<span id="cb238-4"><a href="ggplot.html#cb238-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_age=</span> <span class="fu">mean</span>(Age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb238-5"><a href="ggplot.html#cb238-5" tabindex="-1"></a></span>
-<span id="cb238-6"><a href="ggplot.html#cb238-6" tabindex="-1"></a>titanic_em <span class="ot">&lt;-</span> titanic_em <span class="sc">%&gt;%</span> </span>
-<span id="cb238-7"><a href="ggplot.html#cb238-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Survived =</span> <span class="fu">ifelse</span>(Survived <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&#39;Survived&#39;</span>,<span class="st">&#39;Dead&#39;</span> ))</span>
-<span id="cb238-8"><a href="ggplot.html#cb238-8" tabindex="-1"></a></span>
-<span id="cb238-9"><a href="ggplot.html#cb238-9" tabindex="-1"></a><span class="co"># Check it out</span></span>
-<span id="cb238-10"><a href="ggplot.html#cb238-10" tabindex="-1"></a>titanic_em</span>
-<span id="cb238-11"><a href="ggplot.html#cb238-11" tabindex="-1"></a><span class="co"># A tibble: 4 × 3</span></span>
-<span id="cb238-12"><a href="ggplot.html#cb238-12" tabindex="-1"></a><span class="co"># Groups:   Sex [2]</span></span>
-<span id="cb238-13"><a href="ggplot.html#cb238-13" tabindex="-1"></a>  Sex    Survived mean_age</span>
-<span id="cb238-14"><a href="ggplot.html#cb238-14" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>  <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb238-15"><a href="ggplot.html#cb238-15" tabindex="-1"></a><span class="dv">1</span> female Dead         <span class="fl">25.0</span></span>
-<span id="cb238-16"><a href="ggplot.html#cb238-16" tabindex="-1"></a><span class="dv">2</span> female Survived     <span class="fl">28.8</span></span>
-<span id="cb238-17"><a href="ggplot.html#cb238-17" tabindex="-1"></a><span class="dv">3</span> male   Dead         <span class="fl">31.6</span></span>
-<span id="cb238-18"><a href="ggplot.html#cb238-18" tabindex="-1"></a><span class="dv">4</span> male   Survived     <span class="fl">27.3</span></span>
-<span id="cb238-19"><a href="ggplot.html#cb238-19" tabindex="-1"></a></span>
-<span id="cb238-20"><a href="ggplot.html#cb238-20" tabindex="-1"></a><span class="co"># Now plot it</span></span>
-<span id="cb238-21"><a href="ggplot.html#cb238-21" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_em, </span>
-<span id="cb238-22"><a href="ggplot.html#cb238-22" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Sex, <span class="at">y=</span>mean_age, <span class="at">fill =</span> Survived)) <span class="sc">+</span></span>
-<span id="cb238-23"><a href="ggplot.html#cb238-23" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&#39;identity&#39;</span>)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-244-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="ggplot.html#cb240-1" tabindex="-1"></a><span class="co"># First, produce your summary dataframe using some dplyr magic:</span></span>
+<span id="cb240-2"><a href="ggplot.html#cb240-2" tabindex="-1"></a>titanic_em <span class="ot">&lt;-</span> titanic <span class="sc">%&gt;%</span> </span>
+<span id="cb240-3"><a href="ggplot.html#cb240-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Survived) <span class="sc">%&gt;%</span> </span>
+<span id="cb240-4"><a href="ggplot.html#cb240-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_age=</span> <span class="fu">mean</span>(Age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb240-5"><a href="ggplot.html#cb240-5" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;titanic&#39;</span> not found</span>
+<span id="cb240-6"><a href="ggplot.html#cb240-6" tabindex="-1"></a></span>
+<span id="cb240-7"><a href="ggplot.html#cb240-7" tabindex="-1"></a>titanic_em <span class="ot">&lt;-</span> titanic_em <span class="sc">%&gt;%</span> </span>
+<span id="cb240-8"><a href="ggplot.html#cb240-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Survived =</span> <span class="fu">ifelse</span>(Survived <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&#39;Survived&#39;</span>,<span class="st">&#39;Dead&#39;</span> ))</span>
+<span id="cb240-9"><a href="ggplot.html#cb240-9" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;titanic_em&#39;</span> not found</span>
+<span id="cb240-10"><a href="ggplot.html#cb240-10" tabindex="-1"></a></span>
+<span id="cb240-11"><a href="ggplot.html#cb240-11" tabindex="-1"></a><span class="co"># Check it out</span></span>
+<span id="cb240-12"><a href="ggplot.html#cb240-12" tabindex="-1"></a>titanic_em</span>
+<span id="cb240-13"><a href="ggplot.html#cb240-13" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;titanic_em&#39;</span> not found</span>
+<span id="cb240-14"><a href="ggplot.html#cb240-14" tabindex="-1"></a></span>
+<span id="cb240-15"><a href="ggplot.html#cb240-15" tabindex="-1"></a><span class="co"># Now plot it</span></span>
+<span id="cb240-16"><a href="ggplot.html#cb240-16" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_em, </span>
+<span id="cb240-17"><a href="ggplot.html#cb240-17" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Sex, <span class="at">y=</span>mean_age, <span class="at">fill =</span> Survived)) <span class="sc">+</span></span>
+<span id="cb240-18"><a href="ggplot.html#cb240-18" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&#39;identity&#39;</span>)</span>
+<span id="cb240-19"><a href="ggplot.html#cb240-19" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic_em, <span class="fu">aes</span>(<span class="at">x =</span> Sex, <span class="at">y =</span> mean_age, <span class="at">fill =</span> Survived))<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;ggplot&quot;</span></span></code></pre></div>
 <p>Rather than stack the bars, you can place them side by side:</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="ggplot.html#cb239-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_em, </span>
-<span id="cb239-2"><a href="ggplot.html#cb239-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Sex, <span class="at">y=</span>mean_age, <span class="at">fill =</span> Survived)) <span class="sc">+</span></span>
-<span id="cb239-3"><a href="ggplot.html#cb239-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&#39;identity&#39;</span>, <span class="at">position =</span> <span class="st">&#39;dodge&#39;</span>) </span></code></pre></div>
-<p><img src="figures/unnamed-chunk-245-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="ggplot.html#cb241-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_em, </span>
+<span id="cb241-2"><a href="ggplot.html#cb241-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Sex, <span class="at">y=</span>mean_age, <span class="at">fill =</span> Survived)) <span class="sc">+</span></span>
+<span id="cb241-3"><a href="ggplot.html#cb241-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&#39;identity&#39;</span>, <span class="at">position =</span> <span class="st">&#39;dodge&#39;</span>) </span>
+<span id="cb241-4"><a href="ggplot.html#cb241-4" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic_em, <span class="fu">aes</span>(<span class="at">x =</span> Sex, <span class="at">y =</span> mean_age, <span class="at">fill =</span> Survived))<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;ggplot&quot;</span></span></code></pre></div>
 <p>If you don’t love these default colors (even if they are colorblind-friendly), you can manually define the colors for each group of bars:</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="ggplot.html#cb240-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_em, </span>
-<span id="cb240-2"><a href="ggplot.html#cb240-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Sex, <span class="at">y=</span>mean_age, <span class="at">fill =</span> Survived)) <span class="sc">+</span></span>
-<span id="cb240-3"><a href="ggplot.html#cb240-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&#39;identity&#39;</span>, </span>
-<span id="cb240-4"><a href="ggplot.html#cb240-4" tabindex="-1"></a>           <span class="at">position =</span> <span class="st">&#39;dodge&#39;</span>, </span>
-<span id="cb240-5"><a href="ggplot.html#cb240-5" tabindex="-1"></a>           <span class="at">alpha =</span> <span class="fl">0.7</span>, </span>
-<span id="cb240-6"><a href="ggplot.html#cb240-6" tabindex="-1"></a>           <span class="at">color=</span><span class="st">&#39;grey40&#39;</span>) <span class="sc">+</span> <span class="co"># bar edge</span></span>
-<span id="cb240-7"><a href="ggplot.html#cb240-7" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;grey&#39;</span>)) <span class="co"># bar fill</span></span></code></pre></div>
-<p><img src="figures/unnamed-chunk-246-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="ggplot.html#cb242-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> titanic_em, </span>
+<span id="cb242-2"><a href="ggplot.html#cb242-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Sex, <span class="at">y=</span>mean_age, <span class="at">fill =</span> Survived)) <span class="sc">+</span></span>
+<span id="cb242-3"><a href="ggplot.html#cb242-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&#39;identity&#39;</span>, </span>
+<span id="cb242-4"><a href="ggplot.html#cb242-4" tabindex="-1"></a>           <span class="at">position =</span> <span class="st">&#39;dodge&#39;</span>, </span>
+<span id="cb242-5"><a href="ggplot.html#cb242-5" tabindex="-1"></a>           <span class="at">alpha =</span> <span class="fl">0.7</span>, </span>
+<span id="cb242-6"><a href="ggplot.html#cb242-6" tabindex="-1"></a>           <span class="at">color=</span><span class="st">&#39;grey40&#39;</span>) <span class="sc">+</span> <span class="co"># bar edge</span></span>
+<span id="cb242-7"><a href="ggplot.html#cb242-7" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;grey&#39;</span>)) <span class="co"># bar fill</span></span>
+<span id="cb242-8"><a href="ggplot.html#cb242-8" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic_em, <span class="fu">aes</span>(<span class="at">x =</span> Sex, <span class="at">y =</span> mean_age, <span class="at">fill =</span> Survived))<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;ggplot&quot;</span></span></code></pre></div>
 <div id="exercises-8" class="section level4 unnumbered hasAnchor">
 <h4>Exercises<a href="ggplot.html#exercises-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>More <em>Titanic</em> plots</strong></p>
@@ -473,8 +483,8 @@ ggplot()</code></pre>
 <p> </p>
 <p><strong>Baby names</strong></p>
 <p>Download the dataset on baby names given to newborns in the USA:</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="ggplot.html#cb241-1" tabindex="-1"></a><span class="fu">library</span>(babynames)</span>
-<span id="cb241-2"><a href="ggplot.html#cb241-2" tabindex="-1"></a>bn <span class="ot">&lt;-</span> babynames</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="ggplot.html#cb243-1" tabindex="-1"></a><span class="fu">library</span>(babynames)</span>
+<span id="cb243-2"><a href="ggplot.html#cb243-2" tabindex="-1"></a>bn <span class="ot">&lt;-</span> babynames</span></code></pre></div>
 <p><strong>7.</strong> Create a line chart showing the number of girls named Mary over time.</p>
 <p><strong>8.</strong> Change the color of the line to blue.</p>
 <p><strong>9.</strong> Add a fitting title to the plot.</p>
