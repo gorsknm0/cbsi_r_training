@@ -257,8 +257,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="special-characters" class="section level1 hasAnchor" number="24">
 <h1><span class="header-section-number">Module 24</span> Special Characters<a href="special-characters.html#special-characters" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="learning-goals-16" class="section level4 unnumbered hasAnchor">
-<h4>Learning Goals<a href="special-characters.html#learning-goals-16" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="learning-goal-2" class="section level4 unnumbered hasAnchor">
+<h4>Learning Goal<a href="special-characters.html#learning-goal-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>Learn how to print special characters using <strong><code>expression</code></strong> when adding text to plots in base <code>R</code>.</li>
+</ul>
+<p> </p>
+<p>Often in science you want to use special characters in your plot axes’ labels. Here you will learn how to print some of the more common special characters using <code>expression</code>.</p>
+<p> </p>
+<p><strong>First set up an empty plot</strong></p>
+<p>We do not need any data to practice this, so we’ll use an empty plot, with no axes or axes labels.</p>
+<p>Let’s plot a single value, 1, and then tell R not to plot our single value using the command <code>type = "n"</code>. We will also suppress the axes using the command <code>xaxt="n"</code> and <code>yaxt="n"</code>, and we will leave the x and y labels blank, using <code>xlab=""</code> and <code>ylab=""</code>.</p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="special-characters.html#cb342-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p>This gives us a blank plot with no data and no axes. If we wanted rid of the plot border too, we could just simply type <code>plot.new</code></p>
+<p> </p>
+<p><strong>Using <code>expression</code> to add special characters</strong></p>
+<p>Let’s imagine we have an experiment where we are measuring the response of soil CO<sub>2</sub> emissions to temperature increases, measured in degrees Celsius (°C).</p>
+<p>Using the <strong><code>mtext</code></strong> command (short for “margin text”), we are going to label the y axis of our empty plot with “CO<sub>2</sub>” and we are going to label the x axis of our empty plot with the ° symbol.</p>
+<p>Before we get to the special characters, let’s quickly practice using <code>mtext</code> to see how it works.</p>
+<p>Run this code:</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="special-characters.html#cb343-1" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Plot title&quot;</span>, <span class="co">#This is the text you will add to your plot margin</span></span>
+<span id="cb343-2"><a href="special-characters.html#cb343-2" tabindex="-1"></a>        <span class="at">side=</span><span class="dv">3</span>,     <span class="co">#This tells R which margin you want to add the text to. Plot margins are numbered from the bottom, moving in a clockwise direction.</span></span>
+<span id="cb343-3"><a href="special-characters.html#cb343-3" tabindex="-1"></a>          <span class="at">line=</span><span class="dv">1</span>)   <span class="co">#Margins have different lines you can add text to. Increasing the line number moves the text further from the plot.</span></span></code></pre></div>
+<p>Can you see what <code>mtext</code> and its arguments are doing?</p>
+<p>Now let’s label our x and y axes with the required special characters. To do this we are going to have to use <code>expression</code> alongside <code>mtext</code>.</p>
+<p>Let’s start with the y axis. To add CO<sub>2</sub> to the y axis, we are going to have to tell R to make the 2 <strong>subscript</strong>. When using <code>expression</code> we can use <strong>[ ]</strong> to make text subscript. So our y axis label command will be:</p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="special-characters.html#cb344-1" tabindex="-1"></a><span class="fu">mtext</span>(<span class="fu">expression</span>(CO[<span class="dv">2</span>]),</span>
+<span id="cb344-2"><a href="special-characters.html#cb344-2" tabindex="-1"></a>      <span class="at">side=</span><span class="dv">2</span>,            <span class="co">#Side 2 for the y axis!</span></span>
+<span id="cb344-3"><a href="special-characters.html#cb344-3" tabindex="-1"></a>      <span class="at">line=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>If we wanted instead to make something <strong>superscript</strong>, like if we wanted to report the R<sup>2</sup> value on our plot, we’d use <code>^</code>, so it would read <code>expression(R^2)</code>.</p>
+<p>Now we want to label our x axis with °C. When using expression the ° symbol is simply <strong><code>degree</code></strong>. But we also want to add the letter C after the ° symbol. To do this we need to tell R to concatenate ° and C. To do this we need to use an * . Normally in R * represents multiplication, but when used with <code>expression</code> it represents <strong>concatenate</strong>. Therefore, to add our y label we use the following code:</p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="special-characters.html#cb345-1" tabindex="-1"></a><span class="fu">mtext</span>(<span class="fu">expression</span>(<span class="fu">expression</span>(degree<span class="sc">*</span>C)),</span>
+<span id="cb345-2"><a href="special-characters.html#cb345-2" tabindex="-1"></a>      <span class="at">side=</span><span class="dv">1</span>,            <span class="co">#Side 1 for the x axis!</span></span>
+<span id="cb345-3"><a href="special-characters.html#cb345-3" tabindex="-1"></a>      <span class="at">line=</span><span class="dv">1</span>)</span></code></pre></div>
+<p> </p>
+<p><strong>Concatenating special characters and normal text</strong></p>
+<p>Now we want to create an empty plot where the y axis reads <strong>“Temperature °C”</strong>.</p>
+<p>Create an empty plot and this time try adding the word “Temperature” before the ° in your y axis <code>mtext</code> command.</p>
+<p>What happens?</p>
+<p>You should get an error message. That’s because if you want to add normal text to your <code>expression</code>, you need to use quotation marks (““).</p>
+<p>You also need to tell R to concatenate your normal text to your special character. To do that we need to use an * .</p>
+<p>Therefore, this time try:</p>
+<p><code>expression("Temperature " *degree*C)</code></p>
+<p>Does it work now? If so, good job!</p>
+<p> </p>
+<p>Now create a plot where you add brackets around °C, so that the y axis reads <strong>“Temperature (°C)”</strong>.</p>
+<p>This needs a bit of thought because the <strong>( )</strong> are normal text, wrapped around a special character, <strong>°C</strong>.</p>
+<p>To achieve this, you need to incorporate the first bracket in the normal text containing “Temperature”: <code>"Temperature ("</code>.</p>
+<p>Then we concatenate our special character: <code>*degree*C</code>.</p>
+<p>Finally, you concatenate closing bracket, which is normal text:<code>*")"</code></p>
+<p>The full <code>expression</code> would therefore read:</p>
+<p><code>expression("Temperature ("*degree*C*")")</code></p>
+<p> </p>
+<p><code>expression</code> also works directly in the <code>plot</code> function labels argument. So instead of using <code>mtext</code>, you could use:</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="special-characters.html#cb346-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>,</span>
+<span id="cb346-2"><a href="special-characters.html#cb346-2" tabindex="-1"></a>       <span class="at">xlab=</span><span class="fu">expression</span>(CO[<span class="dv">2</span>]), </span>
+<span id="cb346-3"><a href="special-characters.html#cb346-3" tabindex="-1"></a>            <span class="at">ylab=</span><span class="fu">expression</span>(<span class="st">&quot;Temperature (&quot;</span><span class="sc">*</span>degree<span class="sc">*</span>C<span class="sc">*</span><span class="st">&quot;)&quot;</span>))</span></code></pre></div>
+<p> </p>
+<p><strong>Greek alphabet</strong></p>
+<p>Other commonly required special characters in science/maths are characters from the Greek alphabet. These are very straight forward. You just type out the character name.</p>
+<p>Give it a try- create a new empty plot (<code>plot(1, type = "n", xaxt="n", yaxt="n", xlab="", ylab=""</code>) and using <code>mtext</code> and <code>expression</code> try adding the <strong><code>delta</code></strong> symbol to an axis.</p>
+<p>Now on a different axis, try capitalising the first letter, so that it reads <strong><code>Delta</code></strong> and see what happens.</p>
+<p>Try to think of some other Greek alphabet characters to try.</p>
+<p> </p>
+<p><strong>Mathematical symbols</strong></p>
+<p>Now let’s look at some useful mathematical symbols. Create a new empty plot, and using <code>mtext</code> and <code>expression</code>, see what symbols are represented by the following code (maybe you can already guess some of them):</p>
+<pre><code>!=
+%approx%
+permil
+infinity</code></pre>
+<p>Give these a try too (still using <code>expression</code>):</p>
+<pre><code>frac(x, y)
+integral(f(x), a, b))
+sqrt(x)
+sum(x[i], i==1, n)</code></pre>
+<p> </p>
+<p><strong>Text Formatting</strong></p>
+<p>And finally if you want to play around with formatting your text, give this a try…</p>
+<p><code>expression(bold("Hello, ")*italic("how's ")*underline("things?"))</code></p>
 
 </div>
 </div>

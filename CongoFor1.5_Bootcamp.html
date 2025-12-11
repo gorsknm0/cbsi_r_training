@@ -1392,10 +1392,10 @@ socks &lt;- c(6,8,14,1,NA,4)</code></pre>
 <p><strong>26.</strong> Look up the help page for the function <code>sample()</code>.</p>
 <p>Here’s an example of how this function works. This line of code will sample a single random number from the vector <code>1:10</code>.</p>
 <pre class="r"><code>sample(1:10,size=1)
-[1] 2</code></pre>
+[1] 7</code></pre>
 <p>This command will draw three random samples:</p>
 <pre class="r"><code>sample(1:10,size=3)
-[1] 6 7 5</code></pre>
+[1] 8 2 1</code></pre>
 <p><strong>27.</strong> Use this function to simulate the rolling of a single die.</p>
 <p><strong>28.</strong> Now use this to simulate the rolling of a die 10 times. (<em>Note:</em> look at the <code>replace</code> input for <code>sample()</code>.)</p>
 <p><strong>29.</strong> Now use this to roll the die 10,000 times, and assign the result to a new variable. (<em>Note:</em> look at the <code>replace</code> input for <code>sample()</code>.)</p>
@@ -1486,46 +1486,42 @@ y &lt;- sample(1:1000,size=100)
 length(y)
 [1] 100</code></pre>
 <pre class="r"><code>range(y)
-[1]   35 1000</code></pre>
+[1]  22 993</code></pre>
 <p>With a dataset like this, you can use a boolean filter to figure out how many values are greater than, say, 90.</p>
 <p>First, develop your logical test, which will tell you whether each value in the vector is greater than 90:</p>
 <pre class="r"><code># Develop your logical test,
 y &gt; 90
-  [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
+  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
  [13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [25]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [37]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [49]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [61]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
- [73]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [85] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [25]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+ [37]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [73]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE
+ [85]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE FALSE
  [97]  TRUE  TRUE  TRUE  TRUE</code></pre>
 <p>Now, to get the values corresponding to each <code>TRUE</code> in this list, plug your logical test into your subsetting brackets.</p>
 <pre class="r"><code>y[y &gt; 90]
- [1]  337  518  751  887  972  105  187  582  206  184  476  375  761  903  361
-[16]   99  214  724  812  381  857  357  153  207  959  964  490  842  169  291
-[31]  943  470  194  593  390  395  511  648  156  577  316  590  197  455  227
-[46]  289  259  923  794  319  415  735  323  107  348  706  630  704  499  710
-[61]  306  612  128  622  189  925   91  333  341  370  192  140  602  837  376
-[76]  783  350  124  553  255  507  588  983  844  398  384  872  786  151  579
-[91] 1000</code></pre>
+ [1] 752 641 711 253 181 217 592 120 417 765 466 204 340 841 844 194 597 726 695
+[20] 719 289 824 827 980 713 587 795 817 126 187 736 603 245 258 447 311 509 492
+[39] 429 902 780 870 813 679 702 455 341 367 833 201 412 685 437 456 374 676 832
+[58] 435 569 903 892 772 608 871 962 298 470 424 250 964 629 365 958 512 730 486
+[77] 129 757 331 222 219 731 450 771 811 682 993 431 837 710 347 211 170 847</code></pre>
 <p>Here’s another way you can do the same thing:</p>
 <pre class="r"><code># Save the result of your logical test in a new vector
 verdicts &lt;- y &gt; 90
 
 # Use that vector to subset y
 y[verdicts]
- [1]  337  518  751  887  972  105  187  582  206  184  476  375  761  903  361
-[16]   99  214  724  812  381  857  357  153  207  959  964  490  842  169  291
-[31]  943  470  194  593  390  395  511  648  156  577  316  590  197  455  227
-[46]  289  259  923  794  319  415  735  323  107  348  706  630  704  499  710
-[61]  306  612  128  622  189  925   91  333  341  370  192  140  602  837  376
-[76]  783  350  124  553  255  507  588  983  844  398  384  872  786  151  579
-[91] 1000</code></pre>
+ [1] 752 641 711 253 181 217 592 120 417 765 466 204 340 841 844 194 597 726 695
+[20] 719 289 824 827 980 713 587 795 817 126 187 736 603 245 258 447 311 509 492
+[39] 429 902 780 870 813 679 702 455 341 367 833 201 412 685 437 456 374 676 832
+[58] 435 569 903 892 772 608 871 962 298 470 424 250 964 629 365 958 512 730 486
+[77] 129 757 331 222 219 731 450 771 811 682 993 431 837 710 347 211 170 847</code></pre>
 <p>You can use double logical tests too. For example, what if you want all elements between the values 70 and 90?</p>
 <pre class="r"><code>verdicts &lt;- y &gt; 70 &amp; y &lt; 90
 y[verdicts]
-[1] 88 75 77</code></pre>
+[1] 73 80</code></pre>
 <div id="review-assignment" class="section level3 unnumbered">
 <h3>Review assignment</h3>
 <p><strong>1.</strong> Create a vector named <code>nummies</code> of all numbers from 1 to 100</p>
@@ -3251,7 +3247,7 @@ function ()
 {
     peek_mask()$get_current_group_size()
 }
-&lt;bytecode: 0x000002671594b8f0&gt;
+&lt;bytecode: 0x0000024f84d678f0&gt;
 &lt;environment: namespace:dplyr&gt;</code></pre>
 <p>Add or substract seconds:</p>
 <pre class="r"><code>n + seconds(1)
@@ -3370,7 +3366,7 @@ function ()
 {
     peek_mask()$get_current_group_size()
 }
-&lt;bytecode: 0x000002671594b8f0&gt;
+&lt;bytecode: 0x0000024f84d678f0&gt;
 &lt;environment: namespace:dplyr&gt;
 
 # Change timezone to Central Standard Time without changing time: 
@@ -3460,7 +3456,7 @@ function (data = NA, start = 1, end = numeric(), frequency = 1,
         attr(data, &quot;class&quot;) &lt;- class
     data
 }
-&lt;bytecode: 0x0000026715b56990&gt;
+&lt;bytecode: 0x0000024f850158e8&gt;
 &lt;environment: namespace:stats&gt;
 
 # Convert back to datetime object
@@ -3689,8 +3685,84 @@ Error in gsheet2tbl(&quot;https://docs.google.com/spreadsheets/d/1iVt9FX9J2iv3QF
 </div>
 <div id="special-characters" class="section level1" number="24">
 <h1><span class="header-section-number">24</span> Special Characters</h1>
-<div id="learning-goals-16" class="section level4 unnumbered">
-<h4>Learning Goals</h4>
+<div id="learning-goal-2" class="section level4 unnumbered">
+<h4>Learning Goal</h4>
+<ul>
+<li>Learn how to print special characters using <strong><code>expression</code></strong> when adding text to plots in base <code>R</code>.</li>
+</ul>
+<p> </p>
+<p>Often in science you want to use special characters in your plot axes’ labels. Here you will learn how to print some of the more common special characters using <code>expression</code>.</p>
+<p> </p>
+<p><strong>First set up an empty plot</strong></p>
+<p>We do not need any data to practice this, so we’ll use an empty plot, with no axes or axes labels.</p>
+<p>Let’s plot a single value, 1, and then tell R not to plot our single value using the command <code>type = &quot;n&quot;</code>. We will also suppress the axes using the command <code>xaxt=&quot;n&quot;</code> and <code>yaxt=&quot;n&quot;</code>, and we will leave the x and y labels blank, using <code>xlab=&quot;&quot;</code> and <code>ylab=&quot;&quot;</code>.</p>
+<pre class="r"><code>plot(1,type = &quot;n&quot;, xaxt=&quot;n&quot;, yaxt=&quot;n&quot;, xlab=&quot;&quot;, ylab=&quot;&quot;)</code></pre>
+<p>This gives us a blank plot with no data and no axes. If we wanted rid of the plot border too, we could just simply type <code>plot.new</code></p>
+<p> </p>
+<p><strong>Using <code>expression</code> to add special characters</strong></p>
+<p>Let’s imagine we have an experiment where we are measuring the response of soil CO<sub>2</sub> emissions to temperature increases, measured in degrees Celsius (°C).</p>
+<p>Using the <strong><code>mtext</code></strong> command (short for “margin text”), we are going to label the y axis of our empty plot with “CO<sub>2</sub>” and we are going to label the x axis of our empty plot with the ° symbol.</p>
+<p>Before we get to the special characters, let’s quickly practice using <code>mtext</code> to see how it works.</p>
+<p>Run this code:</p>
+<pre class="r"><code>mtext(&quot;Plot title&quot;, #This is the text you will add to your plot margin
+        side=3,     #This tells R which margin you want to add the text to. Plot margins are numbered from the bottom, moving in a clockwise direction.
+          line=1)   #Margins have different lines you can add text to. Increasing the line number moves the text further from the plot.</code></pre>
+<p>Can you see what <code>mtext</code> and its arguments are doing?</p>
+<p>Now let’s label our x and y axes with the required special characters. To do this we are going to have to use <code>expression</code> alongside <code>mtext</code>.</p>
+<p>Let’s start with the y axis. To add CO<sub>2</sub> to the y axis, we are going to have to tell R to make the 2 <strong>subscript</strong>. When using <code>expression</code> we can use <strong>[ ]</strong> to make text subscript. So our y axis label command will be:</p>
+<pre class="r"><code>mtext(expression(CO[2]),
+      side=2,            #Side 2 for the y axis!
+      line=1)</code></pre>
+<p>If we wanted instead to make something <strong>superscript</strong>, like if we wanted to report the R<sup>2</sup> value on our plot, we’d use <code>^</code>, so it would read <code>expression(R^2)</code>.</p>
+<p>Now we want to label our x axis with °C. When using expression the ° symbol is simply <strong><code>degree</code></strong>. But we also want to add the letter C after the ° symbol. To do this we need to tell R to concatenate ° and C. To do this we need to use an * . Normally in R * represents multiplication, but when used with <code>expression</code> it represents <strong>concatenate</strong>. Therefore, to add our y label we use the following code:</p>
+<pre class="r"><code>mtext(expression(expression(degree*C)),
+      side=1,            #Side 1 for the x axis!
+      line=1)</code></pre>
+<p> </p>
+<p><strong>Concatenating special characters and normal text</strong></p>
+<p>Now we want to create an empty plot where the y axis reads <strong>“Temperature °C”</strong>.</p>
+<p>Create an empty plot and this time try adding the word “Temperature” before the ° in your y axis <code>mtext</code> command.</p>
+<p>What happens?</p>
+<p>You should get an error message. That’s because if you want to add normal text to your <code>expression</code>, you need to use quotation marks (““).</p>
+<p>You also need to tell R to concatenate your normal text to your special character. To do that we need to use an * .</p>
+<p>Therefore, this time try:</p>
+<p><code>expression(&quot;Temperature &quot; *degree*C)</code></p>
+<p>Does it work now? If so, good job!</p>
+<p> </p>
+<p>Now create a plot where you add brackets around °C, so that the y axis reads <strong>“Temperature (°C)”</strong>.</p>
+<p>This needs a bit of thought because the <strong>( )</strong> are normal text, wrapped around a special character, <strong>°C</strong>.</p>
+<p>To achieve this, you need to incorporate the first bracket in the normal text containing “Temperature”: <code>&quot;Temperature (&quot;</code>.</p>
+<p>Then we concatenate our special character: <code>*degree*C</code>.</p>
+<p>Finally, you concatenate closing bracket, which is normal text:<code>*&quot;)&quot;</code></p>
+<p>The full <code>expression</code> would therefore read:</p>
+<p><code>expression(&quot;Temperature (&quot;*degree*C*&quot;)&quot;)</code></p>
+<p> </p>
+<p><code>expression</code> also works directly in the <code>plot</code> function labels argument. So instead of using <code>mtext</code>, you could use:</p>
+<pre class="r"><code>plot(1, type = &quot;n&quot;, xaxt=&quot;n&quot;, yaxt=&quot;n&quot;,
+       xlab=expression(CO[2]), 
+            ylab=expression(&quot;Temperature (&quot;*degree*C*&quot;)&quot;))</code></pre>
+<p> </p>
+<p><strong>Greek alphabet</strong></p>
+<p>Other commonly required special characters in science/maths are characters from the Greek alphabet. These are very straight forward. You just type out the character name.</p>
+<p>Give it a try- create a new empty plot (<code>plot(1, type = &quot;n&quot;, xaxt=&quot;n&quot;, yaxt=&quot;n&quot;, xlab=&quot;&quot;, ylab=&quot;&quot;</code>) and using <code>mtext</code> and <code>expression</code> try adding the <strong><code>delta</code></strong> symbol to an axis.</p>
+<p>Now on a different axis, try capitalising the first letter, so that it reads <strong><code>Delta</code></strong> and see what happens.</p>
+<p>Try to think of some other Greek alphabet characters to try.</p>
+<p> </p>
+<p><strong>Mathematical symbols</strong></p>
+<p>Now let’s look at some useful mathematical symbols. Create a new empty plot, and using <code>mtext</code> and <code>expression</code>, see what symbols are represented by the following code (maybe you can already guess some of them):</p>
+<pre><code>!=
+%approx%
+permil
+infinity</code></pre>
+<p>Give these a try too (still using <code>expression</code>):</p>
+<pre><code>frac(x, y)
+integral(f(x), a, b))
+sqrt(x)
+sum(x[i], i==1, n)</code></pre>
+<p> </p>
+<p><strong>Text Formatting</strong></p>
+<p>And finally if you want to play around with formatting your text, give this a try…</p>
+<p><code>expression(bold(&quot;Hello, &quot;)*italic(&quot;how&#39;s &quot;)*underline(&quot;things?&quot;))</code></p>
 <!--chapter:end:07c-special-characters.Rmd-->
 </div>
 </div>

@@ -1,5 +1,159 @@
 
 # Special Characters
 
-#### Learning Goals {-}
+#### Learning Goal {-}
+
+* Learn how to print special characters using **`expression`** when adding text to plots in base `R`.
+
+&nbsp; 
+
+Often in science you want to use special characters in your plot axes' labels. Here you will learn how to print some of the more common special characters using `expression`.
+
+&nbsp; 
+
+**First set up an empty plot**
+
+We do not need any data to practice this, so we'll use an empty plot, with no axes or axes labels.
+
+Let's plot a single value, 1, and then tell R not to plot our single value using the command `type = "n"`. We will also suppress the axes using the command `xaxt="n"` and `yaxt="n"`, and we will leave the x and y labels blank, using `xlab=""` and `ylab=""`. 
+
+```{r, echo=TRUE, eval=FALSE,collapse=TRUE}
+plot(1,type = "n", xaxt="n", yaxt="n", xlab="", ylab="")
+```
+
+This gives us a blank plot with no data and no axes. If we wanted rid of the plot border too, we could just simply type `plot.new`
+
+&nbsp; 
+
+**Using `expression` to add special characters**
+
+Let's imagine we have an experiment where we are measuring the response of soil CO~2~ emissions to temperature increases, measured in degrees Celsius (&deg;C).
+
+Using the **`mtext`** command (short for "margin text"), we are going to label the y axis of our empty plot with "CO~2~" and we are going to label the x axis of our empty plot with the &deg; symbol.
+
+Before we get to the special characters, let's quickly practice using `mtext` to see how it works.
+
+Run this code:
+
+```{r, echo=TRUE, eval=FALSE,collapse=TRUE}
+mtext("Plot title", #This is the text you will add to your plot margin
+        side=3,     #This tells R which margin you want to add the text to. Plot margins are numbered from the bottom, moving in a clockwise direction.
+          line=1)   #Margins have different lines you can add text to. Increasing the line number moves the text further from the plot.
+```
+
+Can you see what `mtext` and its arguments are doing?
+
+
+Now let's label our x and y axes with the required special characters. To do this we are going to have to use `expression` alongside `mtext`. 
+
+
+Let's start with the y axis. To add CO~2~ to the y axis, we are going to have to tell R to make the 2 **subscript**. When using `expression` we can use **[ ]** to make text subscript. So our y axis label command will be:
+
+```{r, echo=TRUE, eval=FALSE,collapse=TRUE}
+mtext(expression(CO[2]),
+      side=2,            #Side 2 for the y axis!
+      line=1)
+```
+
+
+If we wanted instead to make something **superscript**, like if we wanted to report the R^2^ value on our plot, we'd use `^`, so it would read `expression(R^2)`.
+
+
+Now we want to label our x axis with &deg;C. When using expression the &deg; symbol is simply **`degree`**. But we also want to add the letter C after the &deg; symbol. To do this we need to tell R to concatenate &deg; and C. To do this we need to use an \* . Normally in R \* represents multiplication, but when used with `expression` it represents **concatenate**. Therefore, to add our y label we use the following code:
+
+```{r, echo=TRUE, eval=FALSE,collapse=TRUE}
+mtext(expression(expression(degree*C)),
+      side=1,            #Side 1 for the x axis!
+      line=1)
+```
+
+&nbsp; 
+
+**Concatenating special characters and normal text**
+
+Now we want to create an empty plot where the y axis reads **"Temperature &deg;C"**.
+
+Create an empty plot and this time try adding the word "Temperature" before the &deg; in your y axis `mtext` command.
+
+What happens? 
+
+You should get an error message. That's because if you want to add normal text to your `expression`, you need to use quotation marks (""). 
+
+You also need to tell R to concatenate your normal text to your special character. To do that we need to use an \* . 
+
+Therefore, this time try: 
+
+`expression("Temperature " *degree*C)`
+
+Does it work now? If so, good job!
+
+&nbsp; 
+
+Now create a plot where you add brackets around &deg;C, so that the y axis reads **"Temperature (&deg;C)"**.
+
+This needs a bit of thought because the **( )** are normal text, wrapped around a special character, **&deg;C**. 
+
+To achieve this, you need to incorporate the first bracket in the normal text containing "Temperature ": `"Temperature ("`. 
+
+Then we concatenate our special character: `*degree*C`. 
+
+Finally, you concatenate closing bracket, which is normal text:`*")"`
+
+The full `expression` would therefore read:
+
+`expression("Temperature ("*degree*C*")")`
+
+&nbsp; 
+
+`expression` also works directly in the `plot` function labels argument. So instead of using `mtext`, you could use:
+
+```{r, echo=TRUE, eval=FALSE,collapse=TRUE}
+plot(1, type = "n", xaxt="n", yaxt="n",
+	   xlab=expression(CO[2]), 
+		    ylab=expression("Temperature ("*degree*C*")"))
+```
+
+&nbsp; 
+
+**Greek alphabet**
+
+Other commonly required special characters in science/maths are characters from the Greek alphabet. These are very straight forward. You just type out the character name. 
+
+Give it a try- create a new empty plot (`plot(1, type = "n", xaxt="n", yaxt="n", xlab="", ylab=""`) and using `mtext` and `expression` try adding the **`delta`** symbol to an axis. 
+
+Now on a different axis, try capitalising the first letter, so that it reads **`Delta`** and see what happens. 
+
+Try to think of some other Greek alphabet characters to try.
+
+&nbsp; 
+
+**Mathematical symbols**
+
+Now let's look at some useful mathematical symbols. Create a new empty plot, and using `mtext` and `expression`, see what symbols are represented by the following code (maybe you can already guess some of them):
+
+```
+!=
+%approx%
+permil
+infinity
+```
+
+Give these a try too (still using `expression`):
+
+```
+frac(x, y)
+integral(f(x), a, b))
+sqrt(x)
+sum(x[i], i==1, n)
+```
+&nbsp; 
+
+**Text Formatting**
+
+And finally if you want to play around with formatting your text, give this a try...
+
+`expression(bold("Hello, ")*italic("how's ")*underline("things?"))`
+
+
+
 
