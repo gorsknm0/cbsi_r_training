@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 21 River discharge, DOC and nitrate | R Training</title>
+  <meta name="description" content="A resource &amp; workbook for learning R" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 21 River discharge, DOC and nitrate | R Training" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="A resource &amp; workbook for learning R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 21 River discharge, DOC and nitrate | R Training" />
+  
+  <meta name="twitter:description" content="A resource &amp; workbook for learning R" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cleaning-messy-data.html"/>
+<link rel="next" href="dates.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to the course!</a></li>
+<li class="part"><span><b>I Pre-Training Material</b></span></li>
+<li class="chapter" data-level="2" data-path="setting-up-your-computer.html"><a href="setting-up-your-computer.html"><i class="fa fa-check"></i><b>2</b> Setting up your computer</a>
+<ul>
+<li class="chapter" data-level="" data-path="setting-up-your-computer.html"><a href="setting-up-your-computer.html#install-packages"><i class="fa fa-check"></i>Install packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html"><i class="fa fa-check"></i><b>3</b> Preparing for the R Training</a>
+<ul>
+<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#running-r-code-in-the-console"><i class="fa fa-check"></i>Running R code in the <em>Console</em></a></li>
+<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#use-r-like-a-calculator"><i class="fa fa-check"></i>Use R like a calculator</a></li>
+<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#getting-along-with-r"><i class="fa fa-check"></i>Getting along with <code>R</code></a></li>
+<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#use-built-in-r-functions"><i class="fa fa-check"></i>Use built-in R functions</a></li>
+</ul></li>
+<li class="part"><span><b>II Getting Started</b></span></li>
+<li class="chapter" data-level="4" data-path="welcome.html"><a href="welcome.html"><i class="fa fa-check"></i><b>4</b> Welcome!</a>
+<ul>
+<li class="chapter" data-level="" data-path="welcome.html"><a href="welcome.html#what-this-is-and-what-it-isnt"><i class="fa fa-check"></i>What this is, and what it isn’t</a></li>
+<li class="chapter" data-level="" data-path="welcome.html"><a href="welcome.html#what-you-will-learn"><i class="fa fa-check"></i>What you will learn</a></li>
+<li class="chapter" data-level="" data-path="welcome.html"><a href="welcome.html#where-did-this-come-from"><i class="fa fa-check"></i>Where did this come from</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html"><i class="fa fa-check"></i><b>5</b> Using <code>RStudio</code> &amp; <code>R</code> scripts</a>
+<ul>
+<li class="chapter" data-level="" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html#r-and-rstudio-whats-the-difference"><i class="fa fa-check"></i><code>R</code> and <code>RStudio</code>: what’s the difference?</a></li>
+<li class="chapter" data-level="" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html#two-minute-tour-of-rstudio"><i class="fa fa-check"></i>Two-minute tour of <code>RStudio</code></a></li>
+<li class="chapter" data-level="" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html#scripts"><i class="fa fa-check"></i>Scripts</a></li>
+<li class="chapter" data-level="" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html#wd"><i class="fa fa-check"></i>Your working directory</a></li>
+<li class="chapter" data-level="" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html#typical-workflows"><i class="fa fa-check"></i>Typical workflows</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="review-your-r-training-prep.html"><a href="review-your-r-training-prep.html"><i class="fa fa-check"></i><b>6</b> Review your R Training Prep</a></li>
+<li class="chapter" data-level="7" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>7</b> Variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="variables.html"><a href="variables.html#introducing-variables"><i class="fa fa-check"></i>Introducing variables</a></li>
+<li class="chapter" data-level="" data-path="variables.html"><a href="variables.html#types-of-data-in-r"><i class="fa fa-check"></i>Types of data in <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>8</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#declaring-and-using-vectors"><i class="fa fa-check"></i>Declaring and using vectors</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#math-with-two-vectors"><i class="fa fa-check"></i>Math with two vectors</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#functions-for-handling-vectors"><i class="fa fa-check"></i>Functions for handling vectors</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#subsetting-vectors"><i class="fa fa-check"></i>Subsetting vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="calling_functions.html"><a href="calling_functions.html"><i class="fa fa-check"></i><b>9</b> Calling functions</a></li>
+<li class="chapter" data-level="10" data-path="subsetting-filtering.html"><a href="subsetting-filtering.html"><i class="fa fa-check"></i><b>10</b> Subsetting &amp; filtering</a>
+<ul>
+<li class="chapter" data-level="" data-path="subsetting-filtering.html"><a href="subsetting-filtering.html#subsetting-with-indices"><i class="fa fa-check"></i>Subsetting with indices</a></li>
+<li class="chapter" data-level="" data-path="subsetting-filtering.html"><a href="subsetting-filtering.html#subsetting-with-booleans"><i class="fa fa-check"></i>Subsetting with booleans</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>11</b> Dataframes</a>
+<ul>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#subsetting-exploring-dataframes"><i class="fa fa-check"></i>Subsetting &amp; exploring dataframes</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#creating-dataframes"><i class="fa fa-check"></i>Creating dataframes</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#modifying-dataframes"><i class="fa fa-check"></i>Modifying dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>12</b> Packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#packages-you-already-have"><i class="fa fa-check"></i>Packages you already have</a></li>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#installing-a-new-package"><i class="fa fa-check"></i>Installing a new package</a></li>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#loading-an-installed-package"><i class="fa fa-check"></i>Loading an installed package</a></li>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#calling-functions-from-a-package"><i class="fa fa-check"></i>Calling functions from a package</a></li>
+</ul></li>
+<li class="part"><span><b>III Basic <code>R</code> workflow</b></span></li>
+<li class="chapter" data-level="13" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>13</b> Importing data</a>
+<ul>
+<li class="chapter" data-level="" data-path="importing-data.html"><a href="importing-data.html#reading-in-data"><i class="fa fa-check"></i>Reading in data</a></li>
+<li class="chapter" data-level="" data-path="importing-data.html"><a href="importing-data.html#csv-files"><i class="fa fa-check"></i><code>.csv</code> files</a></li>
+<li class="chapter" data-level="" data-path="importing-data.html"><a href="importing-data.html#prepping-your-data-for-r"><i class="fa fa-check"></i>Prepping your data for <code>R</code></a></li>
+<li class="chapter" data-level="" data-path="importing-data.html"><a href="importing-data.html#managing-files-folders"><i class="fa fa-check"></i>Managing files &amp; folders</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="base-plots.html"><a href="base-plots.html"><i class="fa fa-check"></i><b>14</b> Base plots</a>
+<ul>
+<li class="chapter" data-level="" data-path="base-plots.html"><a href="base-plots.html#create-a-basic-plot"><i class="fa fa-check"></i>Create a basic plot</a></li>
+<li class="chapter" data-level="" data-path="base-plots.html"><a href="base-plots.html#most-common-types-of-plots"><i class="fa fa-check"></i>Most common types of plots</a></li>
+<li class="chapter" data-level="" data-path="base-plots.html"><a href="base-plots.html#basic-plot-formatting"><i class="fa fa-check"></i>Basic plot formatting</a></li>
+<li class="chapter" data-level="" data-path="base-plots.html"><a href="base-plots.html#plotting-with-data-frames"><i class="fa fa-check"></i>Plotting with data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>15</b> <code>ggplot</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="ggplot.html"><a href="ggplot.html#what-is-ggplot2"><i class="fa fa-check"></i>What is <code>ggplot2</code>?</a></li>
+<li class="chapter" data-level="" data-path="ggplot.html"><a href="ggplot.html#scatter-plot"><i class="fa fa-check"></i>Scatter plot</a></li>
+<li class="chapter" data-level="" data-path="ggplot.html"><a href="ggplot.html#bar-plot"><i class="fa fa-check"></i>Bar plot</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>16</b> Dataframe wrangling</a>
+<ul>
+<li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#the-dplyr-package"><i class="fa fa-check"></i>The <code>dplyr</code> package</a></li>
+<li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#the-pipe"><i class="fa fa-check"></i>The <code>%&gt;%</code> pipe</a></li>
+<li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#dplyr-verbs"><i class="fa fa-check"></i><code>dplyr</code> verbs</a></li>
+</ul></li>
+<li class="part"><span><b>IV Review exercises</b></span></li>
+<li class="chapter" data-level="17" data-path="rms-titanic.html"><a href="rms-titanic.html"><i class="fa fa-check"></i><b>17</b> <em>RMS Titanic</em></a></li>
+<li class="chapter" data-level="18" data-path="global-health-ggplot.html"><a href="global-health-ggplot.html"><i class="fa fa-check"></i><b>18</b> Global health &amp; <code>ggplot</code></a></li>
+<li class="chapter" data-level="19" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>19</b> Brazzaville’s climate</a></li>
+<li class="chapter" data-level="20" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>20</b> Cleaning messy data</a></li>
+<li class="chapter" data-level="21" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>21</b> River discharge, DOC and nitrate</a></li>
+<li class="part"><span><b>V Extra Information</b></span></li>
+<li class="chapter" data-level="22" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>22</b> Working with dates &amp; times</a>
+<ul>
+<li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
+<li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>23</b> Working with text</a>
+<ul>
+<li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>24</b> Special Characters</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Training</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="river-discharge-doc-and-nitrate" class="section level1 hasAnchor" number="21">
+<h1><span class="header-section-number">Module 21</span> River discharge, DOC and nitrate<a href="river-discharge-doc-and-nitrate.html#river-discharge-doc-and-nitrate" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goal-1" class="section level5 unnumbered hasAnchor">
+<h5>Learning Goal<a href="river-discharge-doc-and-nitrate.html#learning-goal-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><p>Merging datasets of different lengths and with different columns names</p></li>
+<li><p>Linear regression in base R</p></li>
+<li><p>A brief introduction into Analysis of Covariance (ANCOVA) in base R</p></li>
+<li><p>A brief introduction into model simplification</p></li>
+</ul>
+<p> </p>
+<p>In this exercise we are going to use freely available data of river discharge, dissolved organic carbon and nitrate concentrations from the Buck Creek catchment, Adirondack Park, New York state, USA. Measurements were taken at three sites within the catchment between 2001 to 2021.</p>
+<p>The full citation for the data is as follows:</p>
+<p>Ryan, K.A., and Lawrence, G.B., 2023, Streamflow, dissolved organic carbon, and nitrate input datasets and model results using the Weighted Regressions on Time, Discharge, and Season (WRTDS) model for Buck Creek Watersheds, Adirondack Park, New York, 2001 to 2021: U.S. Geological Survey data release, <a href="https://doi.org/10.5066/P95PGJ0C" class="uri">https://doi.org/10.5066/P95PGJ0C</a></p>
+<p> </p>
+</div>
+<div id="part-1-merging-the-datasets" class="section level5 unnumbered hasAnchor">
+<h5>Part 1: Merging the datasets<a href="river-discharge-doc-and-nitrate.html#part-1-merging-the-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The discharge (Q), dissolved organic carbon (DOC) and nitrate (NO<sub>3</sub>) data for Buck Creek are split across three datasets. We want to merge these datasets into one dataframe.</p>
+<p><strong>1.</strong> Download the three datasets and save to your working directory:</p>
+<p><a href="https://raw.githubusercontent.com/gorsknm0/cbsi_r_training/refs/heads/main/data/Q.csv">Q.csv</a></p>
+<p><a href="https://raw.githubusercontent.com/gorsknm0/cbsi_r_training/refs/heads/main/data/Sample_DOC.csv">Sample_DOC.csv</a></p>
+<p><a href="https://raw.githubusercontent.com/gorsknm0/cbsi_r_training/refs/heads/main/data/Sample_Nitrate.csv">Sample_Nitrate.csv</a></p>
+<p> </p>
+<p><strong>2.</strong> Read in your three dataframes and name them as follows: “Q.csv”-&gt; df1; “Sample_DOC.csv”-&gt; df2; “Sample_Nitrate.csv”-&gt; df3</p>
+<p>Refer back to <em>Module 13 Importing data</em> if you can’t remember how to do this.</p>
+<p> </p>
+<p><strong>3.</strong> Using <code>summary()</code> and <code>head()</code>, take a look at what each dataframe contains.</p>
+<p>Does each dataframe contain the same columns? Does each dataframe have the same numbers of rows? If there are shared column names, do the contain the same data type within them?</p>
+<p>Each dataframe has a different number of rows, and therefore observations. And each dataframe has a different number of columns.</p>
+<p>However, some columns appear to be the same and contain the same type of data. This is particularly true for the columns which appear to contain dates and time information. This will be useful later.</p>
+<p> </p>
+<p><strong>4.</strong> Check that for each dataset, the same sites were sampled, using <code>unique()</code></p>
+<p>You should see that all three datasets contain data from “Buck Creek”, “North Buck Creek”, “South Buck Creek”.</p>
+<p> </p>
+<p><strong>5.</strong> Using <code>intersect</code> and <code>colnames</code> compare each dataframe with one another to see which column names each dataframe shares with the other dataframes. To help you, this is an example of what the code should look like:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="river-discharge-doc-and-nitrate.html#cb1-1" tabindex="-1"></a><span class="fu">intersect</span>(<span class="fu">colnames</span>(df1), <span class="fu">colnames</span>(df2))</span>
+<span id="cb1-2"><a href="river-discharge-doc-and-nitrate.html#cb1-2" tabindex="-1"></a><span class="fu">intersect</span>(<span class="fu">colnames</span>(df1), <span class="fu">colnames</span>(df3))</span>
+<span id="cb1-3"><a href="river-discharge-doc-and-nitrate.html#cb1-3" tabindex="-1"></a><span class="fu">intersect</span>(<span class="fu">colnames</span>(df2), <span class="fu">colnames</span>(df3))</span></code></pre></div>
+<p>From this we can see that all dataframes share the following columns: “site”, “Date”, “Julian”, “Month”, “Day”, “DecYear”, “MonthSeq”</p>
+<p>The column names are not particularly informative, but the authors provide meta data on their website. The table below gives a brief description of what each column represents.</p>
+<p> </p>
+<table>
+<colgroup>
+<col width="10%" />
+<col width="89%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Site</td>
+<td>Field site</td>
+</tr>
+<tr class="even">
+<td>Date</td>
+<td>Date</td>
+</tr>
+<tr class="odd">
+<td>Julian</td>
+<td>Julian date</td>
+</tr>
+<tr class="even">
+<td>Month</td>
+<td>Month, numerical</td>
+</tr>
+<tr class="odd">
+<td>Day</td>
+<td>Day of the year</td>
+</tr>
+<tr class="even">
+<td>DecYear</td>
+<td>Decimal year, a number which represents the time, day and year all in one number</td>
+</tr>
+<tr class="odd">
+<td>MonthSeq</td>
+<td>Month sequence, representing the number of months since January 1, 1850</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<p>We can also see that the DOC dataframe (df2) and the nitrate dataframe (df3) share the following column names: “ConcLow”, “ConcHigh”,“Uncen”,“ConcAve”, “waterYear”,“SinDY”,“CosDY”. Their descrption is given in the following table.</p>
+<p> </p>
+<table>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ConcLow</td>
+<td>Lower limit of concentration of DOC or nitrate (mg/L)</td>
+</tr>
+<tr class="even">
+<td>ConcHigh</td>
+<td>Lower limit of concentration of DOC or nitrate (mg/L)</td>
+</tr>
+<tr class="odd">
+<td>ConcAve</td>
+<td>Lower limit of concentration of DOC or nitrate (mg/L)</td>
+</tr>
+<tr class="even">
+<td>waterYear</td>
+<td>Let’s ignore this!</td>
+</tr>
+<tr class="odd">
+<td>SinDY</td>
+<td>Let’s ignore this!</td>
+</tr>
+<tr class="even">
+<td>CosDY</td>
+<td>Let’s ignore this!</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<p><strong>6.</strong> Within the package <code>"dplyr"</code> there is a command <code>full_join()</code>. Using the package help page look up what <code>full_join()</code> does. Then load the <code>dplyr</code> library and using <code>full_join()</code> join together the three dataframes into a new dataframe called <code>df_comb</code>, merging the seven commonly shared columns between the three dataframes.</p>
+<p>If you are lost, take a look at this example code for help:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="river-discharge-doc-and-nitrate.html#cb2-1" tabindex="-1"></a>df_comb <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="river-discharge-doc-and-nitrate.html#cb2-2" tabindex="-1"></a>  <span class="fu">full_join</span>(df2, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;site&quot;</span>, <span class="st">&quot;Date&quot;</span>,<span class="st">&quot;Julian&quot;</span>,<span class="st">&quot;Month&quot;</span>,<span class="st">&quot;Day&quot;</span>,<span class="st">&quot;DecYear&quot;</span>,<span class="st">&quot;MonthSeq&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="river-discharge-doc-and-nitrate.html#cb2-3" tabindex="-1"></a>  <span class="fu">full_join</span>(df3, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;site&quot;</span>, <span class="st">&quot;Date&quot;</span>,<span class="st">&quot;Julian&quot;</span>,<span class="st">&quot;Month&quot;</span>,<span class="st">&quot;Day&quot;</span>,<span class="st">&quot;DecYear&quot;</span>,<span class="st">&quot;MonthSeq&quot;</span>))</span></code></pre></div>
+<p> </p>
+<p><strong>7.</strong> Inspect the new, merged dataframe to make sure you understand what R has done. Use can for example use <code>head()</code> and <code>tail()</code>.</p>
+<p>Can you work out what has happened? Any rows in the three dataframes which contained identical information in all of the seven columns have been merged. So if discharge, DOC and nitrate measurements were taken at a site at the same time, they will be merged into one row.</p>
+<p>What if <strong>only</strong> discharge was measured at a particular site, on a particular date? As there is no DOC or nitrate data avaliable for this site and date and time, DOC and nitrate columns will contain <code>NA</code>.</p>
+<p> </p>
+<p><strong>8.</strong> Take a look at the column names of the new, merged, dataframe.</p>
+<p>Because df2 (DOC) and df3 (nitrate), contained columns which had identical names, which we did not merge, <code>R</code> has added on “.x” and “.y” to the column names to distinguish them. As df2 was combined first with df1, it is represented by “.x”.</p>
+<p>Rename these columns to avoid any confusion using the <code>gsub</code> command, which can be used like “find and replace”. We want to find and replace any “.x” in our column names with “_DOC” and we want to find and replace any “.y” in our column names with “_Nitrate”.</p>
+<p>Give it a go. Here is an example of the code to help you:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="river-discharge-doc-and-nitrate.html#cb3-1" tabindex="-1"></a><span class="fu">colnames</span>(df_comb) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;.x&quot;</span>, <span class="st">&quot;_DOC&quot;</span>, <span class="fu">colnames</span>(df_comb))</span>
+<span id="cb3-2"><a href="river-discharge-doc-and-nitrate.html#cb3-2" tabindex="-1"></a><span class="fu">colnames</span>(df_comb) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;.y&quot;</span>, <span class="st">&quot;_Nitrate&quot;</span>, <span class="fu">colnames</span>(df_comb))</span></code></pre></div>
+<p>Check that this has worked.</p>
+<p><strong>Hooray! You should now have a merged dataframe with renamed columns.</strong></p>
+<p> </p>
+<p><strong>Part 2: Linear regression in base R</strong></p>
+<p>We’re going to use our merged dataframe to practice linear regression in base R. We’ll be looking to see if there is a relationship between discharge and average DOC concentration.</p>
+<p>But before we use our merged dataframe which contains real world data, we are going to practice linear regression on a fake dataset which was generated by AI. We’ll start with the fake dataset, because AI deliberately produced a dataset where we would see clear results. Real life data is often much more messy than this.</p>
+<p> </p>
+<p><strong>1.</strong> Download the fake dataset:</p>
+<p><a href="https://raw.githubusercontent.com/gorsknm0/cbsi_r_training/refs/heads/main/data/fake_dataset.csv">fake_dataset.csv</a></p>
+<p>Read in the dataframe and call it “Fake”. Take a look at it.</p>
+<p> </p>
+<p><strong>2.</strong> Plot “Var1” against “Var2”. We want “Var1” as the “predictor” variable (also known as the “indepent” variable), so it needs to form the x axis. “Var2” is our “response” variable (also known as “dependent” variable), so it goes on the y axis.</p>
+<p>Does it look like there is a relationship between Var1 and Var2? We can clearly see that as Var1 increases, Var2 increases, so it looks like there is a relationship. But we will use linear regression to best describe that relationship and see whether that relationship is significant and how strong it is.</p>
+<p><em>If you are completely new to linear regression, take some time to read about what it is. If you are ever unsure about a statistical concept, or terminology, type it into Google. You will find a wide range of resources online to help you.AI language models like ChatGPT or CoPilot can also be very helpful, but remember that these are just models, and models can be wrong sometimes!</em></p>
+<p> </p>
+<p><strong>3.</strong> We will now fit a linear model to our data, and we’ll call this model “LM1”. To do this we use the command <code>lm()</code> in base . Within the bracket we structure it as follows <em>response variable~predictor variable</em>. So our code looks like:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="river-discharge-doc-and-nitrate.html#cb4-1" tabindex="-1"></a>LM1<span class="ot">&lt;-</span><span class="fu">lm</span>(fake<span class="sc">$</span>Var2<span class="sc">~</span>fake<span class="sc">$</span>Var1)</span></code></pre></div>
+<p> </p>
+<p><strong>4.</strong> Now to get the results of our linear model LM1, we use</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="river-discharge-doc-and-nitrate.html#cb5-1" tabindex="-1"></a><span class="fu">summary</span>(LM1)</span></code></pre></div>
+<p>The below figure shows you where you can get the R<sup>2</sup> value and the p-value of your model. It also shows you where you can get the intercept value and the slope value of the model. There is also a p-value given for your intercept and slope. This isn’t that meaningful for a simple linear regression, as all it is telling you is whether you intercept and slope are significantly different to zero. However, this column in the coefficients table becomes useful when your models get more complex.</p>
+<p><img src="LM_SUMMARY_OUTPUT.png" alt="LM1 Summary Output" />
+ </p>
+<p>So we can see that our model explains a lot of the variance and the relationship is significant.</p>
+<p> </p>
+<p><strong>5.</strong> Now we want to make sure that our linear model is actually appropriate, and is the right type of model to describe our data. We want to check the diagnostic plots (e.g. the quantile-quantile, the residuals vs fitted, the spread-location, and the residuals vs leverage plots). To get these plots use:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="river-discharge-doc-and-nitrate.html#cb6-1" tabindex="-1"></a><span class="fu">plot</span>(LM1)</span></code></pre></div>
+<p>You will see that R will cycle through each plot with a click of the mouse. If you want to see all four plots at once add in <code>par(mfrow=c(2,2))</code> before you call <code>plot()</code>.</p>
+<p>We can see from the diagnostic plots that our model is a very good fit…That is not a coincidence! CoPilot was specifically asked to to generate dataset with a significant <strong>linear</strong> relationship, with a high R<sup>2</sup>.But with real data it is unlikley that we would get such a good fit.</p>
+<p> </p>
+<p><strong>6.</strong> Now that we have our model and it is a good fit, re-plot the data and we will add a line which represents our linear model. Once you have made your plot, add the line using the this simple comand:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="river-discharge-doc-and-nitrate.html#cb7-1" tabindex="-1"></a><span class="fu">abline</span>(LM1)</span></code></pre></div>
+<p>And voila, your linear model is plotted.</p>
+<p> </p>
+<p><strong>7.</strong> Let’s now see what happens when we try to fit a linear model to the real world river data. Plot the mean DOC concentration (<code>df_comb$ConcAve_DOC</code>) against river discharge (<code>df_comb$Q</code>, measured in m<sup>3</sup> s<sup>-1</sup>). So we are treating discharge as the predictor variable, and mean DOC concentration as the response variable.</p>
+<p>Take a look at the data. Do you think there looks to be an obvious relationship between DOC and discharge?</p>
+<p> </p>
+<p><strong>8.</strong> This time plot the mean DOC concentration against river discharge, but colour the data points by site. You know how to do this using <code>ggplot</code>, but if you want to do this in base R, you need to create a variable storing the colours you want, and then tell R to apply these colours to the data depending on the site:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="river-discharge-doc-and-nitrate.html#cb8-1" tabindex="-1"></a><span class="st">`</span><span class="at">cols&lt;-c(&quot;blue&quot;,&quot;darkblue&quot;,&quot;lightblue&quot;)</span></span>
+<span id="cb8-2"><a href="river-discharge-doc-and-nitrate.html#cb8-2" tabindex="-1"></a><span class="at">plot(df_comb$Q, df_comb$ConcAve_DOC, col=cols[as.factor(df_comb$site)])</span></span></code></pre></div>
+<p>It looks like the relationship between DOC and discharge is different depending on the site.</p>
+<p> </p>
+<p><strong>9.</strong> Because the relationship seems to be site dependent, let’s fit a linear model to the data for each site. You can subset the dataset, and then call <code>lm()</code>. Or you can subset the data whilst calling <code>lm()</code>. Here’s an example for the site Buck Creek:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="river-discharge-doc-and-nitrate.html#cb9-1" tabindex="-1"></a>LM_BC<span class="ot">&lt;-</span><span class="fu">lm</span>(df_comb<span class="sc">$</span>ConcAve_DOC[df_comb<span class="sc">$</span>site<span class="sc">==</span><span class="st">&quot;Buck Creek&quot;</span>]<span class="sc">~</span>df_comb<span class="sc">$</span>Q[df_comb<span class="sc">$</span>site<span class="sc">==</span><span class="st">&quot;Buck Creek&quot;</span>])</span></code></pre></div>
+<p> </p>
+<p><strong>10.</strong> Get the model summary for each of the models.Is the relationship between DOC and discharge significant for each site? Do your models explain a lot of the variance in the data?</p>
+<p> </p>
+<p><strong>11.</strong> Now take a look at the diagnostic plots for each of the models. What do you think?</p>
+<p>We can see from the quantile-quantile plots that our residuals are not normally distributed. What does this mean? It means that our p-values for the models are not reliable.</p>
+<p>If we look at the residuals vs fitted plot, here we can see a wave pattern. This is a very strong indication that our relationship is not linear. We would then be required to look into fitting non-linear models to our data. But we won’t do that today.</p>
+<p> </p>
+<p><strong>Part 3: Analysis of covariance (ANCOVA) in base R</strong></p>
+<p>In part two we subsetted our data and fitted a linear model to each of our three sites when looking at the relationship between DOC and discharge. This was because the intercept and the slope of the linear models looked to be different for the three sites. However, we didn’t actually need to do this- we could have put the three sites together into a model which allowed for different each site to have a different intercept and slope. This type of analysis is called analysis of covariance (ANCOVA). Let’s take a look at what this looks like in base R.</p>
+<p> </p>
+<p><strong>1.</strong> We are going to build our ANCOVA model (which we will name <code>ANCOVA</code>). We do this using the <code>lm()</code> as before, but this time we are going to add an extra term to the model:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="river-discharge-doc-and-nitrate.html#cb10-1" tabindex="-1"></a>ANCOVA<span class="ot">&lt;-</span><span class="fu">lm</span>(df_comb<span class="sc">$</span>ConcAve_DOC<span class="sc">~</span>df_comb<span class="sc">$</span>Q<span class="sc">*</span>df_comb<span class="sc">$</span>site)</span></code></pre></div>
+<p>Can you spot the additional term? It is the <code>*df_comb$site</code>. When using <code>lm()</code> the /* represents what is a called an <em>interaction</em> In other words we are saying, fit a model which represents the relationship between DOC and discharge, but this relationship can vary by site. Run this model.</p>
+<p> </p>
+<p><strong>2.</strong> Now get the <code>summary()</code> of this model.</p>
+<p>It is pretty much the same as the output of a normal linear model- you get an R<sup>2</sup> value and a p-value. But in the coefficicents table, instead of one row for the intercept and one row for the slope, we have lots of rows. Initially it can be hard to interpret this part of the output, but it is actually quite straightforward once you know what you are looking at. Take a look at the below figure:</p>
+<p><img src="ANCOVA_SUMMARY_OUTPUT.png" alt="ANCOVA Summary Output" />
+ </p>
+<p>When you have a factor in your model, R treats the model for first level of the factor (based on alphabetical order) as the default. Therefore, looking at the coefficients table, the first row represents the model intercept for the site Buck Creek. The second row represents the slope for the Buck Creek model. This is just like a normal linear model.</p>
+<p>However, the third row does <strong>not</strong> represent the intercept for North Buck Creek, but the <strong>difference</strong> between the default model intercept and the North Buck Creek intercept. Therefore, the North Buck Creek intercept = 5.5809 + 11.9585 = 17.5394.</p>
+<p>The fourth row is <strong>not</strong> the slope for North Buck Creek, but the intercept for South Buck Creek, as after the default model intercept and slope, all other factor level intercepts are grouped, and under this are the slope values for all other factor levels. <strong>What, therefore, is the intercept value for South Buck Creek?</strong></p>
+<p>The fifth and sixth row represents the slope for North Buck Creek and South Buck Creek. We can tell, because the coefficient names contain a <strong>:</strong> . Like for the intercepts, the values in these rows represent the difference between the Buck Creek slope value and the slope value for the other two factor levels. <strong>What therefore is the slope value for North Buck Creek and South Buck Creek?</strong></p>
+<p>Let’s look at the p-values for the coefficients. When we had just a simple linear model, we weren’t really interested in these. But when running ANCOVA, we are interested in these. Can you think what they represent? These p-values are telling you whether the intercept and the slope for each site are significantly different to the default model, i.e. whether the intercept and slope values of North Buck Creek and South Buck Creek are significantly different to the intercept and slope of Buck Creek.</p>
+<p> </p>
+<p><strong>3.</strong> Let’s try to visualise these different intercepts and slopes. Re-plot your DOC and discharge data, with the three sites represented by different colours.</p>
+<p>Now we are going to add ablines representing the different linear models for each site. This is a bit tricky with ANCOVA, because we cannot do <code>abline(ANCOVA)</code> because we have more than one slope and more than one intercept. Therefore we need to fit an <code>abline()</code> for each site, and tell <code>abline()</code> the specific value of the intercept and slope.</p>
+<p>You could do this by typing the following, for Buck Creek:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="river-discharge-doc-and-nitrate.html#cb11-1" tabindex="-1"></a><span class="fu">abline</span>(<span class="fl">5.5809</span>,<span class="fl">6.0679</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p>And this for North Buck Creek:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="river-discharge-doc-and-nitrate.html#cb12-1" tabindex="-1"></a><span class="fu">abline</span>((<span class="fl">5.5809+11.9585</span>),(<span class="fl">6.0679-2.1527</span>), <span class="at">col=</span><span class="st">&quot;darkblue&quot;</span>)</span></code></pre></div>
+<p>What would be the <code>abline()</code> values be for South Buck Creek?</p>
+<p>An alternative way to do it is to turn your <code>summary()</code> output into an object and then use indexing to get the correct values from the coefficients table:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="river-discharge-doc-and-nitrate.html#cb13-1" tabindex="-1"></a>SUMMARY<span class="ot">&lt;-</span><span class="fu">summary</span>(ANCOVA)</span>
+<span id="cb13-2"><a href="river-discharge-doc-and-nitrate.html#cb13-2" tabindex="-1"></a>SUMMARY<span class="sc">$</span>coefficients</span>
+<span id="cb13-3"><a href="river-discharge-doc-and-nitrate.html#cb13-3" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="river-discharge-doc-and-nitrate.html#cb13-4" tabindex="-1"></a><span class="fu">abline</span>(SUMMARY<span class="sc">$</span>coefficients[<span class="dv">1</span>,<span class="dv">1</span>],SUMMARY<span class="sc">$</span>coefficients[<span class="dv">2</span>,<span class="dv">1</span>], <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb13-5"><a href="river-discharge-doc-and-nitrate.html#cb13-5" tabindex="-1"></a><span class="fu">abline</span>((SUMMARY<span class="sc">$</span>coefficients[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">+</span>SUMMARY<span class="sc">$</span>coefficients[<span class="dv">3</span>,<span class="dv">1</span>]),(SUMMARY<span class="sc">$</span>coefficients[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">+</span>SUMMARY<span class="sc">$</span>coefficients[<span class="dv">5</span>,<span class="dv">1</span>]), <span class="at">col=</span><span class="st">&quot;darkblue&quot;</span>)</span></code></pre></div>
+<p>Using this method, can you produce the abline code for South Buck Creek?</p>
+<p> </p>
+<p><strong>4.</strong> Like a normal linear model, we also need to check the model diagnostic plots to see how well our model fits the data. The command is exactly the same as for our linear model:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="river-discharge-doc-and-nitrate.html#cb14-1" tabindex="-1"></a><span class="fu">plot</span>(ANCOVA)</span></code></pre></div>
+<p>Run this code. As you will see, we get only one set of diagnostic plots for all sites. And as we already knew, a linear model does not describe this data well.</p>
+<p> </p>
+<p><strong>Part 4. Model simplification</strong></p>
+<p>Let’s go back to our fake dataset, which we called <code>fake</code>. Take a look at the column names.As you will see, as well as our two variables Var1 and Var2, we also have a factor, called…<code>Factor</code>, with two levels A and B.</p>
+<p> </p>
+<p><strong>1.</strong> Plot Var2 against Var1, but this time give the data a different colour for the different Factor levels.</p>
+<p> </p>
+<p><strong>2.</strong> Run an ANCOVA investigating the relationship between Var2 and Var1, and determine whether this relationship is the same for Factor A and Factor B.</p>
+<p> </p>
+<p><strong>3.</strong> Get the <code>summary()</code> output of this ANCOVA.</p>
+<p>Is Factor B’s intercept significantly different from Factor A’s intercept?</p>
+<p>Is Factor B’s slope significantly different from Factor A’s slope?</p>
+<p> </p>
+<p><strong>4.</strong> As you will have hopefully have noticed, the slope was not significantly different between Factor A and Factor B. That means it was unnecessary to fit a model which fits a different slope for each factor.</p>
+<p>When fitting models you want to fit the simplest model that does the best job of explaining your data. If you a simple model does performs as well as more complex model, go with the simpler model.</p>
+<p>So what do we do in this instance? We know that slope does not differ between the two factor levels, but intercept does. Therefore we need to fit a model which fits different intercepts, but not slopes, for each factor level. How do we do this in R? We just replace the * with a + in our <code>lm()</code> model:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="river-discharge-doc-and-nitrate.html#cb15-1" tabindex="-1"></a>ANCOVA_SIMPLIFIED<span class="ot">&lt;-</span><span class="fu">lm</span>(fake<span class="sc">$</span>Var2<span class="sc">~</span>fake<span class="sc">$</span>Var1<span class="sc">+</span>fake<span class="sc">$</span>Factor)</span></code></pre></div>
+<p> </p>
+<p><strong>5.</strong> Take a look at your <code>summary()</code> output of your simplified model. Are all model coefficients now significant?</p>
+<p> </p>
+<p><strong>6.</strong> Take a look at your model diagnostic plots. Are there any problems with our model?</p>
+<p> </p>
+<p><strong>7.</strong> We want to make sure we were justified in simplifying our model. Is our simplified model significantly different to our more complex model?</p>
+<p>We can make this comparison using <code>anova</code>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="river-discharge-doc-and-nitrate.html#cb16-1" tabindex="-1"></a><span class="fu">anova</span>(ANCOVA, ANCOVA_SIMPLIFIED, <span class="at">test=</span> F)</span></code></pre></div>
+<p>We can see in the output that p&gt;0.05, which means there is no significant difference between our models. Our simplified model performs equally as well as our more complex model. Therefore we were justified in simplifying our model.</p>
+<p> </p>
+<p><strong>8.</strong> Finally fit <code>ablines()</code> for each factor from the simplified model to your plot of Var2 plotted against Var1.</p>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cleaning-messy-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["CongoFor1.5_Bootcamp.pdf", "CongoFor1.5_Bootcamp.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

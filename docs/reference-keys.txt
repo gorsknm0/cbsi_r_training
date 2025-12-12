@@ -26,3 +26,5 @@ part-extra-information
 dates
 text
 special-characters
+river-discharge-doc-and-nitrate
+part-1-merging-the-datasets
