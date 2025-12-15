@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 19 Global health &amp; ggplot | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 19 Global health &amp; ggplot | R Training" />
   <meta property="og:type" content="book" />
@@ -53,9 +53,8 @@
 
 
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +64,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -222,22 +221,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#the-pipe"><i class="fa fa-check"></i>The <code>%&gt;%</code> pipe</a></li>
 <li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#dplyr-verbs"><i class="fa fa-check"></i><code>dplyr</code> verbs</a></li>
 </ul></li>
+<li class="part"><span><b>IV Review exercises</b></span></li>
 <li class="chapter" data-level="17" data-path="rms-titanic.html"><a href="rms-titanic.html"><i class="fa fa-check"></i><b>17</b> <em>RMS Titanic</em></a></li>
 <li class="chapter" data-level="18" data-path="a-dplyr-survey.html"><a href="a-dplyr-survey.html"><i class="fa fa-check"></i><b>18</b> A <code>dplyr</code> survey</a></li>
 <li class="chapter" data-level="19" data-path="global-health-ggplot.html"><a href="global-health-ggplot.html"><i class="fa fa-check"></i><b>19</b> Global health &amp; <code>ggplot</code></a></li>
 <li class="chapter" data-level="20" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>20</b> Brazzaville’s climate</a></li>
 <li class="chapter" data-level="21" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>21</b> Cleaning messy data</a></li>
-<li class="part"><span><b>IV Extra Information</b></span></li>
-<li class="chapter" data-level="22" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>22</b> Working with dates &amp; times</a>
+<li class="chapter" data-level="22" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>22</b> River discharge, DOC and nitrate</a></li>
+<li class="part"><span><b>V Extra Information</b></span></li>
+<li class="chapter" data-level="23" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>23</b> Working with dates &amp; times</a>
 <ul>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>23</b> Working with text</a>
+<li class="chapter" data-level="24" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>24</b> Working with text</a>
 <ul>
 <li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>24</b> Special Characters</a></li>
+<li class="chapter" data-level="25" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>25</b> Special Characters</a></li>
 </ul>
 
       </nav>
@@ -260,13 +261,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This review exercise is useful immediately after you learn <code>ggplot2</code> and <code>dplyr</code>.</p>
 <p> </p>
 <p>First, let’s read in some data on health from the World Bank:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="global-health-ggplot.html#cb282-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb282-2"><a href="global-health-ggplot.html#cb282-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">library</span>(readr)<span class="sc">:</span> there is no package called <span class="st">&#39;readr&#39;</span></span>
-<span id="cb282-3"><a href="global-health-ggplot.html#cb282-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb282-4"><a href="global-health-ggplot.html#cb282-4" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb282-5"><a href="global-health-ggplot.html#cb282-5" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">library</span>(gapminder)<span class="sc">:</span> there is no package called <span class="st">&#39;gapminder&#39;</span></span>
-<span id="cb282-6"><a href="global-health-ggplot.html#cb282-6" tabindex="-1"></a>gm <span class="ot">&lt;-</span> gapminder<span class="sc">::</span>gapminder</span>
-<span id="cb282-7"><a href="global-health-ggplot.html#cb282-7" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">loadNamespace</span>(x)<span class="sc">:</span> there is no package called <span class="st">&#39;gapminder&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="global-health-ggplot.html#cb279-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb279-2"><a href="global-health-ggplot.html#cb279-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb279-3"><a href="global-health-ggplot.html#cb279-3" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb279-4"><a href="global-health-ggplot.html#cb279-4" tabindex="-1"></a>gm <span class="ot">&lt;-</span> gapminder<span class="sc">::</span>gapminder</span></code></pre></div>
 <p><strong>1.</strong> How many rows are in the dataset?</p>
 <p><strong>2.</strong> How many columns are in the dataset?</p>
 <p><strong>3.</strong> What are the names of the columns?</p>

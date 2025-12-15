@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Module 24 Special Characters | R Training</title>
+  <title>Module 25 Special Characters | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Module 24 Special Characters | R Training" />
+  <meta property="og:title" content="Module 25 Special Characters | R Training" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="A resource &amp; workbook for learning R" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Module 24 Special Characters | R Training" />
+  <meta name="twitter:title" content="Module 25 Special Characters | R Training" />
   
   <meta name="twitter:description" content="A resource &amp; workbook for learning R" />
   
@@ -53,9 +53,8 @@
 
 
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,7 +64,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -222,22 +221,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#the-pipe"><i class="fa fa-check"></i>The <code>%&gt;%</code> pipe</a></li>
 <li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#dplyr-verbs"><i class="fa fa-check"></i><code>dplyr</code> verbs</a></li>
 </ul></li>
+<li class="part"><span><b>IV Review exercises</b></span></li>
 <li class="chapter" data-level="17" data-path="rms-titanic.html"><a href="rms-titanic.html"><i class="fa fa-check"></i><b>17</b> <em>RMS Titanic</em></a></li>
 <li class="chapter" data-level="18" data-path="a-dplyr-survey.html"><a href="a-dplyr-survey.html"><i class="fa fa-check"></i><b>18</b> A <code>dplyr</code> survey</a></li>
 <li class="chapter" data-level="19" data-path="global-health-ggplot.html"><a href="global-health-ggplot.html"><i class="fa fa-check"></i><b>19</b> Global health &amp; <code>ggplot</code></a></li>
 <li class="chapter" data-level="20" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>20</b> Brazzaville’s climate</a></li>
 <li class="chapter" data-level="21" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>21</b> Cleaning messy data</a></li>
-<li class="part"><span><b>IV Extra Information</b></span></li>
-<li class="chapter" data-level="22" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>22</b> Working with dates &amp; times</a>
+<li class="chapter" data-level="22" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>22</b> River discharge, DOC and nitrate</a></li>
+<li class="part"><span><b>V Extra Information</b></span></li>
+<li class="chapter" data-level="23" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>23</b> Working with dates &amp; times</a>
 <ul>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>23</b> Working with text</a>
+<li class="chapter" data-level="24" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>24</b> Working with text</a>
 <ul>
 <li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>24</b> Special Characters</a></li>
+<li class="chapter" data-level="25" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>25</b> Special Characters</a></li>
 </ul>
 
       </nav>
@@ -255,10 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="special-characters" class="section level1 hasAnchor" number="24">
-<h1><span class="header-section-number">Module 24</span> Special Characters<a href="special-characters.html#special-characters" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="learning-goal-2" class="section level4 unnumbered hasAnchor">
-<h4>Learning Goal<a href="special-characters.html#learning-goal-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="special-characters" class="section level1 hasAnchor" number="25">
+<h1><span class="header-section-number">Module 25</span> Special Characters<a href="special-characters.html#special-characters" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goal-3" class="section level4 unnumbered hasAnchor">
+<h4>Learning Goal<a href="special-characters.html#learning-goal-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>Learn how to print special characters using <strong><code>expression</code></strong> when adding text to plots in base <code>R</code>.</li>
 </ul>
@@ -268,7 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>First set up an empty plot</strong></p>
 <p>We do not need any data to practice this, so we’ll use an empty plot, with no axes or axes labels.</p>
 <p>Let’s plot a single value, 1, and then tell R not to plot our single value using the command <code>type = "n"</code>. We will also suppress the axes using the command <code>xaxt="n"</code> and <code>yaxt="n"</code>, and we will leave the x and y labels blank, using <code>xlab=""</code> and <code>ylab=""</code>.</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="special-characters.html#cb342-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="special-characters.html#cb354-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>This gives us a blank plot with no data and no axes. If we wanted rid of the plot border too, we could just simply type <code>plot.new</code></p>
 <p> </p>
 <p><strong>Using <code>expression</code> to add special characters</strong></p>
@@ -276,20 +277,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Using the <strong><code>mtext</code></strong> command (short for “margin text”), we are going to label the y axis of our empty plot with “CO<sub>2</sub>” and we are going to label the x axis of our empty plot with the ° symbol.</p>
 <p>Before we get to the special characters, let’s quickly practice using <code>mtext</code> to see how it works.</p>
 <p>Run this code:</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="special-characters.html#cb343-1" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Plot title&quot;</span>, <span class="co">#This is the text you will add to your plot margin</span></span>
-<span id="cb343-2"><a href="special-characters.html#cb343-2" tabindex="-1"></a>        <span class="at">side=</span><span class="dv">3</span>,     <span class="co">#This tells R which margin you want to add the text to. Plot margins are numbered from the bottom, moving in a clockwise direction.</span></span>
-<span id="cb343-3"><a href="special-characters.html#cb343-3" tabindex="-1"></a>          <span class="at">line=</span><span class="dv">1</span>)   <span class="co">#Margins have different lines you can add text to. Increasing the line number moves the text further from the plot.</span></span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="special-characters.html#cb355-1" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Plot title&quot;</span>, <span class="co">#This is the text you will add to your plot margin</span></span>
+<span id="cb355-2"><a href="special-characters.html#cb355-2" tabindex="-1"></a>        <span class="at">side=</span><span class="dv">3</span>,     <span class="co">#This tells R which margin you want to add the text to. Plot margins are numbered from the bottom, moving in a clockwise direction.</span></span>
+<span id="cb355-3"><a href="special-characters.html#cb355-3" tabindex="-1"></a>          <span class="at">line=</span><span class="dv">1</span>)   <span class="co">#Margins have different lines you can add text to. Increasing the line number moves the text further from the plot.</span></span></code></pre></div>
 <p>Can you see what <code>mtext</code> and its arguments are doing?</p>
 <p>Now let’s label our x and y axes with the required special characters. To do this we are going to have to use <code>expression</code> alongside <code>mtext</code>.</p>
 <p>Let’s start with the y axis. To add CO<sub>2</sub> to the y axis, we are going to have to tell R to make the 2 <strong>subscript</strong>. When using <code>expression</code> we can use <strong>[ ]</strong> to make text subscript. So our y axis label command will be:</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="special-characters.html#cb344-1" tabindex="-1"></a><span class="fu">mtext</span>(<span class="fu">expression</span>(CO[<span class="dv">2</span>]),</span>
-<span id="cb344-2"><a href="special-characters.html#cb344-2" tabindex="-1"></a>      <span class="at">side=</span><span class="dv">2</span>,            <span class="co">#Side 2 for the y axis!</span></span>
-<span id="cb344-3"><a href="special-characters.html#cb344-3" tabindex="-1"></a>      <span class="at">line=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="special-characters.html#cb356-1" tabindex="-1"></a><span class="fu">mtext</span>(<span class="fu">expression</span>(CO[<span class="dv">2</span>]),</span>
+<span id="cb356-2"><a href="special-characters.html#cb356-2" tabindex="-1"></a>      <span class="at">side=</span><span class="dv">2</span>,            <span class="co">#Side 2 for the y axis!</span></span>
+<span id="cb356-3"><a href="special-characters.html#cb356-3" tabindex="-1"></a>      <span class="at">line=</span><span class="dv">1</span>)</span></code></pre></div>
 <p>If we wanted instead to make something <strong>superscript</strong>, like if we wanted to report the R<sup>2</sup> value on our plot, we’d use <code>^</code>, so it would read <code>expression(R^2)</code>.</p>
 <p>Now we want to label our x axis with °C. When using expression the ° symbol is simply <strong><code>degree</code></strong>. But we also want to add the letter C after the ° symbol. To do this we need to tell R to concatenate ° and C. To do this we need to use an * . Normally in R * represents multiplication, but when used with <code>expression</code> it represents <strong>concatenate</strong>. Therefore, to add our y label we use the following code:</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="special-characters.html#cb345-1" tabindex="-1"></a><span class="fu">mtext</span>(<span class="fu">expression</span>(<span class="fu">expression</span>(degree<span class="sc">*</span>C)),</span>
-<span id="cb345-2"><a href="special-characters.html#cb345-2" tabindex="-1"></a>      <span class="at">side=</span><span class="dv">1</span>,            <span class="co">#Side 1 for the x axis!</span></span>
-<span id="cb345-3"><a href="special-characters.html#cb345-3" tabindex="-1"></a>      <span class="at">line=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="special-characters.html#cb357-1" tabindex="-1"></a><span class="fu">mtext</span>(<span class="fu">expression</span>(<span class="fu">expression</span>(degree<span class="sc">*</span>C)),</span>
+<span id="cb357-2"><a href="special-characters.html#cb357-2" tabindex="-1"></a>      <span class="at">side=</span><span class="dv">1</span>,            <span class="co">#Side 1 for the x axis!</span></span>
+<span id="cb357-3"><a href="special-characters.html#cb357-3" tabindex="-1"></a>      <span class="at">line=</span><span class="dv">1</span>)</span></code></pre></div>
 <p> </p>
 <p><strong>Concatenating special characters and normal text</strong></p>
 <p>Now we want to create an empty plot where the y axis reads <strong>“Temperature °C”</strong>.</p>
@@ -310,9 +311,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>expression("Temperature ("*degree*C*")")</code></p>
 <p> </p>
 <p><code>expression</code> also works directly in the <code>plot</code> function labels argument. So instead of using <code>mtext</code>, you could use:</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="special-characters.html#cb346-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>,</span>
-<span id="cb346-2"><a href="special-characters.html#cb346-2" tabindex="-1"></a>       <span class="at">xlab=</span><span class="fu">expression</span>(CO[<span class="dv">2</span>]), </span>
-<span id="cb346-3"><a href="special-characters.html#cb346-3" tabindex="-1"></a>            <span class="at">ylab=</span><span class="fu">expression</span>(<span class="st">&quot;Temperature (&quot;</span><span class="sc">*</span>degree<span class="sc">*</span>C<span class="sc">*</span><span class="st">&quot;)&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="special-characters.html#cb358-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="at">yaxt=</span><span class="st">&quot;n&quot;</span>,</span>
+<span id="cb358-2"><a href="special-characters.html#cb358-2" tabindex="-1"></a>       <span class="at">xlab=</span><span class="fu">expression</span>(CO[<span class="dv">2</span>]), </span>
+<span id="cb358-3"><a href="special-characters.html#cb358-3" tabindex="-1"></a>            <span class="at">ylab=</span><span class="fu">expression</span>(<span class="st">&quot;Temperature (&quot;</span><span class="sc">*</span>degree<span class="sc">*</span>C<span class="sc">*</span><span class="st">&quot;)&quot;</span>))</span></code></pre></div>
 <p> </p>
 <p><strong>Greek alphabet</strong></p>
 <p>Other commonly required special characters in science/maths are characters from the Greek alphabet. These are very straight forward. You just type out the character name.</p>

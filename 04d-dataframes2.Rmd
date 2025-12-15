@@ -324,7 +324,7 @@ bn <- babynames
 **23.** Screenshot it and email it to your family.  
 
 
-```{r, include = FALSE
+```{r, include = FALSE}
 
 'After completing the exercises here, it is worthwhile devoting time to the Review modules entitled, **"A `dplyr` mystery"**, **"A `dplyr` survey"**, and **"Global health and `ggplot`"**. Once students become comfortable with working with `dplyr`, they will be ready to work independently on projects, using the modules in the **Deep `R`** section for references.'
 

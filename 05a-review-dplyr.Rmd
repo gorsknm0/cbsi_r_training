@@ -1,5 +1,6 @@
 # (PART) Review exercises {-}
 
+# *RMS Titanic*
 
 #### Learning goals {-}
 
@@ -11,8 +12,6 @@
 
 'This review exercise is best done immediately after the module on **Dataframe wrangling**.'
 ```
-
-# *RMS Titanic*
 
 Use the `dplyr` verbs to answer these questions.  
 

@@ -17,14 +17,14 @@ importing-data
 base-plots
 ggplot
 dplyr
+part-review-exercises
 rms-titanic
 a-dplyr-survey
 global-health-ggplot
 brazzavilles-climate
 cleaning-messy-data
+river-discharge-doc-and-nitrate
 part-extra-information
 dates
 text
 special-characters
-river-discharge-doc-and-nitrate
-part-1-merging-the-datasets
