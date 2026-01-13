@@ -6,6 +6,7 @@ part-getting-started
 welcome
 using-rstudio-r-scripts
 review-your-r-training-prep
+data-visualization
 variables
 vectors
 calling_functions
