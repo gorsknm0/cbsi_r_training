@@ -1,0 +1,336 @@
+# Utilisation des scripts `RStudio` et `R`
+
+#### Objectifs d'apprentissage {-}
+
+* Comprendre la différence entre `R` et `RStudio`
+* Comprendre l'environnement de travail et les volets de `RStudio`
+* Comprendre ce que sont les scripts `R`, comment les créer et les enregistrer
+* Comprendre comment ajouter des commentaires à votre code et pourquoi cela est important
+* Comprendre ce qu'est un *répertoire de travail* et comment l'utiliser
+* Apprendre le déroulement de base d'un projet
+
+
+## `R` et `RStudio` : quelle est la différence ? {-}
+
+Ces deux entités sont similaires, mais il est important de comprendre en quoi elles diffèrent.  
+
+En bref, `R` est un langage de programmation open source (c'est-à-dire gratuit) : un puissant moteur de programmation qui peut être utilisé pour faire des choses vraiment intéressantes avec des données.  
+
+`R Studio`, en revanche, est une *interface utilisateur* gratuite qui vous aide à interagir avec `R`. Si vous considérez « R » comme un moteur, alors « RStudio » peut être vu comme la voiture qui le contient. Tout comme une voiture, « RStudio » rend l'utilisation du moteur plus facile et plus confortable pour vous permettre d'aller où vous voulez.   
+
+« R Studio » a besoin de « R » pour fonctionner, mais « R » peut techniquement être utilisé seul en dehors de « RStudio » si vous le souhaitez. Cependant, tout comme un bon mécanicien automobile peut faire fonctionner un moteur sans qu'il soit installé dans une voiture, l'utilisation de `R` seul est un peu compliquée et nécessite une certaine expertise. Pour les débutants (et pour tout le monde, en réalité), `R` est beaucoup plus agréable à utiliser lorsque vous le faites fonctionner à partir de `RStudio`.  
+
+`R Studio` a besoin de `R` pour fonctionner, mais `R` peut techniquement être utilisé seul en dehors de `RStudio` si vous le souhaitez. Cependant, tout comme un bon mécanicien automobile peut faire fonctionner un moteur sans qu'il soit installé dans une voiture, l'utilisation de `R` seul est un peu compliquée et nécessite une certaine expertise. Pour les débutants (et tout le monde, en réalité), `R` est beaucoup plus agréable à utiliser lorsque vous le faites fonctionner à partir de `RStudio`.
+
+```{r, include=FALSE}
+
+À ce stade, il peut être utile de montrer aux étudiants à quoi ressemble l'ouverture de `R` seul (et non via `RStudio`). Cela les aide à comprendre pourquoi `RStudio` est précieux, et cela les aide également à comprendre ce qu'ils ont fait de mal lorsqu'ils ouvrent accidentellement un fichier `.R` dans `R` au lieu de `RStudio`, ce qui arrivera souvent au début.
+
+```
+
+`RStudio` dispose également d'extensions de plus en plus puissantes qui rendent `R` encore plus utile et polyvalent dans le domaine de la science des données. Ces extensions vous permettent d'utiliser `R` pour créer des tableaux de bord interactifs, des rapports de données esthétiques et reproductibles, des présentations, des sites web et même des livres. De nouvelles fonctionnalités de ce type sont régulièrement ajoutées à `RStudio` par son équipe de data scientists de haut niveau.
+
+C'est pourquoi ce livre utilise *toujours* `RStudio` pour travailler avec `R`.   
+
+
+## Présentation de `RStudio` en deux minutes {-}
+
+Lorsque vous ouvrez `RStudio` pour la première fois, vous verrez une fenêtre qui ressemble à la capture d'écran ci-dessous. 
+
+### Console  {-}
+Vous connaissez déjà la *Console* de `RStudio`, la fenêtre située à gauche qui vous permet de « communiquer » avec `R`. (Voir le module de formation Préparation à R.)
+
+### Environnement  {-}
+Dans le volet supérieur droit, l'*Environnement*, `RStudio` conserve une liste de tous les ensembles de données, variables et fonctions que vous utilisez pendant votre travail. Les modules suivants expliquent ce que sont les variables et les fonctions.
+
+### Fichiers, graphiques, paquets et aide  {-}
+Vous utiliserez très souvent le volet inférieur droit. 
+
+* L'onglet **Fichiers** vous permet de voir tous les fichiers de votre **répertoire de travail**, qui sera expliqué dans la section ci-dessous.  
+* L'onglet **Graphiques** vous permet de voir les graphiques que vous produisez avec votre code.  
+* L'onglet **Packages** vous permet de voir les *packages* actuellement installés sur votre ordinateur. Les paquets sont des ensembles de fonctions `R` téléchargées sur Internet ; ils seront expliqués en détail dans quelques modules plus loin.  
+* L'onglet **Aide** est très important ! Il vous permet de consulter la *documentation* (c'est-à-dire les guides d'utilisation) des fonctions que vous utilisez dans votre code. Les fonctions seront également expliquées en détail dans quelques modules plus loin.
+
+Ces trois volets sont utiles, mais le volet le plus utile de tous est en fait *absent* lorsque vous ouvrez `RStudio` pour la première fois. Ce volet important est celui où vous travaillez avec les **scripts**.
+
+```{r, include=FALSE}
+
+« Nous vous recommandons de parcourir rapidement cette section ; les étudiants découvriront ces fonctionnalités au fur et à mesure qu'ils en auront besoin. Pour l'instant, passez directement à la création de scripts dès que possible. »
+
+```
+
+## Scripts  {-}
+
+Avant d'expliquer ce que sont les scripts et pourquoi ils sont géniaux, commençons par créer un nouveau script.
+
+**Pour créer un nouveau script,** allez dans le coin supérieur gauche de la fenêtre `RStudio` et cliquez sur le signe plus vert avec une page blanche derrière :
+
+(IMAGE HERE)
+
+Une fenêtre déroulante apparaîtra. Sélectionnez « R Script ».
+
+Un nouveau volet apparaîtra alors dans le quadrant supérieur gauche de votre fenêtre `RStudio` :
+
+(IMAGE)
+
+Vous disposez désormais d'un script vierge dans lequel vous pouvez travailler !
+
+Tapez maintenant quelques commandes simples dans votre script :
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+2  + 10
+16 * 32
+```
+
+Notez que lorsque vous appuyez sur `Entrée` après chaque ligne de code, rien ne se passe dans la *Console*. Pour envoyer ce code à la Console, appuyez simultanément sur `Entrée + Commande` (ou `Entrée + Contrôle`, si vous utilisez Windows) pour chaque ligne de code. 
+
+Pour envoyer les deux lignes de code à la *Console* en même temps, sélectionnez les deux lignes de code et appuyez sur `Entrée + Commande`. 
+
+(Pour sélectionner plusieurs lignes de code, vous pouvez (1) cliquer et faire glisser avec votre souris ou (2) maintenir la touche `Maj` enfoncée tout en cliquant sur la touche fléchée vers le bas. Pour sélectionner *toutes* les lignes de code, appuyez sur `Commande + A`.)
+
+```{r, include=FALSE}
+
+« Demandez à tous les élèves de s'entraîner à exécuter le code à ce stade. Le fait de taper les commandes eux-mêmes les aide à apprendre et à surmonter leur hésitation à faire des erreurs. »
+
+```
+
+Construisons donc ce script. Ajoutez quelques lignes supplémentaires à votre script, de manière à ce qu'il ressemble à ceci.
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+2  + 10
+16 * 32
+1080 / 360
+500 - 600
+```
+
+Exécutez toutes ces lignes de code en même temps.  
+
+Ajoutez maintenant `10` au premier nombre de chaque ligne, puis relancez l'ensemble du code.  
+
+Réfléchissez à l'efficacité supplémentaire apportée par votre script à la partie (B) ! Si vous aviez saisi toutes ces lignes directement dans votre *Console*, vous auriez dû vous souvenir ou retaper chaque ligne individuellement. Cette différence s'accentue lorsque le nombre de commandes atteint plusieurs centaines. 
+
+
+
+### Qu'est-ce qu'un script « R » et pourquoi les scripts sont-ils si géniaux ? {-}
+
+Un script « R » est un fichier dans lequel vous pouvez enregistrer votre code. Tout comme un script indique aux acteurs exactement ce qu'ils doivent dire et quand ils doivent le dire, un script « R » indique à « R » exactement quel code exécuter et dans quel ordre.
+
+Lorsque vous travaillez avec R, vous tapez presque toujours votre code dans un script, *puis* vous l'envoyez à la *console*. Vous pouvez exécuter votre code immédiatement à l'aide de la touche « Entrée + Commande », mais vous disposez également d'un script de ce que vous avez fait afin de pouvoir exécuter exactement le même code ultérieurement. 
+
+Pour comprendre pourquoi les scripts « R » sont si géniaux, considérez un flux de travail typique dans « Excel » ou « GoogleSheets ». Vous ouvrez une feuille de calcul complexe, passez des heures à y apporter des modifications et enregistrez fréquemment vos modifications tout au long de votre session de travail. 
+
+Les principaux inconvénients de ce flux de travail sont les suivants :
+
+1. Il n'existe aucun enregistrement détaillé des modifications que vous avez apportées. Vous ne pouvez pas prouver que vous avez apporté les modifications correctement. Vous ne pouvez pas transmettre l'ensemble de données original à quelqu'un d'autre et lui demander de le réviser de la même manière que vous l'avez fait. (D'ailleurs, vous ne le souhaiteriez pas, car toutes ces modifications vous ont pris beaucoup de temps !) Vous ne pouvez pas non plus prendre un autre ensemble de données et garantir que vous serez en mesure d'appliquer exactement les mêmes modifications que celles que vous avez appliquées au premier. En d'autres termes, votre travail n'est pas reproductible. 
+
+
+2. Effectuer ces modifications demande beaucoup de travail ! Plutôt que de passer du temps à modifier manuellement une seule feuille de calcul, il serait préférable de consacrer cette énergie à écrire un code « R » qui effectuera ces modifications à votre place. Ce code pourrait être exécuté dans ce cas précis, mais il pourrait également être exécuté à tout moment ultérieur, ou facilement modifié pour apporter des modifications similaires à d'autres feuilles de calcul.  
+
+3. À moins d'être un programmeur *Excel* avancé, vous modifiez probablement votre ensemble de données d'origine, ce qui est toujours dangereux et à proscrire en science des données. Chaque fois que vous enregistrez votre travail dans *Excel* ou *GoogleSheets* (qui enregistre automatiquement chaque modification que vous apportez), le fichier de feuille de calcul d'origine est remplacé par la version mise à jour. Mais si vous avez plutôt importé votre ensemble de données dans `R` et que vous l'avez modifié à l'aide d'un script `R`, vous laissez les données brutes intactes et vous les conservez en toute sécurité. (Bien sûr, vous pouvez toujours enregistrer différentes versions de votre fichier Excel, mais vous courez alors le risque de mélanger les versions et de vous y perdre.)
+
+```{r, include=FALSE}
+
+« Pensez à raconter une anecdote tirée de votre propre expérience professionnelle avant de découvrir les scripts R. Par exemple : recevoir des versions de fichiers Excel nommées DATA-final-final-final.xlsx, car de minuscules modifications sont inévitablement découvertes après avoir essayé de finaliser un fichier de données. Vous passez ensuite tout le week-end à travailler sur une analyse utilisant ces données, pour finalement découvrir que vous utilisiez la MAUVAISE version des données ! »
+
+```
+
+
+Travailler avec des scripts `R` vous permet d'éviter tous ces écueils. Lorsque vous écrivez un script `R`, vous rendez votre travail...
+
+* **Efficace.** Une fois que vous serez à l'aise avec l'écriture de code `R`, vous serez capable d'écrire des scripts en quelques minutes. Ces scripts peuvent modifier des ensembles de données en quelques secondes (voire moins) d'une manière qui prendrait des heures (voire des années) à réaliser manuellement dans *Excel* ou *GoogleSheets*.
+
+* **Reproductible.** Une fois que vous avez écrit un script `R`, vous pouvez reproduire votre propre travail quand vous le souhaitez. Vous pouvez envoyer votre script à un collègue afin qu'il puisse également reproduire votre travail. Un travail reproductible est un travail défendable.
+
+* **Faible risque.** Comme votre script R n'apporte aucune modification aux données d'origine, vous préservez la sécurité de vos données. Il est *essentiel* de préserver l'intégrité des données brutes !
+
+
+Notez qu'un script R n'a rien d'extraordinaire ni de spécial. Un script R est un simple fichier texte ; c'est-à-dire qu'il n'accepte que du texte basique ; vous ne pouvez pas ajouter d'images ni modifier le style ou la taille de la police dans un script R ; seulement des lettres, des chiffres et les autres touches de votre clavier. L'extension du fichier, .R, indique à votre ordinateur d'interpréter ce texte comme du code R.
+
+### Commenter votre code {-}
+
+Un autre avantage des scripts est que vous pouvez inclure des *commentaires* dans votre code pour expliquer ce que vous faites et pourquoi. Un *commentaire* est simplement une partie de votre script qui vous est utile, mais qui est ignorée par `R`. 
+
+
+Pour ajouter des commentaires à votre code, utilisez le symbole hashtag (`#`). Tout texte suivant un `#` sera ignoré par `R`.
+
+Voici le script ci-dessus, avec les commentaires ajoutés :
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+# Définir la variable x
+x <- 2 
+x
+
+# Créer une nouvelle variable, y, basée sur x
+y <- x*56
+
+z <- y / 23 # Créer une troisième variable, z, basée sur y
+ 
+x + y + z # Obtenir maintenant la somme des trois variables
+```
+
+Ajouter des commentaires peut demander plus de travail, mais au final, cela vous fait gagner du temps et rend votre code plus efficace. Les commentaires peuvent sembler inutiles sur le moment, mais ils s'avèrent extrêmement utiles lorsque vous reprenez votre code le lendemain. Des commentaires fréquents et utiles font la différence entre un bon code et un excellent code. Commentez tôt, commentez souvent !
+
+Vous pouvez également utiliser des lignes de hashtags pour organiser visuellement votre code. Par exemple :
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+######### #####################################
+# Configuration
+##############################################
+
+# Définir la variable x
+x <- 2 
+x
+
+# Créer une nouvelle variable, y, basée sur x
+y <- x*56
+
+z <- y / 23 # Créer une troisième variable, z, basée sur y
+ 
+
+######################################## ######
+# Obtenir le résultat
+##############################################
+
+x + y + z # Obtenir maintenant la somme des trois variables
+```
+
+Cela peut sembler inutile avec un script de 5 lignes, mais ajouter des sauts de ligne à votre code devient extrêmement utile lorsque celui-ci atteint plusieurs centaines de lignes.
+
+### Enregistrer votre travail {-}
+
+**Les scripts `R` ne sont utiles que si vous les enregistrez !** Contrairement à *GoogleDocs* ou *GoogleSheets*, `R` n'enregistre pas automatiquement vos modifications ; vous devez le faire vous-même. (Ce n'est pas pratique, mais c'est aussi plus sûr ; la plupart du codage se fait par essais et erreurs, et il est parfois préférable de faire attention à ce qui est enregistré.)
+
+```{r, include=FALSE}
+
+« Ayant grandi à l'ère de GoogleDocs, de nombreux étudiants ne savent peut-être pas ce que sont les fichiers informatiques et ignorent peut-être même que leur ordinateur fonctionne à l'aide de répertoires de dossiers. Il serait utile d'ouvrir l'Explorateur de fichiers sur votre écran de démonstration et de leur montrer comment fonctionnent ces répertoires. »
+
+```
+
+**Étape 1 : Décidez où enregistrer votre travail.** Le dossier dans lequel vous enregistrez votre script `R` sera appelé votre *répertoire de travail* (voir la section suivante). Pour les besoins de ces tutoriels, il sera plus pratique d'enregistrer tous vos scripts dans un seul dossier situé dans un emplacement facilement accessible. 
+
+**Étape 2 : Dans cet emplacement, créez un nouveau dossier nommé « bRazzaville »** : nous vous suggérons de créer un nouveau dossier sur votre bureau et de le nommer « bRazzaville », mais vous pouvez le nommer comme vous le souhaitez et le placer où vous le souhaitez.
+
+**Étape 3 : enregistrez votre script dans ce dossier**. Pour enregistrer le script que vous avez ouvert et dans lequel vous avez saisi quelques lignes de code, appuyez sur « Commande + S » (ou « Contrôle + S »). Vous pouvez également aller dans Fichier > Enregistrer. Accédez au dossier que vous venez de créer et saisissez un nom de fichier simple mais descriptif. Nous vous suggérons de créer un nouveau script « R » pour chaque module et de nommer ces scripts en fonction du nom de chaque module. Dans ce cas, nous vous recommandons de nommer votre script « intro_to_scripts ». 
+
+(Il est recommandé d'éviter les espaces dans les noms de fichiers ; cela sera essentiel par la suite, il est donc préférable de prendre dès maintenant cette bonne habitude. Utilisez un trait de soulignement, « _ », à la place d'un espace.)
+
+
+## Votre répertoire de travail  {- #wd}
+
+Lorsque vous travaillez avec des données dans `R`, `R` doit savoir où chercher ces données sur votre ordinateur. Le dossier dans lequel il cherche est appelé votre **répertoire de travail**. 
+
+Pour savoir quel dossier `R` utilise actuellement comme répertoire de travail, utilisez la fonction `getwd()` :
+
+```{r,echo=TRUE,collapse=TRUE}
+getwd()
+```
+
+Dans la plupart des cas, vous souhaiterez définir votre répertoire de travail comme étant le dossier dans lequel se trouve votre script R. 
+
+### Comment définir votre répertoire de travail {-}
+
+Lorsque vous commencez un nouveau script R, l'une des premières choses à faire est de définir votre répertoire de travail.   
+
+Il existe trois façons de définir votre répertoire de travail :
+
+1. **Manuellement, sans code.** Dans la bannière supérieure de `RStudio`, allez dans *Session > Définir le répertoire de travail > Vers l'emplacement du fichier source* :
+(IMAGE HERE)
+
+Cette action définit votre répertoire de travail sur le même dossier que votre script `R`. Une fois cette opération effectuée, la commande suivante s'affiche dans votre console :
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+setwd("~/Desktop/bRazzaville")
+```
+
+(Notez que le chemin d'accès peut être différent sur votre machine.) Ce code utilise la fonction `setwd()`, également utilisée dans l'option suivante. Copiez ce code `setwd(...)` et collez-le dans votre script pour pouvoir l'utiliser facilement la prochaine fois.
+
+2. **Manuellement avec du code, en utilisant `setwd()`** : Vous pouvez spécifier manuellement le chemin d'accès à votre répertoire de travail. Cette option vous permet de définir `wd` sur le dossier de votre choix. La chaîne de caractères dans la commande `setwd()` correspond au chemin d'accès à ce dossier. Le formatage de cette chaîne doit être exact, sinon `R` générera une erreur. Commencez par utiliser l'option 1 pour vous familiariser avec le formatage des chemins de dossiers sur votre ordinateur. Copiez, collez et modifiez le résultat de l'option 1 afin de saisir correctement votre chemin.
+
+3. **Automatiquement avec du code** : Il existe une commande permettant de définir automatiquement votre répertoire de travail sur le dossier contenant votre script `R`. D'après notre expérience, c'est la méthode la plus efficace et la plus pratique.
+
+Pour utiliser cette commande, vous devez d'abord installer un nouveau package. Exécutez le code suivant :
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+install.packages("rstudioapi")
+library(rstudioapi)
+```
+
+Pour l'instant, il n'est pas nécessaire de comprendre le fonctionnement de ce code. Nous expliquerons les packages et la fonction `library()` dans un module ultérieur.
+
+Vous pouvez maintenant copier, coller et exécuter ce code pour définir automatiquement votre répertoire de travail :
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+```
+
+Il s'agit d'une ligne de code complexe, mais vous n'avez pas besoin de la comprendre. L'important est qu'elle fonctionne ! Vérifiez que `R` utilise bien le répertoire de travail approprié avec la commande `getwd()`.
+
+## Flux de travail typiques {-}
+
+Maintenant que vous savez comment créer un script et définir votre répertoire de travail, vous êtes prêt à travailler sur des projets de données dans `RStudio`.
+
+Voici généralement comment démarrer un nouveau projet de données :
+
+*Dans votre explorateur de fichiers…*
+
+1. **Créez un dossier pour votre projet** sur votre ordinateur. Ce dossier deviendra votre répertoire de travail.
+
+2. **Créez des sous-dossiers** dans votre répertoire de travail, si vous le souhaitez. Nous vous recommandons de créer un sous-dossier `data` pour vos données et un sous-dossier `z` pour vos documents divers. L'objectif est de conserver un répertoire de travail visuellement simple et organisé ; idéalement, seuls vos scripts `R` devraient se trouver hors des sous-dossiers.
+
+3. **Ajoutez des données** à votre répertoire de travail, si vous en avez.
+
+*Dans `RStudio`…*
+
+4. **Créez un nouveau script `R`.**
+
+5. **Enregistrez-le** dans votre répertoire de travail.
+
+6. En haut de votre script, utilisez des commentaires pour **ajouter un titre, les informations sur l'auteur et une brève description.**
+
+7. Ajoutez le code pour **définir votre répertoire de travail.**
+
+8. **Commencez à coder !**
+
+### Modèle de script `R` {-}
+
+Voici un modèle que vous pouvez utiliser et coller dans chaque nouveau script que vous créez :
+
+```{r, echo=TRUE,eval=FALSE,collapse=TRUE}
+##############################################################################
+# < Ajouter le titre ici >
+###############################################################################
+#
+# < Ajouter la brève description ici >
+#
+# < Auteur >
+# Créé le < date à ajouter ici > >
+#
+################################################################################
+# Définir le répertoire de travail
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+##############################################################################
+##############################################################################
+# Code ici
+
+################################################################################
+# (fin du fichier)
+```
+
+#### Exercices {-}
+
+**1** *(si ce n'est pas déjà fait)*. Créez un répertoire de travail pour ce cours. Nommez-le comme vous le souhaitez, mais `bRazzaville` conviendrait parfaitement. Placez-le à un emplacement pratique sur votre ordinateur, par exemple sur votre Bureau.
+
+**2.** Dans ce répertoire de travail, créez trois nouveaux dossiers : (1) un dossier `data`, où vous stockerez les fichiers de données utilisés dans les modules suivants et (2) un dossier `modules`, où vous conserverez le code utilisé pour travailler sur le contenu de ces modules.
+
+**3.** Suivez maintenant les instructions du *Flux de travail type* ci-dessus pour créer un script. Enregistrez-le dans votre dossier `modules`. Nommez-le `template.R`. Copiez-collez le code `R` fourni précédemment dans ce fichier, puis enregistrez-le. Vous disposez ainsi d'un modèle pour créer facilement de nouveaux scripts pour ce cours.
+
+**4.** Faites maintenant une copie de `template.R` afin de préparer un script utilisable dans le module suivant. Pour ce faire, dans `RStudio`, accédez à la barre supérieure et cliquez sur `Fichier > Enregistrer sous`. Enregistrez ce nouveau script sous le nom `variables.R` (car le module suivant s'intitule *Variables en `R`*).
+
+**5.** Modifiez le code dans `variables.R` afin d'être prêt(e) pour le module suivant. Modifiez le titre et préparez-vous à ajouter une brève description du module suivant. N'oubliez pas d'indiquer votre nom en tant qu'auteur et la date du jour.
+
+Et voilà !
+
+#### Autres ressources {-}
+
+[Une introduction en douceur à `R` par l'équipe `RStudio`](https://www.rstudio.com/resources/webinars/a-gentle-introduction-to-tidy-statistics-in-r/){target="blank"}

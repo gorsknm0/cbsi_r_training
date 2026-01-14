@@ -1663,10 +1663,10 @@ socks &lt;- c(6,8,14,1,NA,4)</code></pre>
 <p><strong>26.</strong> Look up the help page for the function <code>sample()</code>.</p>
 <p>Here’s an example of how this function works. This line of code will sample a single random number from the vector <code>1:10</code>.</p>
 <pre class="r"><code>sample(1:10,size=1)
-[1] 1</code></pre>
+[1] 6</code></pre>
 <p>This command will draw three random samples:</p>
 <pre class="r"><code>sample(1:10,size=3)
-[1]  5 10  9</code></pre>
+[1]  2  1 10</code></pre>
 <p><strong>27.</strong> Use this function to simulate the rolling of a single die.</p>
 <p><strong>28.</strong> Now use this to simulate the rolling of a die 10 times. (<em>Note:</em> look at the <code>replace</code> input for <code>sample()</code>.)</p>
 <p><strong>29.</strong> Now use this to roll the die 10,000 times, and assign the result to a new variable. (<em>Note:</em> look at the <code>replace</code> input for <code>sample()</code>.)</p>
@@ -1757,42 +1757,42 @@ y &lt;- sample(1:1000,size=100)
 length(y)
 [1] 100</code></pre>
 <pre class="r"><code>range(y)
-[1]   3 988</code></pre>
+[1]   7 994</code></pre>
 <p>With a dataset like this, you can use a boolean filter to figure out how many values are greater than, say, 90.</p>
 <p>First, develop your logical test, which will tell you whether each value in the vector is greater than 90:</p>
 <pre class="r"><code># Develop your logical test,
 y &gt; 90
-  [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
+  [1] FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
  [13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [25]  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE
- [37]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
- [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
- [61]  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE FALSE
- [73]  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE
- [85]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
- [97]  TRUE  TRUE  TRUE FALSE</code></pre>
+ [25]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
+ [37]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+ [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [73] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE
+ [85]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [97]  TRUE  TRUE  TRUE  TRUE</code></pre>
 <p>Now, to get the values corresponding to each <code>TRUE</code> in this list, plug your logical test into your subsetting brackets.</p>
 <pre class="r"><code>y[y &gt; 90]
- [1] 799 751 313 946 933 542 764 156 551 208 450 174 907 422 150 228 191 176 516
-[20] 549 585 285 374 143 282 691 602 955 988 138 102 781 676 767 715 717 154 498
-[39] 972 721 884 339 642 938 906 849 396 335 541 152 831 700 635 269 952 343 454
-[58] 823 796 185 866 705 268 487 836 832 290 755 442 883 511 589 896 469 786 247
-[77] 616 536 793 445 207 588 342</code></pre>
+ [1] 529 912 262 294 882 407 551 350 844 829 669 805 498 676 827 910 834 419 630
+[20] 513 679 348 806 584 809 687 418 174 272 237 400 884 879 594 672 277 240 885
+[39] 660 447 658 399 511 235 953 264 977 248 367 740 917 994 459 338 487 771 205
+[58] 236 250 822 425 724 792 701 492 472 401 958  96 552 556 969 362 224 297 499
+[77] 988 185 428 443 309 493 129 713 479 363 281 739 856 445</code></pre>
 <p>Here’s another way you can do the same thing:</p>
 <pre class="r"><code># Save the result of your logical test in a new vector
 verdicts &lt;- y &gt; 90
 
 # Use that vector to subset y
 y[verdicts]
- [1] 799 751 313 946 933 542 764 156 551 208 450 174 907 422 150 228 191 176 516
-[20] 549 585 285 374 143 282 691 602 955 988 138 102 781 676 767 715 717 154 498
-[39] 972 721 884 339 642 938 906 849 396 335 541 152 831 700 635 269 952 343 454
-[58] 823 796 185 866 705 268 487 836 832 290 755 442 883 511 589 896 469 786 247
-[77] 616 536 793 445 207 588 342</code></pre>
+ [1] 529 912 262 294 882 407 551 350 844 829 669 805 498 676 827 910 834 419 630
+[20] 513 679 348 806 584 809 687 418 174 272 237 400 884 879 594 672 277 240 885
+[39] 660 447 658 399 511 235 953 264 977 248 367 740 917 994 459 338 487 771 205
+[58] 236 250 822 425 724 792 701 492 472 401 958  96 552 556 969 362 224 297 499
+[77] 988 185 428 443 309 493 129 713 479 363 281 739 856 445</code></pre>
 <p>You can use double logical tests too. For example, what if you want all elements between the values 70 and 90?</p>
 <pre class="r"><code>verdicts &lt;- y &gt; 70 &amp; y &lt; 90
 y[verdicts]
-[1] 86 87 77</code></pre>
+[1] 81 82</code></pre>
 <div id="review-assignment" class="section level3 unnumbered">
 <h3>Review assignment</h3>
 <p><strong>1.</strong> Create a vector named <code>nummies</code> of all numbers from 1 to 100</p>
@@ -2287,10 +2287,10 @@ library(wesanderson)</code></pre>
 <h2>Calling functions from a package</h2>
 <p>Most functions from external packages can be used by simply typing the name of the function. For example, the package <code>fun</code> contains a function for generating a random password:</p>
 <pre class="r"><code>random_password(length=24)
-[1] &quot;yUtIBH}7R#L5Np6&amp;(?@=li`^&quot;</code></pre>
+[1] &quot;HU;MN.nmRW$*V(bg=DYz+1s/&quot;</code></pre>
 <p>Sometimes, however, <code>R</code> can get confused if a new package contains a function that has the same name of some function from a different package. If <code>R</code> seems confused about a function you are calling, it can help to specify which package the function can be found in. This is done using the syntax <code>&lt;package_name&gt;::&lt;function_name&gt;</code>. For example, the following command is a fine alternative to the command above:</p>
 <pre class="r"><code>fun::random_password(length=24)
-[1] &quot;_=n4#2W!bETK?y+SCr8G([ws&quot;</code></pre>
+[1] &quot;(L^,4RCMx0_qml/2?%b]O5[3&quot;</code></pre>
 <p>Note that this was done in the example above using the <code>devtools</code> package.</p>
 <div id="side-notes" class="section level3 unnumbered">
 <h3>Side notes</h3>
@@ -3741,7 +3741,7 @@ abline((SUMMARY$coefficients[1,1]+SUMMARY$coefficients[3,1]),(SUMMARY$coefficien
 <p>Get today’s date:</p>
 <pre class="r"><code>today &lt;- today()</code></pre>
 <pre class="r"><code>str(today)
- Date[1:1], format: &quot;2026-01-13&quot;</code></pre>
+ Date[1:1], format: &quot;2026-01-14&quot;</code></pre>
 <p>This looks like a simple character string, but it is not. There are all sorts of date-time calculations in the background.</p>
 <p>To demonstrate this, let’s bring in a simple string:</p>
 <pre class="r"><code>my_birthday &lt;- &#39;1985-11-07&#39;
@@ -3752,27 +3752,27 @@ str(my_birthday)
 <p>… but this does not:</p>
 <pre class="r"><code>my_birthday &lt;- as_date(my_birthday)
 today - my_birthday
-Time difference of 14677 days</code></pre>
+Time difference of 14678 days</code></pre>
 </div>
 <div id="the-datetime-class" class="section level3 unnumbered">
 <h3>The <code>datetime</code> class</h3>
 <p>When you are working with a <code>datetime</code> object, you can add and subtract time to it.</p>
 <pre class="r"><code>n &lt;- now() 
 n
-[1] &quot;2026-01-13 15:44:21 GMT&quot;</code></pre>
+[1] &quot;2026-01-14 08:56:26 GMT&quot;</code></pre>
 <p>Add or substract seconds:</p>
 <pre class="r"><code>n + seconds(1)
-[1] &quot;2026-01-13 15:44:22 GMT&quot;</code></pre>
+[1] &quot;2026-01-14 08:56:27 GMT&quot;</code></pre>
 <p>Add or subtract hours:</p>
 <pre class="r"><code>n - hours(5)
-[1] &quot;2026-01-13 10:44:21 GMT&quot;</code></pre>
+[1] &quot;2026-01-14 03:56:26 GMT&quot;</code></pre>
 <p>Simplify to just the date:</p>
 <pre class="r"><code>as_date(n)
-[1] &quot;2026-01-13&quot;</code></pre>
+[1] &quot;2026-01-14&quot;</code></pre>
 <p>See how time flies:</p>
 <pre class="r"><code>later &lt;- now()
 later
-[1] &quot;2026-01-13 15:44:22 GMT&quot;</code></pre>
+[1] &quot;2026-01-14 08:56:27 GMT&quot;</code></pre>
 </div>
 </div>
 <div id="common-tasks" class="section level2 unnumbered">
@@ -3830,7 +3830,7 @@ year(datetime)
 <p>Adjust timezones for dates:</p>
 <pre class="r"><code># Today&#39;s date where I am
 today()
-[1] &quot;2026-01-13&quot;
+[1] &quot;2026-01-14&quot;
 
 # Today&#39;s date in New Zealand
 today(tzone=&#39;NZ&#39;)
@@ -3838,14 +3838,14 @@ today(tzone=&#39;NZ&#39;)
 <p>Adjust time zones for date-times:</p>
 <pre class="r"><code># Time where I am
 now()
-[1] &quot;2026-01-13 15:44:24 GMT&quot;
+[1] &quot;2026-01-14 08:56:28 GMT&quot;
 
 # Time in UTC / GMT (which are synonymous)
 now(&#39;UTC&#39;)
-[1] &quot;2026-01-13 15:44:24 UTC&quot;
+[1] &quot;2026-01-14 08:56:29 UTC&quot;
 
 now(&#39;GMT&#39;)
-[1] &quot;2026-01-13 15:44:24 GMT&quot;</code></pre>
+[1] &quot;2026-01-14 08:56:29 GMT&quot;</code></pre>
 <p>Don’t know what time zone your computer is working in? Use this function:</p>
 <pre><code>[1] &quot;Europe/London&quot;</code></pre>
 <p>To get a list of time zones accepted in <code>R</code>, use the function <code>OlsonNames()</code> (there are about 500 options):</p>
@@ -3870,11 +3870,11 @@ now(&#39;GMT&#39;)
 <pre class="r"><code># Get current time in UTC/GMT
 n &lt;- now(&#39;UTC&#39;)
 n
-[1] &quot;2026-01-13 15:44:24 UTC&quot;
+[1] &quot;2026-01-14 08:56:29 UTC&quot;
 
 # Change timezone to Central Standard Time without changing time: 
 force_tz(n,tzone=&#39;America/Chicago&#39;)
-[1] &quot;2026-01-13 15:44:24 CST&quot;</code></pre>
+[1] &quot;2026-01-14 08:56:29 CST&quot;</code></pre>
 </div>
 <div id="using-timestamps-instead" class="section level3 unnumbered">
 <h3>Using timestamps instead</h3>
@@ -3882,20 +3882,20 @@ force_tz(n,tzone=&#39;America/Chicago&#39;)
 <p>Timesetamps record the number of seconds that have passed since midnight GMT on January 1, 1970. It doesn’t matter which timezone you are standing in; the seconds that have passed since that moment will be the same:</p>
 <pre class="r"><code># Time where I am
 now() %&gt;% as.numeric()
-[1] 1768319065
+[1] 1768380989
 
 now(&#39;UTC&#39;) %&gt;% as.numeric()
-[1] 1768319065</code></pre>
+[1] 1768380989</code></pre>
 <p>Timestamps can simplify things when you are doing a lot of adding and substracting with time. Timestamps are just seconds; they are just numbers. So they are much less of a black box than <code>datetime</code> objects.</p>
 <p>You can always convert from a timestamp back into a <code>datetime</code> object:</p>
 <pre class="r"><code># Convert to timestamp
 ts &lt;- now() %&gt;% as.numeric()
 ts
-[1] 1768319065
+[1] 1768380990
 
 # Convert back to datetime object
 ts %&gt;% as_datetime()
-[1] &quot;2026-01-13 15:44:25 UTC&quot;</code></pre>
+[1] &quot;2026-01-14 08:56:29 UTC&quot;</code></pre>
 </div>
 <div id="exercises-9" class="section level3 unnumbered">
 <h3>Exercises</h3>
