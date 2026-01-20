@@ -1,0 +1,225 @@
+
+---
+title: "Sample Map Exercise in R"
+author: Thank Eliott for this
+date: "`r format(Sys.Date())`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: false
+    theme: readable
+---
+
+# Goal
+We will make a sample map with points and labels. We will:
+
+1. Load packages
+2. Get a world map
+3. Create a table of sites (with latitude/longitude)
+4. Plot the map and add points and labels
+5. Add a scale bar and a north arrow
+6. Adjust colors, sizes, and the map view
+
+# Something to know
+This code was provided by Eliott from CongoFor1.5. He used this code to generate a map for this paper. With coding you learn a lot by doing and by googling. The point of this exercise is to show you what you can do with R.
+
+You might have issues with internet connection. You might have issues with your version of R. The thing as researchers that we need to learn is how to troubleshoot. So try to work with this and see what happens.
+
+
+# Setup
+
+```{r setup, message=FALSE, warning=FALSE}
+# If you do not have these packages, uncomment the next line to install them once:
+# install.packages(c("rnaturalearth", "rnaturalearthdata", "sf", "ggplot2", "ggrepel", "ggspatial", "data.table"))
+
+library(rnaturalearth)
+library(ggspatial)
+library(ggrepel)
+library(ggplot2)
+library(sf)
+library(data.table)
+library(grid) # for unit() used by north arrow/scale
+```
+
+
+# Get a world map
+We download a simple world map in **sf** format so it works with **ggplot2**.
+
+```{r world}
+world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+```
+
+
+# Create the site table
+Each site has a name, latitude, longitude, total disturbed area (ha), and temporal depth (years).
+
+```{r data}
+coord <- data.table::data.table(
+  Experiment = c("Braga-Vainilla", "Lobillo", "Corinto", "Paracou", "Regina", "Tapajos", "Tirimbina", "Tortue"),
+  lat = c(-4.92, -4.92, 10.10, 5.18, 4.13, -3.58, 10.41, 4.22),
+  lon = c(-73.73, -73.73, -83.50, -52.53, -52.19, -54.50, -84.11, -52.41),
+  area = c(4*1, 2*1, 3*1, 36*1.5625, 8*1, 3*.75, 8*1, 8*1),
+  tdepth = c(2008-1993, 2008-1993, 2010-1990, 2021-1984, 2019-2006, 2012-1981, 2015-1989, 2018-2002)
+)
+
+# Small nudges for labels so text doesn't sit on top of points
+nudgeX <- c(-1, 3, 1.5, 0.5, 0.25, 0, -0.5, -3.5)
+nudgeY <- c(1.5, -1, 1.5, 3, -3, 1.5, -2.7, 0.5)
+```
+
+
+# Step 1 — Basic world map
+
+```{r basic-map, fig.width=8, fig.height=4.5}
+ ggplot(data = world) +
+   geom_sf()
+```
+
+
+# Step 2 — Add the points (color = temporal depth, size = area)
+
+```{r add-points, fig.width=8, fig.height=4.5}
+ ggplot(data = world) +
+   geom_sf() +
+   geom_spatial_point(
+     data = coord,
+     aes(x = lon, y = lat, colour = tdepth, size = area),
+     alpha = 0.7
+   )
+```
+
+
+# Step 3 — Add an outline ring around points (for contrast)
+
+```{r outline, fig.width=8, fig.height=4.5}
+ ggplot(data = world) +
+   geom_sf() +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, colour = tdepth, size = area),
+     alpha = 0.7
+   ) +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, size = area),
+     alpha = 0.7,
+     colour = "black",
+     shape = 1
+   )
+```
+
+
+# Step 4 — Add labels that do not overlap
+
+```{r labels, fig.width=8, fig.height=4.5}
+ ggplot(data = world) +
+   geom_sf() +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, colour = tdepth, size = area),
+     alpha = 0.7
+   ) +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, size = area),
+     alpha = 0.7,
+     colour = "black",
+     shape = 1
+   ) +
+   geom_spatial_text_repel(
+     data = coord,
+     aes(lon, lat, label = Experiment),
+     nudge_x = nudgeX,
+     nudge_y = nudgeY
+   )
+```
+
+
+# Step 5 — Add a scale bar and a north arrow
+
+```{r scalebar-north, fig.width=8, fig.height=4.5}
+ ggplot(data = world) +
+   geom_sf() +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, colour = tdepth, size = area),
+     alpha = 0.7
+   ) +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, size = area),
+     alpha = 0.7,
+     colour = "black",
+     shape = 1
+   ) +
+   geom_spatial_text_repel(
+     data = coord,
+     aes(lon, lat, label = Experiment),
+     nudge_x = nudgeX,
+     nudge_y = nudgeY
+   ) +
+   annotation_scale(location = "bl", width_hint = 0.2) +
+   annotation_north_arrow(
+     location = "bl",
+     which_north = "true",
+     pad_x = unit(0.25, "in"),
+     pad_y = unit(0.5, "in"),
+     style = north_arrow_fancy_orienteering
+   )
+```
+
+
+# Step 6 — Zoom to the region of interest and tidy the legend/theme
+
+```{r final, fig.width=8, fig.height=4.5}
+ ggplot(data = world) +
+   geom_sf() +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, colour = tdepth, size = area),
+     alpha = 0.7
+   ) +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, size = area),
+     alpha = 0.7,
+     colour = "black",
+     shape = 1
+   ) +
+   geom_spatial_text_repel(
+     data = coord,
+     aes(lon, lat, label = Experiment),
+     nudge_x = nudgeX,
+     nudge_y = nudgeY
+   ) +
+   annotation_scale(location = "bl", width_hint = 0.2) +
+   annotation_north_arrow(
+     location = "bl", which_north = "true",
+     pad_x = unit(0.25, "in"), pad_y = unit(0.5, "in"),
+     style = north_arrow_fancy_orienteering
+   ) +
+   coord_sf(xlim = c(-85, -51), ylim = c(-6.5, 12)) +
+   scale_colour_gradientn(
+     name = "Temporal depth (years)",
+     colors = c("yellow", "darkorange1", "darkorchid"),
+     trans = "log10"
+   ) +
+   scale_size(range = c(3, 12), breaks = c(2, 4, 8, 56), trans = "log10") +
+   guides(colour = guide_colorbar(order = 1), fill = guide_legend(order = 0)) +
+   labs(x = "Longitude", y = "Latitude", size = "Total area \nof disturbed \nplots (ha)") +
+   theme_bw()
+```
+
+
+# Troubleshooting
+- **Blank map after `coord_sf(...)`:** Remove `coord_sf` to see the full map, then adjust `xlim` and `ylim`. West longitudes are negative.
+- **Labels overlap or look messy:** Adjust `nudge_x` and `nudge_y` values.
+- **Package install issues (sf/PROJ/GDAL):** Restart R and try installing `sf` again. On some systems, you may need system dependencies. 
+
+
+# Challenge ideas (optional)
+- Change the color palette (e.g., try `viridis::scale_color_viridis(trans = "log10")`).
+- Change point shape (e.g., use `shape = 21` and set `fill = ...`).
+- Save the figure with `ggsave("experiments_map.png", width = 8, height = 5, dpi = 300)`.
+- Add a title and caption with `labs(title = "My study sites", caption = "Data: your source")`.
