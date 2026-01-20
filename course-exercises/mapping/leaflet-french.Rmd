@@ -1,0 +1,294 @@
+# Cartes interactives
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+
+```
+
+#### Objectifs d'apprentissage {-}
+
+- Apprendre à créer des cartes interactives et esthétiques avec `leaflet`.
+
+- Comprendre pourquoi `leaflet` est un outil si performant et précieux pour la science des données reproductible.
+
+## Cartographie avec `leaflet` {-}
+
+Si vous connaissez les bons packages, créer de superbes cartes avec `R` est en réalité assez simple. La panoplie d'outils de visualisation spatiale de `R` est l'un des atouts qui le distinguent des autres outils de programmation open source.
+
+Savoir créer une carte par programmation est une compétence précieuse. Et nous pouvons le faire rapidement et facilement avec `R` grâce au package `leaflet`.
+
+Chargeons-le:  
+
+```{r,echo=TRUE,collapse=TRUE, eval = FALSE}
+install.packages('leaflet')
+```
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE, message=FALSE}
+library(leaflet)
+
+# Some other packages too:
+library(dplyr)
+library(ggplot2)
+```
+
+Pour nous exercer à créer une carte, concentrons-nous sur la localisation de Sewanee : l'Université du Sud, dans le Tennessee, aux États-Unis. 
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+sewanee <- data.frame(longitude=-85.9211, 
+                      latitude=35.2031)
+```
+
+Pour commencer une carte `leaflet`, il suffit de taper `leaflet()`. Cela crée un canevas vierge.
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+leaflet()
+```
+
+&nbsp;  
+
+Ajoutez maintenant la carte de fond. Pour ce faire, `leaflet` utilise des « tuiles ». Les tuiles sont essentiellement des images : de petites images assemblées pour donner l’impression d’une carte continue.
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+leaflet() %>% addTiles() 
+```
+
+&nbsp;  
+
+Essayez de zoomer sur cette carte pour vous rendre compte de la puissance de ces cartes interactives de type « feuillet ».
+
+Pour centrer la carte sur une zone d'intérêt spécifique, ajoutez des marqueurs en fonction de vos données.
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+leaflet() %>% 
+    addTiles() %>% 
+    addMarkers(data=sewanee)
+```
+
+&nbsp;  
+
+Ta-dah! Voici votre carte. Essayez de zoomer et de dézoomer à nouveau.
+
+### Personnaliser votre carte `leaflet` {-}
+
+Et pourquoi pas utiliser des images satellite ? 
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+leaflet() %>% 
+    addProviderTiles(providers$Esri.WorldImagery) %>% 
+    addMarkers(data=sewanee)
+```
+
+&nbsp;  
+
+Et pourquoi pas la topographie ?
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+leaflet() %>% 
+    addProviderTiles(providers$Esri.WorldTopoMap) %>% 
+    addMarkers(data=sewanee)
+```
+
+&nbsp;  
+
+Le package `leaflet` propose de nombreux autres styles de tuiles via la fonction `addProviderTiles()`. Pour prévisualiser toutes les options, consultez [ce site.](https://leaflet-extras.github.io/leaflet-providers/preview/)
+
+### Utilisation des marqueurs dans `leaflet` {-}
+
+Pour remplacer les marqueurs en forme de flèche par des cercles, utilisez plutôt `addCircleMarkers()`.
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+leaflet() %>% 
+    addProviderTiles(providers$Esri.WorldTopoMap) %>% 
+    addCircleMarkers(data=sewanee, 
+                     color = "firebrick",
+                     radius = 15)
+```
+
+&nbsp;  
+
+Pour ajouter des informations contextuelles lorsque vous cliquez sur votre marqueur, utilisez le champ de saisie `popup` :
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+leaflet() %>% 
+    addProviderTiles(providers$Esri.WorldTopoMap) %>% 
+    addCircleMarkers(data=sewanee, 
+                     color = "firebrick",
+                     radius = 15,
+                     popup = paste0('<b>YSR, yall.</b> <br>', 
+                                    'Lat: ',sewanee$longitude,'<br>',
+                                    'Lon: ',sewanee$latitude,'\n'))
+```
+
+&nbsp;  
+
+Cliquez sur le marqueur pour voir le résultat ! Notez que nous avons utilisé un peu de HTML pour améliorer la présentation du texte.
+
+### Cartographie des zones marines {-}
+
+Notez que `leaflet` est également utile pour la cartographie des zones marines.
+
+Par exemple, cartographiez la bathymétrie du bassin nord-est du Pacifique : 
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+leaflet() %>% 
+    addProviderTiles(providers$Esri.OceanBasemap) %>%
+    fitBounds(lng1 = -165,
+              lng2 = -100,
+              lat1 = 10,
+              lat2 = 50)
+```
+
+&nbsp;  
+
+Ou obtenez des images satellite d'une île au large des côtes de la Géorgie, aux États-Unis :
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+leaflet() %>% 
+    addProviderTiles(providers$Esri.WorldImagery) %>% 
+    fitBounds(lng1 = -81.2,
+              lng2 = -81.1,
+              lat1 = 31.54,
+              lat2 = 31.7)
+```
+
+
+## Géocodage {-}
+
+Pour vous familiariser rapidement avec la cartographie en `R`, le deuxième package à connaître est `tidygeocoder`. Ce package vous permet de géocoder une adresse postale. Le géocodage consiste à fournir la latitude et la longitude d'une adresse, ce qui vous permet de la localiser sur une carte.
+
+Tout d'abord, installez et chargez le package : 
+
+```{r,echo=TRUE,collapse=TRUE, eval = FALSE}
+install.packages('tidygeocoder')
+```
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+library(tidygeocoder)
+```
+
+Deuxièmement, créez un dataframe pour la ou les adresses que vous souhaitez cartographier :
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+addresses <- data.frame(name= 'White House', 
+                        addr = "1600 Pennsylvania Ave NW, Washington, DC")
+```
+
+Maintenant, géocodez :
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE, message=FALSE}
+lat_longs <- addresses %>%
+    geocode(addr, method = 'osm', lat = latitude , long = longitude)
+```
+
+Découvrez le résultat :
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+lat_longs
+```
+
+Et consultez votre carte :
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE, message=FALSE}
+leaflet(data=lat_longs) %>% 
+    addProviderTiles(providers$Stamen.Watercolor) %>% 
+    addMarkers()
+```
+
+&nbsp;  
+
+Vous pouvez également effectuer un **géocodage inverse**, c'est-à-dire obtenir l'adresse postale correspondant à des coordonnées de latitude et de longitude.
+
+Supposons que les coordonnées qui vous intéressent soient les suivantes : 
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+lat_longs <- data.frame(latitude=48.8584, 
+                        longitude=2.2945)
+```
+
+Maintenant, géocodage inverse :
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+reverse <- lat_longs %>%
+    reverse_geocode(lat = latitude, 
+                    long = longitude)
+```
+
+Découvrez le résultat :  
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+reverse
+```
+
+Ajoutez maintenant l'adresse postale sous forme de fenêtre contextuelle dans votre marqueur :  
+
+```{r,echo=TRUE,collapse=TRUE, eval = TRUE}
+leaflet() %>% 
+    addProviderTiles(providers$HikeBike.HikeBike) %>% 
+    addCircleMarkers(data=lat_longs, 
+                     color = "firebrick",
+                     radius = 15,
+                     popup = gsub(",",",<br>", reverse$address))
+```
+
+
+## Réflexions finales {-}
+
+Les cartes, même les plus simples, sont des visualisations de données incroyablement efficaces. La densité et la richesse des informations qu'elles contiennent sont impressionnantes !
+
+Toutes ces qualités sont décuplées avec une carte interactive. À chaque niveau de zoom, une nouvelle perspective s'offre à vous. À l'instar des applications « shiny », les cartes « leaflet » permettent à l'utilisateur de contrôler la manière dont il explore et comprend les données.
+
+## Exercices {-}
+
+**1.** Créez un nouveau document « Rmarkdown ». (Si vous ne savez pas ce qu'est un document Rmarkdown, créez un script R ou demandez des informations à votre formateur.)
+
+**2.** Créez un bloc de code. Dans ce bloc, importez des données sur les « conflits ». Pour ce faire, exécutez le code ci-dessous. (Le code ci-dessous est à utiliser dans un fichier RMarkdown. Si vous utilisez un script R, supprimez les lignes commençant par ```
+
+```{r,echo=TRUE,collapse=TRUE, eval = FALSE}
+download.file('https://raw.githubusercontent.com/databrew/intro-to-data-science/main/data/conflicts.RData',
+
+destfile = 'conflicts.RData')
+
+load('conflicts.RData')
+```
+
+Ces données proviennent de [https://ucdp.uu.se/encyclopedia](https://ucdp.uu.se/encyclopedia). Prenez une minute ou deux pour consulter le site web.
+
+**3.** Examinez les données. Quels champs sont susceptibles d'être géographiques ?
+
+**4.** Créez un graphique x-y simple en utilisant les champs géographiques.
+
+```{r,echo=FALSE,collapse=TRUE, eval = FALSE}
+ggplot(data = conflicts,
+
+aes(x = longitude,
+
+y = latitude)) +
+
+geom_point()
+
+```
+
+**5.** Créez un objet nommé `conflicts_afg`. Il doit représenter les conflits en Afghanistan.
+
+**6.** Coloriez les points en fonction de l'année.
+
+**7.** Au lieu de l'année, colorez les points en fonction du nombre de morts civiles (`deaths_civilians`).
+
+**8.** Coloriez les points en fonction de la date, mais ajustez leur taille en fonction du nombre de morts civiles (`deaths_civilians`).
+
+**9.** Créez une carte Leaflet des conflits dans un pays de votre choix.
+
+**10.** Utilisez `addTiles`.
+
+**11.** Utilisez `addProviderTiles` pour transformer votre carte en carte satellite.
+
+**12.** Explorez d'autres tuiles.
+
+**13.** Ajoutez des fenêtres contextuelles à vos cartes à l'aide de l'argument `popup`. `addMarkers`.
+
+**14.** Ajoutez `clusterOptions = markerClusterOptions()` pour regrouper vos points.
+
+**15.** Remplacez vos marqueurs par des « marqueurs circulaires ».
+
+**16.** Créez une carte de Brazzaville avec un repère indiquant votre position actuelle.
+
+**17.** Ajoutez un point représentant votre domicile à la carte précédente et modifiez la zone d'affichage.

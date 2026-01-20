@@ -234,6 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>16</b> <code>ggplot</code></a>
 <ul>
 <li class="chapter" data-level="" data-path="ggplot.html"><a href="ggplot.html#what-is-ggplot2"><i class="fa fa-check"></i>What is <code>ggplot2</code>?</a></li>
+<li class="chapter" data-level="" data-path="ggplot.html"><a href="ggplot.html#scatter-plot"><i class="fa fa-check"></i>Scatter plot</a></li>
 <li class="chapter" data-level="" data-path="ggplot.html"><a href="ggplot.html#bar-plot"><i class="fa fa-check"></i>Bar plot</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>17</b> Dataframe wrangling</a>
@@ -244,22 +245,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>IV Review exercises</b></span></li>
 <li class="chapter" data-level="18" data-path="rms-titanic.html"><a href="rms-titanic.html"><i class="fa fa-check"></i><b>18</b> <em>RMS Titanic</em></a></li>
-<li class="chapter" data-level="19" data-path="a-dplyr-survey.html"><a href="a-dplyr-survey.html"><i class="fa fa-check"></i><b>19</b> A <code>dplyr</code> survey</a></li>
-<li class="chapter" data-level="20" data-path="global-health-ggplot.html"><a href="global-health-ggplot.html"><i class="fa fa-check"></i><b>20</b> Global health &amp; <code>ggplot</code></a></li>
-<li class="chapter" data-level="21" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>21</b> Brazzaville’s climate</a></li>
-<li class="chapter" data-level="22" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>22</b> Cleaning messy data</a></li>
-<li class="chapter" data-level="23" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>23</b> River discharge, DOC and nitrate</a></li>
+<li class="chapter" data-level="19" data-path="global-health-ggplot.html"><a href="global-health-ggplot.html"><i class="fa fa-check"></i><b>19</b> Global health &amp; <code>ggplot</code></a></li>
+<li class="chapter" data-level="20" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>20</b> Brazzaville’s climate</a></li>
+<li class="chapter" data-level="21" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>21</b> Cleaning messy data</a></li>
+<li class="chapter" data-level="22" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>22</b> River discharge, DOC and nitrate</a></li>
 <li class="part"><span><b>V Extra Information</b></span></li>
-<li class="chapter" data-level="24" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>24</b> Working with dates &amp; times</a>
+<li class="chapter" data-level="23" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>23</b> Working with dates &amp; times</a>
 <ul>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>25</b> Working with text</a>
+<li class="chapter" data-level="24" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>24</b> Working with text</a>
 <ul>
 <li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>26</b> Special Characters</a></li>
+<li class="chapter" data-level="25" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>25</b> Special Characters</a></li>
 </ul>
 
       </nav>
@@ -316,9 +316,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>The penguins Data Frame<a href="data-visualization.html#the-penguins-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Your answers to the questions above are in the <code>penguins</code> data frame found in <code>palmerpenguins</code>.</p>
 <p>To access the dataset and necessary features to build a plot, load the following libraries:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-visualization.html#cb51-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb51-2"><a href="data-visualization.html#cb51-2" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb51-3"><a href="data-visualization.html#cb51-3" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data-visualization.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="data-visualization.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-3"><a href="data-visualization.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span></code></pre></div>
 <p><em>You might not know what a library is right now, but trust the process. You will learn as we go.</em></p>
 <p><code>penguins</code> is a dataframe stored in the package <code>palmerpenguins</code>, which was made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER.</p>
 <p>A <strong>data frame</strong> is a rectangular collection of variables (in columns) and observations (in rows).</p>
@@ -333,50 +333,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><em>Tabular data</em> - A set of values, each associated with a variable and an observation. Tabular data is <em>tidy</em> if each value is placed in its own ‘cell’, each variable in its own column, and each observation in its own row.</li>
 </ul>
 <p>Type the following:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-visualization.html#cb52-1" tabindex="-1"></a>penguins</span>
-<span id="cb52-2"><a href="data-visualization.html#cb52-2" tabindex="-1"></a><span class="co"># A tibble: 344 × 8</span></span>
-<span id="cb52-3"><a href="data-visualization.html#cb52-3" tabindex="-1"></a>   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g</span>
-<span id="cb52-4"><a href="data-visualization.html#cb52-4" tabindex="-1"></a>   <span class="sc">&lt;</span>fct<span class="sc">&gt;</span>   <span class="er">&lt;</span>fct<span class="sc">&gt;</span>              <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>         <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>             <span class="er">&lt;</span>int<span class="sc">&gt;</span>       <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
-<span id="cb52-5"><a href="data-visualization.html#cb52-5" tabindex="-1"></a> <span class="dv">1</span> Adelie  Torgersen           <span class="fl">39.1</span>          <span class="fl">18.7</span>               <span class="dv">181</span>        <span class="dv">3750</span></span>
-<span id="cb52-6"><a href="data-visualization.html#cb52-6" tabindex="-1"></a> <span class="dv">2</span> Adelie  Torgersen           <span class="fl">39.5</span>          <span class="fl">17.4</span>               <span class="dv">186</span>        <span class="dv">3800</span></span>
-<span id="cb52-7"><a href="data-visualization.html#cb52-7" tabindex="-1"></a> <span class="dv">3</span> Adelie  Torgersen           <span class="fl">40.3</span>          <span class="dv">18</span>                 <span class="dv">195</span>        <span class="dv">3250</span></span>
-<span id="cb52-8"><a href="data-visualization.html#cb52-8" tabindex="-1"></a> <span class="dv">4</span> Adelie  Torgersen           <span class="cn">NA</span>            <span class="cn">NA</span>                  <span class="cn">NA</span>          <span class="cn">NA</span></span>
-<span id="cb52-9"><a href="data-visualization.html#cb52-9" tabindex="-1"></a> <span class="dv">5</span> Adelie  Torgersen           <span class="fl">36.7</span>          <span class="fl">19.3</span>               <span class="dv">193</span>        <span class="dv">3450</span></span>
-<span id="cb52-10"><a href="data-visualization.html#cb52-10" tabindex="-1"></a> <span class="dv">6</span> Adelie  Torgersen           <span class="fl">39.3</span>          <span class="fl">20.6</span>               <span class="dv">190</span>        <span class="dv">3650</span></span>
-<span id="cb52-11"><a href="data-visualization.html#cb52-11" tabindex="-1"></a> <span class="dv">7</span> Adelie  Torgersen           <span class="fl">38.9</span>          <span class="fl">17.8</span>               <span class="dv">181</span>        <span class="dv">3625</span></span>
-<span id="cb52-12"><a href="data-visualization.html#cb52-12" tabindex="-1"></a> <span class="dv">8</span> Adelie  Torgersen           <span class="fl">39.2</span>          <span class="fl">19.6</span>               <span class="dv">195</span>        <span class="dv">4675</span></span>
-<span id="cb52-13"><a href="data-visualization.html#cb52-13" tabindex="-1"></a> <span class="dv">9</span> Adelie  Torgersen           <span class="fl">34.1</span>          <span class="fl">18.1</span>               <span class="dv">193</span>        <span class="dv">3475</span></span>
-<span id="cb52-14"><a href="data-visualization.html#cb52-14" tabindex="-1"></a><span class="dv">10</span> Adelie  Torgersen           <span class="dv">42</span>            <span class="fl">20.2</span>               <span class="dv">190</span>        <span class="dv">4250</span></span>
-<span id="cb52-15"><a href="data-visualization.html#cb52-15" tabindex="-1"></a><span class="co"># ℹ 334 more rows</span></span>
-<span id="cb52-16"><a href="data-visualization.html#cb52-16" tabindex="-1"></a><span class="co"># ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data-visualization.html#cb2-1" tabindex="-1"></a>penguins</span>
+<span id="cb2-2"><a href="data-visualization.html#cb2-2" tabindex="-1"></a><span class="do">## # A tibble: 344 × 8</span></span>
+<span id="cb2-3"><a href="data-visualization.html#cb2-3" tabindex="-1"></a><span class="do">##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g</span></span>
+<span id="cb2-4"><a href="data-visualization.html#cb2-4" tabindex="-1"></a><span class="do">##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;</span></span>
+<span id="cb2-5"><a href="data-visualization.html#cb2-5" tabindex="-1"></a><span class="do">##  1 Adelie  Torgersen           39.1          18.7               181        3750</span></span>
+<span id="cb2-6"><a href="data-visualization.html#cb2-6" tabindex="-1"></a><span class="do">##  2 Adelie  Torgersen           39.5          17.4               186        3800</span></span>
+<span id="cb2-7"><a href="data-visualization.html#cb2-7" tabindex="-1"></a><span class="do">##  3 Adelie  Torgersen           40.3          18                 195        3250</span></span>
+<span id="cb2-8"><a href="data-visualization.html#cb2-8" tabindex="-1"></a><span class="do">##  4 Adelie  Torgersen           NA            NA                  NA          NA</span></span>
+<span id="cb2-9"><a href="data-visualization.html#cb2-9" tabindex="-1"></a><span class="do">##  5 Adelie  Torgersen           36.7          19.3               193        3450</span></span>
+<span id="cb2-10"><a href="data-visualization.html#cb2-10" tabindex="-1"></a><span class="do">##  6 Adelie  Torgersen           39.3          20.6               190        3650</span></span>
+<span id="cb2-11"><a href="data-visualization.html#cb2-11" tabindex="-1"></a><span class="do">##  7 Adelie  Torgersen           38.9          17.8               181        3625</span></span>
+<span id="cb2-12"><a href="data-visualization.html#cb2-12" tabindex="-1"></a><span class="do">##  8 Adelie  Torgersen           39.2          19.6               195        4675</span></span>
+<span id="cb2-13"><a href="data-visualization.html#cb2-13" tabindex="-1"></a><span class="do">##  9 Adelie  Torgersen           34.1          18.1               193        3475</span></span>
+<span id="cb2-14"><a href="data-visualization.html#cb2-14" tabindex="-1"></a><span class="do">## 10 Adelie  Torgersen           42            20.2               190        4250</span></span>
+<span id="cb2-15"><a href="data-visualization.html#cb2-15" tabindex="-1"></a><span class="do">## # ℹ 334 more rows</span></span>
+<span id="cb2-16"><a href="data-visualization.html#cb2-16" tabindex="-1"></a><span class="do">## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</span></span></code></pre></div>
 <p>What do you see? How many columns are there? <em>Note that it says tibble on top of this preview. In the tidyverse, we use special data frames called tibbles</em></p>
 <p>What do you see with this?</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-visualization.html#cb53-1" tabindex="-1"></a><span class="fu">glimpse</span>(penguins)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data-visualization.html#cb3-1" tabindex="-1"></a><span class="fu">glimpse</span>(penguins)</span></code></pre></div>
 <p>What are the variables in <code>penguins</code>?</p>
 </div>
 <div id="the-ultimate-goal" class="section level2 unnumbered hasAnchor">
 <h2>The ultimate goal<a href="data-visualization.html#the-ultimate-goal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><img src="figures/unnamed-chunk-58-1.png" width="925.44" /></p>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="creating-a-ggplot" class="section level2 unnumbered hasAnchor">
 <h2>Creating a ggplot<a href="data-visualization.html#creating-a-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>With ggplot2, you begin with the function ggplot(), defining a plot object that you then add <em>layers</em> to. Type the following:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data-visualization.html#cb54-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-59-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data-visualization.html#cb4-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins)</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Why is the plot empty?</p>
 <p><code>ggplot(data = penguins)</code> creates an empty graph that is ready to explain the penguins data, but since we haven’t told it to visualize it yet, for now it’s empty. You can think of it like an empty canvas where you’ll paint the remaining layers of your plot.</p>
 <p>What do we need to do next then?</p>
 <p>Tell <code>ggplot()</code> how the information from our data will be visualized. The <code>mapping</code> argument of <code>ggplot()</code> function defines how variables in your dataset are mapped to visual properties (<em>aesthetics</em>) of your plot. The <code>mapping</code> argument is always defined in the <code>aes()</code> function, and the x and y arguments of <code>aes()</code> specify which variables to map to the x- and y- axes. According to the code below, what will we be on the x- and y- axes? What do you see when you run the code below?</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-visualization.html#cb55-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
-<span id="cb55-2"><a href="data-visualization.html#cb55-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g))</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-60-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data-visualization.html#cb5-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
+<span id="cb5-2"><a href="data-visualization.html#cb5-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g))</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Let’s put the penguins on the plot now. To do so, we need to define a <code>geom</code>: a geometrical object that a plot uses to represent data. You can do this in <code>ggplot()</code> using functions that start with <code>geom_</code>.</p>
 <p>Different types of <code>geom_</code> functions are <code>geom_bar()</code>, <code>geom_line()</code>, <code>geom_boxplot()</code>, <code>geom_point()</code>. What kinds of plots do you think these make?</p>
 <p>Let’s use the function <code>geom_point()</code> to add layers of points to your plot, which creates a scatterplot.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-visualization.html#cb56-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
-<span id="cb56-2"><a href="data-visualization.html#cb56-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb56-3"><a href="data-visualization.html#cb56-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-61-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-visualization.html#cb6-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
+<span id="cb6-2"><a href="data-visualization.html#cb6-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="data-visualization.html#cb6-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb6-4"><a href="data-visualization.html#cb6-4" tabindex="-1"></a><span class="do">## Warning: Removed 2 rows containing missing values or values outside the scale range</span></span>
+<span id="cb6-5"><a href="data-visualization.html#cb6-5" tabindex="-1"></a><span class="do">## (`geom_point()`).</span></span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Now that we can see our data, what does the relationship between flipper length and body mass look like? Positive?</p>
 <p>Before moving on, let’s review the warning message we got: <code>"Removed 2 rows containing missing values (geom_point()).</code></p>
 <p>What does this mean? There are two penguins in our dataset with missing body mass and/or flipper length values.</p>
@@ -386,93 +388,93 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Adding aesthetics and layers<a href="data-visualization.html#adding-aesthetics-and-layers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Scatterplots are useful for displaying the relationship between two numerical variables, but it’s always a good idea to be skeptical of any apparent relationship between two variables and ask if there may be other variables that explain or chant the nature of this apparent relationship. What’s a variable that may be influencing this relationship?</p>
 <p>Would incorporating species into our plot reveal any additional insights? Yes, it would. Let’s do this by representing species with different colored points. To acheive this, would we modify the aesthetic or the geom?</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-visualization.html#cb57-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
-<span id="cb57-2"><a href="data-visualization.html#cb57-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb57-3"><a href="data-visualization.html#cb57-3" tabindex="-1"></a>                     <span class="at">y =</span> body_mass_g,</span>
-<span id="cb57-4"><a href="data-visualization.html#cb57-4" tabindex="-1"></a>                     <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb57-5"><a href="data-visualization.html#cb57-5" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-62-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data-visualization.html#cb7-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
+<span id="cb7-2"><a href="data-visualization.html#cb7-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb7-3"><a href="data-visualization.html#cb7-3" tabindex="-1"></a>                     <span class="at">y =</span> body_mass_g,</span>
+<span id="cb7-4"><a href="data-visualization.html#cb7-4" tabindex="-1"></a>                     <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="data-visualization.html#cb7-5" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Did we assign a color to each species intentionally?</p>
 <p>ggplot2 will automatically assign a unique value of the aesthetic (here a unique color) to each unique level of the variable (each of the three species), a process known as <em>scaling</em>. ggplot2 also adds a legend.</p>
 <p>Next let’s add another layer: a smooth curve displaying the relationship between body mass and flipper length. How can we add this to the existing plot?</p>
 <p>Since this is a new geometric object representing our data, we will add a new geom as a layer on top of our point geom: <code>geom_smooth()</code>. And we will specify that we want to draw the line of best fit based on a linear model with <code>method = "lm"</code>.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-visualization.html#cb58-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
-<span id="cb58-2"><a href="data-visualization.html#cb58-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
-<span id="cb58-3"><a href="data-visualization.html#cb58-3" tabindex="-1"></a>                     <span class="at">y =</span> body_mass_g,</span>
-<span id="cb58-4"><a href="data-visualization.html#cb58-4" tabindex="-1"></a>                     <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb58-5"><a href="data-visualization.html#cb58-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb58-6"><a href="data-visualization.html#cb58-6" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-63-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data-visualization.html#cb8-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
+<span id="cb8-2"><a href="data-visualization.html#cb8-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb8-3"><a href="data-visualization.html#cb8-3" tabindex="-1"></a>                     <span class="at">y =</span> body_mass_g,</span>
+<span id="cb8-4"><a href="data-visualization.html#cb8-4" tabindex="-1"></a>                     <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="data-visualization.html#cb8-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb8-6"><a href="data-visualization.html#cb8-6" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Does your plot look like the plot from the Ultimate Goal?</p>
 <p>When aesthetic mappings are defined in <code>ggplot()</code>, at the <em>global</em> level, they’re passed down to each of the subsequent geom layers of the plot. However, each geom function in ggplot2 can take a <code>mapping</code> argument, which allows for aesthetic mappings at the <em>local</em> level that are added to those inherited from the global level.</p>
 <p>How can we get the points to be colored based on species but not have the lines separated out for them?</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-visualization.html#cb59-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
-<span id="cb59-2"><a href="data-visualization.html#cb59-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb59-3"><a href="data-visualization.html#cb59-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span> </span>
-<span id="cb59-4"><a href="data-visualization.html#cb59-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-64-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data-visualization.html#cb9-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
+<span id="cb9-2"><a href="data-visualization.html#cb9-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="data-visualization.html#cb9-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span> </span>
+<span id="cb9-4"><a href="data-visualization.html#cb9-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>What happened to the legend? It was updated.</p>
 <p>Finally, let’s add/update our labels and improve the color palette to be color-blind safe with a function from the <code>ggthemes</code> package.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-visualization.html#cb60-1" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb60-2"><a href="data-visualization.html#cb60-2" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
-<span id="cb60-3"><a href="data-visualization.html#cb60-3" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm,</span>
-<span id="cb60-4"><a href="data-visualization.html#cb60-4" tabindex="-1"></a>                <span class="at">y =</span> body_mass_g)</span>
-<span id="cb60-5"><a href="data-visualization.html#cb60-5" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb60-6"><a href="data-visualization.html#cb60-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species,</span>
-<span id="cb60-7"><a href="data-visualization.html#cb60-7" tabindex="-1"></a>                 <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb60-8"><a href="data-visualization.html#cb60-8" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb60-9"><a href="data-visualization.html#cb60-9" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb60-10"><a href="data-visualization.html#cb60-10" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Body mass and flipper length&quot;</span>,</span>
-<span id="cb60-11"><a href="data-visualization.html#cb60-11" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Dimensions for Adelie, Chinstrap, and Gentoo Penguins&quot;</span>,</span>
-<span id="cb60-12"><a href="data-visualization.html#cb60-12" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Flipper length (mm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Body mass (g)&quot;</span>,</span>
-<span id="cb60-13"><a href="data-visualization.html#cb60-13" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;Species&quot;</span></span>
-<span id="cb60-14"><a href="data-visualization.html#cb60-14" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb60-15"><a href="data-visualization.html#cb60-15" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>()</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-65-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data-visualization.html#cb10-1" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb10-2"><a href="data-visualization.html#cb10-2" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
+<span id="cb10-3"><a href="data-visualization.html#cb10-3" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm,</span>
+<span id="cb10-4"><a href="data-visualization.html#cb10-4" tabindex="-1"></a>                <span class="at">y =</span> body_mass_g)</span>
+<span id="cb10-5"><a href="data-visualization.html#cb10-5" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="data-visualization.html#cb10-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species,</span>
+<span id="cb10-7"><a href="data-visualization.html#cb10-7" tabindex="-1"></a>                 <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="data-visualization.html#cb10-8" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="data-visualization.html#cb10-9" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-10"><a href="data-visualization.html#cb10-10" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Body mass and flipper length&quot;</span>,</span>
+<span id="cb10-11"><a href="data-visualization.html#cb10-11" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Dimensions for Adelie, Chinstrap, and Gentoo Penguins&quot;</span>,</span>
+<span id="cb10-12"><a href="data-visualization.html#cb10-12" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Flipper length (mm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Body mass (g)&quot;</span>,</span>
+<span id="cb10-13"><a href="data-visualization.html#cb10-13" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;Species&quot;</span></span>
+<span id="cb10-14"><a href="data-visualization.html#cb10-14" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb10-15"><a href="data-visualization.html#cb10-15" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>()</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="exercise-1" class="section level2 unnumbered hasAnchor">
 <h2>Exercise 1<a href="data-visualization.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Do the exercises from the book. For number 8 use the graph below:</p>
-<p><img src="figures/unnamed-chunk-66-1.png" width="925.44" /></p>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div id="ggplot2-calls" class="section level2 unnumbered hasAnchor">
 <h2>ggplot2 calls<a href="data-visualization.html#ggplot2-calls" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Look at the following. Does this code work? What’s different about it?</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-visualization.html#cb61-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb61-2"><a href="data-visualization.html#cb61-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data-visualization.html#cb11-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="data-visualization.html#cb11-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p>This shorthand form of code works, but the following also works:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-visualization.html#cb62-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb62-2"><a href="data-visualization.html#cb62-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-visualization.html#cb63-1" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb63-2"><a href="data-visualization.html#cb63-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb63-3"><a href="data-visualization.html#cb63-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-69-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data-visualization.html#cb12-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="data-visualization.html#cb12-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data-visualization.html#cb13-1" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="data-visualization.html#cb13-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="data-visualization.html#cb13-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
 <div id="categorical-variables" class="section level2 unnumbered hasAnchor">
 <h2>Categorical Variables<a href="data-visualization.html#categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>What is a <em>categorical</em> variable? A variable is categorical if it can take only a small set of values.</p>
 <p>How can you visualize a categorical variable? Make a bar chart and find out.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-visualization.html#cb64-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> species)) <span class="sc">+</span></span>
-<span id="cb64-2"><a href="data-visualization.html#cb64-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-70-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data-visualization.html#cb14-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> species)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="data-visualization.html#cb14-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>We can also organize the categorical variables. Instead of having nonordered levels, let’s order them. How are they ordered below?</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-visualization.html#cb65-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(species))) <span class="sc">+</span></span>
-<span id="cb65-2"><a href="data-visualization.html#cb65-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-71-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data-visualization.html#cb15-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(species))) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="data-visualization.html#cb15-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
 <div id="a-numerical-variable" class="section level2 unnumbered hasAnchor">
 <h2>A numerical variable<a href="data-visualization.html#a-numerical-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>What is a <em>numerical</em> (or quantitative) variable? A variable is numerical if it can take on a wide range of numerical values and it is sensible to add, subtract, or take averages with those values.</p>
 <p>What is a commonly used visualization for distributions of continuous variables? A histogram.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="data-visualization.html#cb66-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb66-2"><a href="data-visualization.html#cb66-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">200</span>)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-72-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="data-visualization.html#cb16-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="data-visualization.html#cb16-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">200</span>)</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>A histogram divides the x-axis into equally spaced bins and then uses the height of a bar to display the number of observations that fall in each bin. How many observations are in the tallest bar?</p>
 <p>Set the width of the bin to 20. Is this good? No, it is too narrow resulting in many bars, making it difficult to determine the shape of the ditribution. What about 2000? It’s too high making it difficult to determine the shape of the distribution? What about 200?</p>
 <p>Another way to visualize numerical variables is a density plot. What is a density plot? It is a smoothed-out version of a histogram. We won’t go into how geom_density() estimates the density (read this in the funciton documentation). But imagine a histogram made with wooden blocks and then you drape a piece of spaghetti over it. The shape of the spaghetti is the shape of the density curve and makes it easy to quickly see the distribution.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="data-visualization.html#cb67-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb67-2"><a href="data-visualization.html#cb67-2" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-73-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="data-visualization.html#cb17-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="data-visualization.html#cb17-2" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 </div>
 <div id="exercises-2-from-book" class="section level2 unnumbered hasAnchor">
 <h2>Exercises 2 (from book)<a href="data-visualization.html#exercises-2-from-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -480,9 +482,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mapping-a-numerical-and-categorical-variable" class="section level2 unnumbered hasAnchor">
 <h2>Mapping a numerical and categorical variable<a href="data-visualization.html#mapping-a-numerical-and-categorical-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>What plot can we use? What about side-by-side box plots. Let’s make a boxplot and then explain what it is showing.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="data-visualization.html#cb68-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb68-2"><a href="data-visualization.html#cb68-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-74-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="data-visualization.html#cb18-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="data-visualization.html#cb18-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <ul>
 <li>The box indicates the range of the middle halfe of the data (interquartile range: IQR), stretching from the 25th percentile of the distribution to the 75th percentile. In the middle of the box is the median (50th percentile). These three lines give you a sense of the spread of distribution (is it symmetric or skewed to one side?).<br />
 </li>
@@ -491,55 +493,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>A line (or whisker) that extends from each end of the box and goes to the farthest outlying point.</li>
 </ul>
 <p>We can also do the following:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-visualization.html#cb69-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb69-2"><a href="data-visualization.html#cb69-2" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">linewidth =</span> <span class="fl">0.75</span>)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-75-1.png" width="925.44" /></p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="data-visualization.html#cb70-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">color =</span> species, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb70-2"><a href="data-visualization.html#cb70-2" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-76-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="data-visualization.html#cb19-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="data-visualization.html#cb19-2" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">linewidth =</span> <span class="fl">0.75</span>)</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data-visualization.html#cb20-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">color =</span> species, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="data-visualization.html#cb20-2" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 </div>
 <div id="two-categorical-variables" class="section level2 unnumbered hasAnchor">
 <h2>Two categorical variables<a href="data-visualization.html#two-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s show you how to do it.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="data-visualization.html#cb71-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> island, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb71-2"><a href="data-visualization.html#cb71-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-77-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-visualization.html#cb21-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> island, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="data-visualization.html#cb21-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>What’s the difference with this?</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="data-visualization.html#cb72-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> island, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb72-2"><a href="data-visualization.html#cb72-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-78-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="data-visualization.html#cb22-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> island, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="data-visualization.html#cb22-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>)</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>Or this?</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="data-visualization.html#cb73-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> island, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb73-2"><a href="data-visualization.html#cb73-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-79-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-visualization.html#cb23-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> island, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="data-visualization.html#cb23-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 </div>
 <div id="two-numerical-variables" class="section level2 unnumbered hasAnchor">
 <h2>Two numerical variables<a href="data-visualization.html#two-numerical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A scatterplot is probably the most common for this.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="data-visualization.html#cb74-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb74-2"><a href="data-visualization.html#cb74-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-80-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-visualization.html#cb24-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="data-visualization.html#cb24-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>
 <div id="three-or-more-variables" class="section level2 unnumbered hasAnchor">
 <h2>Three or more variables<a href="data-visualization.html#three-or-more-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="data-visualization.html#cb75-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb75-2"><a href="data-visualization.html#cb75-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species, <span class="at">shape =</span> island))</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-81-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-visualization.html#cb25-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="data-visualization.html#cb25-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species, <span class="at">shape =</span> island))</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>Adding too many aesthetic mappings to a plot can make it cluttered and difficult to make sense of. So here is another option:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="data-visualization.html#cb76-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb76-2"><a href="data-visualization.html#cb76-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb76-3"><a href="data-visualization.html#cb76-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island)</span></code></pre></div>
-<p><img src="figures/unnamed-chunk-82-1.png" width="925.44" /></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-visualization.html#cb26-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="data-visualization.html#cb26-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="data-visualization.html#cb26-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island)</span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 </div>
 <div id="exercise-3-see-book" class="section level2 unnumbered hasAnchor">
 <h2>Exercise 3 (see book)<a href="data-visualization.html#exercise-3-see-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
 <div id="saving-your-plots" class="section level2 unnumbered hasAnchor">
 <h2>Saving your plots<a href="data-visualization.html#saving-your-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data-visualization.html#cb77-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
-<span id="cb77-2"><a href="data-visualization.html#cb77-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
-<p><img src="figures/unnamed-chunk-83-1.png" width="925.44" /></p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="data-visualization.html#cb78-1" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;penguin-plot.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="data-visualization.html#cb27-1" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="data-visualization.html#cb27-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
+<p><img src="CongoFor1.5_Bootcamp_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-visualization.html#cb28-1" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;penguin-plot.png&quot;</span>)</span></code></pre></div>
 <p>Where did it save on your laptop?</p>
 </div>
 <div id="exercise-4-see-book" class="section level2 unnumbered hasAnchor">

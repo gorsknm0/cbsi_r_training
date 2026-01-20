@@ -1,0 +1,229 @@
+---
+title: "Exercice de création de carte avec R"
+author: Merci à Eliott pour cela
+date: "`r format(Sys.Date())`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: false
+    theme: readable
+---
+
+
+# Objectif
+Nous allons créer une carte avec des points et des étiquettes. Nous allons:
+
+1. Charger les packages
+2. Obtenir une carte du monde
+3. Créer un tableau des sites (avec latitude/longitude)
+4. Tracer la carte et ajouter des points et des étiquettes
+5. Ajouter une échelle et une flèche indiquant le nord
+6. Ajuster les couleurs, les tailles et l’affichage de la carte
+
+# À savoir
+Ce code a été fourni par Eliott de CongoFor1.5. Il l’a utilisé pour générer une carte pour cet article. En programmation, on apprend beaucoup en pratiquant et en faisant des recherches. Le but de cet exercice est de vous montrer ce que vous pouvez faire avec R.
+
+Vous pourriez rencontrer des problèmes de connexion Internet. Vous pourriez rencontrer des problèmes avec votre version de R. En tant que chercheurs, il est essentiel d'apprendre à les résoudre. Essayez donc de travailler avec ce code et observez le résultat.
+
+# Configuration
+
+```{r setup, message=FALSE, warning=FALSE}
+
+# Si vous ne possédez pas ces packages, décommentez la ligne suivante pour les installer :
+
+# install.packages(c("rnaturalearth", "rnaturalearthdata", "sf", "ggplot2", "ggrepel", "ggspatial", "data.table"))
+
+library(rnaturalearth)
+library(ggspatial)
+library(ggrepel)
+library(ggplot2)
+library(sf)
+library(data.table)
+library(grid) # pour unit() utilisé par la flèche nord/l'échelle
+```
+
+# Obtenir une carte du monde
+
+Nous téléchargeons une carte du monde simple au format **sf** pour qu'elle soit compatible avec **ggplot2**.
+
+```{r world}
+world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+```
+
+# Création de la table des sites
+
+Chaque site possède un nom, une latitude, une longitude, une superficie totale perturbée (ha) et une profondeur temporelle (années).
+
+```{r données}
+coord <- data.table::data.table(
+  Experiment = c("Braga-Vainilla", "Lobillo", "Corinto", "Paracou", "Regina", "Tapajos", "Tirimbina", "Tortue"),
+  lat = c(-4.92, -4.92, 10.10, 5.18, 4.13, -3.58, 10.41, 4.22),
+  lon = c(-73.73, -73.73, -83.50, -52.53, -52.19, -54.50, -84.11, -52.41),
+  area = c(4*1, 2*1, 3*1, 36*1.5625, 8*1, 3*.75, 8*1, 8*1),
+  tdepth = c(2008-1993, 2008-1993, 2010-1990, 2021-1984, 2019-2006, 2012-1981, 2015-1989, 2018-2002)
+)
+
+# Légers ajustements des étiquettes pour que le texte ne se superpose pas aux points
+nudgeX <- c(-1, 3, 1.5, 0.5, 0.25, 0, -0.5, -3.5)
+nudgeY <- c(1.5, -1, 1.5, 3, -3, 1.5, -2.7, 0.5)
+
+```
+
+# Étape 1 — Carte du monde de base
+
+```{r basic-map, fig.width=8, fig.height=4.5}
+
+ggplot(data = world) +
+
+geom_sf()
+```
+
+# Étape 2 — Ajouter les points (couleur = profondeur temporelle, taille = aire)
+
+```{r add-points, fig.width=8, fig.height=4.5}
+ ggplot(data = world) +
+   geom_sf() +
+   geom_spatial_point(
+     data = coord,
+     aes(x = lon, y = lat, colour = tdepth, size = area),
+     alpha = 0.7
+   )
+```
+
+# Étape 3 — Ajouter un contour autour des points (pour le contraste)
+
+```{r outline, fig.width=8, fig.height=4.5}
+
+ ggplot(data = world) +
+   geom_sf() +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, colour = tdepth, size = area),
+     alpha = 0.7
+   ) +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, size = area),
+     alpha = 0.7,
+     colour = "black",
+     shape = 1
+   )
+```
+
+# Étape 4 — Ajouter des étiquettes qui ne se chevauchent pas
+
+```{r labels, fig.width=8, fig.height=4.5}
+
+ggplot(data = world) +
+   geom_sf() +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, colour = tdepth, size = area),
+     alpha = 0.7
+   ) +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, size = area),
+     alpha = 0.7,
+     colour = "black",
+     shape = 1
+   ) +
+   geom_spatial_text_repel(
+     data = coord,
+     aes(lon, lat, label = Experiment),
+     nudge_x = nudgeX,
+     nudge_y = nudgeY
+   )
+```
+
+# Étape 5 — Ajouter une échelle et une flèche vers le nord
+
+```{r scalebar-north, fig.width=8, fig.height=4.5}
+
+ggplot(data = world) +
+   geom_sf() +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, colour = tdepth, size = area),
+     alpha = 0.7
+   ) +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, size = area),
+     alpha = 0.7,
+     colour = "black",
+     shape = 1
+   ) +
+   geom_spatial_text_repel(
+     data = coord,
+     aes(lon, lat, label = Experiment),
+     nudge_x = nudgeX,
+     nudge_y = nudgeY
+   ) +
+   annotation_scale(location = "bl", width_hint = 0.2) +
+   annotation_north_arrow(
+     location = "bl",
+     which_north = "true",
+     pad_x = unit(0.25, "in"),
+     pad_y = unit(0.5, "in"),
+     style = north_arrow_fancy_orienteering
+   )
+```
+
+# Étape 6 — Zoom sur la zone d'intérêt et mise en forme de la légende/du thème
+
+```{r final, fig.width=8, fig.height=4.5}
+
+ggplot(data = world) +
+   geom_sf() +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, colour = tdepth, size = area),
+     alpha = 0.7
+   ) +
+   geom_spatial_point(
+     data = coord,
+     aes(lon, lat, size = area),
+     alpha = 0.7,
+     colour = "black",
+     shape = 1
+   ) +
+   geom_spatial_text_repel(
+     data = coord,
+     aes(lon, lat, label = Experiment),
+     nudge_x = nudgeX,
+     nudge_y = nudgeY
+   ) +
+   annotation_scale(location = "bl", width_hint = 0.2) +
+   annotation_north_arrow(
+     location = "bl", which_north = "true",
+     pad_x = unit(0.25, "in"), pad_y = unit(0.5, "in"),
+     style = north_arrow_fancy_orienteering
+   ) +
+   coord_sf(xlim = c(-85, -51), ylim = c(-6.5, 12)) +
+   scale_colour_gradientn(
+     name = "Temporal depth (years)",
+     colors = c("yellow", "darkorange1", "darkorchid"),
+     trans = "log10"
+   ) +
+   scale_size(range = c(3, 12), breaks = c(2, 4, 8, 56), trans = "log10") +
+   guides(colour = guide_colorbar(order = 1), fill = guide_legend(order = 0)) +
+   labs(x = "Longitude", y = "Latitude", size = "Total area \nof disturbed \nplots (ha)") +
+   theme_bw()
+```
+
+# Dépannage
+- **Carte vide après `coord_sf(...)`:** Supprimez `coord_sf` pour afficher la carte complète, puis ajustez `xlim` et `ylim`. Les longitudes ouest sont négatives.
+
+- **Étiquettes qui se chevauchent ou qui sont désordonnées:** Ajustez les valeurs de `nudge_x` et `nudge_y`.
+
+- **Problèmes d'installation de packages (sf/PROJ/GDAL):** Redémarrez R et essayez de réinstaller `sf`. Sur certains systèmes, des dépendances système peuvent être nécessaires.
+
+# Suggestions de défis (facultatif)
+
+- Modifier la palette de couleurs (par exemple, essayez `viridis::scale_color_viridis(trans = "log10")`).
+
+- Modifier la forme des points (par exemple, utilisez `shape = 21` et définissez `fill = ...`). - Enregistrez la figure avec `ggsave("experiments_map.png", width = 8, height = 5, dpi = 300)`.
+
+- Ajoutez un titre et une légende avec `labs(title = "Mes sites d'étude", caption = "Données: votre source")`.

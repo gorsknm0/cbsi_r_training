@@ -1,0 +1,192 @@
+# Packages
+
+#### Objectifs d'apprentissage {-}
+
+* Découvrir ce que sont les packages `R` et pourquoi ils sont si utiles
+* Apprendre à trouver et à consulter la documentation des packages installés sur votre machine
+* ​​Apprendre à installer des packages `R` depuis `CRAN`
+* Apprendre à installer des packages `R` depuis `GitHub`
+
+
+Comme indiqué dans le module [**Appel de fonctions**](#calling_functions), `R` intègre des centaines de fonctions de base et de jeux de données prêts à l'emploi. Vous pouvez également écrire vos propres fonctions, ce que nous aborderons dans un prochain module.
+
+Vous pouvez aussi accéder à des milliers d'autres fonctions et jeux de données grâce à des ensembles de code externe appelés **packages**. Les packages sont développés et partagés par les utilisateurs de `R` du monde entier : une communauté mondiale qui collabore pour accroître la polyvalence et l'impact de `R`.
+
+Certains packages sont conçus pour être largement utiles dans presque toutes les applications, comme ceux que vous apprendrez dans ce cours (`ggplot`, `dplyr`, `stringr`, etc.). Ces packages facilitent et optimisent votre travail avec `R`.
+
+D'autres sont conçus pour des problèmes spécifiques qui peuvent être grandement simplifiés grâce à des fonctions ou des jeux de données spécialisés. Par exemple, le package `PBSmapping` contient des jeux de données sur le littoral, les fonds marins et l'océanographie, ainsi que des fonctions de cartographie personnalisées qui facilitent le travail des biologistes marins de la Station biologique du Pacifique (PBS) en Colombie-Britannique, au Canada.
+
+```{r, include=FALSE}
+
+'Il peut être intéressant d'aborder ici ce que signifie le fait que `R` soit un projet open source, pour lequel des millions d'utilisateurs du monde entier développent simultanément des packages, et comment cela confère à `R` un avantage sur des langages de programmation plus rigides tels que `MATLAB` et `SASS`.'
+
+```
+
+## Packages déjà installés {-}
+
+Dans `RStudio`, repérez le panneau en bas à droite et cliquez sur l'onglet *Packages*. Vous devriez voir quelque chose comme ceci :
+
+![](docs/img/rstudio-packages.png)
+
+Ceci affiche tous les packages déjà installés sur votre système.
+
+Si vous cliquez sur l'un de ces packages (essayez le package `base`, par exemple), vous accéderez à la liste de toutes les fonctions et jeux de données qu'il contient.
+
+![](docs/img/rstudio-base-package.png)
+
+Lorsque vous cliquez sur l'une de ces fonctions, vous accéderez à sa page d'aide. Cela équivaut à saisir `? <nom_de_la_fonction>` dans la *Console*.
+
+## Installation d'un nouveau package {-}
+
+Il existe plusieurs façons de télécharger et d'installer un nouveau package `R` sur votre ordinateur. La plupart des packages sont disponibles sur un dépôt open source appelé `CRAN` (Comprehensive R Archive Network). Cependant, il est de plus en plus courant de publier les packages sur un dépôt public tel que `GitHub`.
+
+### Installation depuis `CRAN` {-}
+
+Vous pouvez installer les packages `CRAN` de deux manières :
+
+#### Par clics : {-}
+
+Dans `RStudio`, dans le panneau inférieur droit, retournez à l’onglet *Packages*. Cliquez sur le bouton « Installer ».
+
+![](docs/img/rstudio-install-package.png)
+
+Vous pouvez ensuite rechercher le package que vous souhaitez installer, puis cliquer sur **Installer**.
+
+#### Par code : {-}
+
+Vous pouvez télécharger des packages depuis la *Console* à l’aide de la fonction `install.packages()`.
+
+```{r,eval=FALSE,echo=TRUE}
+
+install.packages('fun')
+
+```
+
+Notez que le nom du paquet doit être entre guillemets.
+
+### Installation depuis `GitHub` {-}
+
+Pour installer des paquets depuis `GitHub`, vous devez d'abord télécharger un paquet `CRAN` qui simplifie cette opération :
+
+```{r,echo=TRUE,eval=FALSE}
+
+install.packages("devtools")
+
+```
+
+La plupart des packages sur `GitHub` incluent des instructions de téléchargement sur leur page `GitHub`.
+
+Par exemple, consultez [cette page `GitHub`](https://github.com/karthik/wesanderson){target="blank"} pour voir la documentation du package **wesanderson**, qui propose des thèmes de palettes de couleurs inspirés des films de Wes Anderson. Sur cette page, faites défiler vers le bas pour trouver les instructions de téléchargement. Ces instructions vous montrent comment installer ce package depuis votre console `R` :
+
+```{r,echo=TRUE,eval=FALSE}
+devtools::install_github("karthik/wesanderson")
+```
+
+Ensuite, rendez-vous dans l'onglet *Packages* situé en bas à droite de `RStudio`, faites défiler vers le bas pour trouver le package **wesanderson**, puis cliquez dessus pour découvrir ses fonctionnalités.
+
+## Charger un paquet installé {-}
+
+Il y a une différence entre les paquets *installés* et les paquets *chargés*. Retournez à l'onglet *Paquets*. Remarquez que certains paquets ont une case cochée à côté de leur nom, tandis que d'autres n'en ont pas.
+
+Ces cases cochées indiquent quels paquets sont actuellement *chargés*. Tous les paquets de la liste sont *installés* sur votre ordinateur, mais seuls les paquets cochés sont *chargés*, c'est-à-dire prêts à l'emploi.
+
+Pour charger un paquet, utilisez la fonction `library()`.
+
+```{r,echo=TRUE,eval=TRUE}
+library(fun)
+library(wesanderson)
+```
+
+Maintenant que vos nouveaux paquets sont chargés, vous pouvez utiliser leurs fonctions.
+
+**Important :** un paquet est installé *une seule fois*, mais vous devez utiliser `library()` pour le charger dans *chaque* script qui l'utilise. Imaginez un paquet comme du matériel de camping. Tout comme un package `R`, le matériel de camping vous permet de faire des choses géniales que vous ne pouvez pas vraiment faire avec ce que vous avez habituellement dans votre placard. Et, comme pour un package `R`, vous n'avez besoin d'installer (c'est-à-dire d'acheter) votre matériel qu'une seule fois ; mais il est inutile si vous ne le rangez pas dans votre voiture (c'est-à-dire si vous ne le chargez pas avec `library()`) *à chaque* voyage.
+
+## Appeler des fonctions d'un package {-}
+
+La plupart des fonctions de packages externes peuvent être utilisées en tapant simplement leur nom. Par exemple, le package `fun` contient une fonction pour générer un mot de passe aléatoire :
+
+```{r,echo=TRUE,collapse=TRUE}
+random_password(length=24)
+
+```
+
+Parfois, cependant, `R` peut rencontrer des difficultés si un nouveau package contient une fonction portant le même nom qu'une fonction d'un autre package. Si `R` semble avoir des difficultés à reconnaître une fonction que vous appelez, il peut être utile de préciser dans quel package elle se trouve. Pour cela, utilisez la syntaxe `<nom_du_package>::<nom_de_la_fonction>`. Par exemple, la commande suivante est une alternative valable à la commande ci-dessus :
+
+```{r,echo=TRUE,collapse=TRUE}
+fun::random_password(length=24)
+
+```
+
+Notez que dans l'exemple ci-dessus, le package `devtools` a été utilisé.
+
+### Remarques complémentaires {-}
+
+#### Dépendances des packages {-}
+
+La plupart des packages contiennent des fonctions qui utilisent des fonctions issues d'autres packages. Ces nouvelles fonctions dépendent des fonctions de ces autres packages, et c'est pourquoi ces autres packages sont appelés *dépendances*. Lorsque vous installez une fonction, vous remarquerez que `R` doit généralement installer plusieurs autres packages simultanément ; ce sont les dépendances qui permettent au package qui nous intéresse de fonctionner.
+
+#### Versions des paquets {-}
+
+Les paquets sont régulièrement mis à jour, et il arrive que les nouvelles versions rendent incompatibles les fonctions qui en dépendent. Il peut donc être nécessaire d'installer une nouvelle version (ou parfois une version plus ancienne !) d'une dépendance pour que le paquet souhaité fonctionne correctement.
+
+#### Révision : Utilisation d'un package {-}
+
+Pour revoir comment utiliser les fonctions d'un package non inclus dans `R`, suivez ces étapes (exemples fournis) :
+
+1. Installez le package *une seule fois*.
+
+```{r,echo=TRUE,eval=FALSE}
+
+# Exemple du CRAN
+install.packages("wesanderson")
+
+# Exemple de GitHub
+devtools::install_github("karthik/wesanderson")
+```
+
+2. Chargez le package *dans chaque script*.
+
+```{r,echo=TRUE,eval=FALSE}
+
+# Exemple
+library(wesanderson)
+```
+
+3. Appelez la fonction.
+
+```{r,echo=TRUE,eval=TRUE,collapse=TRUE}
+wes_palette("Royal1")
+wesanderson::wes_palette("Zissou1")
+```
+
+*(Cette fonction crée un graphique affichant les différentes couleurs de la palette spécifiée.)*
+
+4. Obtenir de l'aide avec le point d'interrogation : `?`
+
+```{r,echo=TRUE,eval=TRUE,collapse=TRUE}
+?wes_palette
+```
+
+### Exercices {-}
+
+Installons quelques packages :
+
+**1.** Installez le package `babynames`.
+
+**2.** Installez `ggplot2`.
+
+**3.** Installez `dplyr`.
+
+**4.** Installez `RColorBrewer`.
+
+**5.** Installez `tidyr`.
+
+**6.** Installez `gapminder`.
+
+**7.** Installez `readr`.
+
+**8.** Installez `gsheet`.
+
+**9.** Installez `readxl`.
+
+**10.** Écrivez 7 lignes de code qui *chargent* les packages ci-dessus.

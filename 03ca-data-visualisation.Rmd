@@ -352,7 +352,7 @@ ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 ## Saving your plots {-}
 
-```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE, eval=FALSE}
 ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point() 
 ggsave(filename = "penguin-plot.png")

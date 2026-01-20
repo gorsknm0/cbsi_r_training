@@ -178,7 +178,7 @@ summary(LM1)
 
 The below figure shows you where you can get the R^2^ value and the p-value of your model. It also shows you where you can get the intercept value and the slope value of the model. There is also a p-value given for your intercept and slope. This isn't that meaningful for a simple linear regression, as all it is telling you is whether you intercept and slope are significantly different to zero. However, this column in the coefficients table becomes useful when your models get more complex.
 
-![LM1 Summary Output](LM_SUMMARY_OUTPUT.png)
+![LM1 Summary Output](figures/LM1_SUMMARY_OUTPUT.png)
 &nbsp; 
 
 So we can see that our model explains a lot of the variance and the relationship is significant. 
@@ -264,7 +264,7 @@ Can you spot the additional term? It is the `*df_comb$site`. When using `lm()` t
 
 It is pretty much the same as the output of a normal linear model- you get an R^2^ value and a p-value. But in the coefficicents table, instead of one row for the intercept and one row for the slope, we have lots of rows. Initially it can be hard to interpret this part of the output, but it is actually quite straightforward once you know what you are looking at. Take a look at the below figure:
 
-![ANCOVA Summary Output](ANCOVA_SUMMARY_OUTPUT.png)
+![ANCOVA Summary Output](figures/ANCOVA_SUMMARY_OUTPUT.png)
 &nbsp; 
 
 When you have a factor in your model, R treats the model for first level of the factor (based on alphabetical order) as the default. Therefore, looking at the coefficients table, the first row represents the model intercept for the site Buck Creek. The second row represents the slope for the Buck Creek model. This is just like a normal linear model.

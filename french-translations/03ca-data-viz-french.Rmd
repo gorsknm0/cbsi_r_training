@@ -1,0 +1,456 @@
+# Visualisation des données
+
+##### Objectifs d'apprentissage
+
+* Comment visualiser des données à l'aide de ggplot (c'est-à-dire prendre des données et créer de jolies images)
+* Comment enregistrer des graphiques
+
+## L'importance de la visualisation des données
+
+Les êtres humains sont programmés pour traiter les informations à travers des images. Nous pouvons traduire les images en significations à une vitesse incroyable.
+                                                  
+En d'autres termes, les images communiquent des données. C'est pourquoi la recherche et la visualisation des données vont presque toujours de pair.
+                                             
+Le point important ici est que les bonnes visualisations de données ne sont pas simplement jolies. Elles sont surtout efficaces. Elles constituent le meilleur moyen dont vous disposez pour transmettre à quelqu'un d'autre les informations que vous tirez de vos données.
+                                                 
+Gardez à l'esprit que les graphiques peuvent être à la fois efficaces et trompeurs. Les graphiques et les cartes ont une dimension politique : ils peuvent avoir des objectifs précis et manipuler les spectateurs afin qu'ils interprètent les données d'une certaine manière. Il est donc réducteur de dire simplement qu'un bon graphique est un graphique efficace. Voici une meilleure définition : un bon graphique est à la fois efficace et impartial.
+                                                   
+Ainsi, lorsque vous consultez les graphiques d'autres personnes et que vous créez vos propres graphiques, gardez à l'esprit ces cinq règles :
+
+1. Une mauvaise intrigue est une intrigue inefficace, même si elle est belle.
+2. Une bonne intrigue est une intrigue efficace.
+3. Une excellente intrigue est à la fois efficace et belle.
+4. Si vous devez faire un compromis entre efficacité et beauté, sacrifiez la beauté.
+5. Toute intrigue qui induit en erreur ou manipule le spectateur est mauvaise, quelle que soit son efficacité ou sa beauté.
+
+## Premiers pas vers la visualisation des données
+
+Les pingouins aux nageoires plus longues pèsent-ils plus ou moins lourd que ceux aux nageoires plus courtes ? Quelle est la relation entre la longueur des nageoires et la masse corporelle ? Est-elle positive ? Négative ? Linéaire ? Non linéaire ? Cette relation varie-t-elle selon l'espèce de pingouin ? Et selon l'endroit où vit le pingouin ?
+
+Créons des visualisations qui nous permettront de répondre à ces questions.
+
+## Le cadre de données " penguins " {-}
+
+Vos réponses aux questions ci-dessus se trouvent dans le cadre de données " penguins " situé dans " palmerpenguins ". 
+
+Pour accéder à l'ensemble de données et aux fonctionnalités nécessaires à la création d'un graphique, chargez les bibliothèques suivantes :
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+library(tidyverse)
+library(palmerpenguins)
+library(ggplot2)
+library(ggthemes)
+```
+
+*Vous ne savez peut-être pas encore ce qu'est une bibliothèque, mais faites confiance au processus. Vous apprendrez au fur et à mesure.*
+
+" penguins " est un cadre de données stocké dans le package " palmerpenguins ", mis à disposition par le Dr Kristen Gorman et la station Palmer, Antarctica LTER. 
+
+Un **cadre de données** est un ensemble rectangulaire de variables (en colonnes) et d'observations (en lignes). 
+
+Pour faciliter la discussion, définissons quelques termes :
+
+- *Variable* - une quantité, une qualité ou une propriété que vous pouvez mesurer  
+- *Valeur*        - l'état d'une variable lorsque vous la mesurez. La valeur d'une variable peut changer d'une mesure à l'autre.  
+- *Observation*  - Un ensemble de mesures effectuées dans des conditions similaires (vous effectuez généralement toutes les mesures d'une observation en même temps et sur le même objet). Une observation contient plusieurs valeurs, chacune étant associée à une variable différente. Nous désignerons parfois une observation par le terme *point de données*.  
+- *Données tabulaires* - Ensemble de valeurs, chacune étant associée à une variable et à une observation. Les données tabulaires sont *ordonnées* si chaque valeur est placée dans sa propre " cellule ", chaque variable dans sa propre colonne et chaque observation dans sa propre ligne.
+
+Tapez ce qui suit : 
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+penguins
+```
+
+Que voyez-vous ? Combien y a-t-il de colonnes ? *Notez qu'il est écrit " tibble " en haut de cet aperçu. Dans le tidyverse, nous utilisons des tableaux de données spéciaux appelés tibbles*.
+
+Que voyez-vous ici ?
+
+```{r, eval = FALSE, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+glimpse(penguins)
+```
+
+Quelles sont les variables dans " penguins " ?
+
+## L'objectif ultime {-}
+
+(look at graph on the website)
+
+Quelles sont les variables dans " penguins " ?
+
+## L'objectif ultime {-}
+
+```{r, echo = TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(data = penguins)
+```
+
+Pourquoi le graphique est-il vide ?
+
+ggplot(data = penguins) crée un graphique vide prêt à expliquer les données sur les pingouins, mais comme nous ne lui avons pas encore demandé de les visualiser, il est pour l'instant vide. Vous pouvez le considérer comme une toile vierge sur laquelle vous allez peindre les autres couches de votre graphique.
+
+Que devons-nous faire ensuite ?
+
+Indiquer à `ggplot()` comment les informations de nos données seront visualisées. L'argument `mapping` de la fonction `ggplot()` définit comment les variables de votre ensemble de données sont mappées aux propriétés visuelles (*esthétiques*) de votre graphique. L'argument `mapping` est toujours défini dans la fonction `aes()`, et les arguments x et y de `aes()` spécifient quelles variables mapper aux axes x et y. D'après le code ci-dessous, que trouverons-nous sur les axes x et y ? Que voyez-vous lorsque vous exécutez le code ci-dessous ? 
+
+```{r, echo = TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(data = penguins,
+       mapping = aes(x = flipper_length_mm, y = body_mass_g))
+```
+
+Ajoutons maintenant les pingouins au graphique. Pour ce faire, nous devons définir un " geom " : un objet géométrique utilisé par un graphique pour représenter des données. Vous pouvez le faire dans " ggplot() " à l'aide de fonctions commençant par " geom_ ". 
+
+Les différents types de fonctions " geom_ " sont " geom_bar() ", " geom_line() ", " geom_boxplot() " et " geom_point() ". Selon vous, quels types de graphiques ces fonctions permettent-elles de créer ? 
+
+Utilisons la fonction `geom_point()` pour ajouter des couches de points à votre graphique, ce qui créera un nuage de points.
+
+```{r, echo = TRUE, collapse=TRUE}
+ggplot(data = penguins,
+       mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+```
+
+Maintenant que nous pouvons voir nos données, quelle est la relation entre la longueur des nageoires et la masse corporelle ? Est-elle positive ?
+
+Avant de continuer, revoyons le message d'avertissement que nous avons reçu : " 2 lignes contenant des valeurs manquantes ont été supprimées (geom_point()) ".
+
+Qu'est-ce que cela signifie ? Notre ensemble de données contient deux pingouins pour lesquels les valeurs de masse corporelle et/ou de longueur des nageoires sont manquantes. 
+
+Pourquoi n'apparaissent-ils pas sur le graphique ? Parce que ggplot2 n'a aucun moyen de les représenter sur le graphique sans ces deux valeurs, et que **les valeurs manquantes ne doivent jamais disparaître silencieusement**. 
+
+## Ajouter de l'esthétique et des couches {-}
+
+Les nuages de points sont utiles pour afficher la relation entre deux variables numériques, mais il est toujours bon de rester sceptique face à toute relation apparente entre deux variables et de se demander s'il existe d'autres variables qui pourraient expliquer ou modifier la nature de cette relation apparente. Quelle variable pourrait influencer cette relation ?
+
+L'intégration des espèces dans notre graphique permettrait-elle d'obtenir des informations supplémentaires ? Oui, bien sûr. Pour ce faire, représentons les espèces par des points de couleurs différentes. Pour y parvenir, devons-nous modifier l'esthétique ou la géométrie ?
+
+```{r, echo = TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(data = penguins,
+       mapping = aes(x = flipper_length_mm, 
+                     y = body_mass_g,
+                     color = species)) +
+  geom_point()
+```
+
+Avons-nous attribué une couleur à chaque espèce de manière intentionnelle ? 
+
+ggplot2 attribuera automatiquement une valeur unique de l'esthétique (ici une couleur unique) à chaque niveau unique de la variable (chacune des trois espèces), un processus connu sous le nom de *scaling*. ggplot2 ajoute également une légende. 
+
+Ajoutons maintenant une autre couche : une courbe lisse illustrant la relation entre la masse corporelle et la longueur des nageoires. Comment pouvons-nous l'ajouter au graphique existant ?
+
+
+Comme il s'agit d'un nouvel objet géométrique représentant nos données, nous allons ajouter un nouveau géomètre en tant que couche au-dessus de notre géomètre ponctuel : `geom_smooth()`. Et nous allons spécifier que nous voulons tracer la ligne de meilleur ajustement basée sur un modèle linéaire avec `method = " lm "`.
+
+```{r, echo = TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(data = penguins,
+       mapping = aes(x = flipper_length_mm, 
+                     y = body_mass_g,
+                     color = species)) +
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
+
+Votre graphique ressemble-t-il à celui de l'objectif final ?
+
+Lorsque des mappages esthétiques sont définis dans `ggplot()`, au niveau *global*, ils sont transmis à chacune des couches géométriques suivantes du graphique. Cependant, chaque fonction géométrique dans ggplot2 peut prendre un argument `mapping`, qui permet des mappages esthétiques au niveau *local* qui s'ajoutent à ceux hérités du niveau global.
+
+Comment pouvons-nous obtenir des points colorés en fonction de l'espèce sans que les lignes ne soient séparées pour celles-ci ?
+
+```{r, echo = TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(data = penguins,
+       mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(mapping = aes(color = species, shape = species)) + 
+  geom_smooth(method = " lm ")
+```
+Qu'est-il arrivé à la légende ? Elle a été mise à jour.
+
+Enfin, ajoutons/mettons à jour nos étiquettes et améliorons la palette de couleurs pour qu'elle soit adaptée aux daltoniens à l'aide d'une fonction du package `ggthemes`.
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm,
+                y = body_mass_g)
+) +
+  geom_point(aes(color = species,
+                 shape = species)) +
+  geom_smooth(method = " lm ") +
+  labs(
+    title = " Masse corporelle et longueur des nageoires ",
+    subtitle = " Dimensions pour les manchots Adélie, à jugulaire et papou ",
+    x = " Longueur des nageoires (mm) ", y = " Masse corporelle (g) ",
+    color = " Espèce ", shape = " Espèce "
+  ) + 
+  scale_color_colorblind()
+```
+
+## Exercice 1 {-}
+
+1. Combien y a-t-il de lignes dans penguins ? Combien y a-t-il de colonnes ?
+
+2. Que décrit la variable bill_depth_mm dans le cadre de données penguins ? Lisez l'aide pour ?penguins pour le découvrir.
+
+3. Créez un nuage de points de bill_depth_mm par rapport à bill_length_mm. Autrement dit, créez un nuage de points avec bill_depth_mm sur l'axe des y et bill_length_mm sur l'axe des x. Décrivez la relation entre ces deux variables.
+
+4. Que se passe-t-il si vous créez un nuage de points représentant species par rapport à bill_depth_mm ? Quel serait le meilleur choix de géométrie ?
+
+5. Pourquoi le code suivant génère-t-il une erreur et comment pourriez-vous la corriger ?
+
+```{r, eval=FALSE}
+library(ggplot2)
+ggplot(data = penguins) + 
+  geom_point()
+```
+
+6. Que fait l'argument na.rm dans geom_point() ? Quelle est la valeur par défaut de cet argument ? Créez un nuage de points dans lequel vous utilisez avec succès cet argument défini sur TRUE.
+
+7. Ajoutez la légende suivante au graphique que vous avez créé dans l'exercice précédent : " Les données proviennent du package palmerpenguins. " Indice : consultez la documentation relative à labs().
+
+8. (see the graph for this one) Recréez la visualisation suivante. À quelle esthétique bill_depth_mm doit-il être associé ? Doit-il être associé au niveau global ou au niveau géométrique ?
+
+9. Exécutez ce code dans votre tête et prédisez à quoi ressemblera le résultat. Ensuite, exécutez le code dans R et vérifiez vos prédictions.
+
+10. Ces deux graphiques seront-ils différents ? Pourquoi ?
+
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point() +
+  geom_smooth()
+
+ggplot() +
+  geom_point(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  ) +
+  geom_smooth(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  )
+```
+
+
+Faites les exercices du livre. Pour le numéro 8, utilisez le graphique ci-dessous :
+
+```{r, echo=FALSE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(data = penguins,
+       mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(mapping = aes(color = bill_depth_mm)) +
+  geom_smooth()
+```
+
+## ggplot2 appelle {-}
+
+Regardez ce qui suit. Ce code fonctionne-t-il ? En quoi est-il différent ?
+
+```{r, echo=TRUE, eval=FALSE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point ()
+```
+
+Cette forme abrégée de code fonctionne, mais la suivante fonctionne également :
+
+```{r, echo=TRUE, eval=FALSE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+```
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+penguins |>
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+```
+
+## Variables catégorielles {-}
+
+Qu'est-ce qu'une variable *catégorielle* ? Une variable est catégorielle si elle ne peut prendre qu'un petit ensemble de valeurs. 
+
+Comment visualiser une variable catégorielle ? Créez un histogramme et découvrez-le.
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = species)) +
+  geom_bar()
+```
+
+Nous pouvons également organiser les variables catégorielles. Au lieu d'avoir des niveaux non ordonnés, classons-les. Comment sont-ils classés ci-dessous ?
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = fct_infreq(species))) +
+  geom_bar()
+```
+
+
+
+## Une variable numérique {-}
+
+Qu'est-ce qu'une variable *numérique* (ou quantitative) ? Une variable est numérique si elle peut prendre une large gamme de valeurs numériques et s'il est judicieux d'additionner, de soustraire ou de calculer des moyennes avec ces valeurs. 
+
+Quelle est la visualisation couramment utilisée pour les distributions de variables continues ? Un histogramme. 
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 200)
+```
+
+Un histogramme divise l'axe des x en classes équidistantes, puis utilise la hauteur d'une barre pour afficher le nombre d'observations qui se trouvent dans chaque classe. Combien d'observations se trouvent dans la barre la plus haute ? 
+
+Définissez la largeur de la classe à 20. Est-ce suffisant ? Non, c'est trop étroit, ce qui donne beaucoup de barres et rend difficile la détermination de la forme de la distribution. Et 2000 ? C'est trop élevé, ce qui rend difficile la détermination de la forme de la distribution. Et 200 ?
+
+Une autre façon de visualiser les variables numériques est le graphique de densité. Qu'est-ce qu'un graphique de densité ? Il s'agit d'une version lissée d'un histogramme. Nous n'aborderons pas ici la manière dont geom_density() estime la densité (vous pouvez consulter la documentation de la fonction). Mais imaginez un histogramme réalisé avec des blocs de bois sur lequel vous drapez un morceau de spaghetti. La forme du spaghetti correspond à la forme de la courbe de densité et permet de visualiser rapidement la distribution.
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_density()
+```
+
+## Exercices 2 (tirés du livre) {-}
+
+1. Créez un graphique à barres représentant les espèces de pingouins, en attribuant les espèces à l'esthétique y. En quoi ce graphique est-il différent ?
+
+2. En quoi les deux graphiques suivants sont-ils différents ? Quelle esthétique, la couleur ou le remplissage, est la plus utile pour modifier la couleur des barres ?
+
+```{r}
+ggplot(penguins, aes(x = species)) +
+  geom_bar(color = " red ")
+
+ggplot(penguins, aes(x = species)) +
+  geom_bar(fill = " red ")
+```
+
+3. Que fait l'argument bins dans geom_histogram() ?
+
+4. Créez un histogramme de la variable carat dans l'ensemble de données diamonds disponible lorsque vous chargez le package tidyverse. Testez différentes largeurs de classe. Quelle largeur de classe révèle les tendances les plus intéressantes ?
+
+## Cartographie d'une variable numérique et catégorielle {-}
+
+Quel graphique pouvons-nous utiliser ? Que diriez-vous de boîtes à moustaches côte à côte ? Créons une boîte à moustaches, puis expliquons ce qu'elle montre.
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_boxplot()
+```
+
+- La boîte indique la plage de la moitié centrale des données (intervalle interquartile : IQR), qui s'étend du 25e centile de la distribution au 75e centile. Au milieu de la boîte se trouve la médiane (50e centile). Ces trois lignes vous donnent une idée de la dispersion de la distribution (est-elle symétrique ou asymétrique d'un côté ?).
+- Les points visuels affichent les observations qui se situent à plus de 1,5 fois l'IQR de chaque extrémité de la boîte.
+- Une ligne (ou moustache) qui s'étend de chaque extrémité de la boîte et va jusqu'au point le plus éloigné.  
+
+Nous pouvons également faire ce qui suit : 
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = body_mass_g, color = species)) +
+  geom_density(linewidth = 0.75)
+```
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = body_mass_g, color = species, fill = species)) +
+  geom_density(alpha = 0.5)
+```
+
+## Deux variables catégorielles {-}
+
+Voyons comment procéder.
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar()
+```
+
+Quelle est la différence avec ceci ?
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(position = "fill")
+```
+
+Ou ceci ?
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(position = "dodge")
+```
+
+## Deux variables numériques {-}
+
+Un nuage de points est probablement le plus courant dans ce cas.
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+```
+
+## Trois variables ou plus {-}
+
+``` {r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, shape = island))
+```
+
+Ajouter trop de mappages esthétiques à un graphique peut le rendre confus et difficile à comprendre. Voici donc une autre option :
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, shape = species)) +
+  facet_wrap(~island)
+```
+
+
+## Exercice 3 (voir le livre) {-}
+
+1. Le cadre de données mpg fourni avec le package ggplot2 contient 234 observations recueillies par l'Agence américaine de protection de l'environnement sur 38 modèles de voitures. Quelles variables dans mpg sont catégorielles ? Quelles variables sont numériques ? (Indice : tapez ?mpg pour lire la documentation relative à l'ensemble de données.) Comment pouvez-vous voir ces informations lorsque vous exécutez mpg ?
+
+2. Créez un nuage de points représentant hwy par rapport à displ à l'aide du cadre de données mpg. Ensuite, associez une troisième variable numérique à la couleur, puis à la taille, puis à la couleur et à la taille, puis à la forme. Comment ces esthétiques se comportent-elles différemment pour les variables catégorielles et numériques ?
+
+3. Dans le nuage de points représentant hwy par rapport à displ, que se passe-t-il si vous associez une troisième variable à la largeur de ligne ?
+
+4. Que se passe-t-il si vous associez la même variable à plusieurs esthétiques ?
+
+5. Créez un nuage de points représentant bill_depth_mm par rapport à bill_length_mm et colorez les points par espèce. Qu'est-ce que l'ajout d'une couleur par espèce révèle sur la relation entre ces deux variables ? Qu'en est-il du faceting par espèce ?
+
+6. Pourquoi le code suivant produit-il deux légendes distinctes ? Comment pourriez-vous le modifier pour combiner les deux légendes ?
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(
+    x = bill_length_mm, y = bill_depth_mm, 
+    color = species, shape = species
+  )) +
+  geom_point() +
+  labs(color = "Species")
+```
+
+7. Créez les deux graphiques à barres empilées suivants. À quelle question pouvez-vous répondre avec le premier ? À quelle question pouvez-vous répondre avec le second ? 
+
+```{r}
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(position = "fill")
+ggplot(penguins, aes(x = species, fill = island)) +
+  geom_bar(position = "fill")
+```
+
+
+## Enregistrement de vos graphiques {-}
+
+```{r, echo=TRUE, collapse=TRUE, warning = FALSE, message = FALSE}
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point() 
+ggsave(filename = "penguin-plot.png")
+```
+
+Où a-t-il été enregistré sur votre ordinateur portable ?
+
+## Exercice 4 (voir le livre) {-}
+
+Exécutez les lignes de code suivantes. Lequel des deux graphiques est enregistré sous le nom mpg-plot.png ? Pourquoi ?
+
+```{r}
+ggplot(mpg, aes(x = class)) +
+  geom_bar()
+ggplot(mpg, aes(x = cty, y = hwy)) +
+  geom_point()
+ggsave("mpg-plot.png")
+```
+
+Que devez-vous modifier dans le code ci-dessus pour enregistrer le graphique au format PDF plutôt que PNG ? Comment pouvez-vous savoir quels types de fichiers image fonctionnent dans ggsave() ?
+
+
+
+*REMARQUE : le début de ce chapitre est une adaptation des informations tirées de [datascience.pizza](datascience.pizza). La seconde moitié est une adaptation de [R for Data Science](https://r4ds.hadley.nz/data-visualize.html) afin d'organiser les informations à des fins pédagogiques, mais elle sera supprimée et remplacée par un lien vers le site web après le cours.

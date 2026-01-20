@@ -1,0 +1,171 @@
+# Dataframes
+
+#### Objectif d'apprentissage {-}
+
+* S'exercer à explorer, synthétiser et filtrer des dataframes
+
+
+Un vecteur est la structure de données la plus simple en `R`, et toutes les autres structures sont construites à partir de vecteurs. Cependant, en tant que data scientist, la structure de données la plus courante que vous utiliserez – et de loin – est un **dataframe**.
+
+Un dataframe est, en substance, une feuille de calcul : un ensemble de données avec des lignes et des colonnes, où chaque colonne représente un vecteur de données du même type.
+
+Voici à quoi ressemble un dataframe :
+
+```{r,echo=TRUE,collapse=TRUE}
+
+# Utilisation d'un des jeux de données intégrés de R
+head(iris)
+```
+
+Dans ce dataframe, chaque ligne correspond à un iris. Les colonnes contiennent des informations relatives à chaque plante.
+
+Voici un autre data.frame, créé de toutes pièces, qui montre qu'un data.frame est simplement un ensemble de vecteurs :
+
+```{r,echo=TRUE,collapse=TRUE}
+x <- 25:29
+y <- 55:59
+df <- data.frame(x,y)
+df
+```
+
+Dans cette commande, nous avons utilisé la fonction `data.frame()` pour combiner deux vecteurs en un data.frame à deux colonnes nommées `x` et `y`. `R` a ensuite enregistré ce résultat dans une nouvelle variable nommée `df`. Lorsque nous appelons `df`, `R` affiche le data.frame.
+
+L'avantage principal des data.frames est qu'ils permettent de mettre en relation différents types de données.
+
+```{r,echo=TRUE,collapse=TRUE}
+df <- data.frame(name=c("Ben","Joe","Eric"),
+
+height=c(75,73,80))
+df
+```
+
+Ce dataframe comporte une colonne de type `character` et une autre de type `numeric`.
+
+## Extraction et exploration de dataframes {-}
+
+Pour explorer les dataframes, utilisons un jeu de données sur la consommation de carburant de toutes les voitures vendues entre 1985 et 2014.
+
+```{r,echo=TRUE,collapse=TRUE}
+# Installation préalable requise : install.packages('fueleconomy')
+library(fueleconomy)
+data(vehicles)
+head(vehicles)
+```
+
+Pour visualiser ce dataframe dans son intégralité, ouvrez-le dans un nouvel onglet de `RStudio` à l'aide de la fonction `View()` :
+
+```{r,echo=TRUE,collapse=TRUE,eval=FALSE}
+View(vehicles)
+```
+
+Un dataframe est composé de lignes de données organisées en colonnes. Dans ce dataframe, chaque ligne correspond à une marque et un modèle de véhicule, soit une observation. Chaque colonne correspond à un seul *type* de données. Les colonnes sont nommées dans l'*en-tête* du dataframe.
+
+Toutes les fonctions d'exploration et de sélection utiles qui s'appliquaient aux vecteurs s'appliquent désormais aux dataframes. En plus de celles que vous connaissez déjà, découvrons de nouvelles fonctions utiles.
+
+### Exploration {-}
+
+Les fonctions `head()` et `tail()` résument le début et la fin de l'objet :
+
+```{r,echo=TRUE,collapse=TRUE}
+head(vehicles)
+
+tail(vehicles)
+
+```
+
+La fonction `names()` affiche les noms des colonnes :
+
+```{r,echo=TRUE,collapse=TRUE}
+names(vehicles)
+
+```
+
+Les fonctions `nrow()`, `ncol()` et `dim()` renseignent sur les dimensions de votre dataframe :
+
+```{r,echo=TRUE,collapse=TRUE}
+nrow(vehicles)
+
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+ncol(vehicles)
+
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+dim(vehicles)
+```
+
+Notez que **`length()`** ne fonctionne pas de la même manière avec les dataframes qu'avec les vecteurs. Dans les dataframes, `length()` est l'équivalent de `ncol()` ; elle ne renvoie *pas* le nombre de lignes d'un jeu de données.
+
+Il est important de noter que vous pouvez utiliser **`is.na()`** pour vérifier si des colonnes ou des lignes contiennent des valeurs NA :
+
+```{r,echo=TRUE,collapse=TRUE, eval=TRUE}
+
+# Vérifier la présence de valeurs NA
+
+# Quelles lignes de la colonne `hwy` contiennent des valeurs NA ?
+
+which(is.na(vehicles$hwy))
+
+# (Aucune valeur NA dans cette colonne !)
+
+# Qu'en est-il des lignes de la colonne `cyl` ?
+
+which(is.na(vehicles$cyl))
+
+# (Beaucoup de valeurs manquantes dans cette colonne !)
+```
+
+### Sous-ensemble {-}
+
+Rappelons que les dataframes sont filtrés par ligne et/ou colonne selon le format suivant : **`dataframe[lignes,colonnes]`**. Pour obtenir le troisième élément de la deuxième colonne, par exemple, saisissez `dataframe[3,2]`.
+
+```{r,echo=TRUE,collapse=TRUE}
+vehicles[3,2]
+```
+
+Notez que la virgule est nécessaire même si vous ne souhaitez pas spécifier de colonnes. Si vous essayez de saisir ceci :
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+vehicles[3]
+
+```
+
+...`R` supposera que vous demandez la troisième colonne, et non la troisième ligne.
+
+Pour filtrer un dataframe selon plusieurs valeurs, vous pouvez spécifier des vecteurs pour les lignes et les colonnes.
+
+```{r,echo=TRUE,collapse=TRUE}
+vehicles[1:3,11:12] # vous pouvez utiliser des deux-points
+vehicles[1:3,c(1,11:12)] # vous pouvez utiliser la fonction c()
+
+```
+
+Les colonnes peuvent également être nommées. Utilisez le symbole **`$`** pour spécifier une colonne.
+
+```{r,echo=TRUE,collapse=TRUE}
+vehicles$hwy[1:5]
+
+```
+
+Notez que lorsque vous utilisez le symbole `$`, vous n'avez pas besoin de virgule à l'intérieur des crochets. Si vous essayez d'exécuter ceci…
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+vehicles$hwy[1:5,]
+```
+
+…`R` va générer une erreur.
+
+N'oubliez pas que vous pouvez utiliser des tests logiques, qui renvoient des valeurs booléennes `TRUE` ou `FALSE`, pour filtrer les dataframes et ne conserver que les lignes répondant à certains critères. Par exemple, pour ne conserver que les lignes correspondant aux voitures consommant moins de 100 mpg (miles par gallon), vous pouvez utiliser la syntaxe suivante :
+
+```{r,echo=TRUE,collapse=TRUE}
+
+# Construisez votre test logique
+verdicts <- vehicles$hwy > 100
+
+# Sous-ensemble avec des booléens
+vehicles[verdicts,2:3]
+```
+
+Vous pouvez également écrire tout cela sur une seule ligne, pour plus d'efficacité.
