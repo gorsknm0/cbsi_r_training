@@ -1,0 +1,184 @@
+
+# The Importance of Data Standardisation
+
+##### Learning Goal {-}
+
+
+* The importance of data standardisation generally
+
+* The importance of standardised formatting in data
+
+* The importance of standardised data collection and methodologies
+
+In this section we are going to use forest plot data to highlight the importance of data standardisation- not just in terms of formatting, but also in terms of data collection. Although the example used might not be relevant to everyone, the messages about the potential implications of lack of data standardisation will be relevant to any subject.
+
+&nbsp; 
+
+##### Part 1: The importance of standardised formatting {-}
+
+**1.** We are going to use field data from three fake forest plots:
+
+**SwampPlot1** is a 1 ha plot located in a swamp forest located along a river and is available to download here:
+
+`r xfun::embed_file("./data/SwampPlot1.csv",text="SwampPlot1.csv")`
+
+&nbsp; 
+
+**SwampPlot2** is a 0.5 ha plot located in a swamp forest located in a peatland and is available to download here:
+
+`r xfun::embed_file("./data/SwampPlot2.csv",text="SwampPlot2.csv")`
+
+&nbsp; 
+
+**TerreFirmePlot1** is a 1 ha plot located in a terre firme forest and is available to download here:
+
+`r xfun::embed_file("./data/TerreFirmePlot1.csv",text="TerreFirmePlot1.csv")`
+
+&nbsp; 
+
+Bring in these three datasets, give the dataframes a name (e.g. swamp1, swamp2, TF1) and take a look at their format. To run our code easily we want each of the three dataframes to be in the same format.
+
+&nbsp; 
+
+**2.** We want each dataframe to have the following columns:
+
+&nbsp; 
+
+**Family**: a column containing the family of the individual tree.
+
+**Species**: a column containing the combined genus and species of the tree.
+
+**Wood Density_g_cm3**: a column containing the wood density of the tree, in g cm-3.
+
+**DBH_cm**: a column containing the diameter at breast height of the tree, in centimeters.
+
+**Height_m**: a column containing the height of the tree in meters.
+
+&nbsp; 
+
+**If any of the dataframes do not follow this format, within R make changes to them to ensure that they do.**
+                                                                       
+
+> **Hint**: There is one plot where the DBH needs to be converted from millimeters to centimeters, the Genus >column needs to be concatenated with the Species column, and for consistency, you could add a height column and fill it with NA's.
+>
+>For this problematic plot, make new vectors of DBH_cm, Species (containing both genus and species combined), and a Height_m vector.
+>
+>The following cold be useful when trying to make these new vectors: `paste()` and `rep()`
+>
+Before we add these new vectors to our problematic dataframe, let's remove the columns we do not want:
+>
+```{r, echo=TRUE, eval=FALSE,collapse=TRUE}
+`swamp1 <- swamp1[, !names(swamp1) %in% c("Genus", "Species", "DBH_mm")]
+```
+>
+>Once you have done that, you can add your new columns to the dataframe.
+>
+>If using `cbind()` your new vectors will have been added to the end of the end of the dataframe. But if you want the order of your columns to be the same across all dataframes (this could be important if using numeric indexing in your code somewhere), one of the easiest ways to do this is to use the `dplyr` package and use `relocate()`:
+>
+```{r, echo=TRUE, eval=FALSE,collapse=TRUE}
+`swamp1 <- swamp1 %>%  relocate(Species, .before = Wood_Density_g_cm3)
+```
+>
+
+&nbsp; 
+
+**3.** For each plot take a careful look at the different species present in each plot. Has the data been entered consistently for each species?
+
+Later on we will count the number of species per plot. What are the implications of any inconsistencies in the way the species names have been entered?
+
+**If you see any inconsistencies, fix them.**
+
+&nbsp; 
+
+>Hint: combining `sort()` and `unique()` together will give you a way to see all species present in a plot listed in alphabetical order.
+>
+>To replace any typos or wrongly formatted species you can use `gsub()` for partial matches:
+>
+```{r, echo=TRUE, eval=FALSE,collapse=TRUE}
+TF1$Species <- gsub("Punctata", "punctata", TF1$Species)
+```
+>
+>Or you could do a conditional replacement with an exact match:
+>
+```{r, echo=TRUE, eval=FALSE,collapse=TRUE}
+TF1$Species[TF1$Species == "Lophira alata "] <- "Lophira alata"
+```
+>
+
+&nbsp; 
+
+Here we only have three plots. Imagine your project involves looking at hundred of plot. Imagine the time costs of dealing with data inconsistently formatted.
+Think about the potential errors which could go unnoticed if data is badly formatted (e.g. you get the wrong number of species per plot).
+**Formatting data consistently saves time and reduces the chance of errors.**
+
+Now that your data is formatted in the same way we will move on to some basic analyses.
+
+&nbsp; 
+
+##### Part 2: The importance of standardised data collection {-}
+
+Standardised data collection or methodologies makes data analyses much easier and makes comparisons between datasets much easier.
+
+Here we have some inconsistencies in how our forest plot data was collected. Firstly, for one of our plots no tree height data was collected. Secondly, our plots are different sizes- two are 1 ha in size, and one is 0.5 ha in size. Let's see what the implications are for our analyses.
+
+&nbsp; 
+
+**1.** The first task is to estimate for each forest, the number of stems per hectare. So count the number of individual trees in your plot (`length()` might help you here), and divide by the plot area.
+
+Does the different plot size matter in this instance? No. We can still get an estimate of number of stems per hectare for all our plots.
+
+&nbsp; 
+
+**2.** Now we we want to compare the species richness of each plot. Species richness is a very basic diversity measurement, where it is the number of species present in a specific area.
+
+**For each plot count the number of species in the plot.**
+
+*Imagine we want to compare our three plots with a paper we have read where the species richness is reported in number of species per hectare. For our 1 ha plots, we can make a direct comparison. However, one of our plots is 0.5 ha in size. Can we do what we did for stem number per hectare, and scale up our number of species in 0.5 ha to number of species in 1 ha? The answer is sadly no- the number of species per area is not linearly scaleable. This means you could double the size of your plot, but the number of species present in your plot may not double! So comparing the results from our small plot with the results in the paper we have read is not possible in this instance.*
+
+&nbsp; 
+
+**3.** The next task is to calculate the aboveground biomass of each plot, using an allometric equation, and report the results in tonnes per hectare (t ha^-1^).
+
+To calculate the plot aboveground biomass you first need to calculate the aboveground biomass of each individual tree, and then sum the individual tree biomass.
+
+To calculate individual tree biomass, we can use allometric equations from **Chave *et al.* 2014, *Global Change Biology*, 20, 3177–3190, doi: 10.1111/gcb.12629.**
+
+&nbsp; 
+
+The best performing allometric equation uses measurements of diameter and height:
+
+$AGB = 0.0673 \times (\rho D^2 H)^{0.976}$
+
+Where, **AGB** is the biomass of the tree in kg, $\boldsymbol{\rho}$ is wood density in g cm^3^, **D** is the diameter of the tree stem in centimeters, and **H** is the tree height in meters. 
+
+In R this equation would look like:
+
+**`AGB<-0.0673*(Wood_Density_g_cm3*DBH_cm^2*H_m)^0.976`**
+
+&nbsp; 
+
+If you do not have height you can use the allometric which only uses diameter:
+
+$AGB=exp[-1.803-0.976E+0.976ln(\rho)+2.673ln(D)-0.0299[ln(D)]^2]$
+
+Where, **AGB** is the biomass of the tree in kg, $\boldsymbol{\rho}$ is wood density in g cm^-3^, **D** is the diameter of the tree stem in centimeters, and **E** is an environmental stress factor, where here we will give it the value -0.0314.
+
+In R this equation would look like:
+
+**`AGB<-exp(-1.803-(0.976*-0.0314)+(0.976*log(Wood_Density_g_cm3)+(2.673*log(DBH_cm))-(0.0299*(log(DBH_cm))^2))`**
+
+This equation, has however, a much higher uncertainty associated with it. This is because we assume that the relationship between height and diamter is predictable. This is true to an extent- trees with larger diameters are likely to be taller than trees with smaller diameters. But the specific relationship between height and diameter can vary between forest type. For example, swamp forests tend to have smaller stature trees than terre firme plots. 
+
+&nbsp; 
+
+**For each of the three plots calculate the aboveground biomass of each tree using the best performing model possible, given the data you have.**
+
+For each plot get the total aboveground biomass of the plot, then convert it from kilograms to tonnes per hectare. Like stem number, aboveground biomass is linearly scaleable, so we have no problems scaling our 0.5 ha plot.
+
+Once you have calculated the total aboveground biomass for each plot and converted it to t ha^-1^, look to see whether aboveground biomass is different between your three plots? 
+
+*Think about what the implications are of having used different allometric equations? Can you make valid comparisons between aboveground biomass estimates for your three plots? Did our different methodologies introduce any bias that impacts our results? Are any differences or similarities in aboveground biomass between your plots real or just an artifact of the different methodologies?*
+
+&nbsp; 
+
+**Hopefully you can see that if data is not collected in a standardised way, it has implications for the way in which you can use your data and whether you can make direct comparisons between different datasets. Sometimes variations in methods cannot be helped, but you should avoid inconsistencies as far as possible**

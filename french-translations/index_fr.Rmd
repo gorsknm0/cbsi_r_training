@@ -1,0 +1,50 @@
+---
+title: Formation R
+site: bookdown::bookdown_site
+output:
+  bookdown::html_document2:
+    includes:
+      in_header: 
+  bookdown::gitbook:
+    includes:
+      in_header: 
+documentclass: book
+github-repo: 
+description: « Une ressource et un manuel pour apprendre R »
+favicon : 
+always_allow_html : true
+---
+
+```{r setup, include=FALSE, echo = FALSE}
+# Options knitr de base
+library(knitr)
+opts_chunk$set(comment = NA, 
+               echo=FALSE,
+               warning = FALSE, 
+               message = FALSE, 
+               error = TRUE, 
+               cache = FALSE,
+               fig.width = 9.64,
+               fig.height = 5.9,
+               fig.path = "figures/")
+
+options (scipen=999)
+```
+
+# Bienvenue au cours !
+
+Il ne s'agit pas d'un cours classique où nous vous enseignons de manière formelle. Nous allons plutôt vous guider à travers certaines choses que nous savons et vous donner l'occasion de vous exercer. Notre objectif est que vous vous sentiez en confiance, depuis la rédaction d'une ligne de code jusqu'à vous considérer comme un véritable chercheur. 
+
+Si vous avez des questions, n'hésitez pas à les poser. Si vous avez besoin que quelqu'un ralentisse ou explique les choses différemment (comme le français), dites-le. Car si vous y pensez, quelqu'un d'autre y pense probablement aussi. 
+
+
+
+Suivez les instructions des pages suivantes pour mettre votre ordinateur en marche, et si vous voyez une boîte comme celle ci-dessous,
+
+```{r, eval = FALSE, echo = TRUE}
+veillez à taper tout ce que vous voyez dans ces boîtes sur votre propre ordinateur.
+```
+
+Ce cours consiste à voir **et à faire**. Ne vous contentez pas de le lire. Mettez-le en pratique.
+
+Maintenant que les formalités sont réglées... Attachez vos ceintures et apprenons à travailler avec des données.

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 14 Importing data | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 14 Importing data | R Training" />
   <meta property="og:type" content="book" />
@@ -249,17 +249,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>21</b> Brazzaville’s climate</a></li>
 <li class="chapter" data-level="22" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>22</b> Cleaning messy data</a></li>
 <li class="chapter" data-level="23" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>23</b> River discharge, DOC and nitrate</a></li>
+<li class="chapter" data-level="24" data-path="the-importance-of-data-standardisation.html"><a href="the-importance-of-data-standardisation.html"><i class="fa fa-check"></i><b>24</b> The Importance of Data Standardisation</a></li>
 <li class="part"><span><b>V Extra Information</b></span></li>
-<li class="chapter" data-level="24" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>24</b> Working with dates &amp; times</a>
+<li class="chapter" data-level="25" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>25</b> Working with dates &amp; times</a>
 <ul>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>25</b> Working with text</a>
+<li class="chapter" data-level="26" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>26</b> Working with text</a>
 <ul>
 <li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>26</b> Special Characters</a></li>
+<li class="chapter" data-level="27" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>27</b> Special Characters</a></li>
 </ul>
 
       </nav>
@@ -307,32 +308,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Reading in data is simple and easy if your data are saved as a <strong><code>.csv</code></strong>, a comma-separated file. You can find functions for reading all sorts of file types into <code>R</code>, but the quickest way to begin working with your own data in <code>R</code> is to maintain that data in <code>.csv</code>’s.</p>
 <p>The function <code>read_csv()</code>, from a package named <code>readr</code>, becomes useful when you begin working with (1) data from the internet, (2) data within the <code>tidyverse</code>, which you will be introduced to in the next module, and/or (2) very large dataset, since it reads data much more quickly and provides progress updates along the way.</p>
 <p>Here’s an example of reading a file directly from the internet …</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="importing-data.html#cb216-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb216-2"><a href="importing-data.html#cb216-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/databrew/intro-to-data-science/main/data/deaths.csv&#39;</span>)</span>
-<span id="cb216-3"><a href="importing-data.html#cb216-3" tabindex="-1"></a>df</span>
-<span id="cb216-4"><a href="importing-data.html#cb216-4" tabindex="-1"></a><span class="co"># A tibble: 891 × 12</span></span>
-<span id="cb216-5"><a href="importing-data.html#cb216-5" tabindex="-1"></a>   PassengerId Survived Pclass Name   Sex     Age SibSp Parch Ticket  Fare Cabin</span>
-<span id="cb216-6"><a href="importing-data.html#cb216-6" tabindex="-1"></a>         <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>  <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>  <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>  <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span></span>
-<span id="cb216-7"><a href="importing-data.html#cb216-7" tabindex="-1"></a> <span class="dv">1</span>           <span class="dv">1</span>        <span class="dv">0</span>      <span class="dv">3</span> Braun… male     <span class="dv">22</span>     <span class="dv">1</span>     <span class="dv">0</span> A<span class="sc">/</span><span class="dv">5</span> <span class="dv">2</span>…  <span class="fl">7.25</span> <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> </span>
-<span id="cb216-8"><a href="importing-data.html#cb216-8" tabindex="-1"></a> <span class="dv">2</span>           <span class="dv">2</span>        <span class="dv">1</span>      <span class="dv">1</span> Cumin… fema…    <span class="dv">38</span>     <span class="dv">1</span>     <span class="dv">0</span> PC <span class="dv">17</span>… <span class="fl">71.3</span>  C85  </span>
-<span id="cb216-9"><a href="importing-data.html#cb216-9" tabindex="-1"></a> <span class="dv">3</span>           <span class="dv">3</span>        <span class="dv">1</span>      <span class="dv">3</span> Heikk… fema…    <span class="dv">26</span>     <span class="dv">0</span>     <span class="dv">0</span> STON<span class="sc">/</span>…  <span class="fl">7.92</span> <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> </span>
-<span id="cb216-10"><a href="importing-data.html#cb216-10" tabindex="-1"></a> <span class="dv">4</span>           <span class="dv">4</span>        <span class="dv">1</span>      <span class="dv">1</span> Futre… fema…    <span class="dv">35</span>     <span class="dv">1</span>     <span class="dv">0</span> <span class="dv">113803</span> <span class="fl">53.1</span>  C123 </span>
-<span id="cb216-11"><a href="importing-data.html#cb216-11" tabindex="-1"></a> <span class="dv">5</span>           <span class="dv">5</span>        <span class="dv">0</span>      <span class="dv">3</span> Allen… male     <span class="dv">35</span>     <span class="dv">0</span>     <span class="dv">0</span> <span class="dv">373450</span>  <span class="fl">8.05</span> <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> </span>
-<span id="cb216-12"><a href="importing-data.html#cb216-12" tabindex="-1"></a> <span class="dv">6</span>           <span class="dv">6</span>        <span class="dv">0</span>      <span class="dv">3</span> Moran… male     <span class="cn">NA</span>     <span class="dv">0</span>     <span class="dv">0</span> <span class="dv">330877</span>  <span class="fl">8.46</span> <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> </span>
-<span id="cb216-13"><a href="importing-data.html#cb216-13" tabindex="-1"></a> <span class="dv">7</span>           <span class="dv">7</span>        <span class="dv">0</span>      <span class="dv">1</span> McCar… male     <span class="dv">54</span>     <span class="dv">0</span>     <span class="dv">0</span> <span class="dv">17463</span>  <span class="fl">51.9</span>  E46  </span>
-<span id="cb216-14"><a href="importing-data.html#cb216-14" tabindex="-1"></a> <span class="dv">8</span>           <span class="dv">8</span>        <span class="dv">0</span>      <span class="dv">3</span> Palss… male      <span class="dv">2</span>     <span class="dv">3</span>     <span class="dv">1</span> <span class="dv">349909</span> <span class="fl">21.1</span>  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> </span>
-<span id="cb216-15"><a href="importing-data.html#cb216-15" tabindex="-1"></a> <span class="dv">9</span>           <span class="dv">9</span>        <span class="dv">1</span>      <span class="dv">3</span> Johns… fema…    <span class="dv">27</span>     <span class="dv">0</span>     <span class="dv">2</span> <span class="dv">347742</span> <span class="fl">11.1</span>  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> </span>
-<span id="cb216-16"><a href="importing-data.html#cb216-16" tabindex="-1"></a><span class="dv">10</span>          <span class="dv">10</span>        <span class="dv">1</span>      <span class="dv">2</span> Nasse… fema…    <span class="dv">14</span>     <span class="dv">1</span>     <span class="dv">0</span> <span class="dv">237736</span> <span class="fl">30.1</span>  <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> </span>
-<span id="cb216-17"><a href="importing-data.html#cb216-17" tabindex="-1"></a><span class="co"># ℹ 881 more rows</span></span>
-<span id="cb216-18"><a href="importing-data.html#cb216-18" tabindex="-1"></a><span class="co"># ℹ 1 more variable: Embarked &lt;chr&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="importing-data.html#cb219-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb219-2"><a href="importing-data.html#cb219-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">library()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb219-3"><a href="importing-data.html#cb219-3" tabindex="-1"></a><span class="sc">!</span> there is no package called <span class="st">&#39;readr&#39;</span></span>
+<span id="cb219-4"><a href="importing-data.html#cb219-4" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/databrew/intro-to-data-science/main/data/deaths.csv&#39;</span>)</span>
+<span id="cb219-5"><a href="importing-data.html#cb219-5" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">read_csv()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb219-6"><a href="importing-data.html#cb219-6" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;read_csv&quot;</span></span>
+<span id="cb219-7"><a href="importing-data.html#cb219-7" tabindex="-1"></a>df</span>
+<span id="cb219-8"><a href="importing-data.html#cb219-8" tabindex="-1"></a>  age   home     name instrument x_factor</span>
+<span id="cb219-9"><a href="importing-data.html#cb219-9" tabindex="-1"></a><span class="dv">1</span>  <span class="dv">33</span> Canada      Ben  Nose harp        <span class="dv">3</span></span>
+<span id="cb219-10"><a href="importing-data.html#cb219-10" tabindex="-1"></a><span class="dv">2</span>  <span class="dv">35</span>  Spain      Joe Concertina       <span class="dv">20</span></span>
+<span id="cb219-11"><a href="importing-data.html#cb219-11" tabindex="-1"></a><span class="dv">3</span>  <span class="dv">35</span>    USA     Eric    Ukelele       <span class="dv">60</span></span>
+<span id="cb219-12"><a href="importing-data.html#cb219-12" tabindex="-1"></a><span class="dv">4</span>  <span class="dv">20</span>    USA Isabelle      Drums       <span class="dv">70</span></span></code></pre></div>
 <p>Note that when you use <code>read_csv()</code> instead of <code>read.csv()</code>, your data are read in as a <code>tibble</code> instead of a dataframe. You will be introduced to <code>tibbles</code> in the next modules on dataframes; for the time being, think of a <code>tibble</code> as a fancy version of a dataframe that can be treated exactly as a regular dataframe.</p>
 </div>
 <div id="read.csv" class="section level4 unnumbered hasAnchor">
 <h4><code>read.csv()</code><a href="importing-data.html#read.csv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This function, <code>read.csv()</code>, is the base function for reading in a <code>.csv</code>. It is strictly used for reading in local files (not from the internet).</p>
 <p>This function reads in your data file as a dataframe. Save your dataset into <code>R</code>’s memory using a variable (in this case, <code>df</code>).</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="importing-data.html#cb217-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/super_data.csv&quot;</span>)</span>
-<span id="cb217-2"><a href="importing-data.html#cb217-2" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="importing-data.html#cb220-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/super_data.csv&quot;</span>)</span>
+<span id="cb220-2"><a href="importing-data.html#cb220-2" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>  patient_id height_in weight_lb                   comment
 1          1        74       135             not very nice
 2          2        56       112                kinda cute
@@ -345,56 +340,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Use the <strong><code>stringsAsFactors</code></strong> input when you want to make absolutely sure that <code>R</code> interprets any non-numeric fields as characters rather than factors. We have not focused on factors yet, but it can be frustrating when <code>R</code> mistakes a column of character strings as a column factors. To avoid any possible confusion, use <code>stringsAsFactors=TRUE</code> as an input.</p></li>
 </ul>
 <p>For example, here is how to read in this data without column names:</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="importing-data.html#cb219-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/super_data.csv&quot;</span>,<span class="at">skip=</span><span class="dv">1</span>,<span class="at">header=</span><span class="cn">FALSE</span>)</span>
-<span id="cb219-2"><a href="importing-data.html#cb219-2" tabindex="-1"></a>df</span>
-<span id="cb219-3"><a href="importing-data.html#cb219-3" tabindex="-1"></a>  V1 V2  V3                        V4</span>
-<span id="cb219-4"><a href="importing-data.html#cb219-4" tabindex="-1"></a><span class="dv">1</span>  <span class="dv">1</span> <span class="dv">74</span> <span class="dv">135</span>             not very nice</span>
-<span id="cb219-5"><a href="importing-data.html#cb219-5" tabindex="-1"></a><span class="dv">2</span>  <span class="dv">2</span> <span class="dv">56</span> <span class="dv">112</span>                kinda cute</span>
-<span id="cb219-6"><a href="importing-data.html#cb219-6" tabindex="-1"></a><span class="dv">3</span>  <span class="dv">3</span> <span class="dv">59</span> <span class="dv">156</span> kinda cute but had a ring</span>
-<span id="cb219-7"><a href="importing-data.html#cb219-7" tabindex="-1"></a><span class="dv">4</span>  <span class="dv">4</span> <span class="dv">43</span> <span class="dv">102</span>                 so small<span class="sc">!</span></span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="importing-data.html#cb222-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/super_data.csv&quot;</span>,<span class="at">skip=</span><span class="dv">1</span>,<span class="at">header=</span><span class="cn">FALSE</span>)</span>
+<span id="cb222-2"><a href="importing-data.html#cb222-2" tabindex="-1"></a>df</span>
+<span id="cb222-3"><a href="importing-data.html#cb222-3" tabindex="-1"></a>  V1 V2  V3                        V4</span>
+<span id="cb222-4"><a href="importing-data.html#cb222-4" tabindex="-1"></a><span class="dv">1</span>  <span class="dv">1</span> <span class="dv">74</span> <span class="dv">135</span>             not very nice</span>
+<span id="cb222-5"><a href="importing-data.html#cb222-5" tabindex="-1"></a><span class="dv">2</span>  <span class="dv">2</span> <span class="dv">56</span> <span class="dv">112</span>                kinda cute</span>
+<span id="cb222-6"><a href="importing-data.html#cb222-6" tabindex="-1"></a><span class="dv">3</span>  <span class="dv">3</span> <span class="dv">59</span> <span class="dv">156</span> kinda cute but had a ring</span>
+<span id="cb222-7"><a href="importing-data.html#cb222-7" tabindex="-1"></a><span class="dv">4</span>  <span class="dv">4</span> <span class="dv">43</span> <span class="dv">102</span>                 so small<span class="sc">!</span></span></code></pre></div>
 <p>If you do this without setting header to FALSE, your first row of data gets used as column names and it becomes a big ole mess:</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="importing-data.html#cb220-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/super_data.csv&quot;</span>,<span class="at">skip=</span><span class="dv">1</span>)</span>
-<span id="cb220-2"><a href="importing-data.html#cb220-2" tabindex="-1"></a>df</span>
-<span id="cb220-3"><a href="importing-data.html#cb220-3" tabindex="-1"></a>  X1 X74 X135             not.very.nice</span>
-<span id="cb220-4"><a href="importing-data.html#cb220-4" tabindex="-1"></a><span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">56</span>  <span class="dv">112</span>                kinda cute</span>
-<span id="cb220-5"><a href="importing-data.html#cb220-5" tabindex="-1"></a><span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">59</span>  <span class="dv">156</span> kinda cute but had a ring</span>
-<span id="cb220-6"><a href="importing-data.html#cb220-6" tabindex="-1"></a><span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">43</span>  <span class="dv">102</span>                 so small<span class="sc">!</span></span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="importing-data.html#cb223-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/super_data.csv&quot;</span>,<span class="at">skip=</span><span class="dv">1</span>)</span>
+<span id="cb223-2"><a href="importing-data.html#cb223-2" tabindex="-1"></a>df</span>
+<span id="cb223-3"><a href="importing-data.html#cb223-3" tabindex="-1"></a>  X1 X74 X135             not.very.nice</span>
+<span id="cb223-4"><a href="importing-data.html#cb223-4" tabindex="-1"></a><span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">56</span>  <span class="dv">112</span>                kinda cute</span>
+<span id="cb223-5"><a href="importing-data.html#cb223-5" tabindex="-1"></a><span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">59</span>  <span class="dv">156</span> kinda cute but had a ring</span>
+<span id="cb223-6"><a href="importing-data.html#cb223-6" tabindex="-1"></a><span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">43</span>  <span class="dv">102</span>                 so small<span class="sc">!</span></span></code></pre></div>
 </div>
 <div id="readxl" class="section level4 unnumbered hasAnchor">
 <h4><code>readxl()</code><a href="importing-data.html#readxl" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To read in an <em>Excel</em> spreadsheet, use the <code>read_xlsx()</code> function from the package <code>readxl</code>.</p>
 <p>If <code>super_data</code> were an <code>.xlsx</code> file, the command would look like this:</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="importing-data.html#cb221-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb221-2"><a href="importing-data.html#cb221-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/super_data.xlsx&quot;</span>,<span class="at">sheet=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="importing-data.html#cb224-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb224-2"><a href="importing-data.html#cb224-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/super_data.xlsx&quot;</span>,<span class="at">sheet=</span><span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="gsheet" class="section level4 unnumbered hasAnchor">
 <h4><code>gsheet()</code><a href="importing-data.html#gsheet" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To read in an <em>GoogleSheets</em> spreadsheet, use the <code>gsheet2tbl()</code> function from the package <code>gsheet</code>.</p>
 <p>Make sure link sharing is turned on for the <em>GoogleSheet</em> you are trying to access:</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="importing-data.html#cb222-1" tabindex="-1"></a><span class="fu">library</span>(gsheet)</span>
-<span id="cb222-2"><a href="importing-data.html#cb222-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">gsheet2tbl</span>(<span class="st">&quot;https://docs.google.com/spreadsheets/d/1uQ5PfGITnjHngK41FWHeedioca30wpyEsBOpC_B6T3E/edit?usp=sharing&quot;</span>)</span>
-<span id="cb222-3"><a href="importing-data.html#cb222-3" tabindex="-1"></a>df</span>
-<span id="cb222-4"><a href="importing-data.html#cb222-4" tabindex="-1"></a><span class="co"># A tibble: 4 × 4</span></span>
-<span id="cb222-5"><a href="importing-data.html#cb222-5" tabindex="-1"></a>  patient_id height_in weight_lb comment                  </span>
-<span id="cb222-6"><a href="importing-data.html#cb222-6" tabindex="-1"></a>       <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>     <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>     <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                    </span>
-<span id="cb222-7"><a href="importing-data.html#cb222-7" tabindex="-1"></a><span class="dv">1</span>          <span class="dv">1</span>        <span class="dv">74</span>       <span class="dv">135</span> not very nice            </span>
-<span id="cb222-8"><a href="importing-data.html#cb222-8" tabindex="-1"></a><span class="dv">2</span>          <span class="dv">2</span>        <span class="dv">56</span>       <span class="dv">112</span> kinda cute               </span>
-<span id="cb222-9"><a href="importing-data.html#cb222-9" tabindex="-1"></a><span class="dv">3</span>          <span class="dv">3</span>        <span class="dv">59</span>       <span class="dv">156</span> kinda cute but had a ring</span>
-<span id="cb222-10"><a href="importing-data.html#cb222-10" tabindex="-1"></a><span class="dv">4</span>          <span class="dv">4</span>        <span class="dv">43</span>       <span class="dv">102</span> so small                 </span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="importing-data.html#cb225-1" tabindex="-1"></a><span class="fu">library</span>(gsheet)</span>
+<span id="cb225-2"><a href="importing-data.html#cb225-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">library()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb225-3"><a href="importing-data.html#cb225-3" tabindex="-1"></a><span class="sc">!</span> there is no package called <span class="st">&#39;gsheet&#39;</span></span>
+<span id="cb225-4"><a href="importing-data.html#cb225-4" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">gsheet2tbl</span>(<span class="st">&quot;https://docs.google.com/spreadsheets/d/1uQ5PfGITnjHngK41FWHeedioca30wpyEsBOpC_B6T3E/edit?usp=sharing&quot;</span>)</span>
+<span id="cb225-5"><a href="importing-data.html#cb225-5" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">gsheet2tbl()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb225-6"><a href="importing-data.html#cb225-6" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;gsheet2tbl&quot;</span></span>
+<span id="cb225-7"><a href="importing-data.html#cb225-7" tabindex="-1"></a>df</span>
+<span id="cb225-8"><a href="importing-data.html#cb225-8" tabindex="-1"></a>  X1 X74 X135             not.very.nice</span>
+<span id="cb225-9"><a href="importing-data.html#cb225-9" tabindex="-1"></a><span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">56</span>  <span class="dv">112</span>                kinda cute</span>
+<span id="cb225-10"><a href="importing-data.html#cb225-10" tabindex="-1"></a><span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">59</span>  <span class="dv">156</span> kinda cute but had a ring</span>
+<span id="cb225-11"><a href="importing-data.html#cb225-11" tabindex="-1"></a><span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">43</span>  <span class="dv">102</span>                 so small<span class="sc">!</span></span></code></pre></div>
 </div>
 <div id="readrds" class="section level4 unnumbered hasAnchor">
 <h4><code>readRDS()</code><a href="importing-data.html#readrds" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Another niche function for reading data is <code>readRDS()</code>. This function allows you to read in <em>R data objects</em>, which have the file extension <em>.rds</em>. These data objects need not be in the same format as a <code>.csv</code> or even a dataframe, and that is what makes them so handy. A colleague could send you an <code>.rds</code> object of a vector, a list, a plotting function, or any other kind of <code>R</code> object, and you can read it in with <code>readRDS()</code>.</p>
 <p>For example, <a href="data:application/octet-stream;base64,H4sIAAAAAAAAA9VSsU7DMBB1k5Y2RYVKndjMB9CZjS4wwYJAAgkpOLbbRHWSKnGo2PqpfAIfgBou8TmlEYiBiUjR+Z7fvXvy3cOQEOKSLnGI24Mj6d3fXZ2dAzaBpIKPqnjxTupvRjAOMI4RQN7sdmPwa7y/wfxys897fjP4E/I48h4b3rju3yUexFGSavois1eaRFwiOFxGiWCUF9oiJzuEBoWmIROU0SxKFkjw8pTmMVPqFLQdADp40UtYLHM4fO06XDEdyUT7kbD1oYwWIQCJBdYGUAECfZ7GMdS09blieVv/MF9J7utA+WKO0MFe5kJmvQim2XSegc2WtJel66m1P6qernrCsiw/WsRu1Q4H6wLNDNjkxHCdEi06WDPmqVKS6zTzRVoEyr601+CQbP+NyGQnwkOWMa5l9oNOVd8pW3v4t4341d7xzt6ikLAv31urp9wxP9o0Oq6dNBTY4r6Qc1Yo3SzBMlq12tsFGUCZb5akbrP9BERePggdBAAA" download="super_data.rds">super_data.rds</a>contains a <code>tibble</code> version of the dataframe above. When you read in that <code>.rds</code> file, it is already formatted as a <code>tibble</code>:</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="importing-data.html#cb223-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/super_data.rds&quot;</span>)</span>
-<span id="cb223-2"><a href="importing-data.html#cb223-2" tabindex="-1"></a>df</span>
-<span id="cb223-3"><a href="importing-data.html#cb223-3" tabindex="-1"></a><span class="co"># A tibble: 4 × 4</span></span>
-<span id="cb223-4"><a href="importing-data.html#cb223-4" tabindex="-1"></a>  patient_id height_in weight_lb comment                  </span>
-<span id="cb223-5"><a href="importing-data.html#cb223-5" tabindex="-1"></a>       <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>     <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>     <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                    </span>
-<span id="cb223-6"><a href="importing-data.html#cb223-6" tabindex="-1"></a><span class="dv">1</span>          <span class="dv">1</span>        <span class="dv">74</span>       <span class="dv">135</span> not very nice            </span>
-<span id="cb223-7"><a href="importing-data.html#cb223-7" tabindex="-1"></a><span class="dv">2</span>          <span class="dv">2</span>        <span class="dv">56</span>       <span class="dv">112</span> kinda cute               </span>
-<span id="cb223-8"><a href="importing-data.html#cb223-8" tabindex="-1"></a><span class="dv">3</span>          <span class="dv">3</span>        <span class="dv">59</span>       <span class="dv">156</span> kinda cute but had a ring</span>
-<span id="cb223-9"><a href="importing-data.html#cb223-9" tabindex="-1"></a><span class="dv">4</span>          <span class="dv">4</span>        <span class="dv">43</span>       <span class="dv">102</span> so small<span class="sc">!</span>                </span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="importing-data.html#cb226-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/super_data.rds&quot;</span>)</span>
+<span id="cb226-2"><a href="importing-data.html#cb226-2" tabindex="-1"></a>df</span>
+<span id="cb226-3"><a href="importing-data.html#cb226-3" tabindex="-1"></a>  patient_id height_in weight_lb                   comment</span>
+<span id="cb226-4"><a href="importing-data.html#cb226-4" tabindex="-1"></a><span class="dv">1</span>          <span class="dv">1</span>        <span class="dv">74</span>       <span class="dv">135</span>             not very nice</span>
+<span id="cb226-5"><a href="importing-data.html#cb226-5" tabindex="-1"></a><span class="dv">2</span>          <span class="dv">2</span>        <span class="dv">56</span>       <span class="dv">112</span>                kinda cute</span>
+<span id="cb226-6"><a href="importing-data.html#cb226-6" tabindex="-1"></a><span class="dv">3</span>          <span class="dv">3</span>        <span class="dv">59</span>       <span class="dv">156</span> kinda cute but had a ring</span>
+<span id="cb226-7"><a href="importing-data.html#cb226-7" tabindex="-1"></a><span class="dv">4</span>          <span class="dv">4</span>        <span class="dv">43</span>       <span class="dv">102</span>                 so small<span class="sc">!</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -431,14 +425,14 @@ This looks scary, but it is actually really simple. A <code>.csv</code> is a sim
 <div id="reading-data-from-other-folders" class="section level3 unnumbered hasAnchor">
 <h3>Reading data from other folders<a href="importing-data.html#reading-data-from-other-folders" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The data-reading functions above require only a single input: the <em>path</em> to your data file. This <em>path</em> is relative to the location of your working directory. When your data file is <em>inside</em> your working directory, the path simplifies to be the same as the filename of your data:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="importing-data.html#cb224-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/super_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="importing-data.html#cb227-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/super_data.csv&quot;</span>)</span></code></pre></div>
 <p>Sometimes, though, you will want to keep your data somewhere nearby but not necessarily <em>within</em> your working directory. Consider the following scenario, in which three versions of the “super_data.csv” dataset occur near a working directory being used for this module:</p>
 <p><img src="docs/img/csv_wd.png" /></p>
 <p>We have a version within the same directory as our <code>R</code> file (i.e., our working directory), another version within a <em>child</em> folder within the directory (i.e., a subfolder), and another version in the <em>parent</em> folder of the working directory.</p>
 <p><strong>To read a file from a <em>child</em> folder,</strong> add the prefix, <code>./&lt;child name&gt;/</code>, to your command:</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="importing-data.html#cb225-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/super_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="importing-data.html#cb228-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/super_data.csv&quot;</span>)</span></code></pre></div>
 <p><strong>To read a file from a <em>parent</em> folder,</strong> add the prefix, <code>../</code>, to your command:</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="importing-data.html#cb226-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/super_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="importing-data.html#cb229-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/super_data.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="managing-files" class="section level3 unnumbered hasAnchor">
 <h3>Managing files<a href="importing-data.html#managing-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -455,7 +449,7 @@ This looks scary, but it is actually really simple. A <code>.csv</code> is a sim
 </ul>
 <p>Since your <code>R</code> code is going into the <code>R</code> child folder, that is what you should set your working directory for those <code>R</code> scripts to. In that case, <em>how to read data from the <code>data</code> folder</em>, which is a separate child folder of your parent folder?</p>
 <p>Here’s how:</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="importing-data.html#cb227-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../data/super_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="importing-data.html#cb230-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../data/super_data.csv&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -517,6 +511,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

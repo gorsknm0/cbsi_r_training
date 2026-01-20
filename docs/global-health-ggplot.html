@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 20 Global health &amp; ggplot | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 20 Global health &amp; ggplot | R Training" />
   <meta property="og:type" content="book" />
@@ -249,17 +249,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>21</b> Brazzaville’s climate</a></li>
 <li class="chapter" data-level="22" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>22</b> Cleaning messy data</a></li>
 <li class="chapter" data-level="23" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>23</b> River discharge, DOC and nitrate</a></li>
+<li class="chapter" data-level="24" data-path="the-importance-of-data-standardisation.html"><a href="the-importance-of-data-standardisation.html"><i class="fa fa-check"></i><b>24</b> The Importance of Data Standardisation</a></li>
 <li class="part"><span><b>V Extra Information</b></span></li>
-<li class="chapter" data-level="24" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>24</b> Working with dates &amp; times</a>
+<li class="chapter" data-level="25" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>25</b> Working with dates &amp; times</a>
 <ul>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>25</b> Working with text</a>
+<li class="chapter" data-level="26" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>26</b> Working with text</a>
 <ul>
 <li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>26</b> Special Characters</a></li>
+<li class="chapter" data-level="27" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>27</b> Special Characters</a></li>
 </ul>
 
       </nav>
@@ -282,10 +283,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This review exercise is useful immediately after you learn <code>ggplot2</code> and <code>dplyr</code>.</p>
 <p> </p>
 <p>First, let’s read in some data on health from the World Bank:</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="global-health-ggplot.html#cb307-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb307-2"><a href="global-health-ggplot.html#cb307-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb307-3"><a href="global-health-ggplot.html#cb307-3" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb307-4"><a href="global-health-ggplot.html#cb307-4" tabindex="-1"></a>gm <span class="ot">&lt;-</span> gapminder<span class="sc">::</span>gapminder</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="global-health-ggplot.html#cb311-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb311-2"><a href="global-health-ggplot.html#cb311-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">library()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb311-3"><a href="global-health-ggplot.html#cb311-3" tabindex="-1"></a><span class="sc">!</span> there is no package called <span class="st">&#39;readr&#39;</span></span>
+<span id="cb311-4"><a href="global-health-ggplot.html#cb311-4" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb311-5"><a href="global-health-ggplot.html#cb311-5" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">library()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb311-6"><a href="global-health-ggplot.html#cb311-6" tabindex="-1"></a><span class="sc">!</span> there is no package called <span class="st">&#39;dplyr&#39;</span></span>
+<span id="cb311-7"><a href="global-health-ggplot.html#cb311-7" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb311-8"><a href="global-health-ggplot.html#cb311-8" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">library()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb311-9"><a href="global-health-ggplot.html#cb311-9" tabindex="-1"></a><span class="sc">!</span> there is no package called <span class="st">&#39;gapminder&#39;</span></span>
+<span id="cb311-10"><a href="global-health-ggplot.html#cb311-10" tabindex="-1"></a>gm <span class="ot">&lt;-</span> gapminder<span class="sc">::</span>gapminder</span>
+<span id="cb311-11"><a href="global-health-ggplot.html#cb311-11" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">loadNamespace()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb311-12"><a href="global-health-ggplot.html#cb311-12" tabindex="-1"></a><span class="sc">!</span> there is no package called <span class="st">&#39;gapminder&#39;</span></span></code></pre></div>
 <p><strong>1.</strong> How many rows are in the dataset?</p>
 <p><strong>2.</strong> How many columns are in the dataset?</p>
 <p><strong>3.</strong> What are the names of the columns?</p>
@@ -385,6 +394,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

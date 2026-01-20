@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 24 The Importance of Data Standardisation | R Training</title>
+  <meta name="description" content="A resource &amp; workbook for learning R" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 24 The Importance of Data Standardisation | R Training" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="A resource &amp; workbook for learning R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 24 The Importance of Data Standardisation | R Training" />
+  
+  <meta name="twitter:description" content="A resource &amp; workbook for learning R" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="river-discharge-doc-and-nitrate.html"/>
+<link rel="next" href="dates.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to the course!</a></li>
+<li class="part"><span><b>I Pre-Training Material</b></span></li>
+<li class="chapter" data-level="2" data-path="setting-up-your-computer.html"><a href="setting-up-your-computer.html"><i class="fa fa-check"></i><b>2</b> Setting up your computer</a>
+<ul>
+<li class="chapter" data-level="" data-path="setting-up-your-computer.html"><a href="setting-up-your-computer.html#install-packages"><i class="fa fa-check"></i>Install packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html"><i class="fa fa-check"></i><b>3</b> Preparing for the R Training</a>
+<ul>
+<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#running-r-code-in-the-console"><i class="fa fa-check"></i>Running R code in the <em>Console</em></a></li>
+<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#use-r-like-a-calculator"><i class="fa fa-check"></i>Use R like a calculator</a></li>
+<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#getting-along-with-r"><i class="fa fa-check"></i>Getting along with <code>R</code></a></li>
+<li class="chapter" data-level="" data-path="preparing-for-the-r-training.html"><a href="preparing-for-the-r-training.html#use-built-in-r-functions"><i class="fa fa-check"></i>Use built-in R functions</a></li>
+</ul></li>
+<li class="part"><span><b>II Getting Started</b></span></li>
+<li class="chapter" data-level="4" data-path="welcome.html"><a href="welcome.html"><i class="fa fa-check"></i><b>4</b> Welcome!</a>
+<ul>
+<li class="chapter" data-level="" data-path="welcome.html"><a href="welcome.html#what-this-is-and-what-it-isnt"><i class="fa fa-check"></i>What this is, and what it isn’t</a></li>
+<li class="chapter" data-level="" data-path="welcome.html"><a href="welcome.html#what-you-will-learn"><i class="fa fa-check"></i>What you will learn</a></li>
+<li class="chapter" data-level="" data-path="welcome.html"><a href="welcome.html#where-did-this-come-from"><i class="fa fa-check"></i>Where did this come from</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html"><i class="fa fa-check"></i><b>5</b> Using <code>RStudio</code> &amp; <code>R</code> scripts</a>
+<ul>
+<li class="chapter" data-level="" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html#r-and-rstudio-whats-the-difference"><i class="fa fa-check"></i><code>R</code> and <code>RStudio</code>: what’s the difference?</a></li>
+<li class="chapter" data-level="" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html#two-minute-tour-of-rstudio"><i class="fa fa-check"></i>Two-minute tour of <code>RStudio</code></a></li>
+<li class="chapter" data-level="" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html#scripts"><i class="fa fa-check"></i>Scripts</a></li>
+<li class="chapter" data-level="" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html#wd"><i class="fa fa-check"></i>Your working directory</a></li>
+<li class="chapter" data-level="" data-path="using-rstudio-r-scripts.html"><a href="using-rstudio-r-scripts.html#typical-workflows"><i class="fa fa-check"></i>Typical workflows</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="review-your-r-training-prep.html"><a href="review-your-r-training-prep.html"><i class="fa fa-check"></i><b>6</b> Review your R Training Prep</a></li>
+<li class="chapter" data-level="7" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>7</b> Data Visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#the-importance-of-data-viz"><i class="fa fa-check"></i>The importance of <em>data viz</em></a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#first-steps-to-data-viz"><i class="fa fa-check"></i>First steps to <em>data viz</em></a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#the-penguins-data-frame"><i class="fa fa-check"></i>The penguins Data Frame</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#the-ultimate-goal"><i class="fa fa-check"></i>The ultimate goal</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#creating-a-ggplot"><i class="fa fa-check"></i>Creating a ggplot</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#adding-aesthetics-and-layers"><i class="fa fa-check"></i>Adding aesthetics and layers</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#ggplot2-calls"><i class="fa fa-check"></i>ggplot2 calls</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#categorical-variables"><i class="fa fa-check"></i>Categorical Variables</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#a-numerical-variable"><i class="fa fa-check"></i>A numerical variable</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#exercises-2-from-book"><i class="fa fa-check"></i>Exercises 2 (from book)</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#mapping-a-numerical-and-categorical-variable"><i class="fa fa-check"></i>Mapping a numerical and categorical variable</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#two-categorical-variables"><i class="fa fa-check"></i>Two categorical variables</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#two-numerical-variables"><i class="fa fa-check"></i>Two numerical variables</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#three-or-more-variables"><i class="fa fa-check"></i>Three or more variables</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#exercise-3-see-book"><i class="fa fa-check"></i>Exercise 3 (see book)</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#saving-your-plots"><i class="fa fa-check"></i>Saving your plots</a></li>
+<li class="chapter" data-level="" data-path="data-visualization.html"><a href="data-visualization.html#exercise-4-see-book"><i class="fa fa-check"></i>Exercise 4 (see book)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>8</b> Variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="variables.html"><a href="variables.html#introducing-variables"><i class="fa fa-check"></i>Introducing variables</a></li>
+<li class="chapter" data-level="" data-path="variables.html"><a href="variables.html#types-of-data-in-r"><i class="fa fa-check"></i>Types of data in <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>9</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#declaring-and-using-vectors"><i class="fa fa-check"></i>Declaring and using vectors</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#math-with-two-vectors"><i class="fa fa-check"></i>Math with two vectors</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#functions-for-handling-vectors"><i class="fa fa-check"></i>Functions for handling vectors</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#subsetting-vectors"><i class="fa fa-check"></i>Subsetting vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="calling_functions.html"><a href="calling_functions.html"><i class="fa fa-check"></i><b>10</b> Calling functions</a></li>
+<li class="chapter" data-level="11" data-path="subsetting-filtering.html"><a href="subsetting-filtering.html"><i class="fa fa-check"></i><b>11</b> Subsetting &amp; filtering</a>
+<ul>
+<li class="chapter" data-level="" data-path="subsetting-filtering.html"><a href="subsetting-filtering.html#subsetting-with-indices"><i class="fa fa-check"></i>Subsetting with indices</a></li>
+<li class="chapter" data-level="" data-path="subsetting-filtering.html"><a href="subsetting-filtering.html#subsetting-with-booleans"><i class="fa fa-check"></i>Subsetting with booleans</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>12</b> Dataframes</a>
+<ul>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#subsetting-exploring-dataframes"><i class="fa fa-check"></i>Subsetting &amp; exploring dataframes</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#creating-dataframes"><i class="fa fa-check"></i>Creating dataframes</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#modifying-dataframes"><i class="fa fa-check"></i>Modifying dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>13</b> Packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#packages-you-already-have"><i class="fa fa-check"></i>Packages you already have</a></li>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#installing-a-new-package"><i class="fa fa-check"></i>Installing a new package</a></li>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#loading-an-installed-package"><i class="fa fa-check"></i>Loading an installed package</a></li>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html#calling-functions-from-a-package"><i class="fa fa-check"></i>Calling functions from a package</a></li>
+</ul></li>
+<li class="part"><span><b>III Basic <code>R</code> workflow</b></span></li>
+<li class="chapter" data-level="14" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>14</b> Importing data</a>
+<ul>
+<li class="chapter" data-level="" data-path="importing-data.html"><a href="importing-data.html#reading-in-data"><i class="fa fa-check"></i>Reading in data</a></li>
+<li class="chapter" data-level="" data-path="importing-data.html"><a href="importing-data.html#csv-files"><i class="fa fa-check"></i><code>.csv</code> files</a></li>
+<li class="chapter" data-level="" data-path="importing-data.html"><a href="importing-data.html#prepping-your-data-for-r"><i class="fa fa-check"></i>Prepping your data for <code>R</code></a></li>
+<li class="chapter" data-level="" data-path="importing-data.html"><a href="importing-data.html#managing-files-folders"><i class="fa fa-check"></i>Managing files &amp; folders</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="base-plots.html"><a href="base-plots.html"><i class="fa fa-check"></i><b>15</b> Base plots</a>
+<ul>
+<li class="chapter" data-level="" data-path="base-plots.html"><a href="base-plots.html#create-a-basic-plot"><i class="fa fa-check"></i>Create a basic plot</a></li>
+<li class="chapter" data-level="" data-path="base-plots.html"><a href="base-plots.html#most-common-types-of-plots"><i class="fa fa-check"></i>Most common types of plots</a></li>
+<li class="chapter" data-level="" data-path="base-plots.html"><a href="base-plots.html#basic-plot-formatting"><i class="fa fa-check"></i>Basic plot formatting</a></li>
+<li class="chapter" data-level="" data-path="base-plots.html"><a href="base-plots.html#plotting-with-data-frames"><i class="fa fa-check"></i>Plotting with data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>16</b> <code>ggplot</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="ggplot.html"><a href="ggplot.html#what-is-ggplot2"><i class="fa fa-check"></i>What is <code>ggplot2</code>?</a></li>
+<li class="chapter" data-level="" data-path="ggplot.html"><a href="ggplot.html#bar-plot"><i class="fa fa-check"></i>Bar plot</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>17</b> Dataframe wrangling</a>
+<ul>
+<li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#the-dplyr-package"><i class="fa fa-check"></i>The <code>dplyr</code> package</a></li>
+<li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#the-pipe"><i class="fa fa-check"></i>The <code>%&gt;%</code> pipe</a></li>
+<li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#dplyr-verbs"><i class="fa fa-check"></i><code>dplyr</code> verbs</a></li>
+</ul></li>
+<li class="part"><span><b>IV Review exercises</b></span></li>
+<li class="chapter" data-level="18" data-path="rms-titanic.html"><a href="rms-titanic.html"><i class="fa fa-check"></i><b>18</b> <em>RMS Titanic</em></a></li>
+<li class="chapter" data-level="19" data-path="a-dplyr-survey.html"><a href="a-dplyr-survey.html"><i class="fa fa-check"></i><b>19</b> A <code>dplyr</code> survey</a></li>
+<li class="chapter" data-level="20" data-path="global-health-ggplot.html"><a href="global-health-ggplot.html"><i class="fa fa-check"></i><b>20</b> Global health &amp; <code>ggplot</code></a></li>
+<li class="chapter" data-level="21" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>21</b> Brazzaville’s climate</a></li>
+<li class="chapter" data-level="22" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>22</b> Cleaning messy data</a></li>
+<li class="chapter" data-level="23" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>23</b> River discharge, DOC and nitrate</a></li>
+<li class="chapter" data-level="24" data-path="the-importance-of-data-standardisation.html"><a href="the-importance-of-data-standardisation.html"><i class="fa fa-check"></i><b>24</b> The Importance of Data Standardisation</a></li>
+<li class="part"><span><b>V Extra Information</b></span></li>
+<li class="chapter" data-level="25" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>25</b> Working with dates &amp; times</a>
+<ul>
+<li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
+<li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>26</b> Working with text</a>
+<ul>
+<li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>27</b> Special Characters</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Training</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-importance-of-data-standardisation" class="section level1 hasAnchor" number="24">
+<h1><span class="header-section-number">Module 24</span> The Importance of Data Standardisation<a href="the-importance-of-data-standardisation.html#the-importance-of-data-standardisation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="learning-goal-2" class="section level5 unnumbered hasAnchor">
+<h5>Learning Goal<a href="the-importance-of-data-standardisation.html#learning-goal-2" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><p>The importance of data standardisation generally</p></li>
+<li><p>The importance of standardised formatting in data</p></li>
+<li><p>The importance of standardised data collection and methodologies</p></li>
+</ul>
+<p>In this section we are going to use forest plot data to highlight the importance of data standardisation- not just in terms of formatting, but also in terms of data collection. Although the example used might not be relevant to everyone, the messages about the potential implications of lack of data standardisation will be relevant to any subject.</p>
+<p> </p>
+</div>
+<div id="part-1-the-importance-of-standardised-formatting" class="section level5 unnumbered hasAnchor">
+<h5>Part 1: The importance of standardised formatting<a href="the-importance-of-data-standardisation.html#part-1-the-importance-of-standardised-formatting" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p><strong>1.</strong> We are going to use field data from three fake forest plots:</p>
+<p><strong>SwampPlot1</strong> is a 1 ha plot located in a swamp forest located along a river and is available to download here:</p>
+<p><a href="data:text/csv;base64,RmFtaWx5LEdlbnVzLFNwZWNpZXMsV29vZF9EZW5zaXR5X2dfY20zLERCSF9tbQ0KQ2x1c2lhY2VhZSxTeW1waG9uaWEsZ2xvYnVsaWZlcmEsMC41ODg3MTQyODYsMTkzDQpQYW5kYW5hY2VhZSxQYW5kYW51cyxjYW5kZWxhYnJ1bSwwLjYwMzE2NjMzMSwxNDYNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMTA1DQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSw0MzYNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxODENCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDE5OA0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMzA3DQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSwyMjANCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDExOQ0KQ2x1c2lhY2VhZSxTeW1waG9uaWEsZ2xvYnVsaWZlcmEsMC41ODg3MTQyODYsMTc3DQpQaHlsbGFudGhhY2VhZSxCcmlkZWxpYSxpbmRldCwwLjUxNDIwODMzMyw0NzANCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDQ1NA0KU2FwaW5kYWNlYWUsRXJpb2NvZWx1bSxtaWNyb3NwZXJtdW0sMC41MjMsMTg1DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDM5MA0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwyMjQNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsOTEwDQpGYWJhY2VhZSxOZXd0b25pYSxkZXZyZWRpaSwwLjU4NjM4Mjg1NywyODMNClB1dHJhbmppdmFjZWFlLERyeXBldGVzLG9jY2lkZW50YWxpcywwLjcxNTI1LDYzNw0KU2Fwb3RhY2VhZSxNYW5pbGthcmEsZm91aWxsb3lhbmEsMC44NjEsMjg2DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxNjUNClNhcG90YWNlYWUsTWFuaWxrYXJhLGZvdWlsbG95YW5hLDAuODYxLDkxMA0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMjk3DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxMjANCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMTUwDQpQaHlsbGFudGhhY2VhZSxDbGVpc3RhbnRodXMsbWlsZGJyYWVkaWksMC45MjEsMTAxDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMjkzDQpTYXBvdGFjZWFlLE1hbmlsa2FyYSxmb3VpbGxveWFuYSwwLjg2MSwxMTINCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDI5Ng0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwyMjANCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMjQyDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMjEzDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMzQ4DQpDbHVzaWFjZWFlLFN5bXBob25pYSxnbG9idWxpZmVyYSwwLjU4ODcxNDI4NiwzMDgNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDQ0MA0KTWFsdmFjZWFlLFN0ZXJjdWxpYSx0cmFnYWNhbnRoYSwwLjUxNDI1LDE1MQ0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDYwNQ0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMzI0DQpBbm5vbmFjZWFlLFh5bG9waWEscnViZXNjZW5zLDAuNTk2ODIsMTQ4DQpSdWJpYWNlYWUsSGFsbGVhLHN0aXB1bG9zYSwwLjQ3ODcxNDI4NiwzMzcNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxOTkNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDE0Mg0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMjk1DQpDbHVzaWFjZWFlLFN5bXBob25pYSxnbG9idWxpZmVyYSwwLjU4ODcxNDI4NiwxMjcNClBoeWxsYW50aGFjZWFlLENsZWlzdGFudGh1cyxtaWxkYnJhZWRpaSwwLjkyMSwxNjMNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDE5MQ0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDM5Nw0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsNDUwDQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywyODENClNhcG90YWNlYWUsTWFuaWxrYXJhLGZvdWlsbG95YW5hLDAuODYxLDIyOQ0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDg0MA0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMTAxDQpNYWx2YWNlYWUsU3RlcmN1bGlhLHRyYWdhY2FudGhhLDAuNTE0MjUsMjgyDQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxNTANCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsNDAwDQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDEzMg0KUGh5bGxhbnRoYWNlYWUsQ2xlaXN0YW50aHVzLG1pbGRicmFlZGlpLDAuOTIxLDIzMA0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDE0NQ0KQW5ub25hY2VhZSxYeWxvcGlhLHJ1YmVzY2VucywwLjU5NjgyLDI5NQ0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMjcyDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMzY5DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDQwMA0KQW5ub25hY2VhZSxYeWxvcGlhLHJ1YmVzY2VucywwLjU5NjgyLDI1OQ0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDE1OA0KQ2x1c2lhY2VhZSxHYXJjaW5pYSxzbWVhdGhtYW5uaWksMC43NzEzODg4ODksMTg1DQpDbHVzaWFjZWFlLFN5bXBob25pYSxnbG9idWxpZmVyYSwwLjU4ODcxNDI4NiwxNTQNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxMjkNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1Miw2MzMNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMzEyDQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSwyODUNClB1dHJhbmppdmFjZWFlLERyeXBldGVzLG9jY2lkZW50YWxpcywwLjcxNTI1LDI1MA0KU2Fwb3RhY2VhZSxDaHJ5c29waHlsbHVtLHViYW5naWVuc2UsMC42MDgzODAyNDcsNjA4DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxNDENClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxMTQNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDEyMw0KU2Fwb3RhY2VhZSxNYW5pbGthcmEsZm91aWxsb3lhbmEsMC44NjEsMTc3DQpDbHVzaWFjZWFlLFN5bXBob25pYSxnbG9idWxpZmVyYSwwLjU4ODcxNDI4Niw2MTYNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMTQwDQpBbm5vbmFjZWFlLFh5bG9waWEsYWV0aGlvcGljYSwwLjQ0Miw2ODANCk1lbGlhY2VhZSxFbnRhbmRyb3BocmFnbWEscGFsdXN0cmUsMC41MzQ4OTY5OTEsMzAzDQpJbmRldCxJbmRldCxpbmRldCwwLjYwMzE2NjMzMSwxODQNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxMjcNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMjI5DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDIwNQ0KUGh5bGxhbnRoYWNlYWUsQ2xlaXN0YW50aHVzLG1pbGRicmFlZGlpLDAuOTIxLDM0Mw0KU2Fwb3RhY2VhZSxDaHJ5c29waHlsbHVtLHViYW5naWVuc2UsMC42MDgzODAyNDcsMzIxDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsNTY1DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTgyDQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSwxMDcNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMzc1DQpNZWxpYWNlYWUsRW50YW5kcm9waHJhZ21hLHBhbHVzdHJlLDAuNTM0ODk2OTkxLDQwMA0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDIyNQ0KU2Fwb3RhY2VhZSxNYW5pbGthcmEsZm91aWxsb3lhbmEsMC44NjEsMTMwDQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDc1Mw0KQW5ub25hY2VhZSxYeWxvcGlhLHJ1YmVzY2VucywwLjU5NjgyLDIzMA0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMTMzDQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDY2Ng0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwxMDcNCkZhYmFjZWFlLE5ld3RvbmlhLGRldnJlZGlpLDAuNTg2MzgyODU3LDE0Nw0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwxMzINClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwyMjQNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxMzgNCk1hbHZhY2VhZSxTdGVyY3VsaWEsdHJhZ2FjYW50aGEsMC41MTQyNSwxNDMNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDM2OQ0KQW5ub25hY2VhZSxYeWxvcGlhLGFldGhpb3BpY2EsMC40NDIsMTk5DQpGYWJhY2VhZSxOZXd0b25pYSxkZXZyZWRpaSwwLjU4NjM4Mjg1NywyNzkNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwzMjQNClNhcG90YWNlYWUsTWFuaWxrYXJhLGZvdWlsbG95YW5hLDAuODYxLDE0NQ0KTXlyaXN0aWNhY2VhZSxDb2Vsb2NhcnlvbixwcmV1c3NpaSwwLjQ5NzIsMTA1DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTA4DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDM1MA0KUGh5bGxhbnRoYWNlYWUsQ2xlaXN0YW50aHVzLG1pbGRicmFlZGlpLDAuOTIxLDEzNg0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwxNjMNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1Miw5NjANClBoeWxsYW50aGFjZWFlLENsZWlzdGFudGh1cyxtaWxkYnJhZWRpaSwwLjkyMSwxODINClNhcG90YWNlYWUsTWFuaWxrYXJhLGZvdWlsbG95YW5hLDAuODYxLDIwOA0KQW5ub25hY2VhZSxYeWxvcGlhLHJ1YmVzY2VucywwLjU5NjgyLDE1NQ0KQW5ub25hY2VhZSxYeWxvcGlhLGFldGhpb3BpY2EsMC40NDIsMjIwDQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDE3Mw0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwyOTYNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDYwOA0KQW5ub25hY2VhZSxYeWxvcGlhLGFldGhpb3BpY2EsMC40NDIsMTkyDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsNDAwDQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywzNDgNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMjc5DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywyMDINCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDMyNw0KTWFsdmFjZWFlLFN0ZXJjdWxpYSx0cmFnYWNhbnRoYSwwLjUxNDI1LDIxMw0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwxMTYNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwzODMNClNhcG90YWNlYWUsTWFuaWxrYXJhLGZvdWlsbG95YW5hLDAuODYxLDUyNQ0KQW5ub25hY2VhZSxYeWxvcGlhLGFldGhpb3BpY2EsMC40NDIsMTA1DQpDbHVzaWFjZWFlLFN5bXBob25pYSxnbG9idWxpZmVyYSwwLjU4ODcxNDI4NiwxODUNCk1lbGlhY2VhZSxFbnRhbmRyb3BocmFnbWEscGFsdXN0cmUsMC41MzQ4OTY5OTEsMjgxDQpNZWxpYWNlYWUsRW50YW5kcm9waHJhZ21hLHBhbHVzdHJlLDAuNTM0ODk2OTkxLDQzNg0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMjkwDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMjQzDQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSw2MDUNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDEyNw0KU2Fwb3RhY2VhZSxNYW5pbGthcmEsZm91aWxsb3lhbmEsMC44NjEsMTQ4DQpBbm5vbmFjZWFlLFh5bG9waWEscnViZXNjZW5zLDAuNTk2ODIsMjk2DQpNYWx2YWNlYWUsU3RlcmN1bGlhLHRyYWdhY2FudGhhLDAuNTE0MjUsMTgxDQpFdXBob3JiaWFjZWFlLENyb3Rvbm9neW5lLGdpb3JnaWksMC40MzQ4ODMzMzMsMTA1DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDE0Nw0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwxMDkNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMjcyDQpTYXBpbmRhY2VhZSxFcmlvY29lbHVtLG1pY3Jvc3Blcm11bSwwLjUyMywxMTINClNhcG90YWNlYWUsTWFuaWxrYXJhLGZvdWlsbG95YW5hLDAuODYxLDI3Mg0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDQzMA0KU2Fwb3RhY2VhZSxNYW5pbGthcmEsZm91aWxsb3lhbmEsMC44NjEsNjA1DQpVcnRpY2FjZWFlLE11c2FuZ2EsY2Vjcm9waW9pZGVzLDAuMjQyODMzMzMzLDI4MA0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwzMDQNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMTQzDQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDE0OA0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwyNzkNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMjc4DQpDbHVzaWFjZWFlLFN5bXBob25pYSxnbG9idWxpZmVyYSwwLjU4ODcxNDI4NiwyNDQNCkFubm9uYWNlYWUsWHlsb3BpYSxydWJlc2NlbnMsMC41OTY4MiwxNTANCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMTE0DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDYwNw0KU2Fwb3RhY2VhZSxJbmRldCxpbmRldCwwLjczNzkyMjc2MywxNzQNCkFubm9uYWNlYWUsWHlsb3BpYSxydWJlc2NlbnMsMC41OTY4MiwyODUNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDE3NA0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDEzNQ0KUGh5bGxhbnRoYWNlYWUsQ2xlaXN0YW50aHVzLG1pbGRicmFlZGlpLDAuOTIxLDM1OQ0KSW5kZXQsSW5kZXQsaW5kZXQsMC42MDMxNjYzMzEsNTk3DQpNZWxpYWNlYWUsVHJpY2hpbGlhLHdlbHdpdHNjaGlpLDAuNDgyNSw0MDANCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDg5MA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsMzY1DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDIzOQ0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsMTA4DQpBbm5vbmFjZWFlLFh5bG9waWEscnViZXNjZW5zLDAuNTk2ODIsMTE2DQpDbHVzaWFjZWFlLFN5bXBob25pYSxnbG9idWxpZmVyYSwwLjU4ODcxNDI4Niw0NTANClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwyMTANClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1Miw3MDQNClNhcGluZGFjZWFlLEVyaW9jb2VsdW0sbWljcm9zcGVybXVtLDAuNTIzLDEyMQ0KU2Fwb3RhY2VhZSxNYW5pbGthcmEsZm91aWxsb3lhbmEsMC44NjEsMTAxDQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSwxNDYNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDI5NQ0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMzk3DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDM4NA0KU2FwaW5kYWNlYWUsRXJpb2NvZWx1bSxtaWNyb3NwZXJtdW0sMC41MjMsMjY0DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDExMw0KTWVsaWFjZWFlLEVudGFuZHJvcGhyYWdtYSxwYWx1c3RyZSwwLjUzNDg5Njk5MSwzMDUNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDMyOA0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDEzMg0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDEzMg0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMjE3DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMzE2DQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSwyMjINCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMjQ0DQpTYXBvdGFjZWFlLE1hbmlsa2FyYSxsZXRvdXplaSwwLjg2NDk3NSwyMDINClNhcGluZGFjZWFlLEVyaW9jb2VsdW0sbWljcm9zcGVybXVtLDAuNTIzLDE0NA0KU2Fwb3RhY2VhZSxNYW5pbGthcmEsZm91aWxsb3lhbmEsMC44NjEsMTI3DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxMDANCkFubm9uYWNlYWUsWHlsb3BpYSxhZXRoaW9waWNhLDAuNDQyLDI3Mg0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsMTA3DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxMTQNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxOTENClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxNzgNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDM0OA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsMTEyDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTAwDQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywzNzINCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMjIyDQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSwzNjUNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDE3NQ0KQW5ub25hY2VhZSxYeWxvcGlhLGFldGhpb3BpY2EsMC40NDIsMTE2DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxOTMNClB1dHJhbmppdmFjZWFlLERyeXBldGVzLG9jY2lkZW50YWxpcywwLjcxNTI1LDMyOQ0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwyOTMNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwyMTcNCkFubm9uYWNlYWUsWHlsb3BpYSxydWJlc2NlbnMsMC41OTY4MiwxODUNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDQzMw0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMjgyDQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSwxMTUNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwyNDINClNhcG90YWNlYWUsQ2hyeXNvcGh5bGx1bSx1YmFuZ2llbnNlLDAuNjA4MzgwMjQ3LDE5Mw0KU2FsaWNhY2VhZSxDYXNlYXJpYSxiYXJ0ZXJpLDAuNTA4LDQ1NA0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMTIzDQpNZWxpYWNlYWUsRW50YW5kcm9waHJhZ21hLHBhbHVzdHJlLDAuNTM0ODk2OTkxLDMwOA0KU2Fwb3RhY2VhZSxNYW5pbGthcmEsZm91aWxsb3lhbmEsMC44NjEsMjIwDQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSwzNzUNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDIxNQ0KQW5ub25hY2VhZSxYeWxvcGlhLGFldGhpb3BpY2EsMC40NDIsMTM4DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxODANCkNsdXNpYWNlYWUsU3ltcGhvbmlhLGdsb2J1bGlmZXJhLDAuNTg4NzE0Mjg2LDE3NA0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMjg1DQpTYXBvdGFjZWFlLE1hbmlsa2FyYSxmb3VpbGxveWFuYSwwLjg2MSwxMDENClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwyMTUNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDEwOQ0KQW5ub25hY2VhZSxYeWxvcGlhLGFldGhpb3BpY2EsMC40NDIsMjE1DQpNZWxpYWNlYWUsRW50YW5kcm9waHJhZ21hLHBhbHVzdHJlLDAuNTM0ODk2OTkxLDE2NQ0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDIxNw0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwxMDENCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMTE0DQpJbmRldCxJbmRldCxpbmRldCwwLjYwMzE2NjMzMSwyMTANCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsNDUxDQpJbmRldCxJbmRldCxpbmRldCwwLjYwMzE2NjMzMSwyNzkNClBoeWxsYW50aGFjZWFlLENsZWlzdGFudGh1cyxtaWxkYnJhZWRpaSwwLjkyMSwxNzYNCk1lbGlhY2VhZSxFbnRhbmRyb3BocmFnbWEscGFsdXN0cmUsMC41MzQ4OTY5OTEsODUwDQpDbHVzaWFjZWFlLFN5bXBob25pYSxnbG9idWxpZmVyYSwwLjU4ODcxNDI4NiwxMDUNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDI4MA0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDE5Mg0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDIwOQ0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDMwNQ0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0Miw1NjkNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDI4NQ0KQW5ub25hY2VhZSxYeWxvcGlhLGFldGhpb3BpY2EsMC40NDIsNTY5DQpQYW5kYW5hY2VhZSxQYW5kYW51cyxjYW5kZWxhYnJ1bSwwLjYwMzE2NjMzMSwzNTANCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMTgyDQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSwzMjMNClBoeWxsYW50aGFjZWFlLENsZWlzdGFudGh1cyxtaWxkYnJhZWRpaSwwLjkyMSwxMzMNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDYwOA0KQW5ub25hY2VhZSxYeWxvcGlhLHJ1YmVzY2VucywwLjU5NjgyLDMzNg0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwxMzgNCk1lbGlhY2VhZSxFbnRhbmRyb3BocmFnbWEscGFsdXN0cmUsMC41MzQ4OTY5OTEsMTYzDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTAwNQ0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsNjE2DQpTYXBvdGFjZWFlLE1hbmlsa2FyYSxmb3VpbGxveWFuYSwwLjg2MSw3NTMNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDk2MA0KQW5ub25hY2VhZSxYeWxvcGlhLHJ1YmVzY2VucywwLjU5NjgyLDQwMA0KU2Fwb3RhY2VhZSxNYW5pbGthcmEsZm91aWxsb3lhbmEsMC44NjEsMTYzDQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDQ0Ng0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwzNjUNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxMzANClB1dHJhbmppdmFjZWFlLERyeXBldGVzLG9jY2lkZW50YWxpcywwLjcxNTI1LDkxMA0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwzMDcNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsNDA1DQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyxvY2NpZGVudGFsaXMsMC43MTUyNSwxODINCk1hbHZhY2VhZSxTdGVyY3VsaWEsdHJhZ2FjYW50aGEsMC41MTQyNSwxNjMNClB1dHJhbmppdmFjZWFlLERyeXBldGVzLG9jY2lkZW50YWxpcywwLjcxNTI1LDE2NQ0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDQzNg0KUGh5bGxhbnRoYWNlYWUsQ2xlaXN0YW50aHVzLG1pbGRicmFlZGlpLDAuOTIxLDI2NA0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0Miw1NDMNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxMTUNCkNsdXNpYWNlYWUsU3ltcGhvbmlhLGdsb2J1bGlmZXJhLDAuNTg4NzE0Mjg2LDE0Nw0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDI5NQ0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwyODYNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDI4OA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsMzkwDQpBbm5vbmFjZWFlLFh5bG9waWEscnViZXNjZW5zLDAuNTk2ODIsMjE0DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDEyMA0KQ2x1c2lhY2VhZSxTeW1waG9uaWEsZ2xvYnVsaWZlcmEsMC41ODg3MTQyODYsMTAxDQpTYXBvdGFjZWFlLE1hbmlsa2FyYSxmb3VpbGxveWFuYSwwLjg2MSwyNzgNCk1lbGlhY2VhZSxFbnRhbmRyb3BocmFnbWEscGFsdXN0cmUsMC41MzQ4OTY5OTEsMTU3DQpBbm5vbmFjZWFlLFh5bG9waWEsYWV0aGlvcGljYSwwLjQ0MiwxMDINClBoeWxsYW50aGFjZWFlLENsZWlzdGFudGh1cyxtaWxkYnJhZWRpaSwwLjkyMSwyNzINClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwzMjQNClB1dHJhbmppdmFjZWFlLERyeXBldGVzLG9jY2lkZW50YWxpcywwLjcxNTI1LDUwNw0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwyOTcNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDE1MQ0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMTM0DQpBbm5vbmFjZWFlLFh5bG9waWEscnViZXNjZW5zLDAuNTk2ODIsMzI5DQpNZWxpYWNlYWUsRW50YW5kcm9waHJhZ21hLHBhbHVzdHJlLDAuNTM0ODk2OTkxLDE1OA0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDEyMw0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDE3NQ0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsNTEzDQpBbm5vbmFjZWFlLFh5bG9waWEscnViZXNjZW5zLDAuNTk2ODIsMTQ2DQpDbHVzaWFjZWFlLFN5bXBob25pYSxnbG9idWxpZmVyYSwwLjU4ODcxNDI4NiwxMTgNCkNsdXNpYWNlYWUsU3ltcGhvbmlhLGdsb2J1bGlmZXJhLDAuNTg4NzE0Mjg2LDQ1NA0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhLHBhbHVkb3NhLDAuNjUyLDIxNw0KRmFiYWNlYWUsRGFuaWVsbGlhLHB5bmFlcnRpaSwwLjQsNjA3DQpQYW5kYW5hY2VhZSxQYW5kYW51cyxjYW5kZWxhYnJ1bSwwLjYwMzE2NjMzMSwxMTkNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxOTENCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsODkwDQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDEzMg0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwxMDkNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMTAwDQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxODgNClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxNzYNClNhcGluZGFjZWFlLEVyaW9jb2VsdW0sbWljcm9zcGVybXVtLDAuNTIzLDExOQ0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsMzA4DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTU3DQpTYXBvdGFjZWFlLE1hbmlsa2FyYSxmb3VpbGxveWFuYSwwLjg2MSwzNDMNClBoeWxsYW50aGFjZWFlLEJyaWRlbGlhLGluZGV0LDAuNTE0MjA4MzMzLDI1OQ0KTWVsaWFjZWFlLEVudGFuZHJvcGhyYWdtYSxwYWx1c3RyZSwwLjUzNDg5Njk5MSwzMDENCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMTk0DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTgwDQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDI3Mg0KU2FwaW5kYWNlYWUsRXJpb2NvZWx1bSxtaWNyb3NwZXJtdW0sMC41MjMsMjk1DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTM0DQpBbm5vbmFjZWFlLFh5bG9waWEsYWV0aGlvcGljYSwwLjQ0MiwyNjcNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMjEzDQpSdWJpYWNlYWUsSGFsbGVhLHN0aXB1bG9zYSwwLjQ3ODcxNDI4NiwyODANClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxMjUNClB1dHJhbmppdmFjZWFlLERyeXBldGVzLG9jY2lkZW50YWxpcywwLjcxNTI1LDE4NA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsMzI1DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTIwDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMjQyDQpTYXBvdGFjZWFlLE1hbmlsa2FyYSxmb3VpbGxveWFuYSwwLjg2MSwxMDENCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDM5MA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsMjg4DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTE2DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxMzANClNhcG90YWNlYWUsTWFuaWxrYXJhLGZvdWlsbG95YW5hLDAuODYxLDMyOA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsNzc4DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDE1Ng0KTWVsaWFjZWFlLEVudGFuZHJvcGhyYWdtYSxwYWx1c3RyZSwwLjUzNDg5Njk5MSw3NTMNClNhcG90YWNlYWUsTWFuaWxrYXJhLGZvdWlsbG95YW5hLDAuODYxLDExMg0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsMTg1DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxODANClNhcG90YWNlYWUsTWFuaWxrYXJhLGZvdWlsbG95YW5hLDAuODYxLDE4NQ0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSxtYWNyYW50aGEsMC40MzQ4ODMzMzMsMTA1DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxMzUNClB1dHJhbmppdmFjZWFlLERyeXBldGVzLG9jY2lkZW50YWxpcywwLjcxNTI1LDI4OA0KTWVsaWFjZWFlLENhcmFwYSxwcm9jZXJhLDAuNjA0MiwyNzINClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwzNTENClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxODINClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1Miw2MzcNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsMTA4DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDMyNQ0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMsb2NjaWRlbnRhbGlzLDAuNzE1MjUsMTA0DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTA1DQpBbm5vbmFjZWFlLFh5bG9waWEsYWV0aGlvcGljYSwwLjQ0MiwxMjYNCk1lbGlhY2VhZSxDYXJhcGEscHJvY2VyYSwwLjYwNDIsNjA3DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTA0DQpNZWxpYWNlYWUsQ2FyYXBhLHByb2NlcmEsMC42MDQyLDI5Mw0KQW5ub25hY2VhZSxYeWxvcGlhLGFldGhpb3BpY2EsMC40NDIsMTkxDQpNZWxpYWNlYWUsRW50YW5kcm9waHJhZ21hLHBhbHVzdHJlLDAuNTM0ODk2OTkxLDExMg0KU2FwaW5kYWNlYWUsRXJpb2NvZWx1bSxtaWNyb3NwZXJtdW0sMC41MjMsMzk2DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhLG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxMzYNCkV1cGhvcmJpYWNlYWUsR3Jvc3NlcmEsbWFjcmFudGhhLDAuNDM0ODgzMzMzLDQzOQ0KTWVsaWFjZWFlLEVudGFuZHJvcGhyYWdtYSxwYWx1c3RyZSwwLjUzNDg5Njk5MSwxMjMNClBoeWxsYW50aGFjZWFlLENsZWlzdGFudGh1cyxtaWxkYnJhZWRpaSwwLjkyMSwxODENCkFubm9uYWNlYWUsWHlsb3BpYSxhZXRoaW9waWNhLDAuNDQyLDQyNQ0KQW5ub25hY2VhZSxYeWxvcGlhLGFldGhpb3BpY2EsMC40NDIsMjkzDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTI3DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EscGFsdWRvc2EsMC42NTIsMTQ2DQpBbm5vbmFjZWFlLFh5bG9waWEsYWV0aGlvcGljYSwwLjQ0MiwxMDINClBoeWxsYW50aGFjZWFlLFVhcGFjYSxwYWx1ZG9zYSwwLjY1MiwxODINCg==" download="SwampPlot1.csv">SwampPlot1.csv</a></p>
+<p> </p>
+<p><strong>SwampPlot2</strong> is a 0.5 ha plot located in a swamp forest located in a peatland and is available to download here:</p>
+<p><a href="data:text/csv;base64,RmFtaWx5LFNwZWNpZXMsV29vZF9EZW5zaXR5X2dfY20zLERCSF9jbSxIZWlnaHRfbQ0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMgb2NjaWRlbnRhbGlzLDAuNzE1MjUsNTguNCwyNy44NA0KRXVwaG9yYmlhY2VhZSxNYWNhcmFuZ2Egc3Bpbm9zYSwwLjM4MDE2NjY2NywxMC44LDE0Ljg0DQpBbm5vbmFjZWFlLFh5bG9waWEgcnViZXNjZW5zLDAuNTk2ODIsMjYuNCwxMi4zNA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMgb2NjaWRlbnRhbGlzLDAuNzE1MjUsMTIuOCw5Ljg0DQpBbm5vbmFjZWFlLFh5bG9waWEgcnViZXNjZW5zLDAuNTk2ODIsNzMuMywzNC4zNA0KU2FsaWNhY2VhZSxDYXNlYXJpYSBiYXJ0ZXJpLDAuNTA4LDEyLjUsMjAuMzQNClNhcG90YWNlYWUsTWFuaWxrYXJhIGZvdWlsbG95YW5hLDAuODYxLDE3LDE1LjY0DQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyBvY2NpZGVudGFsaXMsMC43MTUyNSwzNS43LDExLjY0DQpTYXBpbmRhY2VhZSxFcmlvY29lbHVtIG1pY3Jvc3Blcm11bSwwLjUyMywzMy40LDE5Ljg0DQpNZWxpYWNlYWUsQ2FyYXBhIHByb2NlcmEsMC42MDQyLDIwLjksMTIuMDQNCkFubm9uYWNlYWUsWHlsb3BpYSBydWJlc2NlbnMsMC41OTY4MiwxNywxNS42NA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMgb2NjaWRlbnRhbGlzLDAuNzE1MjUsMTAsMTEuODQNCkFubm9uYWNlYWUsWHlsb3BpYSBhZXRoaW9waWNhLDAuNDQyLDEyLjIsMTYuODQNCkFubm9uYWNlYWUsWHlsb3BpYSBydWJlc2NlbnMsMC41OTY4MiwxMCwxMS44NA0KQW5ub25hY2VhZSxYeWxvcGlhIHJ1YmVzY2VucywwLjU5NjgyLDUwLjEsMjQuMjQNClB1dHJhbmppdmFjZWFlLERyeXBldGVzIG9jY2lkZW50YWxpcywwLjcxNTI1LDg5LjMsMzIuMjQNCkNsdXNpYWNlYWUsU3ltcGhvbmlhIGdsb2J1bGlmZXJhLDAuNTg4NzE0Mjg2LDEyLjgsOS44NA0KQ2x1c2lhY2VhZSxTeW1waG9uaWEgZ2xvYnVsaWZlcmEsMC41ODg3MTQyODYsNzAuMiwyMC4yNA0KRXVwaG9yYmlhY2VhZSxHcm9zc2VyYSBtYWNyYW50aGEsMC40MzQ4ODMzMzMsMzkuMSwxOC42NA0KU2FwaW5kYWNlYWUsRXJpb2NvZWx1bSBtaWNyb3NwZXJtdW0sMC41MjMsMjUuMywyMy44NA0KTWVsaWFjZWFlLENhcmFwYSBwcm9jZXJhLDAuNjA0MiwxMy41LDUuNDQNCkFubm9uYWNlYWUsWHlsb3BpYSBydWJlc2NlbnMsMC41OTY4MiwzNS43LDExLjY0DQpSdWJpYWNlYWUsSW5kZXQgaW5kZXQsMC42OTU2NTYwNywxMS4yLDEzLjQ0DQpFdXBob3JiaWFjZWFlLE1hY2FyYW5nYSBzcGlub3NhLDAuMzgwMTY2NjY3LDEwLjEsNi4wNA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMgb2NjaWRlbnRhbGlzLDAuNzE1MjUsMjEuNiwxMy4wNA0KRWJlbmFjZWFlLERpb3NweXJvcyBnaWxsZXRpaSwwLjgzMzI4MTI1LDQxLjksMTkuODQNCkFubm9uYWNlYWUsWHlsb3BpYSBydWJlc2NlbnMsMC41OTY4Miw2NywyNC42NA0KTWVsaWFjZWFlLEVudGFuZHJvcGhyYWdtYSBwYWx1c3RyZSwwLjUzNDg5Njk5MSwxNywxNS42NA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMgb2NjaWRlbnRhbGlzLDAuNzE1MjUsMTMuOSwxMC4wNA0KQW5ub25hY2VhZSxYeWxvcGlhIHJ1YmVzY2VucywwLjU5NjgyLDE2LjUsMjAuODQNCkFubm9uYWNlYWUsWHlsb3BpYSBydWJlc2NlbnMsMC41OTY4MiwxNi41LDIwLjg0DQpSdWJpYWNlYWUsSW5kZXQgaW5kZXQsMC42OTU2NTYwNywyMS42LDEzLjA0DQpSdWJpYWNlYWUsSW5kZXQgaW5kZXQsMC42OTU2NTYwNywyMC4zLDIzLjg0DQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyBvY2NpZGVudGFsaXMsMC43MTUyNSw0NS45LDE5LjA0DQpFdXBob3JiaWFjZWFlLE1hY2FyYW5nYSBzcGlub3NhLDAuMzgwMTY2NjY3LDQ1LjksMTkuMDQNCk1lbGlhY2VhZSxFbnRhbmRyb3BocmFnbWEgcGFsdXN0cmUsMC41MzQ4OTY5OTEsMTcuOSw3Ljg0DQpTYXBvdGFjZWFlLE1hbmlsa2FyYSBmb3VpbGxveWFuYSwwLjg2MSwxMi40LDE2Ljg0DQpQaHlsbGFudGhhY2VhZSxDbGVpc3RhbnRodXMgaW5kZXQsMC45MjEsMTIuMiwxMi4yNA0KQ2x1c2lhY2VhZSxTeW1waG9uaWEgZ2xvYnVsaWZlcmEsMC41ODg3MTQyODYsMzQuNywxNi40NA0KU2Fwb3RhY2VhZSxNYW5pbGthcmEgZm91aWxsb3lhbmEsMC44NjEsMTIuMSwyMC42NA0KQ2x1c2lhY2VhZSxTeW1waG9uaWEgZ2xvYnVsaWZlcmEsMC41ODg3MTQyODYsMzIsMjYuODQNCk1lbGlhY2VhZSxDYXJhcGEgcHJvY2VyYSwwLjYwNDIsMTYuNSwyMC44NA0KU2FwaW5kYWNlYWUsRXJpb2NvZWx1bSBtaWNyb3NwZXJtdW0sMC41MjMsMjIuNCwyNC4zNA0KQW5ub25hY2VhZSxYeWxvcGlhIHJ1YmVzY2VucywwLjU5NjgyLDEyLjIsMTYuODQNClBoeWxsYW50aGFjZWFlLENsZWlzdGFudGh1cyBpbmRldCwwLjkyMSwxMS42LDExLjA0DQpFdXBob3JiaWFjZWFlLE1hY2FyYW5nYSBzcGlub3NhLDAuMzgwMTY2NjY3LDE3LjksNy44NA0KU2FwaW5kYWNlYWUsRXJpb2NvZWx1bSBtaWNyb3NwZXJtdW0sMC41MjMsMTIuOCw4LjY0DQpTYXBvdGFjZWFlLE1hbmlsa2FyYSBmb3VpbGxveWFuYSwwLjg2MSwxMS43LDIwLjM0DQpNZWxpYWNlYWUsQ2FyYXBhIHByb2NlcmEsMC42MDQyLDExLjYsMTEuMDQNCkFubm9uYWNlYWUsWHlsb3BpYSBydWJlc2NlbnMsMC41OTY4MiwxMi44LDguNjQNCkZhYmFjZWFlLE5ld3RvbmlhIGRldnJlZGlpLDAuNTg2MzgyODU3LDM3LjMsOS42NA0KTWVsaWFjZWFlLENhcmFwYSBwcm9jZXJhLDAuNjA0MiwzMiwyNi44NA0KQW5ub25hY2VhZSxYeWxvcGlhIHJ1YmVzY2VucywwLjU5NjgyLDExLjQsMTQuMjQNCkFubm9uYWNlYWUsWHlsb3BpYSBydWJlc2NlbnMsMC41OTY4MiwxNCwxMS44NA0KU2Fwb3RhY2VhZSxNYW5pbGthcmEgZm91aWxsb3lhbmEsMC44NjEsMTMuOSwxMC4wNA0KQW5ub25hY2VhZSxYeWxvcGlhIHJ1YmVzY2VucywwLjU5NjgyLDQwLjYsMjEuNjQNCkFubm9uYWNlYWUsWHlsb3BpYSBydWJlc2NlbnMsMC41OTY4MiwxNywyMy4zNA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMgb2NjaWRlbnRhbGlzLDAuNzE1MjUsMzUuNywxMS42NA0KQW5ub25hY2VhZSxYeWxvcGlhIHJ1YmVzY2VucywwLjU5NjgyLDQyLjMsMTguNjQNCkV1cGhvcmJpYWNlYWUsQ3JvdG9ub2d5bmUgZ2lvcmdpaSwwLjQzNDg4MzMzMywxMy41LDUuNDQNClJ1YmlhY2VhZSxQc3ljaG90cmlhIGRqdW1hZW5zaXMsMC42OTU2NTYwNywyMS44LDcuODQNCk1lbGlhY2VhZSxFbnRhbmRyb3BocmFnbWEgcGFsdXN0cmUsMC41MzQ4OTY5OTEsMTIuMiwxNi44NA0KTWVsaWFjZWFlLENhcmFwYSBwcm9jZXJhLDAuNjA0MiwxMS42LDExLjA0DQpBbm5vbmFjZWFlLFh5bG9waWEgcnViZXNjZW5zLDAuNTk2ODIsMTcsMjMuMzQNCk1lbGlhY2VhZSxFbnRhbmRyb3BocmFnbWEgcGFsdXN0cmUsMC41MzQ4OTY5OTEsMjYuNCwxNy40NA0KU2FwaW5kYWNlYWUsRXJpb2NvZWx1bSBtaWNyb3NwZXJtdW0sMC41MjMsMTEuMiwxMy40NA0KRmFiYWNlYWUsTmV3dG9uaWEgZGV2cmVkaWksMC41ODYzODI4NTcsMjYuNCwxMi4zNA0KRmFiYWNlYWUsTmV3dG9uaWEgZGV2cmVkaWksMC41ODYzODI4NTcsMTUuMiwxMS4wNA0KRXVwaG9yYmlhY2VhZSxNYWNhcmFuZ2Egc3Bpbm9zYSwwLjM4MDE2NjY2NywxNi41LDIwLjg0DQpTYXBpbmRhY2VhZSxFcmlvY29lbHVtIG1pY3Jvc3Blcm11bSwwLjUyMyw0Mi4zLDE4LjY0DQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyBvY2NpZGVudGFsaXMsMC43MTUyNSwyNi40LDEyLjM0DQpTYWxpY2FjZWFlLENhc2VhcmlhIGJhcnRlcmksMC41MDgsMzMuNCwxOS44NA0KTWVsaWFjZWFlLENhcmFwYSBwcm9jZXJhLDAuNjA0MiwxNywyMy4zNA0KQW5ub25hY2VhZSxYeWxvcGlhIHJ1YmVzY2VucywwLjU5NjgyLDIyLjQsMjQuMzQNClNhbGljYWNlYWUsQ2FzZWFyaWEgYmFydGVyaSwwLjUwOCwxOC42LDIxLjM0DQpBbm5vbmFjZWFlLFh5bG9waWEgcnViZXNjZW5zLDAuNTk2ODIsMTMuOSwxMC4wNA0KQW5ub25hY2VhZSxYeWxvcGlhIHJ1YmVzY2VucywwLjU5NjgyLDEwLjgsMjIuODQNClNhcGluZGFjZWFlLEVyaW9jb2VsdW0gbWljcm9zcGVybXVtLDAuNTIzLDM0LjMsMTMuNDQNCkV1cGhvcmJpYWNlYWUsTWFjYXJhbmdhIHNwaW5vc2EsMC4zODAxNjY2NjcsMzcuMyw5LjY0DQpBbm5vbmFjZWFlLFh5bG9waWEgcnViZXNjZW5zLDAuNTk2ODIsMTMuMSwxNS4zNA0KRmFiYWNlYWUsTmV3dG9uaWEgZGV2cmVkaWksMC41ODYzODI4NTcsNzkuOSw0My4zNA0KTWVsaWFjZWFlLENhcmFwYSBwcm9jZXJhLDAuNjA0MiwzNC4zLDEzLjQ0DQpTYWxpY2FjZWFlLENhc2VhcmlhIGJhcnRlcmksMC41MDgsMjkuMywxOC40NA0KRXVwaG9yYmlhY2VhZSxNYWNhcmFuZ2Egc3Bpbm9zYSwwLjM4MDE2NjY2NywyOS44LDE4LjY0DQpBbm5vbmFjZWFlLFh5bG9waWEgcnViZXNjZW5zLDAuNTk2ODIsNDUuOSwxOS4wNA0KU2Fwb3RhY2VhZSxNYW5pbGthcmEgZm91aWxsb3lhbmEsMC44NjEsMTIuMSwyMC42NA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMgb2NjaWRlbnRhbGlzLDAuNzE1MjUsMzQuMywxMy40NA0KUnViaWFjZWFlLEluZGV0IGluZGV0LDAuNjk1NjU2MDcsMzAuMiwxMi4zNA0KRXVwaG9yYmlhY2VhZSxNYWNhcmFuZ2Egc3Bpbm9zYSwwLjM4MDE2NjY2NywxMS4yLDEzLjQ0DQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyBvY2NpZGVudGFsaXMsMC43MTUyNSw3My4zLDM0LjM0DQpTYXBpbmRhY2VhZSxFcmlvY29lbHVtIG1pY3Jvc3Blcm11bSwwLjUyMywyNi40LDI5Ljg0DQpSdWJpYWNlYWUsSW5kZXQgaW5kZXQsMC42OTU2NTYwNywxMy4xLDE1LjM0DQpNZWxpYWNlYWUsQ2FyYXBhIHByb2NlcmEsMC42MDQyLDEwLjgsMTQuODQNClNhcG90YWNlYWUsTWFuaWxrYXJhIGZvdWlsbG95YW5hLDAuODYxLDEwLjEsNi4wNA0KQW5ub25hY2VhZSxYeWxvcGlhIHJ1YmVzY2VucywwLjU5NjgyLDEyLjQsMTYuODQNCkFubm9uYWNlYWUsWHlsb3BpYSBydWJlc2NlbnMsMC41OTY4MiwzMy40LDE5Ljg0DQpBbm5vbmFjZWFlLFh5bG9waWEgcnViZXNjZW5zLDAuNTk2ODIsMTAuMSw2LjA0DQpQdXRyYW5qaXZhY2VhZSxEcnlwZXRlcyBvY2NpZGVudGFsaXMsMC43MTUyNSwxMi4xLDIwLjY0DQpTYXBpbmRhY2VhZSxFcmlvY29lbHVtIG1pY3Jvc3Blcm11bSwwLjUyMywzNC40LDI5LjM0DQpFYmVuYWNlYWUsRGlvc3B5cm9zIGdpbGxldGlpLDAuODMzMjgxMjUsMTIuMSwyMC42NA0KQW5ub25hY2VhZSxYeWxvcGlhIHJ1YmVzY2VucywwLjU5NjgyLDE2LjUsMjAuODQNCk1lbGlhY2VhZSxDYXJhcGEgcHJvY2VyYSwwLjYwNDIsNTguNCwyNy44NA0KQW5ub25hY2VhZSxYeWxvcGlhIHJ1YmVzY2VucywwLjU5NjgyLDczLjMsMzQuMzQNClNhbGljYWNlYWUsQ2FzZWFyaWEgYmFydGVyaSwwLjUwOCwyNS4zLDIzLjg0DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhIG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxMC42LDEwLjA0DQpFdXBob3JiaWFjZWFlLE1hY2FyYW5nYSBzcGlub3NhLDAuMzgwMTY2NjY3LDIwLjMsMjMuODQNCkViZW5hY2VhZSxEaW9zcHlyb3MgZ2lsbGV0aWksMC44MzMyODEyNSwxNi4xLDkuODYNCkViZW5hY2VhZSxEaW9zcHlyb3MgZ2lsbGV0aWksMC44MzMyODEyNSwxOC42LDIxLjM0DQpBbm5vbmFjZWFlLFh5bG9waWEgcnViZXNjZW5zLDAuNTk2ODIsMTIuNCwxNi44NA0KRXVwaG9yYmlhY2VhZSxDcm90b25vZ3luZSBnaW9yZ2lpLDAuNDM0ODgzMzMzLDMwLjksMjcuODQNCkNsdXNpYWNlYWUsU3ltcGhvbmlhIGdsb2J1bGlmZXJhLDAuNTg4NzE0Mjg2LDEwLjYsMTAuMDQNClJ1YmlhY2VhZSxJbmRldCBpbmRldCwwLjY5NTY1NjA3LDI0LjYsMTYuMDQNCk1lbGlhY2VhZSxDYXJhcGEgcHJvY2VyYSwwLjYwNDIsMTIuNCwxNi44NA0KQ2x1c2lhY2VhZSxTeW1waG9uaWEgZ2xvYnVsaWZlcmEsMC41ODg3MTQyODYsMjYuNCwxNy40NA0KUHV0cmFuaml2YWNlYWUsRHJ5cGV0ZXMgb2NjaWRlbnRhbGlzLDAuNzE1MjUsMTcuOSw3Ljg0DQpTYXBpbmRhY2VhZSxFcmlvY29lbHVtIG1pY3Jvc3Blcm11bSwwLjUyMywxNi42LDEzLjg0DQpTYXBpbmRhY2VhZSxFcmlvY29lbHVtIG1pY3Jvc3Blcm11bSwwLjUyMyw1OC40LDI3Ljg0DQpFdXBob3JiaWFjZWFlLEdyb3NzZXJhIG1hY3JhbnRoYSwwLjQzNDg4MzMzMywxMC44LDIyLjg0DQo=" download="SwampPlot2.csv">SwampPlot2.csv</a></p>
+<p> </p>
+<p><strong>TerreFirmePlot1</strong> is a 1 ha plot located in a terre firme forest and is available to download here:</p>
+<p><a href="data:text/csv;base64,RmFtaWx5LFNwZWNpZXMsV29vZF9EZW5zaXR5X2dfY20zLERCSF9jbSxIZWlnaHRfbQ0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMTIuNiwxNS4xNQ0KTXlyaXN0aWNhY2VhZSxQeWNuYW50aHVzIGFuZ29sZW5zaXMsMC40MDg5LDQ2LDI2Ljk1DQpPbGFjYWNlYWUsU3Ryb21ib3NpYSBncmFuZGlmb2xpYSwwLjgyNDUsMTAuMSwxNi4zNQ0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBQdW5jdGF0YSwwLjgyNCwxMS43LDE4LjMNCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTIuOCwyMC4wNQ0KT2NobmFjZWFlLExvcGhpcmEgYWxhdGEsMC44OTY5LDEwLjIsMTYuMTUNCkxlY3l0aGlkYWNlYWUsUGV0ZXJzaWFudGh1cyBtYWNyb2NhcnB1cywwLjY3NjUsMTYuNSwyMC4zNQ0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBQdW5jdGF0YSwwLjgyNCw0Ny44LDMwLjY0DQpPY2huYWNlYWUsTG9waGlyYSBhbGF0YSwwLjg5NjksMTEuNywxNy4yNQ0KTWFsdmFjZWFlLER1Ym9zY2lhIG1hY3JvY2FycGEsMC40Nzk5MTgwNSwxMywxNy4xOA0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywxMC45LDE4LjU4DQpPY2huYWNlYWUsTG9waGlyYSBhbGF0YSAsMC44OTY5LDQwLDI4LjU0DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSw2OS42LDMxLjQzDQpNeXJpc3RpY2FjZWFlLFN0YXVkdGlhIGthbWVydW5lbnNpcywwLjc5Mzg4ODg4OSwxMS43LDE3LjI1DQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDkwLjYsMzIuODINCkxlY3l0aGlkYWNlYWUsUGV0ZXJzaWFudGh1cyBtYWNyb2NhcnB1cywwLjY3NjUsMTEuMiwxNy4yOA0KT2xhY2FjZWFlLFN0cm9tYm9zaWEgZ3JhbmRpZm9saWEsMC44MjQ1LDE3LjIsMTcuMzYNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsNTYuOCwyOS40DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSw0NiwyNi41Mg0KSXJ2aW5naWFjZWFlLElydmluZ2lhIGdyYW5kaWZvbGlhLDAuODAwNSw2NSwzMS43MQ0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywxMS4xLDE1LjkyDQpNZWxpYWNlYWUsR3VhcmVhIGluZGV0LDAuNTM4MDM4ODg5LDEyLjksMTYuMTYNCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMzUuMywyNC4wMw0KUnViaWFjZWFlLE1hc3N1bGFyaWEgYWN1bWluYXRhLDAuNjk1NjU2MDcsMTguNiwyMi42Mw0KTWFsdmFjZWFlLENvbGEgbml0aWRhLDAuNjAxMDk1MjM4LDIxLjksMjEuNTMNCk1lbGlhY2VhZSxHdWFyZWEgdGhvbXBzb25paSwwLjU1MTg4ODg4OSw3MSwzMy43Mw0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywxNi4zLDE5LjM4DQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDE2LjUsMjAuMzUNCkZhYmFjZWFlLFB0ZXJvY2FycHVzIHNveWF1eGlpLDAuNjU3Nzg1NzE0LDI0LjgsMjQuNDgNCk15cmlzdGljYWNlYWUsUHljbmFudGh1cyBhbmdvbGVuc2lzLDAuNDA4OSwxNC4xLDE4LjE3DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EgcGFsdWRvc2EsMC42NTIsMTkuMiwxOS40OQ0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMTAuNSwxOC41OA0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCw2My4zLDMxLjUxDQpQYW5kYWNlYWUsUGFuZGEgb2xlb3NhLDAuNTY1LDE0LDE3Ljc5DQpSdWJpYWNlYWUsTWFzc3VsYXJpYSBhY3VtaW5hdGEsMC42OTU2NTYwNywxNi42LDIwLjIzDQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDEyLjgsMTYuMzINClBhc3NpZmxvcmFjZWFlLEJhcnRlcmlhIGZpc3R1bG9zYSwwLjY5NjEyOTI1NCw0Ny4zLDMwLjIyDQpNeXJpc3RpY2FjZWFlLFN0YXVkdGlhIGthbWVydW5lbnNpcywwLjc5Mzg4ODg4OSwxMS43LDE3LjI1DQpJcnZpbmdpYWNlYWUsRGVzYm9yZGVzaWEgZ2xhdWNlc2NlbnMsMC45MTksMTIuMiwxNi4zDQpNeXJpc3RpY2FjZWFlLENvZWxvY2FyeW9uIHByZXVzc2lpLDAuNDk3MiwyMS45LDE5LjI4DQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDExLjksMTkuNzINCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDIwLjUsMjMuNjENCk15cmlzdGljYWNlYWUsU3RhdWR0aWEga2FtZXJ1bmVuc2lzLDAuNzkzODg4ODg5LDEyLjIsMTcuNzgNCk1hbHZhY2VhZSxEdWJvc2NpYSBtYWNyb2NhcnBhLDAuNDc5OTE4MDUsMTQsMTguNzENCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsNjEuNSwzMy44Ng0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhIHBhbHVkb3NhLDAuNjUyLDE3LjYsMjEuNTkNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDExLjIsMTcuMTMNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDMyLjMsMjYuMTQNClNhcGluZGFjZWFlLEVyaW9jb2VsdW0gbWljcm9zcGVybXVtLDAuNTIzLDE3LjcsMTkuMjgNCkViZW5hY2VhZSxEaW9zcHlyb3MgY3Jhc3NpZmxvcmEsMC44NTgyLDEwLjksMTYuMDgNCk9sYWNhY2VhZSxTdHJvbWJvc2lhIGdyYW5kaWZvbGlhLDAuODI0NSw2NS43LDMyLjE1DQpQYW5kYWNlYWUsUGFuZGEgb2xlb3NhLDAuNTY1LDE1LDE3LjMNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMTcuMywxOC44Mw0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2Myw3MSwzMy43Mw0KUnViaWFjZWFlLE1hc3N1bGFyaWEgYWN1bWluYXRhLDAuNjk1NjU2MDcsMjkuMSwyNC4xOQ0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywxMC44LDE0LjkNCk1hbHZhY2VhZSxDb2xhIG5pdGlkYSwwLjYwMTA5NTIzOCwxOC4xLDIwLjA5DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxNi4yLDE4LjY1DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSw0MC4xLDI1LjINCkZhYmFjZWFlLERpYWxpdW0gcGFjaHlwaHlsbHVtLDAuOTIyNSwxOC42LDE5LjI5DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwyMS40LDIyLjgzDQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxOC4xLDIwLjA5DQpGYWJhY2VhZSxQZW50YWNsZXRocmEgbWFjcm9waHlsbGEsMC44NDEsMjUsMjEuMzENCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTkuOCwxOC43NA0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMTMuNCwxNS42Mg0KTWFsdmFjZWFlLER1Ym9zY2lhIG1hY3JvY2FycGEsMC40Nzk5MTgwNSwxNi4xLDIwLjgxDQpJcnZpbmdpYWNlYWUsRGVzYm9yZGVzaWEgZ2xhdWNlc2NlbnMsMC45MTksMTAuOSwxNS4zOA0KTWFsdmFjZWFlLENvbGEgbml0aWRhLDAuNjAxMDk1MjM4LDI5LjksMjMuODINCk1lbGlhY2VhZSxHdWFyZWEgdGhvbXBzb25paSwwLjU1MTg4ODg4OSwxMC44LDE4LjYxDQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwyNC4xLDIxLjg4DQpMZWN5dGhpZGFjZWFlLFBldGVyc2lhbnRodXMgbWFjcm9jYXJwdXMsMC42NzY1LDM5LjYsMjYuNzQNCkxlY3l0aGlkYWNlYWUsUGV0ZXJzaWFudGh1cyBtYWNyb2NhcnB1cywwLjY3NjUsMTUuOSwxNy42OA0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMTEuNSwxNy43Mg0KT2xhY2FjZWFlLFN0cm9tYm9zaWEgZ3JhbmRpZm9saWEsMC44MjQ1LDE4LjUsMTguMjMNCk1hbHZhY2VhZSxEdWJvc2NpYSBtYWNyb2NhcnBhLDAuNDc5OTE4MDUsMTcuNiwxOC4wOQ0KTWFsdmFjZWFlLENvbGEgbml0aWRhLDAuNjAxMDk1MjM4LDE0LjcsMTguNjMNCk9jaG5hY2VhZSxMb3BoaXJhIGFsYXRhLDAuODk2OSwxNi41LDIxLjM0DQpFYmVuYWNlYWUsRGlvc3B5cm9zIGNyYXNzaWZsb3JhLDAuODU4Miw3Ni41LDMyLjczDQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxMS45LDE5LjcyDQpDbHVzaWFjZWFlLEdhcmNpbmlhIGluZGV0LDAuNzcxMzg4ODg5LDExLjgsMTkuNTcNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDEyLjgsMTYuMjcNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDEzLjIsMTYuMDkNCkxlY3l0aGlkYWNlYWUsUGV0ZXJzaWFudGh1cyBtYWNyb2NhcnB1cywwLjY3NjUsMTIuOCwxNS41Mg0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsNjAuMiwzMi4wNw0KQW5ub25hY2VhZSxDbGVpc3RvcGhvbGlzIGluZGV0LDAuMzIyMzUsMTguMSwxOC45OQ0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywxMy4yLDE1LjY1DQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDE3LDE3LjM4DQpPY2huYWNlYWUsTG9waGlyYSBhbGF0YSwwLjg5NjksMTguNSwxOC4yMw0KT2NobmFjZWFlLExvcGhpcmEgYWxhdGEsMC44OTY5LDM1LjMsMjguMDkNCk1lbGlhY2VhZSxFbnRhbmRyb3BocmFnbWEgY3lsaW5kcmljdW0sMC41NzE1LDkwLjQsMzUuNQ0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywxNC4zLDE4LjQzDQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDI5LjgsMjMuODcNCk15cmlzdGljYWNlYWUsUHljbmFudGh1cyBhbmdvbGVuc2lzLDAuNDA4OSwyMC4yLDIyLjY0DQpQYW5kYWNlYWUsUGFuZGEgb2xlb3NhLDAuNTY1LDEyLjEsMTcuMTINClNhcGluZGFjZWFlLEJsaWdoaWEgaW5kZXQsMC42ODUyNSwxOC41LDIxLjkNClJ1YmlhY2VhZSxDb3J5bmFudGhlIHBhY2h5Y2VyYXMsMC42NzM1LDEwLjksMTguNTINCkxlY3l0aGlkYWNlYWUsUGV0ZXJzaWFudGh1cyBtYWNyb2NhcnB1cywwLjY3NjUsMTUuMywxOC4zNQ0KSXJ2aW5naWFjZWFlLEtsYWluZWRveGEgZ2Fib25lbnNpcywwLjkyNTU4MzMzMyw1OC44LDMzLjA1DQpNYWx2YWNlYWUsQ29sYSBuaXRpZGEsMC42MDEwOTUyMzgsMTcuNywxOS4yOA0KSXJ2aW5naWFjZWFlLElydmluZ2lhIGdyYW5kaWZvbGlhLDAuODAwNSwxNC41LDE3LjE0DQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDU4LjgsMzMuMDUNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMjYuOCwyMi44Ng0KUnViaWFjZWFlLENvcnluYW50aGUgcGFjaHljZXJhcywwLjY3MzUsMTEuOCwxOS41Nw0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMjAuOSwyMC43Mg0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywyNC40LDIxLjY3DQpGYWJhY2VhZSxEaWFsaXVtIHBhY2h5cGh5bGx1bSwwLjkyMjUsMjEuMiwyMC4yMQ0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMTIuNSwxNy44MQ0KUnViaWFjZWFlLE1hc3N1bGFyaWEgYWN1bWluYXRhLDAuNjk1NjU2MDcsMTUsMjAuOTkNClBoeWxsYW50aGFjZWFlLFVhcGFjYSBwYWx1ZG9zYSwwLjY1MiwxNy42LDE4LjA5DQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDM1LjMsMjguMDkNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMTIuOCwxNy42Ng0KSXJ2aW5naWFjZWFlLEtsYWluZWRveGEgZ2Fib25lbnNpcywwLjkyNTU4MzMzMywxNy45LDE4LjE4DQpSdWJpYWNlYWUsTWFzc3VsYXJpYSBhY3VtaW5hdGEsMC42OTU2NTYwNywzNy40LDI0LjI5DQpDbHVzaWFjZWFlLEdhcmNpbmlhIGluZGV0LDAuNzcxMzg4ODg5LDYxLjksMzEuMjYNCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTIuOCwxNi4yNw0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywyMy4xLDE5Ljk1DQpQaHlsbGFudGhhY2VhZSxVYXBhY2EgcGFsdWRvc2EsMC42NTIsMzguNywyOC4xNw0KT2NobmFjZWFlLExvcGhpcmEgYWxhdGEsMC44OTY5LDUxLjUsMjkuMzQNCkZhYmFjZWFlLERpYWxpdW0gcGFjaHlwaHlsbHVtLDAuOTIyNSwyMi45LDIxLjgNCk15cmlzdGljYWNlYWUsU3RhdWR0aWEga2FtZXJ1bmVuc2lzLDAuNzkzODg4ODg5LDE0LjgsMTkuNjENCk1lbGlhY2VhZSxFbnRhbmRyb3BocmFnbWEgY3lsaW5kcmljdW0sMC41NzE1LDEwLjMsMTguNDQNCkJ1cnNlcmFjZWFlLERhY3J5b2RlcyBpbmRldCwwLjU2NDgzNzg3MiwxNSwyMC41Ng0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywxNC4xLDE4LjE3DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxMy4yLDE2LjQ3DQpDbHVzaWFjZWFlLEdhcmNpbmlhIGluZGV0LDAuNzcxMzg4ODg5LDE3LjMsMTguMjUNClZpb2xhY2VhZSxSaW5vcmVhIG9ibG9uZ2lmb2xpYSwwLjY5NjEyOTI1NCwyNC40LDIxLjY3DQpMZWN5dGhpZGFjZWFlLFBldGVyc2lhbnRodXMgbWFjcm9jYXJwdXMsMC42NzY1LDEwLjksMTguNTgNCk1lbGlhY2VhZSxUcmljaGlsaWEgaW5kZXQsMC40ODI1LDE0LjcsMjANCk9sYWNhY2VhZSxTdHJvbWJvc2lhIGdyYW5kaWZvbGlhLDAuODI0NSw0Ny4zLDMwLjcxDQpPbGFjYWNlYWUsU3Ryb21ib3NpYSBncmFuZGlmb2xpYSwwLjgyNDUsMjkuNCwyNi4wNw0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwzMi4zLDI2LjE0DQpPY2huYWNlYWUsTG9waGlyYSBhbGF0YSwwLjg5NjksNTAuOCwzMi4xNQ0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywyMC45LDIwLjg4DQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDExLjYsMTYuNTkNCklydmluZ2lhY2VhZSxJcnZpbmdpYSBncmFuZGlmb2xpYSwwLjgwMDUsMTksMjAuODUNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDE2LjYsMjAuMjMNCkxlY3l0aGlkYWNlYWUsUGV0ZXJzaWFudGh1cyBtYWNyb2NhcnB1cywwLjY3NjUsMzcuNCwyNC4yOQ0KT2xhY2FjZWFlLFN0cm9tYm9zaWEgaW5kZXQsMC44MjczOTI4NTcsMjEuOSwxOS4yOA0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywzMS41LDI0LjE1DQpPbGFjYWNlYWUsU3Ryb21ib3NpYSBncmFuZGlmb2xpYSwwLjgyNDUsMjMuOSwyMS40Ng0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwxMC45LDE2LjE3DQpSdWJpYWNlYWUsTWFzc3VsYXJpYSBhY3VtaW5hdGEsMC42OTU2NTYwNywzMC43LDI1LjA5DQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDExLjgsMTkuNA0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwxNy4yLDE4LjIxDQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSw4MS40LDM1Ljk4DQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDExLjIsMTQuNDMNCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsNDAuNCwyNy4xDQpNeXJpc3RpY2FjZWFlLFN0YXVkdGlhIGluZGV0LDAuNzkzODg4ODg5LDEzLjIsMTYuMDkNCkZhYmFjZWFlLFBsYXR5c2VwYWx1bSBjaGV2YWxpZXJpLDAuNjgzMzE1MjUsMzkuNiwyNi43NA0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywxNS45LDE3LjA3DQpMZWN5dGhpZGFjZWFlLFBldGVyc2lhbnRodXMgbWFjcm9jYXJwdXMsMC42NzY1LDEyLjksMTkuMTkNCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTUuNiwyMS4yNg0KTXlyaXN0aWNhY2VhZSxDb2Vsb2NhcnlvbiBwcmV1c3NpaSwwLjQ5NzIsMTAuOCwxOC42MQ0KTGVjeXRoaWRhY2VhZSxQZXRlcnNpYW50aHVzIG1hY3JvY2FycHVzLDAuNjc2NSwxMy4yLDE2LjA5DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxNS44LDE4LjIxDQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxMC43LDE1Ljc0DQpNYWx2YWNlYWUsRHVib3NjaWEgbWFjcm9jYXJwYSwwLjQ3OTkxODA1LDIwLjUsMjMuNjENCkxlY3l0aGlkYWNlYWUsUGV0ZXJzaWFudGh1cyBtYWNyb2NhcnB1cywwLjY3NjUsMTcuNiwxOC4wOQ0KT2NobmFjZWFlLExvcGhpcmEgYWxhdGEsMC44OTY5LDUyLjYsMzEuNzYNCkZhYmFjZWFlLERpYWxpdW0gcGFjaHlwaHlsbHVtLDAuOTIyNSw1Mi42LDMxLjc2DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSw1MS4yLDMwLjM3DQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDEwLjQsMTQuMTINCkNsdXNpYWNlYWUsR2FyY2luaWEgaW5kZXQsMC43NzEzODg4ODksMTUuNiwyMS4yNg0KTXlyaXN0aWNhY2VhZSxDb2Vsb2NhcnlvbiBwcmV1c3NpaSwwLjQ5NzIsMjMuOSwyMS40Ng0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMTIuOSwxNi4xNg0KRmFiYWNlYWUsRGlhbGl1bSBwYWNoeXBoeWxsdW0sMC45MjI1LDM3LDI0LjgyDQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDEzLjIsMTYuNDcNCkxlY3l0aGlkYWNlYWUsUGV0ZXJzaWFudGh1cyBtYWNyb2NhcnB1cywwLjY3NjUsNTguOCwzMy4wNQ0KT2xhY2FjZWFlLFN0cm9tYm9zaWEgZ3JhbmRpZm9saWEsMC44MjQ1LDYwLjIsMzIuMDcNCk1hbHZhY2VhZSxEdWJvc2NpYSBtYWNyb2NhcnBhLDAuNDc5OTE4MDUsMTEuOSwxOS43Mg0KRmFiYWNlYWUsRGlhbGl1bSBwYWNoeXBoeWxsdW0sMC45MjI1LDYwLjksMjkuNDINCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTMuNiwxOC4xOA0KU2FwaW5kYWNlYWUsQmxpZ2hpYSBpbmRldCwwLjY4NTI1LDEwLjEsMTYuMzUNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDE0LDE4LjcxDQpGYWJhY2VhZSxQZW50YWNsZXRocmEgbWFjcm9waHlsbGEsMC44NDEsMTYuNiwyMC4yMw0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMzcsMjQuODINCk9sYWNhY2VhZSxTdHJvbWJvc2lhIGluZGV0LDAuODI3MzkyODU3LDM5LjYsMjYuNzQNCk1hbHZhY2VhZSxEdWJvc2NpYSBtYWNyb2NhcnBhLDAuNDc5OTE4MDUsMTAsMTcuMDUNCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTIuOSwxNi4zOA0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwyOS41LDIyLjUxDQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwzMy43LDIzLjUNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMzkuNiwyNi43NA0KTWFsdmFjZWFlLER1Ym9zY2lhIG1hY3JvY2FycGEsMC40Nzk5MTgwNSw1OC4zLDI5LjA5DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwyNS4xLDI0LjQ3DQpNYWx2YWNlYWUsQ29sYSBuaXRpZGEsMC42MDEwOTUyMzgsNDYsMjYuOTUNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDEzLjksMTcuNDMNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDExLjYsMTYuMTENCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDQ4LjIsMzAuMQ0KRmFiYWNlYWUsUHRlcm9jYXJwdXMgc295YXV4aWksMC42NTc3ODU3MTQsMTYuOCwxOC40Nw0KTWFsdmFjZWFlLENvbGEgbml0aWRhLDAuNjAxMDk1MjM4LDExLjcsMTcuMjUNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDQ2LDI2LjUyDQpSdWJpYWNlYWUsTWFzc3VsYXJpYSBhY3VtaW5hdGEsMC42OTU2NTYwNywxMi4xLDE2LjENCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMjQuNSwyMy43NA0KTXlyaXN0aWNhY2VhZSxQeWNuYW50aHVzIGFuZ29sZW5zaXMsMC40MDg5LDMwLjEsMjUuNjkNCkxlY3l0aGlkYWNlYWUsUGV0ZXJzaWFudGh1cyBtYWNyb2NhcnB1cywwLjY3NjUsNTMuOCwzMC4zNQ0KTGVjeXRoaWRhY2VhZSxQZXRlcnNpYW50aHVzIG1hY3JvY2FycHVzLDAuNjc2NSwxMy4yLDE2LjQ3DQpMZWN5dGhpZGFjZWFlLFBldGVyc2lhbnRodXMgbWFjcm9jYXJwdXMsMC42NzY1LDE3LjUsMTguMzYNCk9sYWNhY2VhZSxTdHJvbWJvc2lhIGdyYW5kaWZvbGlhLDAuODI0NSwxMS44LDE2LjU4DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxMi40LDE4LjQxDQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxMC4xLDE2LjM1DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxMi4xLDE2LjENCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMTEuMiwxNC40Mw0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwzOC43LDI4LjE3DQpSdWJpYWNlYWUsTWFzc3VsYXJpYSBhY3VtaW5hdGEsMC42OTU2NTYwNyw1Ni44LDMyLjENCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDE3LjYsMTkuNzkNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDE2LjEsMTkuNTQNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMjQuNSwyMy43NA0KRmFiYWNlYWUsUGxhdHlzZXBhbHVtIGNoZXZhbGllcmksMC42ODMzMTUyNSwzOS42LDI2Ljc0DQpNeXJpc3RpY2FjZWFlLFB5Y25hbnRodXMgYW5nb2xlbnNpcywwLjQwODksMTMuMiwxNi40Nw0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMjkuNSwyNC42Mw0KTXlyaXN0aWNhY2VhZSxQeWNuYW50aHVzIGFuZ29sZW5zaXMsMC40MDg5LDE1LjgsMTguMjENCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDY1LjQsMzAuNDQNCk1hbHZhY2VhZSxEdWJvc2NpYSBtYWNyb2NhcnBhLDAuNDc5OTE4MDUsMTEuOCwxNi41OA0KUGFuZGFjZWFlLFBhbmRhIG9sZW9zYSwwLjU2NSwzOS42LDI2Ljc0DQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDY5LjYsMzEuNDMNClJ1YmlhY2VhZSxDb3J5bmFudGhlIHBhY2h5Y2VyYXMsMC42NzM1LDExLjcsMTkuMDENClJ1YmlhY2VhZSxNYXNzdWxhcmlhIGFjdW1pbmF0YSwwLjY5NTY1NjA3LDExLjUsMTcuNzINCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDc5LjksMzMuOTENClJ1YmlhY2VhZSxNYXNzdWxhcmlhIGFjdW1pbmF0YSwwLjY5NTY1NjA3LDE4LjEsMjIuMTgNClBhbmRhY2VhZSxQYW5kYSBvbGVvc2EsMC41NjUsMTMuOCwxNy4zOQ0KTWFsdmFjZWFlLENvbGEgbml0aWRhLDAuNjAxMDk1MjM4LDM4LjgsMjcuNjQNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDE4LjYsMTkuMjkNCkZhYmFjZWFlLERpYWxpdW0gcGFjaHlwaHlsbHVtLDAuOTIyNSw1Ni44LDI5LjQNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMTIuMywxNS40OA0KQ2x1c2lhY2VhZSxTeW1waG9uaWEgZ2xvYnVsaWZlcmEsMC41ODg3MTQyODYsMTQuNSwxNy4xNA0KRWJlbmFjZWFlLERpb3NweXJvcyBjcmFzc2lmbG9yYSwwLjg1ODIsMjAuMSwxOS4wOA0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywxMC45LDE4LjU4DQpNZWxpYWNlYWUsVHJpY2hpbGlhIGluZGV0LDAuNDgyNSwxMC45LDE4LjU4DQpNZWxpYWNlYWUsVHJpY2hpbGlhIGluZGV0LDAuNDgyNSw1OC44LDMzLjA1DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxNi4zLDE5LjM4DQpQYW5kYWNlYWUsUGFuZGEgb2xlb3NhLDAuNTY1LDI5LjQsMjYuMDcNClBoeWxsYW50aGFjZWFlLFVhcGFjYSBwYWx1ZG9zYSwwLjY1Miw2MC4yLDMyLjA3DQpMZWN5dGhpZGFjZWFlLFBldGVyc2lhbnRodXMgbWFjcm9jYXJwdXMsMC42NzY1LDU1LjEsMjguMzENCk1vcmFjZWFlLE1pbGljaWEgZXhjZWxzYSwwLjU3NTQ1ODMzMywyMiwyMC40MQ0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMTEuOSwxOC4yOQ0KT2xhY2FjZWFlLFN0cm9tYm9zaWEgZ3JhbmRpZm9saWEsMC44MjQ1LDU1LjUsMzMuMDINCk1hbHZhY2VhZSxEdWJvc2NpYSBtYWNyb2NhcnBhLDAuNDc5OTE4MDUsMTYuMywxNy42Nw0KTWFsdmFjZWFlLENvbGEgbml0aWRhLDAuNjAxMDk1MjM4LDI4LjgsMjQuODMNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDE0LjcsMjANCk1lbGlhY2VhZSxUcmljaGlsaWEgaW5kZXQsMC40ODI1LDEyLjgsMTcuNjYNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMTEuNiwxNi4xMg0KTW9yYWNlYWUsTWlsaWNpYSBleGNlbHNhLDAuNTc1NDU4MzMzLDI2LjgsMjIuODYNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsNTguMywyOS4wOQ0KU2FwaW5kYWNlYWUsQmxpZ2hpYSBpbmRldCwwLjY4NTI1LDEzLjQsMTYuNzUNClJ1YmlhY2VhZSxNYXNzdWxhcmlhIGFjdW1pbmF0YSwwLjY5NTY1NjA3LDExLjgsMTkuMjENCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTAuNCwxNi4yOA0KTWVsaWFjZWFlLEd1YXJlYSB0aG9tcHNvbmlpLDAuNTUxODg4ODg5LDExLjIsMTcuMjgNCk15cmlzdGljYWNlYWUsU3RhdWR0aWEgaW5kZXQsMC43OTM4ODg4ODksNDAuMywyOS4zOA0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwxNywxOC45DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxMC41LDE4LjU4DQpBbm5vbmFjZWFlLENsZWlzdG9waG9saXMgcGF0ZW5zLDAuMzM1NSwyNS4xLDI0LjQ3DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwzNS4yLDI3LjQ0DQpPY2huYWNlYWUsTG9waGlyYSBhbGF0YSwwLjg5NjksMTcuOSwyMi4xNQ0KT2xhY2FjZWFlLFN0cm9tYm9zaWEgZ3JhbmRpZm9saWEsMC44MjQ1LDE2LjMsMTcuNjcNCk1lbGlhY2VhZSxUcmljaGlsaWEgaW5kZXQsMC40ODI1LDYyLjUsMjkuNjMNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDIwLjEsMTkuMDgNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMTEuMSwxNS4xNA0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwxMSwxNy45MQ0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwxOC43LDE4LjIzDQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDE2LjEsMTkuNTQNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDExLjksMTguNzENCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDExLjksMTcuMjMNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMTcuNywyMS4wMg0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwxMy4zLDE1Ljc2DQpNYWx2YWNlYWUsRHVib3NjaWEgbWFjcm9jYXJwYSwwLjQ3OTkxODA1LDIyLjcsMjEuMzgNClJ1YmlhY2VhZSxNYXNzdWxhcmlhIGFjdW1pbmF0YSwwLjY5NTY1NjA3LDIzLjEsMTkuOTUNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDExLjgsMTUuMzYNCk1hbHZhY2VhZSxEdWJvc2NpYSBtYWNyb2NhcnBhLDAuNDc5OTE4MDUsMjQuOCwyNC40OA0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwxMS4yLDE0LjQzDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EgcGFsdWRvc2EsMC42NTIsMTMuNCwxNi43NQ0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMjAuNCwxOS41OA0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMTIuOSwxOS4yMQ0KSXJ2aW5naWFjZWFlLERlc2JvcmRlc2lhIGdsYXVjZXNjZW5zLDAuOTE5LDMxLjksMjUuMzINClBhbmRhY2VhZSxQYW5kYSBvbGVvc2EsMC41NjUsMjQuMSwyMS44OA0KT2xhY2FjZWFlLFN0cm9tYm9zaWEgZ3JhbmRpZm9saWEsMC44MjQ1LDI5LjQsMjYuMDcNCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTIuOCwxNy42Ng0KSXJ2aW5naWFjZWFlLElydmluZ2lhIGdyYW5kaWZvbGlhLDAuODAwNSwxNC44LDE3LjY5DQpPY2huYWNlYWUsTG9waGlyYSBhbGF0YSwwLjg5NjksMjMuNSwyMi4zMw0KVmlvbGFjZWFlLFJpbm9yZWEgb2Jsb25naWZvbGlhLDAuNjk2MTI5MjU0LDExLjYsMTYuMTENCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTAuNCwxNC4xMg0KTXlyaXN0aWNhY2VhZSxTdGF1ZHRpYSBrYW1lcnVuZW5zaXMsMC43OTM4ODg4ODksNTAuOCwzMi4xNQ0KTWVsaWFjZWFlLFRyaWNoaWxpYSBpbmRldCwwLjQ4MjUsMTcuOSwyMi4xNQ0KUGFuZGFjZWFlLFBhbmRhIG9sZW9zYSwwLjU2NSwzNC44LDI0LjQ1DQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDIwLjEsMTkuMDgNCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTEuOCwxOS4yNg0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwyMS40LDIzLjQ5DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxMy40LDE1Ljc4DQpQYW5kYWNlYWUsUGFuZGEgb2xlb3NhLDAuNTY1LDM4LjgsMjcuNjQNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMTcuMiwxOC4yMQ0KTWFsdmFjZWFlLENvbGEgbml0aWRhLDAuNjAxMDk1MjM4LDExLjgsMTYuNTgNClNhcGluZGFjZWFlLEVyaW9jb2VsdW0gbWljcm9zcGVybXVtLDAuNTIzLDEyLjYsMTUuMTUNCk1hbHZhY2VhZSxEdWJvc2NpYSBtYWNyb2NhcnBhLDAuNDc5OTE4MDUsMTAuMywxNi42NQ0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMTcuMSwxOS4xOA0KSXJ2aW5naWFjZWFlLERlc2JvcmRlc2lhIGdsYXVjZXNjZW5zLDAuOTE5LDExLjgsMTkuNA0KSXJ2aW5naWFjZWFlLEtsYWluZWRveGEgZ2Fib25lbnNpcywwLjkyNTU4MzMzMywyMS4yLDIwLjIxDQpNeXJpc3RpY2FjZWFlLFN0YXVkdGlhIGthbWVydW5lbnNpcywwLjc5Mzg4ODg4OSwxMS44LDE5LjQNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMTguMSwxOS42DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxMi4xLDE3LjA4DQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDE2LjEsMjAuODENCkViZW5hY2VhZSxEaW9zcHlyb3MgY3Jhc3NpZmxvcmEsMC44NTgyLDExLjksMTUuOQ0KTW9yYWNlYWUsTWlsaWNpYSBleGNlbHNhLDAuNTc1NDU4MzMzLDEwLjMsMTguNDQNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDI1LjEsMjMuMzENCkZhYmFjZWFlLERpYWxpdW0gcGFjaHlwaHlsbHVtLDAuOTIyNSwxMi42LDE1LjE1DQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDIzLjEsMTkuOTUNCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTQuNywxOC42Mw0KTGVjeXRoaWRhY2VhZSxQZXRlcnNpYW50aHVzIG1hY3JvY2FycHVzLDAuNjc2NSwxMy45LDE3LjQzDQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDE2LjMsMjAuMw0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsNTguOCwzMy4wNQ0KRWJlbmFjZWFlLERpb3NweXJvcyBtYW5uaWksMC44MTMsMjAuNiwyMi4xMQ0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhIHBhbHVkb3NhLDAuNjUyLDExLDE3LjkxDQpQaHlsbGFudGhhY2VhZSxVYXBhY2EgcGFsdWRvc2EsMC42NTIsMTkuNiwyMi4wNw0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwxNi4xLDIwLjk1DQpNeXJ0YWNlYWUsU3l6eWdpdW0gaW5kZXQsMC42NDgyNSwxMCwxOC4zDQpNeXJpc3RpY2FjZWFlLFN0YXVkdGlhIGthbWVydW5lbnNpcywwLjc5Mzg4ODg4OSwyNC44LDI0LjQ4DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxMS4xLDE1LjE0DQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDI3LjMsMjUuNjUNClZpb2xhY2VhZSxSaW5vcmVhIG9ibG9uZ2lmb2xpYSwwLjY5NjEyOTI1NCwyOS4xLDI0LjE5DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxNS45LDE4LjYzDQpMZWN5dGhpZGFjZWFlLFBldGVyc2lhbnRodXMgbWFjcm9jYXJwdXMsMC42NzY1LDYyLjUsMjkuNjMNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDEwLjYsMTcuMjkNCk1lbGlhY2VhZSxUcmljaGlsaWEgaW5kZXQsMC40ODI1LDEyLjIsMTcuNzgNClJ1YmlhY2VhZSxNYXNzdWxhcmlhIGFjdW1pbmF0YSwwLjY5NTY1NjA3LDI5LjUsMjIuNTENCk1lbGlhY2VhZSxUcmljaGlsaWEgaW5kZXQsMC40ODI1LDEzLjQsMTUuODkNCkViZW5hY2VhZSxEaW9zcHlyb3MgY3Jhc3NpZmxvcmEsMC44NTgyLDcyLjcsMzIuMzgNCkxlY3l0aGlkYWNlYWUsUGV0ZXJzaWFudGh1cyBtYWNyb2NhcnB1cywwLjY3NjUsMTQuOCwxNy43OA0KQ2x1c2lhY2VhZSxHYXJjaW5pYSBwdW5jdGF0YSwwLjgyNCwxOSwyMC44NQ0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsNzYuNSwzMi43Mw0KRmFiYWNlYWUsQW5neWxvY2FseXggcHluYWVydGlpLDAuNjgzMzE1MjUsMTEuNSwxNy4wNQ0KT2NobmFjZWFlLExvcGhpcmEgYWxhdGEsMC44OTY5LDYxLjUsMzMuODYNCk9sYWNhY2VhZSxTdHJvbWJvc2lvcHNpcyB0ZXRyYW5kcmEsMC42NjMsMTIuNCwxOS4yNw0KT2xhY2FjZWFlLFN0cm9tYm9zaW9wc2lzIHRldHJhbmRyYSwwLjY2MywyOS42LDIyLjYyDQpJcnZpbmdpYWNlYWUsS2xhaW5lZG94YSBnYWJvbmVuc2lzLDAuOTI1NTgzMzMzLDEzLjQsMTUuODkNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDEwLjQsMTQuMTINCkZhYmFjZWFlLERpYWxpdW0gaW5kZXQsMC44MzcwOTcyMjIsMTEuOCwxOS40DQpFYmVuYWNlYWUsRGlvc3B5cm9zIGNyYXNzaWZsb3JhLDAuODU4Miw0OS4zLDI5LjY1DQpSdWJpYWNlYWUsTWFzc3VsYXJpYSBhY3VtaW5hdGEsMC42OTU2NTYwNywyNi44LDIyLjg2DQpDbHVzaWFjZWFlLEdhcmNpbmlhIHB1bmN0YXRhLDAuODI0LDE0LDE3Ljc5DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwzOC43LDI4LjE3DQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDI1LDIzLjgNCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMzcuNSwyNy4wNg0KSXJ2aW5naWFjZWFlLEtsYWluZWRveGEgZ2Fib25lbnNpcywwLjkyNTU4MzMzMywyMC4zLDE5LjE3DQpNYWx2YWNlYWUsQ29sYSBuaXRpZGEsMC42MDEwOTUyMzgsMTMuOSwxOC4zNA0KUGh5bGxhbnRoYWNlYWUsVWFwYWNhIHBhbHVkb3NhLDAuNjUyLDMxLjUsMjQuMTUNCkZhYmFjZWFlLERpYWxpdW0gcGFjaHlwaHlsbHVtLDAuOTIyNSw1MC44LDMyLjE1DQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDEyLjEsMTYuMQ0KTGVjeXRoaWRhY2VhZSxQZXRlcnNpYW50aHVzIG1hY3JvY2FycHVzLDAuNjc2NSwxMS44LDE5LjI2DQpPY2huYWNlYWUsTG9waGlyYSBhbGF0YSwwLjg5NjksMTkuOCwxOS43OA0KUGFuZGFjZWFlLFBhbmRhIG9sZW9zYSwwLjU2NSwxNy45LDE4LjE4DQpMZWN5dGhpZGFjZWFlLFBldGVyc2lhbnRodXMgbWFjcm9jYXJwdXMsMC42NzY1LDIxLjIsMjAuMjENClJ1YmlhY2VhZSxNYXNzdWxhcmlhIGFjdW1pbmF0YSwwLjY5NTY1NjA3LDEwLjQsMTQuMTINClBoeWxsYW50aGFjZWFlLFVhcGFjYSBwYWx1ZG9zYSwwLjY1MiwxMS4xLDE2Ljk5DQpNb3JhY2VhZSxNaWxpY2lhIGV4Y2Vsc2EsMC41NzU0NTgzMzMsMTguOSwxOC4xMQ0KSXJ2aW5naWFjZWFlLElydmluZ2lhIGdyYW5kaWZvbGlhLDAuODAwNSw0NC41LDI5DQpNZWxpYWNlYWUsVHJpY2hpbGlhIGluZGV0LDAuNDgyNSw2Mi41LDI5LjYzDQpPbGFjYWNlYWUsU3Ryb21ib3Npb3BzaXMgdGV0cmFuZHJhLDAuNjYzLDY1LjQsMzAuNDQNCk9jaG5hY2VhZSxMb3BoaXJhIGFsYXRhLDAuODk2OSwxMC4zLDE4LjQ0DQpGYWJhY2VhZSxBbmd5bG9jYWx5eCBweW5hZXJ0aWksMC42ODMzMTUyNSwxNy45LDE4LjE4DQpJcnZpbmdpYWNlYWUsRGVzYm9yZGVzaWEgZ2xhdWNlc2NlbnMsMC45MTksMjQuMSwyMy4yOQ0KT2NobmFjZWFlLExvcGhpcmEgYWxhdGEsMC44OTY5LDExLjcsMTUuODYNCkFuYWNhcmRpYWNlYWUsUHNldWRvc3BvbmRpYXMgbWljcm9jYXJwYSwwLjU1Mzk1NjU2NiwxNCwxOC43MQ0KT2xhY2FjZWFlLFN0cm9tYm9zaWEgZ3JhbmRpZm9saWEsMC44MjQ1LDE2LjYsMjEuMzYNCk15cmlzdGljYWNlYWUsQ29lbG9jYXJ5b24gcHJldXNzaWksMC40OTcyLDIwLjYsMjIuMTENClJ1YmlhY2VhZSxNYXNzdWxhcmlhIGFjdW1pbmF0YSwwLjY5NTY1NjA3LDE5LjcsMTguNDkNCkZhYmFjZWFlLEFuZ3lsb2NhbHl4IHB5bmFlcnRpaSwwLjY4MzMxNTI1LDE1LjcsMjAuMTcNCkNsdXNpYWNlYWUsR2FyY2luaWEgcHVuY3RhdGEsMC44MjQsMTQuOCwxOS42MQ0KUGFzc2lmbG9yYWNlYWUsQmFydGVyaWEgZmlzdHVsb3NhLDAuNjk2MTI5MjU0LDEwLjMsMTQuMzQNClBoeWxsYW50aGFjZWFlLFVhcGFjYSBwYWx1ZG9zYSwwLjY1MiwxMi45LDE5LjE5DQpPY2huYWNlYWUsTG9waGlyYSBhbGF0YSwwLjg5NjksNzYuNSwzMi43Mw0K" download="TerreFirmePlot1.csv">TerreFirmePlot1.csv</a></p>
+<p> </p>
+<p>Bring in these three datasets, give the dataframes a name (e.g. swamp1, swamp2, TF1) and take a look at their format. To run our code easily we want each of the three dataframes to be in the same format.</p>
+<p> </p>
+<p><strong>2.</strong> We want each dataframe to have the following columns:</p>
+<p> </p>
+<p><strong>Family</strong>: a column containing the family of the individual tree.</p>
+<p><strong>Species</strong>: a column containing the combined genus and species of the tree.</p>
+<p><strong>Wood Density_g_cm3</strong>: a column containing the wood density of the tree, in g cm-3.</p>
+<p><strong>DBH_cm</strong>: a column containing the diameter at breast height of the tree, in centimeters.</p>
+<p><strong>Height_m</strong>: a column containing the height of the tree in meters.</p>
+<p> </p>
+<p><strong>If any of the dataframes do not follow this format, within R make changes to them to ensure that they do.</strong></p>
+<blockquote>
+<p><strong>Hint</strong>: There is one plot where the DBH needs to be converted from millimeters to centimeters, the Genus &gt;column needs to be concatenated with the Species column, and for consistency, you could add a height column and fill it with NA’s.</p>
+<p>For this problematic plot, make new vectors of DBH_cm, Species (containing both genus and species combined), and a Height_m vector.</p>
+<p>The following cold be useful when trying to make these new vectors: <code>paste()</code> and <code>rep()</code></p>
+<p>Before we add these new vectors to our problematic dataframe, let’s remove the columns we do not want:</p>
+</blockquote>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="the-importance-of-data-standardisation.html#cb332-1" tabindex="-1"></a><span class="st">`</span><span class="at">swamp1 &lt;- swamp1[, !names(swamp1) %in% c(&quot;Genus&quot;, &quot;Species&quot;, &quot;DBH_mm&quot;)]</span></span></code></pre></div>
+<blockquote>
+<p>Once you have done that, you can add your new columns to the dataframe.</p>
+<p>If using <code>cbind()</code> your new vectors will have been added to the end of the end of the dataframe. But if you want the order of your columns to be the same across all dataframes (this could be important if using numeric indexing in your code somewhere), one of the easiest ways to do this is to use the <code>dplyr</code> package and use <code>relocate()</code>:</p>
+</blockquote>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="the-importance-of-data-standardisation.html#cb333-1" tabindex="-1"></a><span class="st">`</span><span class="at">swamp1 &lt;- swamp1 %&gt;%  relocate(Species, .before = Wood_Density_g_cm3)</span></span></code></pre></div>
+<blockquote>
+
+</blockquote>
+<p> </p>
+<p><strong>3.</strong> For each plot take a careful look at the different species present in each plot. Has the data been entered consistently for each species?</p>
+<p>Later on we will count the number of species per plot. What are the implications of any inconsistencies in the way the species names have been entered?</p>
+<p><strong>If you see any inconsistencies, fix them.</strong></p>
+<p> </p>
+<blockquote>
+<p>Hint: combining <code>sort()</code> and <code>unique()</code> together will give you a way to see all species present in a plot listed in alphabetical order.</p>
+<p>To replace any typos or wrongly formatted species you can use <code>gsub()</code> for partial matches:</p>
+</blockquote>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="the-importance-of-data-standardisation.html#cb334-1" tabindex="-1"></a>TF1<span class="sc">$</span>Species <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;Punctata&quot;</span>, <span class="st">&quot;punctata&quot;</span>, TF1<span class="sc">$</span>Species)</span></code></pre></div>
+<blockquote>
+<p>Or you could do a conditional replacement with an exact match:</p>
+</blockquote>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="the-importance-of-data-standardisation.html#cb335-1" tabindex="-1"></a>TF1<span class="sc">$</span>Species[TF1<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;Lophira alata &quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Lophira alata&quot;</span></span></code></pre></div>
+<blockquote>
+
+</blockquote>
+<p> </p>
+<p>Here we only have three plots. Imagine your project involves looking at hundred of plot. Imagine the time costs of dealing with data inconsistently formatted.
+Think about the potential errors which could go unnoticed if data is badly formatted (e.g. you get the wrong number of species per plot).
+<strong>Formatting data consistently saves time and reduces the chance of errors.</strong></p>
+<p>Now that your data is formatted in the same way we will move on to some basic analyses.</p>
+<p> </p>
+</div>
+<div id="part-2-the-importance-of-standardised-data-collection" class="section level5 unnumbered hasAnchor">
+<h5>Part 2: The importance of standardised data collection<a href="the-importance-of-data-standardisation.html#part-2-the-importance-of-standardised-data-collection" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Standardised data collection or methodologies makes data analyses much easier and makes comparisons between datasets much easier.</p>
+<p>Here we have some inconsistencies in how our forest plot data was collected. Firstly, for one of our plots no tree height data was collected. Secondly, our plots are different sizes- two are 1 ha in size, and one is 0.5 ha in size. Let’s see what the implications are for our analyses.</p>
+<p> </p>
+<p><strong>1.</strong> The first task is to estimate for each forest, the number of stems per hectare. So count the number of individual trees in your plot (<code>length()</code> might help you here), and divide by the plot area.</p>
+<p>Does the different plot size matter in this instance? No. We can still get an estimate of number of stems per hectare for all our plots.</p>
+<p> </p>
+<p><strong>2.</strong> Now we we want to compare the species richness of each plot. Species richness is a very basic diversity measurement, where it is the number of species present in a specific area.</p>
+<p><strong>For each plot count the number of species in the plot.</strong></p>
+<p><em>Imagine we want to compare our three plots with a paper we have read where the species richness is reported in number of species per hectare. For our 1 ha plots, we can make a direct comparison. However, one of our plots is 0.5 ha in size. Can we do what we did for stem number per hectare, and scale up our number of species in 0.5 ha to number of species in 1 ha? The answer is sadly no- the number of species per area is not linearly scaleable. This means you could double the size of your plot, but the number of species present in your plot may not double! So comparing the results from our small plot with the results in the paper we have read is not possible in this instance.</em></p>
+<p> </p>
+<p><strong>3.</strong> The next task is to calculate the aboveground biomass of each plot, using an allometric equation, and report the results in tonnes per hectare (t ha<sup>-1</sup>).</p>
+<p>To calculate the plot aboveground biomass you first need to calculate the aboveground biomass of each individual tree, and then sum the individual tree biomass.</p>
+<p>To calculate individual tree biomass, we can use allometric equations from <strong>Chave <em>et al.</em> 2014, <em>Global Change Biology</em>, 20, 3177–3190, doi: 10.1111/gcb.12629.</strong></p>
+<p> </p>
+<p>The best performing allometric equation uses measurements of diameter and height:</p>
+<p><span class="math inline">\(AGB = 0.0673 \times (\rho D^2 H)^{0.976}\)</span></p>
+<p>Where, <strong>AGB</strong> is the biomass of the tree in kg, <span class="math inline">\(\boldsymbol{\rho}\)</span> is wood density in g cm<sup>3</sup>, <strong>D</strong> is the diameter of the tree stem in centimeters, and <strong>H</strong> is the tree height in meters.</p>
+<p>In R this equation would look like:</p>
+<p><strong><code>AGB&lt;-0.0673*(Wood_Density_g_cm3*DBH_cm^2*H_m)^0.976</code></strong></p>
+<p> </p>
+<p>If you do not have height you can use the allometric which only uses diameter:</p>
+<p><span class="math inline">\(AGB=exp[-1.803-0.976E+0.976ln(\rho)+2.673ln(D)-0.0299[ln(D)]^2]\)</span></p>
+<p>Where, <strong>AGB</strong> is the biomass of the tree in kg, <span class="math inline">\(\boldsymbol{\rho}\)</span> is wood density in g cm<sup>-3</sup>, <strong>D</strong> is the diameter of the tree stem in centimeters, and <strong>E</strong> is an environmental stress factor, where here we will give it the value -0.0314.</p>
+<p>In R this equation would look like:</p>
+<p><strong><code>AGB&lt;-exp(-1.803-(0.976*-0.0314)+(0.976*log(Wood_Density_g_cm3)+(2.673*log(DBH_cm))-(0.0299*(log(DBH_cm))^2))</code></strong></p>
+<p>This equation, has however, a much higher uncertainty associated with it. This is because we assume that the relationship between height and diamter is predictable. This is true to an extent- trees with larger diameters are likely to be taller than trees with smaller diameters. But the specific relationship between height and diameter can vary between forest type. For example, swamp forests tend to have smaller stature trees than terre firme plots.</p>
+<p> </p>
+<p><strong>For each of the three plots calculate the aboveground biomass of each tree using the best performing model possible, given the data you have.</strong></p>
+<p>For each plot get the total aboveground biomass of the plot, then convert it from kilograms to tonnes per hectare. Like stem number, aboveground biomass is linearly scaleable, so we have no problems scaling our 0.5 ha plot.</p>
+<p>Once you have calculated the total aboveground biomass for each plot and converted it to t ha<sup>-1</sup>, look to see whether aboveground biomass is different between your three plots?</p>
+<p><em>Think about what the implications are of having used different allometric equations? Can you make valid comparisons between aboveground biomass estimates for your three plots? Did our different methodologies introduce any bias that impacts our results? Are any differences or similarities in aboveground biomass between your plots real or just an artifact of the different methodologies?</em></p>
+<p> </p>
+<p><strong>Hopefully you can see that if data is not collected in a standardised way, it has implications for the way in which you can use your data and whether you can make direct comparisons between different datasets. Sometimes variations in methods cannot be helped, but you should avoid inconsistencies as far as possible</strong></p>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="river-discharge-doc-and-nitrate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["CongoFor1.5_Bootcamp.pdf", "CongoFor1.5_Bootcamp.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

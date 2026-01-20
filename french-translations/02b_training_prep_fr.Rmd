@@ -1,0 +1,236 @@
+# Préparation à la formation R
+
+#### Objectifs d'apprentissage {-}
+
+* Apprendre à exécuter du code dans R.
+* Apprendre à utiliser R comme calculatrice.
+* Apprendre à utiliser les opérateurs mathématiques et logiques dans R.
+
+&nbsp;  
+
+Lorsque vous ouvrez `RStudio`, plusieurs volets différents s'affichent dans la fenêtre du programme. Vous découvrirez `RStudio` dans le module suivant. Pour l'instant, regardez la moitié gauche de l'écran. Vous devriez voir un grand volet intitulé *Console*.   
+
+![](docs/img/R-home-screen.png)
+
+La *Console* de `RStudio` est votre fenêtre sur `R`, le moteur qui se cache derrière. La *Console* est l'endroit où vous tapez les commandes à exécuter par `R` et où `R` affiche les résultats de ce que vous lui avez demandé de faire. Considérez la *Console* comme un salon de discussion, où vous et `R` échangez des messages.
+
+
+## Exécution du code R dans la *Console* {-}
+
+Tapez votre première commande dans la *Console*, puis appuyez sur `Entrée` :
+
+```{r,echo=TRUE, collapse=TRUE}
+1 + 1
+```
+
+Lorsque vous appuyez sur `Entrée`, vous envoyez votre ligne de code à `R` ; vous la publiez pour que `R` puisse la voir. Ensuite, `R` la prend, effectue un traitement et affiche le résultat (`2`) juste en dessous de votre commande.
+
+Notez que les espaces n'ont pas d'importance. Les deux commandes suivantes sont lisibles par `R` et renvoient le même résultat :
+
+```{r,echo=TRUE,collapse=TRUE}
+4+4
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+4        +        4
+```
+
+Cependant, il est préférable de rendre votre code aussi lisible que possible, ce qui signifie généralement utiliser un seul espace entre les chiffres :
+
+```{r,echo=TRUE,collapse=TRUE}
+4 + 4
+```
+
+Essayez de saisir d'autres calculs de base :
+
+## Utiliser R comme une calculatrice {.unnumbered}
+
+Comme vous pouvez le constater à partir des commandes que vous venez d'exécuter, `R` est, au fond, une calculatrice sophistiquée.
+
+Certains calculs sont simples, comme l'addition et la soustraction :
+```{r,echo=TRUE,collapse=TRUE}
+490 + 1000
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+490 - 1000
+```
+
+La division est également assez simple :
+
+```{r,echo=TRUE,collapse=TRUE}
+24 / 2
+```
+
+Pour la multiplication, utilisez un astérisque (`*`) :
+
+```{r,echo=TRUE,collapse=TRUE}
+24 * 2
+```
+
+Vous indiquez les exposants comme ceci : 
+
+```{r,echo=TRUE,collapse=TRUE}
+2 ^2
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+2 ^3
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+2 ^4
+```
+
+Enfin, notez que `R` accepte les nombres négatifs :
+
+```{r,echo=TRUE,collapse=TRUE}
+9 + -100
+```
+
+
+
+## Utilisation de `R` {-}
+
+### Réexécution du code dans la console {.unnumbered}
+
+Si vous souhaitez réexécuter le code que vous venez d'exécuter ou si vous souhaitez rappeler le code afin de le modifier légèrement, cliquez n'importe où dans la *Console*, puis appuyez sur la flèche `Haut` de votre clavier.
+
+Si vous continuez à appuyer sur la flèche « Haut », « R » vous présentera les commandes les plus anciennes dans l'ordre chronologique. « R » conserve l'historique de tout ce que vous lui avez dit depuis que vous avez ouvert cette fenêtre.
+
+Si vous avez accidentellement rappelé une ancienne commande sans le vouloir, vous pouvez réinitialiser la ligne de commande de la *Console* en appuyant sur « Échap ».
+
+### Commandes incomplètes {.unnumbered}
+
+Tout comme lorsque vous parlez à un ami, si vous commencez une phrase et ne la terminez pas, votre ami sera confus. `R` est confus lorsque vous entrez une commande incomplète et attendra que vous écriviez le reste de votre commande sur la ligne suivante dans la *Console* avant de faire quoi que ce soit.
+
+Par exemple, essayez d'exécuter ce code dans votre *Console* :
+
+```{r, eval = FALSE, echo = TRUE}
+45 -
+```
+
+Vous verrez que `R` affiche un petit signe `+` sur la ligne sous votre commande, ce qui signifie qu'il attend que vous complétiez votre commande.  
+
+Si vous souhaitez terminer votre commande, ajoutez un chiffre (par exemple, `3)` et appuyez sur `Entrée`. Vous devriez maintenant obtenir une réponse (par exemple, `48`).  
+
+Si vous souhaitez plutôt que `R` cesse d'attendre et s'arrête de s'exécuter, appuyez simplement sur la touche `Échap`.
+
+
+
+### Obtenir des erreurs {.unnumbered}
+
+`R` ne comprend vos commandes que si elles respectent les règles du langage `R` (souvent appelées *syntaxe*). Si `R` ne comprend pas votre code, il génère une erreur et renonce à exécuter cette ligne de code. 
+
+Par exemple, essayez d'exécuter ce code dans votre *Console* :
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+4 + y
+```
+
+Vous avez probablement reçu un message en rouge indiquant : `Erreur : objet « y » introuvable`. Cela s'explique par le fait que `R` ne savait pas comment interpréter le symbole `y` dans ce cas, et a donc simplement abandonné.
+
+**Habituez-vous aux erreurs !** Elles surviennent tout le temps, même (surtout ?) chez les professionnels, et il est essentiel que vous vous habituiez à lire votre propre code pour trouver et corriger ses erreurs. 
+
+Voici un autre morceau de code qui produira une erreur :
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+dfjkltr9fitwt985ut9e3
+```
+
+### Utilisation des parenthèses {.unnumbered}
+
+
+`R` respecte généralement très bien les règles classiques de l'ordre des opérations, et vous pouvez utiliser des parenthèses pour contrôler cet ordre. Par exemple, ces deux commandes produisent des résultats différents :  
+
+```{r,echo=TRUE,collapse=TRUE}
+2*7 - 2*5 / 2
+```
+
+
+```{r,echo=TRUE,collapse=TRUE}
+(2*7 - 2*5) / 2
+```
+
+Notez que les parenthèses doivent être utilisées par paires : chaque fois que vous tapez une parenthèse ouverte, `(`, vous devez éventuellement fournir une parenthèse fermée correspondante, `)`. 
+
+La ligne de code suivante renverra un signe plus, `+`, car `R` attend que vous fermiez la parenthèse avant de traiter votre commande :
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+4 + (5
+```
+
+N'oubliez pas : **les parenthèses doivent être utilisées par paires !** Il en va de même pour les autres types de crochets : `{...}` et `[...]`.
+
+Les autres opérateurs couramment utilisés dans `R` comprennent les symboles supérieur à / inférieur à (`>` et `<`, également appelés *alligator gauche* et *alligator droit*) et supérieur/inférieur ou égal à (`>=` et `<=`).
+
+```{r,echo=TRUE,collapse=TRUE}
+100 > 100
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+100 >= 100
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+(100 != 100) == FALSE
+```
+
+
+## Utilisation des fonctions intégrées de R {.unnumbered}
+
+R dispose de certaines « fonctions » intégrées pour les calculs courants, tels que la recherche de racines carrées et de logarithmes. Les fonctions sont des ensembles de code qui prennent une valeur donnée, la transforment selon certaines instructions de code internes et fournissent un résultat. Vous en apprendrez davantage sur les fonctions dans quelques modules. 
+
+Pour calculer la racine carrée d'un nombre, utilisez la commande « squirt », `sqrt()` : 
+
+```{r, eval = FALSE, echo = TRUE}
+sqrt(16)
+```
+
+Notez l'utilisation des parenthèses ici. Lorsque vous appelez une fonction, lorsque vous voyez des parenthèses, pensez au mot « de ». Cette ligne se traduit par « la racine carrée de 16 ». Vous calculez la racine carrée du nombre entre parenthèses.
+
+Pour obtenir le logarithme d'une valeur :
+
+```{r, eval = FALSE, echo = TRUE}
+log(4)
+```
+
+Notez que la fonction `log()` est la fonction logarithme naturel (c'est-à-dire la valeur à laquelle e doit être élevé pour être égal à 4). Pour calculer un logarithme en base 10, utilisez `log10( )`.
+
+```{r, eval = FALSE, echo = TRUE}
+log(10)
+
+log10(10)
+```
+
+Une autre fonction pratique est round(), qui permet d'arrondir les nombres à un nombre spécifique de décimales.
+
+```{r, eval = FALSE, echo = TRUE}
+100/3
+
+round(100/3)
+
+round(100/3,digits=1)
+
+round(100/3,digits=2)
+
+round(100/3,digits=3)
+```
+
+Enfin, R est également fourni avec certaines valeurs intégrées, telles que pi :
+
+```{r, eval = FALSE, echo = TRUE}
+pi
+```
+
+
+**Félicitations ! Vous êtes fin prêts pour la formation R à Brazzaville. Nous vous y attendons.**
+
+&nbsp;
+
+#### Autres ressources {-}
+
+[datascience.pizza](datascience.pizza)
+
+Hobbes Primer, Tableau 1 (Opérateurs mathématiques, p. 18) et Tableau 2 (Opérateurs logiques, p. 22)
+

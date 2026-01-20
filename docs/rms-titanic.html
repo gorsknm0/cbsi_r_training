@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 18 RMS Titanic | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 18 RMS Titanic | R Training" />
   <meta property="og:type" content="book" />
@@ -249,17 +249,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>21</b> Brazzaville’s climate</a></li>
 <li class="chapter" data-level="22" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>22</b> Cleaning messy data</a></li>
 <li class="chapter" data-level="23" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>23</b> River discharge, DOC and nitrate</a></li>
+<li class="chapter" data-level="24" data-path="the-importance-of-data-standardisation.html"><a href="the-importance-of-data-standardisation.html"><i class="fa fa-check"></i><b>24</b> The Importance of Data Standardisation</a></li>
 <li class="part"><span><b>V Extra Information</b></span></li>
-<li class="chapter" data-level="24" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>24</b> Working with dates &amp; times</a>
+<li class="chapter" data-level="25" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>25</b> Working with dates &amp; times</a>
 <ul>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>25</b> Working with text</a>
+<li class="chapter" data-level="26" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>26</b> Working with text</a>
 <ul>
 <li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>26</b> Special Characters</a></li>
+<li class="chapter" data-level="27" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>27</b> Special Characters</a></li>
 </ul>
 
       </nav>
@@ -295,8 +296,14 @@ First, download the following mystery dataset by running this code.
 
 ``` r
 library(readr)
+Error in `library()`:
+! there is no package called &#39;readr&#39;
 library(dplyr)
-df &lt;- read_csv(&#39;https://raw.githubusercontent.com/databrew/intro-to-data-science/main/data/deaths.csv&#39;)</code></pre>
+Error in `library()`:
+! there is no package called &#39;dplyr&#39;
+df &lt;- read_csv(&#39;https://raw.githubusercontent.com/databrew/intro-to-data-science/main/data/deaths.csv&#39;)
+Error in `read_csv()`:
+! could not find function &quot;read_csv&quot;</code></pre>
 <p><strong>1.</strong> Review the dataset and try to figure out which each row represents. “Each row is a ____.”</p>
 <p><strong>2.</strong> How many people are in the dataset?</p>
 <p><strong>3.</strong> Use <code>summarize()</code> to count the number of men and women.</p>
@@ -372,6 +379,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

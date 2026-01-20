@@ -1,0 +1,216 @@
+# Variables
+
+#### Objectifs d'apprentissage {-}
+
+* Comment définir des variables et les utiliser dans `R`  
+* Découvrir les différentes classes de données possibles dans `R`  
+
+## Introduction aux variables {-}
+
+Jusqu'à présent, nous avons strictement utilisé `R` comme une calculatrice, avec des commandes telles que :
+
+```{r,echo=TRUE,collapse=TRUE}
+3 + 5
+```
+
+Bien sûr, `R` peut faire bien plus que ces calculs de base. La première étape pour découvrir le potentiel de `R` consiste à apprendre à utiliser les **variables**.
+
+Dans `R`, une variable est un moyen pratique de faire référence à une valeur sous-jacente. Cette valeur peut être aussi simple qu'un seul chiffre (par exemple, `6`) ou aussi complexe qu'une feuille de calcul de plusieurs gigaoctets. Il peut être utile de considérer une variable comme une tasse ; tout comme les tasses permettent de tenir facilement votre café et de le transporter de la cuisine au canapé, les variables permettent de contenir et de manipuler facilement des données.
+
+### Déclaration de variables {-}
+
+Pour attribuer des nombres ou d'autres types de données à une variable, vous utilisez les caractères `<` et `-` pour former le symbole fléché `<-`.
+
+```{r,echo=TRUE,collapse=TRUE}
+x <- 3+5
+```
+
+Comme le suggère la direction de la flèche `<-`, cette commande stocke le résultat de `3 + 5` dans la variable `x`.
+
+Contrairement à avant, vous n'avez pas vu `8` s'afficher dans la *Console*. C'est parce que le résultat a été stocké dans `x`.
+
+
+
+### Appeler des variables {-}
+
+Si vous souhaitez que R vous indique la valeur de `x`, il vous suffit de saisir le nom de la variable dans la *Console* et d'exécuter la commande suivante :
+
+```{r,echo=TRUE,collapse=TRUE}
+x
+```
+
+Vous souhaitez créer une variable tout en affichant sa valeur ? Voici une astuce pratique : placez votre commande entre parenthèses :
+
+```{r,echo=TRUE,collapse=TRUE}
+(x <- 3*12)
+```
+
+Lorsque vous faites cela, une valeur est attribuée à `x`, puis cette valeur est affichée dans la console.
+
+Vous pouvez également mettre à jour des variables.
+
+```{r,echo=TRUE,collapse=TRUE}
+(x <- x * 3)
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+(x <- x * 3)
+```
+
+Vous pouvez également additionner des variables.
+
+```{r,echo=TRUE,collapse=TRUE}
+x <- 8
+y <- 4.5
+x + y
+```
+
+
+### Nommer les variables  {-}
+
+Voici quelques règles :  
+
+**1.** Un nom de variable doit contenir au moins une lettre. Voici quelques exemples valides :
+
+**2.** Un nom de variable doit être écrit en un seul mot. Pas d'espaces ! Il est généralement préférable de remplacer les espaces par un point (`.`) ou un trait de soulignement (`_`). Notez que les points et les traits de soulignement peuvent être utilisés dans les noms de variables :
+
+```{r,echo=TRUE,collapse=TRUE}
+my.variable <- 5 # les points peuvent être utilisés
+my_variable <- 5 # les traits de soulignement peuvent être utilisés
+```
+
+Cependant, les tirets ne peuvent *pas* être utilisés, car ce symbole est utilisé pour la soustraction.
+
+**3.** Les variables sont sensibles à la casse. Si vous écrivez mal le nom d'une variable, vous risquez de perturber `R` et d'obtenir une erreur.  Par exemple, demandez à `R` de vous donner la valeur de la lettre majuscule `X`. Le message d'erreur sera `Error: object “X” not found`, ce qui signifie que `R` a cherché dans sa mémoire un objet (c'est-à-dire une variable) nommé `X` et n'a pas pu le trouver.
+
+**4.** Les noms de variables peuvent être aussi compliqués ou aussi simples que vous le souhaitez. 
+
+**5.** Certains noms doivent être évités, car `R` les utilise à des fins particulières. Par exemple, `data` doit être évité, tout comme `mean`, car ces deux noms sont des fonctions intégrées à `R` et `R` est susceptible de les interpréter comme telles plutôt que comme une variable contenant vos données.
+
+
+```{r,echo=TRUE,collapse=TRUE}
+supercalifragilistic.expialidocious <- 5
+supercalifragilistic.expialidocious  # fonctionne toujours
+```
+
+Ce sont là les règles de base, mais bien nommer les variables relève un peu de l'art. L'astuce consiste à utiliser des noms clairs, mais pas trop compliqués, afin que leur saisie ne soit pas fastidieuse et ne prête pas à confusion.
+
+Notez que `R` utilise une fonctionnalité appelée " Tab complete " pour vous aider à taper les noms de variables. Commencez à taper un nom de variable, tel que `supercalifragilistic.expialidocious` dans l'exemple ci-dessus, mais après les premières lettres, appuyez sur la touche `Tab`. `R` vous proposera alors des options pour compléter automatiquement votre mot. Appuyez à nouveau sur la touche " Tab " ou sur " Entrée " pour accepter la complétion automatique. C'est un moyen pratique d'éviter les fautes de frappe.
+
+
+## Types de données dans `R` {-}
+
+Jusqu'à présent, nous avons travaillé exclusivement avec des données numériques. Mais  il existe de nombreux types de données différents dans R. Nous appelons ces " types " de données des **classes** :
+
+* Les valeurs décimales telles que 4,5 sont appelées données **numériques**.
+* Les nombres naturels tels que 4 sont appelés **entiers**. Les entiers sont également des nombres.
+* Les valeurs booléennes (VRAI ou FAUX) sont appelées données **logiques**.
+* Les valeurs textuelles (ou chaînes de caractères) sont appelées données **caractères**.
+
+Pour pouvoir être combinées, les données doivent appartenir à la même classe. 
+
+R est capable de calculer les commandes suivantes ...
+
+```{r,echo=TRUE,collapse=TRUE}
+x <- 6
+y <- 4
+x + y
+```
+
+ mais pas celles-ci :
+
+```{r eval=FALSE,echo=TRUE,collapse=TRUE}
+x <- 6
+y <- " 4 "
+x + y
+```
+
+En effet, les guillemets utilisés pour nommer `y` font que `R` interprète `y` comme une classe `character`.
+
+Pour voir comment `R` interprète les variables, vous pouvez utiliser la fonction `class()` :
+
+```{r,echo=TRUE,collapse=TRUE}
+x <- 100
+class(x)
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+x <- " 100 "
+class(x)
+```
+
+```{r,echo=TRUE,collapse=TRUE}
+x <- 100 == 101
+class(x)
+```
+
+Un autre type de données à connaître est celui des **facteurs**, mais nous les aborderons plus tard.
+
+
+#### Exercices {-}
+
+**Trouver les erreurs**  
+
+**1.** Ce code va générer une erreur. Pouvez-vous trouver le problème et le corriger afin que ce code fonctionne ?
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+# Attribuer la valeur 5 à une variable
+my_var < 5
+```
+
+**2.** Idem pour celui-ci :
+
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+# Attribuer la valeur 5 à une variable
+my_var == 5
+```
+
+**3.** Idem pour celui-ci :
+```{r,echo=TRUE,eval=FALSE,collapse=TRUE}
+x <- 5
+y <- 1
+X + y
+```
+
+&nbsp;  
+
+**Votre ratio bananes/ICS**
+
+**4.** Estimez le nombre de bananes que vous avez mangées au cours de votre vie et enregistrez cette valeur dans une variable (choisissez le nom que vous souhaitez). (Au fait, quelle est la meilleure méthode pour estimer ce nombre aussi précisément que possible ?)
+
+**5.** Estimez maintenant le nombre de sandwichs à la crème glacée que vous avez mangés au cours de votre vie et enregistrez cette valeur dans une autre variable.  
+
+**6.** Utilisez maintenant ces variables pour calculer votre ratio bananes/ICS. Enregistrez votre résultat dans une troisième variable, puis appelez cette variable dans la console pour voir votre ratio.  
+
+**7.** Qui dans la classe a le ratio le plus élevé ? Qui a le ratio le plus bas ?  
+
+&nbsp;  
+
+
+**Création de variables booléennes**
+
+**8.** Attribuez une instruction `FALSE` de votre choix à une variable dont vous pouvez choisir le nom.  
+
+**9.** Vérifiez que la classe de cette variable est " logique ".  
+
+**10.** Vérifiez que la variable est égale à `FALSE`.  
+
+&nbsp;  
+
+
+
+**Conversion de Fahrenheit en Celsius :**  
+
+**11.** Attribuez à la variable `fahrenheit` la valeur numérique 32.  
+
+**12.** Attribuez à la variable " celsius " la valeur de la conversion de Fahrenheit en Celsius. À moins d'être un passionné de météorologie, vous devrez peut-être rechercher l'équation de cette conversion sur Google. 
+
+**13.** Affichez la valeur de " celsius " dans la *Console*.  
+
+**14.** Utilisez maintenant ce code pour déterminer l'équivalent en *Celsius* de 212 degrés *Fahrenheit*.
+
+&nbsp;  
+
+**Conclusion**
+
+**15.** Assurez-vous maintenant que l'ensemble de votre script est correctement commenté et vérifiez que votre script est enregistré dans votre répertoire de travail `bRazzaville` avant de fermer.

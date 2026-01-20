@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 17 Dataframe wrangling | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 17 Dataframe wrangling | R Training" />
   <meta property="og:type" content="book" />
@@ -249,17 +249,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>21</b> Brazzaville’s climate</a></li>
 <li class="chapter" data-level="22" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>22</b> Cleaning messy data</a></li>
 <li class="chapter" data-level="23" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>23</b> River discharge, DOC and nitrate</a></li>
+<li class="chapter" data-level="24" data-path="the-importance-of-data-standardisation.html"><a href="the-importance-of-data-standardisation.html"><i class="fa fa-check"></i><b>24</b> The Importance of Data Standardisation</a></li>
 <li class="part"><span><b>V Extra Information</b></span></li>
-<li class="chapter" data-level="24" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>24</b> Working with dates &amp; times</a>
+<li class="chapter" data-level="25" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>25</b> Working with dates &amp; times</a>
 <ul>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>25</b> Working with text</a>
+<li class="chapter" data-level="26" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>26</b> Working with text</a>
 <ul>
 <li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>26</b> Special Characters</a></li>
+<li class="chapter" data-level="27" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>27</b> Special Characters</a></li>
 </ul>
 
       </nav>
@@ -290,8 +291,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-dplyr-package" class="section level2 unnumbered hasAnchor">
 <h2>The <code>dplyr</code> package<a href="dplyr.html#the-dplyr-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Data scientists largely work in data frames and <em>do things</em> to data. This is what the package <code>dplyr</code> is optimized for. It consists of a series of “verbs” which cover 95% of what you need to do for most basic data processing tasks.</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="dplyr.html#cb270-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;dplyr&#39;</span>) <span class="co"># if you haven&#39;t yet</span></span></code></pre></div>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="dplyr.html#cb271-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="dplyr.html#cb273-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;dplyr&#39;</span>) <span class="co"># if you haven&#39;t yet</span></span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="dplyr.html#cb274-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<pre><code>Error in `library()`:
+! there is no package called &#39;dplyr&#39;</code></pre>
 <p>The <code>dplyr</code> package contains a set of <code>verbs</code>: things you do to dataframes. Those verbs are:</p>
 <ul>
 <li><strong><code>filter()</code></strong><br />
@@ -313,239 +316,177 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>The <code>%&gt;%</code> pipe<a href="dplyr.html#the-pipe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong><code>%&gt;%</code></strong> is a “pipe”. It is a way to write code without so many parentheses. For example, what if I want to find the square root of the sum of the first six elements of a sequence of 10 to 20 by 2?</p>
 <p>Here’s what that command would look like in base <code>R</code>:</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="dplyr.html#cb272-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(<span class="fu">head</span>(<span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">2</span>))))</span>
-<span id="cb272-2"><a href="dplyr.html#cb272-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">9.486833</span></span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="dplyr.html#cb276-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(<span class="fu">head</span>(<span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">2</span>))))</span>
+<span id="cb276-2"><a href="dplyr.html#cb276-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">9.486833</span></span></code></pre></div>
 <p>Pretty overwhelming, and pretty easy to make errors in writing it out.</p>
 <p>But the above could also be written a simpler way:</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="dplyr.html#cb273-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">2</span>) <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> sum <span class="sc">%&gt;%</span> sqrt</span>
-<span id="cb273-2"><a href="dplyr.html#cb273-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">9.486833</span></span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="dplyr.html#cb277-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">2</span>) <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> sum <span class="sc">%&gt;%</span> sqrt</span>
+<span id="cb277-2"><a href="dplyr.html#cb277-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">seq(10, 20, 2) %&gt;% head %&gt;% sum %&gt;% sqrt</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb277-3"><a href="dplyr.html#cb277-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>When you see the <strong><code>%&gt;%</code></strong> pipe symbol, think of the word <strong>“then”</strong>.</p>
 <p>The above code could be read aloud like so: “First, get a sequence of every second number between 10 and 20. <strong>Then</strong>, take the first six values. <strong>Then</strong>, sum those samples together. <strong>Then</strong>, take the square root of that sum.”</p>
 <p>Using the <code>%&gt;%</code> pipe framework, your code turns from a nonlinear series of parentheses and brackets to a linear progression of steps, which is a closer fit to how we tend to think about working with data. Instead of working from the inside of a command outward, we thinking linearly: take the data, <strong>then</strong> do things with it, <strong>then</strong> do more things with it, etc.</p>
 <p>Here’s another example:</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="dplyr.html#cb274-1" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">sd</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>))</span>
-<span id="cb274-2"><a href="dplyr.html#cb274-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">29.01149</span></span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="dplyr.html#cb278-1" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">sd</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>))</span>
+<span id="cb278-2"><a href="dplyr.html#cb278-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">29.01149</span></span></code></pre></div>
 <p>… could also be written as:</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="dplyr.html#cb275-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">100</span> <span class="sc">%&gt;%</span> sd <span class="sc">%&gt;%</span> mean</span>
-<span id="cb275-2"><a href="dplyr.html#cb275-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">29.01149</span></span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="dplyr.html#cb279-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">100</span> <span class="sc">%&gt;%</span> sd <span class="sc">%&gt;%</span> mean</span>
+<span id="cb279-2"><a href="dplyr.html#cb279-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">1:100 %&gt;% sd %&gt;% mean</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb279-3"><a href="dplyr.html#cb279-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 </div>
 <div id="dplyr-verbs" class="section level2 unnumbered hasAnchor">
 <h2><code>dplyr</code> verbs<a href="dplyr.html#dplyr-verbs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To practice the <code>dplyr</code> verbs, let’s make a small dataframe named <code>people</code>:</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="dplyr.html#cb276-1" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">who =</span> <span class="fu">c</span>(<span class="st">&#39;Joe&#39;</span>, <span class="st">&#39;Ben&#39;</span>, <span class="st">&#39;Xing&#39;</span>, <span class="st">&#39;Coloma&#39;</span>),</span>
-<span id="cb276-2"><a href="dplyr.html#cb276-2" tabindex="-1"></a>                    <span class="at">sex =</span> <span class="fu">c</span>(<span class="st">&#39;Male&#39;</span>, <span class="st">&#39;Male&#39;</span>, <span class="st">&#39;Female&#39;</span>, <span class="st">&#39;Female&#39;</span>),</span>
-<span id="cb276-3"><a href="dplyr.html#cb276-3" tabindex="-1"></a>                    <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">33</span>, <span class="dv">32</span>, <span class="dv">34</span>))</span>
-<span id="cb276-4"><a href="dplyr.html#cb276-4" tabindex="-1"></a>people</span>
-<span id="cb276-5"><a href="dplyr.html#cb276-5" tabindex="-1"></a>     who    sex age</span>
-<span id="cb276-6"><a href="dplyr.html#cb276-6" tabindex="-1"></a><span class="dv">1</span>    Joe   Male  <span class="dv">35</span></span>
-<span id="cb276-7"><a href="dplyr.html#cb276-7" tabindex="-1"></a><span class="dv">2</span>    Ben   Male  <span class="dv">33</span></span>
-<span id="cb276-8"><a href="dplyr.html#cb276-8" tabindex="-1"></a><span class="dv">3</span>   Xing Female  <span class="dv">32</span></span>
-<span id="cb276-9"><a href="dplyr.html#cb276-9" tabindex="-1"></a><span class="dv">4</span> Coloma Female  <span class="dv">34</span></span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="dplyr.html#cb280-1" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">who =</span> <span class="fu">c</span>(<span class="st">&#39;Joe&#39;</span>, <span class="st">&#39;Ben&#39;</span>, <span class="st">&#39;Xing&#39;</span>, <span class="st">&#39;Coloma&#39;</span>),</span>
+<span id="cb280-2"><a href="dplyr.html#cb280-2" tabindex="-1"></a>                    <span class="at">sex =</span> <span class="fu">c</span>(<span class="st">&#39;Male&#39;</span>, <span class="st">&#39;Male&#39;</span>, <span class="st">&#39;Female&#39;</span>, <span class="st">&#39;Female&#39;</span>),</span>
+<span id="cb280-3"><a href="dplyr.html#cb280-3" tabindex="-1"></a>                    <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">33</span>, <span class="dv">32</span>, <span class="dv">34</span>))</span>
+<span id="cb280-4"><a href="dplyr.html#cb280-4" tabindex="-1"></a>people</span>
+<span id="cb280-5"><a href="dplyr.html#cb280-5" tabindex="-1"></a>     who    sex age</span>
+<span id="cb280-6"><a href="dplyr.html#cb280-6" tabindex="-1"></a><span class="dv">1</span>    Joe   Male  <span class="dv">35</span></span>
+<span id="cb280-7"><a href="dplyr.html#cb280-7" tabindex="-1"></a><span class="dv">2</span>    Ben   Male  <span class="dv">33</span></span>
+<span id="cb280-8"><a href="dplyr.html#cb280-8" tabindex="-1"></a><span class="dv">3</span>   Xing Female  <span class="dv">32</span></span>
+<span id="cb280-9"><a href="dplyr.html#cb280-9" tabindex="-1"></a><span class="dv">4</span> Coloma Female  <span class="dv">34</span></span></code></pre></div>
 <div id="filter" class="section level3 unnumbered hasAnchor">
 <h3><code>filter()</code><a href="dplyr.html#filter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>filter()</code> function is used to subset a dataframe, retaining all rows that satisfy your conditions. To be retained, the row must produce a value of <code>TRUE</code> for all conditions.</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="dplyr.html#cb277-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;Male&#39;</span>)</span>
-<span id="cb277-2"><a href="dplyr.html#cb277-2" tabindex="-1"></a>  who  sex age</span>
-<span id="cb277-3"><a href="dplyr.html#cb277-3" tabindex="-1"></a><span class="dv">1</span> Joe Male  <span class="dv">35</span></span>
-<span id="cb277-4"><a href="dplyr.html#cb277-4" tabindex="-1"></a><span class="dv">2</span> Ben Male  <span class="dv">33</span></span></code></pre></div>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="dplyr.html#cb278-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;Female&#39;</span>)</span>
-<span id="cb278-2"><a href="dplyr.html#cb278-2" tabindex="-1"></a>     who    sex age</span>
-<span id="cb278-3"><a href="dplyr.html#cb278-3" tabindex="-1"></a><span class="dv">1</span>   Xing Female  <span class="dv">32</span></span>
-<span id="cb278-4"><a href="dplyr.html#cb278-4" tabindex="-1"></a><span class="dv">2</span> Coloma Female  <span class="dv">34</span></span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="dplyr.html#cb281-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;Male&#39;</span>)</span>
+<span id="cb281-2"><a href="dplyr.html#cb281-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% filter(sex == &quot;Male&quot;)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb281-3"><a href="dplyr.html#cb281-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="dplyr.html#cb282-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;Female&#39;</span>)</span>
+<span id="cb282-2"><a href="dplyr.html#cb282-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% filter(sex == &quot;Female&quot;)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb282-3"><a href="dplyr.html#cb282-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>You can also filter according to multiple conditions. Here are three ways to acheive the same thing:</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="dplyr.html#cb279-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;Female&#39;</span> <span class="sc">&amp;</span> age <span class="sc">&lt;</span> <span class="dv">33</span>)</span>
-<span id="cb279-2"><a href="dplyr.html#cb279-2" tabindex="-1"></a>   who    sex age</span>
-<span id="cb279-3"><a href="dplyr.html#cb279-3" tabindex="-1"></a><span class="dv">1</span> Xing Female  <span class="dv">32</span></span></code></pre></div>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="dplyr.html#cb280-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;Female&#39;</span>, age <span class="sc">&lt;</span> <span class="dv">33</span>)</span>
-<span id="cb280-2"><a href="dplyr.html#cb280-2" tabindex="-1"></a>   who    sex age</span>
-<span id="cb280-3"><a href="dplyr.html#cb280-3" tabindex="-1"></a><span class="dv">1</span> Xing Female  <span class="dv">32</span></span></code></pre></div>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="dplyr.html#cb281-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;Female&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age <span class="sc">&lt;</span> <span class="dv">33</span>)</span>
-<span id="cb281-2"><a href="dplyr.html#cb281-2" tabindex="-1"></a>   who    sex age</span>
-<span id="cb281-3"><a href="dplyr.html#cb281-3" tabindex="-1"></a><span class="dv">1</span> Xing Female  <span class="dv">32</span></span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="dplyr.html#cb283-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;Female&#39;</span> <span class="sc">&amp;</span> age <span class="sc">&lt;</span> <span class="dv">33</span>)</span>
+<span id="cb283-2"><a href="dplyr.html#cb283-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% filter(sex == &quot;Female&quot; &amp; age &lt; 33)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb283-3"><a href="dplyr.html#cb283-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="dplyr.html#cb284-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;Female&#39;</span>, age <span class="sc">&lt;</span> <span class="dv">33</span>)</span>
+<span id="cb284-2"><a href="dplyr.html#cb284-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% filter(sex == &quot;Female&quot;, age &lt; 33)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb284-3"><a href="dplyr.html#cb284-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="dplyr.html#cb285-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;Female&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age <span class="sc">&lt;</span> <span class="dv">33</span>)</span>
+<span id="cb285-2"><a href="dplyr.html#cb285-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% filter(sex == &quot;Female&quot;) %&gt;% filter(age &lt; 33)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb285-3"><a href="dplyr.html#cb285-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>Note that when a condition evaluates to <code>NA</code>, its row will be dropped. This differ from the base subsetting works with <code>[ ... ]</code>.</p>
 </div>
 <div id="arrange" class="section level3 unnumbered hasAnchor">
 <h3><code>arrange()</code><a href="dplyr.html#arrange" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Arrange means putting things in order. That is, <code>arrange()</code> orders the rows of a data frame by the values of selected columns.</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="dplyr.html#cb282-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(age)</span>
-<span id="cb282-2"><a href="dplyr.html#cb282-2" tabindex="-1"></a>     who    sex age</span>
-<span id="cb282-3"><a href="dplyr.html#cb282-3" tabindex="-1"></a><span class="dv">1</span>   Xing Female  <span class="dv">32</span></span>
-<span id="cb282-4"><a href="dplyr.html#cb282-4" tabindex="-1"></a><span class="dv">2</span>    Ben   Male  <span class="dv">33</span></span>
-<span id="cb282-5"><a href="dplyr.html#cb282-5" tabindex="-1"></a><span class="dv">3</span> Coloma Female  <span class="dv">34</span></span>
-<span id="cb282-6"><a href="dplyr.html#cb282-6" tabindex="-1"></a><span class="dv">4</span>    Joe   Male  <span class="dv">35</span></span></code></pre></div>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="dplyr.html#cb283-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(sex)</span>
-<span id="cb283-2"><a href="dplyr.html#cb283-2" tabindex="-1"></a>     who    sex age</span>
-<span id="cb283-3"><a href="dplyr.html#cb283-3" tabindex="-1"></a><span class="dv">1</span>   Xing Female  <span class="dv">32</span></span>
-<span id="cb283-4"><a href="dplyr.html#cb283-4" tabindex="-1"></a><span class="dv">2</span> Coloma Female  <span class="dv">34</span></span>
-<span id="cb283-5"><a href="dplyr.html#cb283-5" tabindex="-1"></a><span class="dv">3</span>    Joe   Male  <span class="dv">35</span></span>
-<span id="cb283-6"><a href="dplyr.html#cb283-6" tabindex="-1"></a><span class="dv">4</span>    Ben   Male  <span class="dv">33</span></span></code></pre></div>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="dplyr.html#cb284-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(who)</span>
-<span id="cb284-2"><a href="dplyr.html#cb284-2" tabindex="-1"></a>     who    sex age</span>
-<span id="cb284-3"><a href="dplyr.html#cb284-3" tabindex="-1"></a><span class="dv">1</span>    Ben   Male  <span class="dv">33</span></span>
-<span id="cb284-4"><a href="dplyr.html#cb284-4" tabindex="-1"></a><span class="dv">2</span> Coloma Female  <span class="dv">34</span></span>
-<span id="cb284-5"><a href="dplyr.html#cb284-5" tabindex="-1"></a><span class="dv">3</span>    Joe   Male  <span class="dv">35</span></span>
-<span id="cb284-6"><a href="dplyr.html#cb284-6" tabindex="-1"></a><span class="dv">4</span>   Xing Female  <span class="dv">32</span></span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="dplyr.html#cb286-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(age)</span>
+<span id="cb286-2"><a href="dplyr.html#cb286-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% arrange(age)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb286-3"><a href="dplyr.html#cb286-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="dplyr.html#cb287-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(sex)</span>
+<span id="cb287-2"><a href="dplyr.html#cb287-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% arrange(sex)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb287-3"><a href="dplyr.html#cb287-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="dplyr.html#cb288-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(who)</span>
+<span id="cb288-2"><a href="dplyr.html#cb288-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% arrange(who)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb288-3"><a href="dplyr.html#cb288-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>To reverse the order, use <code>desc()</code>:</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="dplyr.html#cb285-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(age))</span>
-<span id="cb285-2"><a href="dplyr.html#cb285-2" tabindex="-1"></a>     who    sex age</span>
-<span id="cb285-3"><a href="dplyr.html#cb285-3" tabindex="-1"></a><span class="dv">1</span>    Joe   Male  <span class="dv">35</span></span>
-<span id="cb285-4"><a href="dplyr.html#cb285-4" tabindex="-1"></a><span class="dv">2</span> Coloma Female  <span class="dv">34</span></span>
-<span id="cb285-5"><a href="dplyr.html#cb285-5" tabindex="-1"></a><span class="dv">3</span>    Ben   Male  <span class="dv">33</span></span>
-<span id="cb285-6"><a href="dplyr.html#cb285-6" tabindex="-1"></a><span class="dv">4</span>   Xing Female  <span class="dv">32</span></span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="dplyr.html#cb289-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(age))</span>
+<span id="cb289-2"><a href="dplyr.html#cb289-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% arrange(desc(age))</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb289-3"><a href="dplyr.html#cb289-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>You can also arrange by multiple levels:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="dplyr.html#cb286-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(sex, age)</span>
-<span id="cb286-2"><a href="dplyr.html#cb286-2" tabindex="-1"></a>     who    sex age</span>
-<span id="cb286-3"><a href="dplyr.html#cb286-3" tabindex="-1"></a><span class="dv">1</span>   Xing Female  <span class="dv">32</span></span>
-<span id="cb286-4"><a href="dplyr.html#cb286-4" tabindex="-1"></a><span class="dv">2</span> Coloma Female  <span class="dv">34</span></span>
-<span id="cb286-5"><a href="dplyr.html#cb286-5" tabindex="-1"></a><span class="dv">3</span>    Ben   Male  <span class="dv">33</span></span>
-<span id="cb286-6"><a href="dplyr.html#cb286-6" tabindex="-1"></a><span class="dv">4</span>    Joe   Male  <span class="dv">35</span></span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="dplyr.html#cb290-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(sex, age)</span>
+<span id="cb290-2"><a href="dplyr.html#cb290-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% arrange(sex, age)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb290-3"><a href="dplyr.html#cb290-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 </div>
 <div id="select" class="section level3 unnumbered hasAnchor">
 <h3><code>select()</code><a href="dplyr.html#select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Select only certain variables in a data frame, making the dataframe skinnier (fewer columns).</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="dplyr.html#cb287-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">select</span>(age)</span>
-<span id="cb287-2"><a href="dplyr.html#cb287-2" tabindex="-1"></a>  age</span>
-<span id="cb287-3"><a href="dplyr.html#cb287-3" tabindex="-1"></a><span class="dv">1</span>  <span class="dv">35</span></span>
-<span id="cb287-4"><a href="dplyr.html#cb287-4" tabindex="-1"></a><span class="dv">2</span>  <span class="dv">33</span></span>
-<span id="cb287-5"><a href="dplyr.html#cb287-5" tabindex="-1"></a><span class="dv">3</span>  <span class="dv">32</span></span>
-<span id="cb287-6"><a href="dplyr.html#cb287-6" tabindex="-1"></a><span class="dv">4</span>  <span class="dv">34</span></span></code></pre></div>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="dplyr.html#cb288-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">select</span>(sex, age)</span>
-<span id="cb288-2"><a href="dplyr.html#cb288-2" tabindex="-1"></a>     sex age</span>
-<span id="cb288-3"><a href="dplyr.html#cb288-3" tabindex="-1"></a><span class="dv">1</span>   Male  <span class="dv">35</span></span>
-<span id="cb288-4"><a href="dplyr.html#cb288-4" tabindex="-1"></a><span class="dv">2</span>   Male  <span class="dv">33</span></span>
-<span id="cb288-5"><a href="dplyr.html#cb288-5" tabindex="-1"></a><span class="dv">3</span> Female  <span class="dv">32</span></span>
-<span id="cb288-6"><a href="dplyr.html#cb288-6" tabindex="-1"></a><span class="dv">4</span> Female  <span class="dv">34</span></span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="dplyr.html#cb291-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">select</span>(age)</span>
+<span id="cb291-2"><a href="dplyr.html#cb291-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% select(age)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb291-3"><a href="dplyr.html#cb291-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="dplyr.html#cb292-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">select</span>(sex, age)</span>
+<span id="cb292-2"><a href="dplyr.html#cb292-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% select(sex, age)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb292-3"><a href="dplyr.html#cb292-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>As you select columns, you can rename them like so:</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="dplyr.html#cb289-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">select</span>(sex, <span class="at">years =</span> age)</span>
-<span id="cb289-2"><a href="dplyr.html#cb289-2" tabindex="-1"></a>     sex years</span>
-<span id="cb289-3"><a href="dplyr.html#cb289-3" tabindex="-1"></a><span class="dv">1</span>   Male    <span class="dv">35</span></span>
-<span id="cb289-4"><a href="dplyr.html#cb289-4" tabindex="-1"></a><span class="dv">2</span>   Male    <span class="dv">33</span></span>
-<span id="cb289-5"><a href="dplyr.html#cb289-5" tabindex="-1"></a><span class="dv">3</span> Female    <span class="dv">32</span></span>
-<span id="cb289-6"><a href="dplyr.html#cb289-6" tabindex="-1"></a><span class="dv">4</span> Female    <span class="dv">34</span></span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="dplyr.html#cb293-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">select</span>(sex, <span class="at">years =</span> age)</span>
+<span id="cb293-2"><a href="dplyr.html#cb293-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% select(sex, years = age)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb293-3"><a href="dplyr.html#cb293-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>You can also select a set of columns using the <code>:</code> notation:</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="dplyr.html#cb290-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">select</span>(who<span class="sc">:</span>sex)</span>
-<span id="cb290-2"><a href="dplyr.html#cb290-2" tabindex="-1"></a>     who    sex</span>
-<span id="cb290-3"><a href="dplyr.html#cb290-3" tabindex="-1"></a><span class="dv">1</span>    Joe   Male</span>
-<span id="cb290-4"><a href="dplyr.html#cb290-4" tabindex="-1"></a><span class="dv">2</span>    Ben   Male</span>
-<span id="cb290-5"><a href="dplyr.html#cb290-5" tabindex="-1"></a><span class="dv">3</span>   Xing Female</span>
-<span id="cb290-6"><a href="dplyr.html#cb290-6" tabindex="-1"></a><span class="dv">4</span> Coloma Female</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="dplyr.html#cb294-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">select</span>(who<span class="sc">:</span>sex)</span>
+<span id="cb294-2"><a href="dplyr.html#cb294-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% select(who:sex)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb294-3"><a href="dplyr.html#cb294-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 </div>
 <div id="rename" class="section level3 unnumbered hasAnchor">
 <h3><code>rename()</code><a href="dplyr.html#rename" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The function <code>rename()</code> changes the names of individual variables.</p>
 <p>This verb takes the syntax <code>&lt;new_name&gt; = &lt;old_name&gt;</code> syntax.</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="dplyr.html#cb291-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">gender =</span> sex, <span class="at">years =</span> age, <span class="at">first_name =</span> who)</span>
-<span id="cb291-2"><a href="dplyr.html#cb291-2" tabindex="-1"></a>  first_name gender years</span>
-<span id="cb291-3"><a href="dplyr.html#cb291-3" tabindex="-1"></a><span class="dv">1</span>        Joe   Male    <span class="dv">35</span></span>
-<span id="cb291-4"><a href="dplyr.html#cb291-4" tabindex="-1"></a><span class="dv">2</span>        Ben   Male    <span class="dv">33</span></span>
-<span id="cb291-5"><a href="dplyr.html#cb291-5" tabindex="-1"></a><span class="dv">3</span>       Xing Female    <span class="dv">32</span></span>
-<span id="cb291-6"><a href="dplyr.html#cb291-6" tabindex="-1"></a><span class="dv">4</span>     Coloma Female    <span class="dv">34</span></span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="dplyr.html#cb295-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">gender =</span> sex, <span class="at">years =</span> age, <span class="at">first_name =</span> who)</span>
+<span id="cb295-2"><a href="dplyr.html#cb295-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% rename(gender = sex, years = age, first_name = who)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb295-3"><a href="dplyr.html#cb295-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 </div>
 <div id="mutate" class="section level3 unnumbered hasAnchor">
 <h3><code>mutate()</code><a href="dplyr.html#mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The function <code>mutate()</code> adds new variables and preserves existing ones.</p>
 <p>New variables overwrite existing variables of the same name.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="dplyr.html#cb292-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">agein2020 =</span> age <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb292-2"><a href="dplyr.html#cb292-2" tabindex="-1"></a>     who    sex age agein2020</span>
-<span id="cb292-3"><a href="dplyr.html#cb292-3" tabindex="-1"></a><span class="dv">1</span>    Joe   Male  <span class="dv">35</span>        <span class="dv">34</span></span>
-<span id="cb292-4"><a href="dplyr.html#cb292-4" tabindex="-1"></a><span class="dv">2</span>    Ben   Male  <span class="dv">33</span>        <span class="dv">32</span></span>
-<span id="cb292-5"><a href="dplyr.html#cb292-5" tabindex="-1"></a><span class="dv">3</span>   Xing Female  <span class="dv">32</span>        <span class="dv">31</span></span>
-<span id="cb292-6"><a href="dplyr.html#cb292-6" tabindex="-1"></a><span class="dv">4</span> Coloma Female  <span class="dv">34</span>        <span class="dv">33</span></span></code></pre></div>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="dplyr.html#cb293-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">is_male =</span> sex <span class="sc">==</span> <span class="st">&#39;Male&#39;</span>)</span>
-<span id="cb293-2"><a href="dplyr.html#cb293-2" tabindex="-1"></a>     who    sex age is_male</span>
-<span id="cb293-3"><a href="dplyr.html#cb293-3" tabindex="-1"></a><span class="dv">1</span>    Joe   Male  <span class="dv">35</span>    <span class="cn">TRUE</span></span>
-<span id="cb293-4"><a href="dplyr.html#cb293-4" tabindex="-1"></a><span class="dv">2</span>    Ben   Male  <span class="dv">33</span>    <span class="cn">TRUE</span></span>
-<span id="cb293-5"><a href="dplyr.html#cb293-5" tabindex="-1"></a><span class="dv">3</span>   Xing Female  <span class="dv">32</span>   <span class="cn">FALSE</span></span>
-<span id="cb293-6"><a href="dplyr.html#cb293-6" tabindex="-1"></a><span class="dv">4</span> Coloma Female  <span class="dv">34</span>   <span class="cn">FALSE</span></span></code></pre></div>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="dplyr.html#cb294-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">average_age =</span> <span class="fu">mean</span>(age))</span>
-<span id="cb294-2"><a href="dplyr.html#cb294-2" tabindex="-1"></a>     who    sex age average_age</span>
-<span id="cb294-3"><a href="dplyr.html#cb294-3" tabindex="-1"></a><span class="dv">1</span>    Joe   Male  <span class="dv">35</span>        <span class="fl">33.5</span></span>
-<span id="cb294-4"><a href="dplyr.html#cb294-4" tabindex="-1"></a><span class="dv">2</span>    Ben   Male  <span class="dv">33</span>        <span class="fl">33.5</span></span>
-<span id="cb294-5"><a href="dplyr.html#cb294-5" tabindex="-1"></a><span class="dv">3</span>   Xing Female  <span class="dv">32</span>        <span class="fl">33.5</span></span>
-<span id="cb294-6"><a href="dplyr.html#cb294-6" tabindex="-1"></a><span class="dv">4</span> Coloma Female  <span class="dv">34</span>        <span class="fl">33.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="dplyr.html#cb296-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">agein2020 =</span> age <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb296-2"><a href="dplyr.html#cb296-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% mutate(agein2020 = age - 1)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb296-3"><a href="dplyr.html#cb296-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="dplyr.html#cb297-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">is_male =</span> sex <span class="sc">==</span> <span class="st">&#39;Male&#39;</span>)</span>
+<span id="cb297-2"><a href="dplyr.html#cb297-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% mutate(is_male = sex == &quot;Male&quot;)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb297-3"><a href="dplyr.html#cb297-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="dplyr.html#cb298-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">average_age =</span> <span class="fu">mean</span>(age))</span>
+<span id="cb298-2"><a href="dplyr.html#cb298-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% mutate(average_age = mean(age))</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb298-3"><a href="dplyr.html#cb298-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>You can call <code>mutate()</code> multiple times in the same pipe:</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="dplyr.html#cb295-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">average_age =</span> <span class="fu">mean</span>(age)) <span class="sc">%&gt;%</span></span>
-<span id="cb295-2"><a href="dplyr.html#cb295-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff_from_avg =</span> age <span class="sc">-</span> average_age)</span>
-<span id="cb295-3"><a href="dplyr.html#cb295-3" tabindex="-1"></a>     who    sex age average_age diff_from_avg</span>
-<span id="cb295-4"><a href="dplyr.html#cb295-4" tabindex="-1"></a><span class="dv">1</span>    Joe   Male  <span class="dv">35</span>        <span class="fl">33.5</span>           <span class="fl">1.5</span></span>
-<span id="cb295-5"><a href="dplyr.html#cb295-5" tabindex="-1"></a><span class="dv">2</span>    Ben   Male  <span class="dv">33</span>        <span class="fl">33.5</span>          <span class="sc">-</span><span class="fl">0.5</span></span>
-<span id="cb295-6"><a href="dplyr.html#cb295-6" tabindex="-1"></a><span class="dv">3</span>   Xing Female  <span class="dv">32</span>        <span class="fl">33.5</span>          <span class="sc">-</span><span class="fl">1.5</span></span>
-<span id="cb295-7"><a href="dplyr.html#cb295-7" tabindex="-1"></a><span class="dv">4</span> Coloma Female  <span class="dv">34</span>        <span class="fl">33.5</span>           <span class="fl">0.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="dplyr.html#cb299-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">average_age =</span> <span class="fu">mean</span>(age)) <span class="sc">%&gt;%</span></span>
+<span id="cb299-2"><a href="dplyr.html#cb299-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff_from_avg =</span> age <span class="sc">-</span> average_age)</span>
+<span id="cb299-3"><a href="dplyr.html#cb299-3" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% mutate(average_age = mean(age)) %&gt;% mutate(diff_from_avg = age -</span></span>
+<span id="cb299-4"><a href="dplyr.html#cb299-4" tabindex="-1"></a><span class="at">    average_age)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb299-5"><a href="dplyr.html#cb299-5" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>You can also remove variables can be removed by setting their value to NULL.</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="dplyr.html#cb296-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">age =</span> <span class="cn">NULL</span>)</span>
-<span id="cb296-2"><a href="dplyr.html#cb296-2" tabindex="-1"></a>     who    sex</span>
-<span id="cb296-3"><a href="dplyr.html#cb296-3" tabindex="-1"></a><span class="dv">1</span>    Joe   Male</span>
-<span id="cb296-4"><a href="dplyr.html#cb296-4" tabindex="-1"></a><span class="dv">2</span>    Ben   Male</span>
-<span id="cb296-5"><a href="dplyr.html#cb296-5" tabindex="-1"></a><span class="dv">3</span>   Xing Female</span>
-<span id="cb296-6"><a href="dplyr.html#cb296-6" tabindex="-1"></a><span class="dv">4</span> Coloma Female</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="dplyr.html#cb300-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">age =</span> <span class="cn">NULL</span>)</span>
+<span id="cb300-2"><a href="dplyr.html#cb300-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% mutate(age = NULL)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb300-3"><a href="dplyr.html#cb300-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>A similar function, <code>transmute()</code>, adds new variables and drops existing ones, kind of like a combination of <code>select()</code> and <code>mutate()</code>.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="dplyr.html#cb297-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">average_age =</span> <span class="fu">mean</span>(age))</span>
-<span id="cb297-2"><a href="dplyr.html#cb297-2" tabindex="-1"></a>  average_age</span>
-<span id="cb297-3"><a href="dplyr.html#cb297-3" tabindex="-1"></a><span class="dv">1</span>        <span class="fl">33.5</span></span>
-<span id="cb297-4"><a href="dplyr.html#cb297-4" tabindex="-1"></a><span class="dv">2</span>        <span class="fl">33.5</span></span>
-<span id="cb297-5"><a href="dplyr.html#cb297-5" tabindex="-1"></a><span class="dv">3</span>        <span class="fl">33.5</span></span>
-<span id="cb297-6"><a href="dplyr.html#cb297-6" tabindex="-1"></a><span class="dv">4</span>        <span class="fl">33.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="dplyr.html#cb301-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">average_age =</span> <span class="fu">mean</span>(age))</span>
+<span id="cb301-2"><a href="dplyr.html#cb301-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% transmute(average_age = mean(age))</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb301-3"><a href="dplyr.html#cb301-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 </div>
 <div id="group_by" class="section level3 unnumbered hasAnchor">
 <h3><code>group_by()</code><a href="dplyr.html#group_by" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Most data operations are done on groups defined by variables. The function <code>group_by()</code> takes an existing table and converts it into a grouped one where operations are performed “by group”.</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="dplyr.html#cb298-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> </span>
-<span id="cb298-2"><a href="dplyr.html#cb298-2" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
-<span id="cb298-3"><a href="dplyr.html#cb298-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">average_age_for_sex =</span> <span class="fu">mean</span>(age)) </span>
-<span id="cb298-4"><a href="dplyr.html#cb298-4" tabindex="-1"></a><span class="co"># A tibble: 4 × 4</span></span>
-<span id="cb298-5"><a href="dplyr.html#cb298-5" tabindex="-1"></a><span class="co"># Groups:   sex [2]</span></span>
-<span id="cb298-6"><a href="dplyr.html#cb298-6" tabindex="-1"></a>  who    sex      age average_age_for_sex</span>
-<span id="cb298-7"><a href="dplyr.html#cb298-7" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>  <span class="er">&lt;</span>chr<span class="sc">&gt;</span>  <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>               <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb298-8"><a href="dplyr.html#cb298-8" tabindex="-1"></a><span class="dv">1</span> Joe    Male      <span class="dv">35</span>                  <span class="dv">34</span></span>
-<span id="cb298-9"><a href="dplyr.html#cb298-9" tabindex="-1"></a><span class="dv">2</span> Ben    Male      <span class="dv">33</span>                  <span class="dv">34</span></span>
-<span id="cb298-10"><a href="dplyr.html#cb298-10" tabindex="-1"></a><span class="dv">3</span> Xing   Female    <span class="dv">32</span>                  <span class="dv">33</span></span>
-<span id="cb298-11"><a href="dplyr.html#cb298-11" tabindex="-1"></a><span class="dv">4</span> Coloma Female    <span class="dv">34</span>                  <span class="dv">33</span></span></code></pre></div>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="dplyr.html#cb299-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> </span>
-<span id="cb299-2"><a href="dplyr.html#cb299-2" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
-<span id="cb299-3"><a href="dplyr.html#cb299-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">average_age_for_sex =</span> <span class="fu">mean</span>(age)) <span class="sc">%&gt;%</span></span>
-<span id="cb299-4"><a href="dplyr.html#cb299-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff_from_avg_for_sex =</span> age <span class="sc">-</span> average_age_for_sex)</span>
-<span id="cb299-5"><a href="dplyr.html#cb299-5" tabindex="-1"></a><span class="co"># A tibble: 4 × 5</span></span>
-<span id="cb299-6"><a href="dplyr.html#cb299-6" tabindex="-1"></a><span class="co"># Groups:   sex [2]</span></span>
-<span id="cb299-7"><a href="dplyr.html#cb299-7" tabindex="-1"></a>  who    sex      age average_age_for_sex diff_from_avg_for_sex</span>
-<span id="cb299-8"><a href="dplyr.html#cb299-8" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>  <span class="er">&lt;</span>chr<span class="sc">&gt;</span>  <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>               <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>                 <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb299-9"><a href="dplyr.html#cb299-9" tabindex="-1"></a><span class="dv">1</span> Joe    Male      <span class="dv">35</span>                  <span class="dv">34</span>                     <span class="dv">1</span></span>
-<span id="cb299-10"><a href="dplyr.html#cb299-10" tabindex="-1"></a><span class="dv">2</span> Ben    Male      <span class="dv">33</span>                  <span class="dv">34</span>                    <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb299-11"><a href="dplyr.html#cb299-11" tabindex="-1"></a><span class="dv">3</span> Xing   Female    <span class="dv">32</span>                  <span class="dv">33</span>                    <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb299-12"><a href="dplyr.html#cb299-12" tabindex="-1"></a><span class="dv">4</span> Coloma Female    <span class="dv">34</span>                  <span class="dv">33</span>                     <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="dplyr.html#cb302-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> </span>
+<span id="cb302-2"><a href="dplyr.html#cb302-2" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
+<span id="cb302-3"><a href="dplyr.html#cb302-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">average_age_for_sex =</span> <span class="fu">mean</span>(age)) </span>
+<span id="cb302-4"><a href="dplyr.html#cb302-4" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% group_by(sex) %&gt;% mutate(average_age_for_sex = mean(age))</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb302-5"><a href="dplyr.html#cb302-5" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="dplyr.html#cb303-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> </span>
+<span id="cb303-2"><a href="dplyr.html#cb303-2" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
+<span id="cb303-3"><a href="dplyr.html#cb303-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">average_age_for_sex =</span> <span class="fu">mean</span>(age)) <span class="sc">%&gt;%</span></span>
+<span id="cb303-4"><a href="dplyr.html#cb303-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff_from_avg_for_sex =</span> age <span class="sc">-</span> average_age_for_sex)</span>
+<span id="cb303-5"><a href="dplyr.html#cb303-5" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% group_by(sex) %&gt;% mutate(average_age_for_sex = mean(age)) %&gt;% mutate(</span></span>
+<span id="cb303-6"><a href="dplyr.html#cb303-6" tabindex="-1"></a><span class="at">    diff_from_avg_for_sex = age - average_age_for_sex)</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb303-7"><a href="dplyr.html#cb303-7" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>Note that a similar verb, <code>ungroup()</code>, removes grouping.</p>
 </div>
 <div id="summarize" class="section level3 unnumbered hasAnchor">
 <h3><code>summarize()</code><a href="dplyr.html#summarize" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>summarize()</code> or <code>summarize()</code> creates an entirely new data frame. It will have one (or more) rows for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarizing all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="dplyr.html#cb300-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> </span>
-<span id="cb300-2"><a href="dplyr.html#cb300-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_age =</span> <span class="fu">mean</span>(age))</span>
-<span id="cb300-3"><a href="dplyr.html#cb300-3" tabindex="-1"></a>  average_age</span>
-<span id="cb300-4"><a href="dplyr.html#cb300-4" tabindex="-1"></a><span class="dv">1</span>        <span class="fl">33.5</span></span></code></pre></div>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="dplyr.html#cb301-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> </span>
-<span id="cb301-2"><a href="dplyr.html#cb301-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_age =</span> <span class="fu">mean</span>(age),</span>
-<span id="cb301-3"><a href="dplyr.html#cb301-3" tabindex="-1"></a>            <span class="at">standard_dev_of_age =</span> <span class="fu">sd</span>(age),</span>
-<span id="cb301-4"><a href="dplyr.html#cb301-4" tabindex="-1"></a>            <span class="at">oldest_age =</span> <span class="fu">max</span>(age),</span>
-<span id="cb301-5"><a href="dplyr.html#cb301-5" tabindex="-1"></a>            <span class="at">youngest_age =</span> <span class="fu">min</span>(age))</span>
-<span id="cb301-6"><a href="dplyr.html#cb301-6" tabindex="-1"></a>  average_age standard_dev_of_age oldest_age youngest_age</span>
-<span id="cb301-7"><a href="dplyr.html#cb301-7" tabindex="-1"></a><span class="dv">1</span>        <span class="fl">33.5</span>            <span class="fl">1.290994</span>         <span class="dv">35</span>           <span class="dv">32</span></span></code></pre></div>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="dplyr.html#cb302-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> </span>
-<span id="cb302-2"><a href="dplyr.html#cb302-2" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
-<span id="cb302-3"><a href="dplyr.html#cb302-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_age =</span> <span class="fu">mean</span>(age),</span>
-<span id="cb302-4"><a href="dplyr.html#cb302-4" tabindex="-1"></a>            <span class="at">oldest_age =</span> <span class="fu">max</span>(age),</span>
-<span id="cb302-5"><a href="dplyr.html#cb302-5" tabindex="-1"></a>            <span class="at">total_years =</span> <span class="fu">sum</span>(age)) </span>
-<span id="cb302-6"><a href="dplyr.html#cb302-6" tabindex="-1"></a><span class="co"># A tibble: 2 × 4</span></span>
-<span id="cb302-7"><a href="dplyr.html#cb302-7" tabindex="-1"></a>  sex    avg_age oldest_age total_years</span>
-<span id="cb302-8"><a href="dplyr.html#cb302-8" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>      <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb302-9"><a href="dplyr.html#cb302-9" tabindex="-1"></a><span class="dv">1</span> Female      <span class="dv">33</span>         <span class="dv">34</span>          <span class="dv">66</span></span>
-<span id="cb302-10"><a href="dplyr.html#cb302-10" tabindex="-1"></a><span class="dv">2</span> Male        <span class="dv">34</span>         <span class="dv">35</span>          <span class="dv">68</span></span></code></pre></div>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="dplyr.html#cb303-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span></span>
-<span id="cb303-2"><a href="dplyr.html#cb303-2" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
-<span id="cb303-3"><a href="dplyr.html#cb303-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sample_size =</span> <span class="fu">n</span>())</span>
-<span id="cb303-4"><a href="dplyr.html#cb303-4" tabindex="-1"></a><span class="co"># A tibble: 2 × 2</span></span>
-<span id="cb303-5"><a href="dplyr.html#cb303-5" tabindex="-1"></a>  sex    sample_size</span>
-<span id="cb303-6"><a href="dplyr.html#cb303-6" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>        <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
-<span id="cb303-7"><a href="dplyr.html#cb303-7" tabindex="-1"></a><span class="dv">1</span> Female           <span class="dv">2</span></span>
-<span id="cb303-8"><a href="dplyr.html#cb303-8" tabindex="-1"></a><span class="dv">2</span> Male             <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="dplyr.html#cb304-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> </span>
+<span id="cb304-2"><a href="dplyr.html#cb304-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_age =</span> <span class="fu">mean</span>(age))</span>
+<span id="cb304-3"><a href="dplyr.html#cb304-3" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% summarize(average_age = mean(age))</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb304-4"><a href="dplyr.html#cb304-4" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="dplyr.html#cb305-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> </span>
+<span id="cb305-2"><a href="dplyr.html#cb305-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_age =</span> <span class="fu">mean</span>(age),</span>
+<span id="cb305-3"><a href="dplyr.html#cb305-3" tabindex="-1"></a>            <span class="at">standard_dev_of_age =</span> <span class="fu">sd</span>(age),</span>
+<span id="cb305-4"><a href="dplyr.html#cb305-4" tabindex="-1"></a>            <span class="at">oldest_age =</span> <span class="fu">max</span>(age),</span>
+<span id="cb305-5"><a href="dplyr.html#cb305-5" tabindex="-1"></a>            <span class="at">youngest_age =</span> <span class="fu">min</span>(age))</span>
+<span id="cb305-6"><a href="dplyr.html#cb305-6" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% summarize(average_age = mean(age), standard_dev_of_age = sd(age),</span></span>
+<span id="cb305-7"><a href="dplyr.html#cb305-7" tabindex="-1"></a><span class="at">  oldest_age = max(age), youngest_age = min(age))</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb305-8"><a href="dplyr.html#cb305-8" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="dplyr.html#cb306-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span> </span>
+<span id="cb306-2"><a href="dplyr.html#cb306-2" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
+<span id="cb306-3"><a href="dplyr.html#cb306-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_age =</span> <span class="fu">mean</span>(age),</span>
+<span id="cb306-4"><a href="dplyr.html#cb306-4" tabindex="-1"></a>            <span class="at">oldest_age =</span> <span class="fu">max</span>(age),</span>
+<span id="cb306-5"><a href="dplyr.html#cb306-5" tabindex="-1"></a>            <span class="at">total_years =</span> <span class="fu">sum</span>(age)) </span>
+<span id="cb306-6"><a href="dplyr.html#cb306-6" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% group_by(sex) %&gt;% summarise(avg_age = mean(age), oldest_age = max(</span></span>
+<span id="cb306-7"><a href="dplyr.html#cb306-7" tabindex="-1"></a><span class="at">    age), total_years = sum(age))</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb306-8"><a href="dplyr.html#cb306-8" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="dplyr.html#cb307-1" tabindex="-1"></a>people <span class="sc">%&gt;%</span></span>
+<span id="cb307-2"><a href="dplyr.html#cb307-2" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
+<span id="cb307-3"><a href="dplyr.html#cb307-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sample_size =</span> <span class="fu">n</span>())</span>
+<span id="cb307-4"><a href="dplyr.html#cb307-4" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">people %&gt;% group_by(sex) %&gt;% summarise(sample_size = n())</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb307-5"><a href="dplyr.html#cb307-5" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>Note the use of the function, <strong><code>n()</code></strong>. This simple function counts up the number of records in each group.</p>
 <p>```{r, include = FALSE</p>
 <p>‘To illustrate these <code>dplyr</code> verbs and re-energize the room, ask everyone to stand. Tell the students that they represent a dataframe called <code>people</code>. Now, write a <code>dplyr</code> command into your R Console and ask them to act out the command. After each command, give them time to move around to act it out. If they move around too slowly, egg them on: “Come on, you all are like the slowest computer ever!” <br><br> <code>people %&gt;% arrange(shoe_size)</code> <br> <code>people %&gt;% arrange(shoe_size) %&gt;% filter(sex == "female")</code> <br> <code>people %&gt;% arrange(hair_length)</code> <br> <code>people %&gt;% arrange(desc(hair_length))</code> <br> <code>people %&gt;% group_by(sex) %&gt;% arrange(hair_length))</code> <br><code>people %&gt;% arrange(country_of_birth, shirt_color, desc(shoe_size))</code> <br><br> etc.’</p>
@@ -561,8 +502,14 @@ Answer these questions using the new `dplyr` verbs you just learned:
 
 ``` r
 library(dplyr)
+Error in `library()`:
+! there is no package called &#39;dplyr&#39;
 library(babynames)
-bn &lt;- babynames</code></pre>
+Error in `library()`:
+! there is no package called &#39;babynames&#39;
+bn &lt;- babynames
+Error:
+! object &#39;babynames&#39; not found</code></pre>
 <p><strong>2.</strong> Check out the first and last six rows of <code>bn</code>.</p>
 <p><strong>3.</strong> What are the names of the variables in this dataset?</p>
 <p><strong>4.</strong> How many rows are in this dataset?</p>
@@ -649,6 +596,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

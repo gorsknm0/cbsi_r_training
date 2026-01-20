@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Module 24 Working with dates &amp; times | R Training</title>
+  <title>Module 25 Working with dates &amp; times | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Module 24 Working with dates &amp; times | R Training" />
+  <meta property="og:title" content="Module 25 Working with dates &amp; times | R Training" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="A resource &amp; workbook for learning R" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Module 24 Working with dates &amp; times | R Training" />
+  <meta name="twitter:title" content="Module 25 Working with dates &amp; times | R Training" />
   
   <meta name="twitter:description" content="A resource &amp; workbook for learning R" />
   
@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="river-discharge-doc-and-nitrate.html"/>
+<link rel="prev" href="the-importance-of-data-standardisation.html"/>
 <link rel="next" href="text.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -249,17 +249,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>21</b> Brazzaville’s climate</a></li>
 <li class="chapter" data-level="22" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>22</b> Cleaning messy data</a></li>
 <li class="chapter" data-level="23" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>23</b> River discharge, DOC and nitrate</a></li>
+<li class="chapter" data-level="24" data-path="the-importance-of-data-standardisation.html"><a href="the-importance-of-data-standardisation.html"><i class="fa fa-check"></i><b>24</b> The Importance of Data Standardisation</a></li>
 <li class="part"><span><b>V Extra Information</b></span></li>
-<li class="chapter" data-level="24" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>24</b> Working with dates &amp; times</a>
+<li class="chapter" data-level="25" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>25</b> Working with dates &amp; times</a>
 <ul>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>25</b> Working with text</a>
+<li class="chapter" data-level="26" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>26</b> Working with text</a>
 <ul>
 <li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>26</b> Special Characters</a></li>
+<li class="chapter" data-level="27" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>27</b> Special Characters</a></li>
 </ul>
 
       </nav>
@@ -277,8 +278,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dates" class="section level1 hasAnchor" number="24">
-<h1><span class="header-section-number">Module 24</span> Working with dates &amp; times<a href="dates.html#dates" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="dates" class="section level1 hasAnchor" number="25">
+<h1><span class="header-section-number">Module 25</span> Working with dates &amp; times<a href="dates.html#dates" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="learning-goals-17" class="section level4 unnumbered hasAnchor">
 <h4>Learning goals<a href="dates.html#learning-goals-17" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
@@ -301,49 +302,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Dates and times are hard because they have to reconcile two physical phenomena (the rotation of the Earth and its orbit around the sun) with a whole raft of geopolitical phenomena including months, time zones, and DST.</p>
 <p>This chapter won’t teach you every last detail about dates and times, but it will give you a solid grounding of practical skills that will help you with common data analysis challenges.”</p>
 </blockquote>
+<pre><code>Error in `library()`:
+! there is no package called &#39;dplyr&#39;</code></pre>
 </div>
 <div id="the-lubridate-package" class="section level2 unnumbered hasAnchor">
 <h2>The <code>lubridate()</code> package<a href="dates.html#the-lubridate-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>First, install the <code>lubridate</code> package.</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="dates.html#cb328-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;lubridate&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="dates.html#cb329-1" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="dates.html#cb337-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;lubridate&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="dates.html#cb338-1" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb338-2"><a href="dates.html#cb338-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">library()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb338-3"><a href="dates.html#cb338-3" tabindex="-1"></a><span class="sc">!</span> there is no package called <span class="st">&#39;lubridate&#39;</span></span></code></pre></div>
 <div id="getting-familiar-with-the-date-type" class="section level3 unnumbered hasAnchor">
 <h3>Getting familiar with the <code>date</code> type<a href="dates.html#getting-familiar-with-the-date-type" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Get today’s date:</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="dates.html#cb330-1" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">today</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="dates.html#cb331-1" tabindex="-1"></a><span class="fu">str</span>(today)</span>
-<span id="cb331-2"><a href="dates.html#cb331-2" tabindex="-1"></a> Date[<span class="dv">1</span><span class="sc">:</span><span class="dv">1</span>], format<span class="sc">:</span> <span class="st">&quot;2026-01-14&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="dates.html#cb339-1" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">today</span>()</span>
+<span id="cb339-2"><a href="dates.html#cb339-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">today()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb339-3"><a href="dates.html#cb339-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;today&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="dates.html#cb340-1" tabindex="-1"></a><span class="fu">str</span>(today)</span>
+<span id="cb340-2"><a href="dates.html#cb340-2" tabindex="-1"></a>Error<span class="sc">:</span></span>
+<span id="cb340-3"><a href="dates.html#cb340-3" tabindex="-1"></a><span class="sc">!</span> object <span class="st">&#39;today&#39;</span> not found</span></code></pre></div>
 <p>This looks like a simple character string, but it is not. There are all sorts of date-time calculations in the background.</p>
 <p>To demonstrate this, let’s bring in a simple string:</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="dates.html#cb332-1" tabindex="-1"></a>my_birthday <span class="ot">&lt;-</span> <span class="st">&#39;1985-11-07&#39;</span></span>
-<span id="cb332-2"><a href="dates.html#cb332-2" tabindex="-1"></a><span class="fu">str</span>(my_birthday)</span>
-<span id="cb332-3"><a href="dates.html#cb332-3" tabindex="-1"></a> chr <span class="st">&quot;1985-11-07&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="dates.html#cb341-1" tabindex="-1"></a>my_birthday <span class="ot">&lt;-</span> <span class="st">&#39;1985-11-07&#39;</span></span>
+<span id="cb341-2"><a href="dates.html#cb341-2" tabindex="-1"></a><span class="fu">str</span>(my_birthday)</span>
+<span id="cb341-3"><a href="dates.html#cb341-3" tabindex="-1"></a> chr <span class="st">&quot;1985-11-07&quot;</span></span></code></pre></div>
 <p>Note that class type impacts what you can do with text. The following causes an error…</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="dates.html#cb333-1" tabindex="-1"></a>today <span class="sc">-</span> my_birthday</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="dates.html#cb342-1" tabindex="-1"></a>today <span class="sc">-</span> my_birthday</span></code></pre></div>
 <p>… but this does not:</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="dates.html#cb334-1" tabindex="-1"></a>my_birthday <span class="ot">&lt;-</span> <span class="fu">as_date</span>(my_birthday)</span>
-<span id="cb334-2"><a href="dates.html#cb334-2" tabindex="-1"></a>today <span class="sc">-</span> my_birthday</span>
-<span id="cb334-3"><a href="dates.html#cb334-3" tabindex="-1"></a>Time difference of <span class="dv">14678</span> days</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="dates.html#cb343-1" tabindex="-1"></a>my_birthday <span class="ot">&lt;-</span> <span class="fu">as_date</span>(my_birthday)</span>
+<span id="cb343-2"><a href="dates.html#cb343-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">as_date()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb343-3"><a href="dates.html#cb343-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;as_date&quot;</span></span>
+<span id="cb343-4"><a href="dates.html#cb343-4" tabindex="-1"></a>today <span class="sc">-</span> my_birthday</span>
+<span id="cb343-5"><a href="dates.html#cb343-5" tabindex="-1"></a>Error<span class="sc">:</span></span>
+<span id="cb343-6"><a href="dates.html#cb343-6" tabindex="-1"></a><span class="sc">!</span> object <span class="st">&#39;today&#39;</span> not found</span></code></pre></div>
 </div>
 <div id="the-datetime-class" class="section level3 unnumbered hasAnchor">
 <h3>The <code>datetime</code> class<a href="dates.html#the-datetime-class" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When you are working with a <code>datetime</code> object, you can add and subtract time to it.</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="dates.html#cb335-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">now</span>() </span>
-<span id="cb335-2"><a href="dates.html#cb335-2" tabindex="-1"></a>n</span>
-<span id="cb335-3"><a href="dates.html#cb335-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14 08:53:12 GMT&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="dates.html#cb344-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">now</span>() </span>
+<span id="cb344-2"><a href="dates.html#cb344-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">now()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb344-3"><a href="dates.html#cb344-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;now&quot;</span></span>
+<span id="cb344-4"><a href="dates.html#cb344-4" tabindex="-1"></a>n</span>
+<span id="cb344-5"><a href="dates.html#cb344-5" tabindex="-1"></a>Error<span class="sc">:</span></span>
+<span id="cb344-6"><a href="dates.html#cb344-6" tabindex="-1"></a><span class="sc">!</span> object <span class="st">&#39;n&#39;</span> not found</span></code></pre></div>
 <p>Add or substract seconds:</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="dates.html#cb336-1" tabindex="-1"></a>n <span class="sc">+</span> <span class="fu">seconds</span>(<span class="dv">1</span>)</span>
-<span id="cb336-2"><a href="dates.html#cb336-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14 08:53:13 GMT&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="dates.html#cb345-1" tabindex="-1"></a>n <span class="sc">+</span> <span class="fu">seconds</span>(<span class="dv">1</span>)</span>
+<span id="cb345-2"><a href="dates.html#cb345-2" tabindex="-1"></a>Error<span class="sc">:</span></span>
+<span id="cb345-3"><a href="dates.html#cb345-3" tabindex="-1"></a><span class="sc">!</span> object <span class="st">&#39;n&#39;</span> not found</span></code></pre></div>
 <p>Add or subtract hours:</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="dates.html#cb337-1" tabindex="-1"></a>n <span class="sc">-</span> <span class="fu">hours</span>(<span class="dv">5</span>)</span>
-<span id="cb337-2"><a href="dates.html#cb337-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14 03:53:12 GMT&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="dates.html#cb346-1" tabindex="-1"></a>n <span class="sc">-</span> <span class="fu">hours</span>(<span class="dv">5</span>)</span>
+<span id="cb346-2"><a href="dates.html#cb346-2" tabindex="-1"></a>Error<span class="sc">:</span></span>
+<span id="cb346-3"><a href="dates.html#cb346-3" tabindex="-1"></a><span class="sc">!</span> object <span class="st">&#39;n&#39;</span> not found</span></code></pre></div>
 <p>Simplify to just the date:</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="dates.html#cb338-1" tabindex="-1"></a><span class="fu">as_date</span>(n)</span>
-<span id="cb338-2"><a href="dates.html#cb338-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="dates.html#cb347-1" tabindex="-1"></a><span class="fu">as_date</span>(n)</span>
+<span id="cb347-2"><a href="dates.html#cb347-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">as_date()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb347-3"><a href="dates.html#cb347-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;as_date&quot;</span></span></code></pre></div>
 <p>See how time flies:</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="dates.html#cb339-1" tabindex="-1"></a>later <span class="ot">&lt;-</span> <span class="fu">now</span>()</span>
-<span id="cb339-2"><a href="dates.html#cb339-2" tabindex="-1"></a>later</span>
-<span id="cb339-3"><a href="dates.html#cb339-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14 08:53:13 GMT&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="dates.html#cb348-1" tabindex="-1"></a>later <span class="ot">&lt;-</span> <span class="fu">now</span>()</span>
+<span id="cb348-2"><a href="dates.html#cb348-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">now()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb348-3"><a href="dates.html#cb348-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;now&quot;</span></span>
+<span id="cb348-4"><a href="dates.html#cb348-4" tabindex="-1"></a>later</span>
+<span id="cb348-5"><a href="dates.html#cb348-5" tabindex="-1"></a>Error<span class="sc">:</span></span>
+<span id="cb348-6"><a href="dates.html#cb348-6" tabindex="-1"></a><span class="sc">!</span> object <span class="st">&#39;later&#39;</span> not found</span></code></pre></div>
 </div>
 </div>
 <div id="common-tasks" class="section level2 unnumbered hasAnchor">
@@ -351,122 +371,205 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="converting-to-dates-from-strings" class="section level3 unnumbered hasAnchor">
 <h3>Converting to dates from strings<a href="dates.html#converting-to-dates-from-strings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>lubridate</code> package was built to handle dates of various input formats. The following functions convert a character with a particular format into a standard <code>datetime</code> object:</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="dates.html#cb340-1" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2017-01-31&quot;</span>)</span>
-<span id="cb340-2"><a href="dates.html#cb340-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2017-01-31&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="dates.html#cb349-1" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2017-01-31&quot;</span>)</span>
+<span id="cb349-2"><a href="dates.html#cb349-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">ymd()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb349-3"><a href="dates.html#cb349-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;ymd&quot;</span></span></code></pre></div>
 <p>This also works if the single-digits dates are not padded with a <code>0</code>:</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="dates.html#cb341-1" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2017-1-31&quot;</span>)</span>
-<span id="cb341-2"><a href="dates.html#cb341-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2017-01-31&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="dates.html#cb350-1" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2017-1-31&quot;</span>)</span>
+<span id="cb350-2"><a href="dates.html#cb350-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">ymd()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb350-3"><a href="dates.html#cb350-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;ymd&quot;</span></span></code></pre></div>
 <p>Other formats can also be handled:</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="dates.html#cb342-1" tabindex="-1"></a><span class="fu">ydm</span>(<span class="st">&quot;2017-31-01&quot;</span>)</span>
-<span id="cb342-2"><a href="dates.html#cb342-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2017-01-31&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="dates.html#cb343-1" tabindex="-1"></a><span class="fu">mdy</span>(<span class="st">&quot;January 31st, 2017&quot;</span>)</span>
-<span id="cb343-2"><a href="dates.html#cb343-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2017-01-31&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="dates.html#cb344-1" tabindex="-1"></a><span class="fu">dmy</span>(<span class="st">&quot;31-Jan-2017&quot;</span>)</span>
-<span id="cb344-2"><a href="dates.html#cb344-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2017-01-31&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="dates.html#cb351-1" tabindex="-1"></a><span class="fu">ydm</span>(<span class="st">&quot;2017-31-01&quot;</span>)</span>
+<span id="cb351-2"><a href="dates.html#cb351-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">ydm()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb351-3"><a href="dates.html#cb351-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;ydm&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="dates.html#cb352-1" tabindex="-1"></a><span class="fu">mdy</span>(<span class="st">&quot;January 31st, 2017&quot;</span>)</span>
+<span id="cb352-2"><a href="dates.html#cb352-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">mdy()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb352-3"><a href="dates.html#cb352-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;mdy&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="dates.html#cb353-1" tabindex="-1"></a><span class="fu">dmy</span>(<span class="st">&quot;31-Jan-2017&quot;</span>)</span>
+<span id="cb353-2"><a href="dates.html#cb353-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">dmy()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb353-3"><a href="dates.html#cb353-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;dmy&quot;</span></span></code></pre></div>
 </div>
 <div id="extracting-components-from-dates" class="section level3 unnumbered hasAnchor">
 <h3>Extracting components from dates<a href="dates.html#extracting-components-from-dates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s practice extracting information from the following <code>datetime</code> object:</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="dates.html#cb345-1" tabindex="-1"></a>datetime <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>)</span>
-<span id="cb345-2"><a href="dates.html#cb345-2" tabindex="-1"></a><span class="fu">year</span>(datetime)</span>
-<span id="cb345-3"><a href="dates.html#cb345-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">2016</span></span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="dates.html#cb354-1" tabindex="-1"></a>datetime <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2016-07-08 12:34:56&quot;</span>)</span>
+<span id="cb354-2"><a href="dates.html#cb354-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">ymd_hms()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb354-3"><a href="dates.html#cb354-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;ymd_hms&quot;</span></span>
+<span id="cb354-4"><a href="dates.html#cb354-4" tabindex="-1"></a><span class="fu">year</span>(datetime)</span>
+<span id="cb354-5"><a href="dates.html#cb354-5" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">year()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb354-6"><a href="dates.html#cb354-6" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;year&quot;</span></span></code></pre></div>
 <p>Get the month:</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="dates.html#cb346-1" tabindex="-1"></a><span class="fu">month</span>(datetime)</span>
-<span id="cb346-2"><a href="dates.html#cb346-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">7</span></span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="dates.html#cb355-1" tabindex="-1"></a><span class="fu">month</span>(datetime)</span>
+<span id="cb355-2"><a href="dates.html#cb355-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">month()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb355-3"><a href="dates.html#cb355-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;month&quot;</span></span></code></pre></div>
 <p>Get the day of month:</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="dates.html#cb347-1" tabindex="-1"></a><span class="fu">mday</span>(datetime)</span>
-<span id="cb347-2"><a href="dates.html#cb347-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">8</span></span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="dates.html#cb356-1" tabindex="-1"></a><span class="fu">mday</span>(datetime)</span>
+<span id="cb356-2"><a href="dates.html#cb356-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">mday()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb356-3"><a href="dates.html#cb356-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;mday&quot;</span></span></code></pre></div>
 <p>Get the day of year:</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="dates.html#cb348-1" tabindex="-1"></a><span class="fu">yday</span>(datetime)</span>
-<span id="cb348-2"><a href="dates.html#cb348-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">190</span></span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="dates.html#cb357-1" tabindex="-1"></a><span class="fu">yday</span>(datetime)</span>
+<span id="cb357-2"><a href="dates.html#cb357-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">yday()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb357-3"><a href="dates.html#cb357-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;yday&quot;</span></span></code></pre></div>
 <p>Get the day of week:</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="dates.html#cb349-1" tabindex="-1"></a><span class="fu">wday</span>(datetime)</span>
-<span id="cb349-2"><a href="dates.html#cb349-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">6</span></span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="dates.html#cb358-1" tabindex="-1"></a><span class="fu">wday</span>(datetime)</span>
+<span id="cb358-2"><a href="dates.html#cb358-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">wday()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb358-3"><a href="dates.html#cb358-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;wday&quot;</span></span></code></pre></div>
 <p>Get the name of the day of week:</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="dates.html#cb350-1" tabindex="-1"></a><span class="fu">weekdays</span>(datetime)</span>
-<span id="cb350-2"><a href="dates.html#cb350-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;Friday&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="dates.html#cb359-1" tabindex="-1"></a><span class="fu">weekdays</span>(datetime)</span>
+<span id="cb359-2"><a href="dates.html#cb359-2" tabindex="-1"></a>Error<span class="sc">:</span></span>
+<span id="cb359-3"><a href="dates.html#cb359-3" tabindex="-1"></a><span class="sc">!</span> object <span class="st">&#39;datetime&#39;</span> not found</span></code></pre></div>
 <p>Get the hour of the day:</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="dates.html#cb351-1" tabindex="-1"></a><span class="fu">hour</span>(datetime)</span>
-<span id="cb351-2"><a href="dates.html#cb351-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">12</span></span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="dates.html#cb360-1" tabindex="-1"></a><span class="fu">hour</span>(datetime)</span>
+<span id="cb360-2"><a href="dates.html#cb360-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">hour()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb360-3"><a href="dates.html#cb360-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;hour&quot;</span></span></code></pre></div>
 <p>Get the minute of the hour:</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="dates.html#cb352-1" tabindex="-1"></a><span class="fu">minute</span>(datetime)</span>
-<span id="cb352-2"><a href="dates.html#cb352-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">34</span></span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="dates.html#cb361-1" tabindex="-1"></a><span class="fu">minute</span>(datetime)</span>
+<span id="cb361-2"><a href="dates.html#cb361-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">minute()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb361-3"><a href="dates.html#cb361-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;minute&quot;</span></span></code></pre></div>
 <p>Get the seconds of the minute:</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="dates.html#cb353-1" tabindex="-1"></a><span class="fu">second</span>(datetime)</span>
-<span id="cb353-2"><a href="dates.html#cb353-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">56</span></span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="dates.html#cb362-1" tabindex="-1"></a><span class="fu">second</span>(datetime)</span>
+<span id="cb362-2"><a href="dates.html#cb362-2" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">second()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb362-3"><a href="dates.html#cb362-3" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;second&quot;</span></span></code></pre></div>
 </div>
 <div id="dealing-with-time-zones" class="section level3 unnumbered hasAnchor">
 <h3>Dealing with time zones<a href="dates.html#dealing-with-time-zones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When working with dates and times in <code>R</code>, time zones can be a major pain, but the <code>lubridate</code> package tries to make this simpler.</p>
 <p>Adjust timezones for dates:</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="dates.html#cb354-1" tabindex="-1"></a><span class="co"># Today&#39;s date where I am</span></span>
-<span id="cb354-2"><a href="dates.html#cb354-2" tabindex="-1"></a><span class="fu">today</span>()</span>
-<span id="cb354-3"><a href="dates.html#cb354-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14&quot;</span></span>
-<span id="cb354-4"><a href="dates.html#cb354-4" tabindex="-1"></a></span>
-<span id="cb354-5"><a href="dates.html#cb354-5" tabindex="-1"></a><span class="co"># Today&#39;s date in New Zealand</span></span>
-<span id="cb354-6"><a href="dates.html#cb354-6" tabindex="-1"></a><span class="fu">today</span>(<span class="at">tzone=</span><span class="st">&#39;NZ&#39;</span>)</span>
-<span id="cb354-7"><a href="dates.html#cb354-7" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="dates.html#cb363-1" tabindex="-1"></a><span class="co"># Today&#39;s date where I am</span></span>
+<span id="cb363-2"><a href="dates.html#cb363-2" tabindex="-1"></a><span class="fu">today</span>()</span>
+<span id="cb363-3"><a href="dates.html#cb363-3" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">today()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb363-4"><a href="dates.html#cb363-4" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;today&quot;</span></span>
+<span id="cb363-5"><a href="dates.html#cb363-5" tabindex="-1"></a></span>
+<span id="cb363-6"><a href="dates.html#cb363-6" tabindex="-1"></a><span class="co"># Today&#39;s date in New Zealand</span></span>
+<span id="cb363-7"><a href="dates.html#cb363-7" tabindex="-1"></a><span class="fu">today</span>(<span class="at">tzone=</span><span class="st">&#39;NZ&#39;</span>)</span>
+<span id="cb363-8"><a href="dates.html#cb363-8" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">today()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb363-9"><a href="dates.html#cb363-9" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;today&quot;</span></span></code></pre></div>
 <p>Adjust time zones for date-times:</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="dates.html#cb355-1" tabindex="-1"></a><span class="co"># Time where I am</span></span>
-<span id="cb355-2"><a href="dates.html#cb355-2" tabindex="-1"></a><span class="fu">now</span>()</span>
-<span id="cb355-3"><a href="dates.html#cb355-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14 08:53:14 GMT&quot;</span></span>
-<span id="cb355-4"><a href="dates.html#cb355-4" tabindex="-1"></a></span>
-<span id="cb355-5"><a href="dates.html#cb355-5" tabindex="-1"></a><span class="co"># Time in UTC / GMT (which are synonymous)</span></span>
-<span id="cb355-6"><a href="dates.html#cb355-6" tabindex="-1"></a><span class="fu">now</span>(<span class="st">&#39;UTC&#39;</span>)</span>
-<span id="cb355-7"><a href="dates.html#cb355-7" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14 08:53:14 UTC&quot;</span></span>
-<span id="cb355-8"><a href="dates.html#cb355-8" tabindex="-1"></a></span>
-<span id="cb355-9"><a href="dates.html#cb355-9" tabindex="-1"></a><span class="fu">now</span>(<span class="st">&#39;GMT&#39;</span>)</span>
-<span id="cb355-10"><a href="dates.html#cb355-10" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14 08:53:14 GMT&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="dates.html#cb364-1" tabindex="-1"></a><span class="co"># Time where I am</span></span>
+<span id="cb364-2"><a href="dates.html#cb364-2" tabindex="-1"></a><span class="fu">now</span>()</span>
+<span id="cb364-3"><a href="dates.html#cb364-3" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">now()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb364-4"><a href="dates.html#cb364-4" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;now&quot;</span></span>
+<span id="cb364-5"><a href="dates.html#cb364-5" tabindex="-1"></a></span>
+<span id="cb364-6"><a href="dates.html#cb364-6" tabindex="-1"></a><span class="co"># Time in UTC / GMT (which are synonymous)</span></span>
+<span id="cb364-7"><a href="dates.html#cb364-7" tabindex="-1"></a><span class="fu">now</span>(<span class="st">&#39;UTC&#39;</span>)</span>
+<span id="cb364-8"><a href="dates.html#cb364-8" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">now()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb364-9"><a href="dates.html#cb364-9" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;now&quot;</span></span>
+<span id="cb364-10"><a href="dates.html#cb364-10" tabindex="-1"></a></span>
+<span id="cb364-11"><a href="dates.html#cb364-11" tabindex="-1"></a><span class="fu">now</span>(<span class="st">&#39;GMT&#39;</span>)</span>
+<span id="cb364-12"><a href="dates.html#cb364-12" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">now()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb364-13"><a href="dates.html#cb364-13" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;now&quot;</span></span></code></pre></div>
 <p>Don’t know what time zone your computer is working in? Use this function:</p>
 <pre><code>[1] &quot;Europe/London&quot;</code></pre>
 <p>To get a list of time zones accepted in <code>R</code>, use the function <code>OlsonNames()</code> (there are about 500 options):</p>
-<pre><code> [1] &quot;Africa/Abidjan&quot;       &quot;Africa/Accra&quot;         &quot;Africa/Addis_Ababa&quot;  
- [4] &quot;Africa/Algiers&quot;       &quot;Africa/Asmara&quot;        &quot;Africa/Asmera&quot;       
- [7] &quot;Africa/Bamako&quot;        &quot;Africa/Bangui&quot;        &quot;Africa/Banjul&quot;       
-[10] &quot;Africa/Bissau&quot;        &quot;Africa/Blantyre&quot;      &quot;Africa/Brazzaville&quot;  
-[13] &quot;Africa/Bujumbura&quot;     &quot;Africa/Cairo&quot;         &quot;Africa/Casablanca&quot;   
-[16] &quot;Africa/Ceuta&quot;         &quot;Africa/Conakry&quot;       &quot;Africa/Dakar&quot;        
-[19] &quot;Africa/Dar_es_Salaam&quot; &quot;Africa/Djibouti&quot;      &quot;Africa/Douala&quot;       
-[22] &quot;Africa/El_Aaiun&quot;      &quot;Africa/Freetown&quot;      &quot;Africa/Gaborone&quot;     
-[25] &quot;Africa/Harare&quot;        &quot;Africa/Johannesburg&quot;  &quot;Africa/Juba&quot;         
-[28] &quot;Africa/Kampala&quot;       &quot;Africa/Khartoum&quot;      &quot;Africa/Kigali&quot;       
-[31] &quot;Africa/Kinshasa&quot;      &quot;Africa/Lagos&quot;         &quot;Africa/Libreville&quot;   
-[34] &quot;Africa/Lome&quot;          &quot;Africa/Luanda&quot;        &quot;Africa/Lubumbashi&quot;   
-[37] &quot;Africa/Lusaka&quot;        &quot;Africa/Malabo&quot;        &quot;Africa/Maputo&quot;       
-[40] &quot;Africa/Maseru&quot;        &quot;Africa/Mbabane&quot;       &quot;Africa/Mogadishu&quot;    
-[43] &quot;Africa/Monrovia&quot;      &quot;Africa/Nairobi&quot;       &quot;Africa/Ndjamena&quot;     
-[46] &quot;Africa/Niamey&quot;        &quot;Africa/Nouakchott&quot;    &quot;Africa/Ouagadougou&quot;  
-[49] &quot;Africa/Porto-Novo&quot;    &quot;Africa/Sao_Tome&quot;     </code></pre>
+<pre><code>Error in `OlsonNames() %&gt;% head(50)`:
+! could not find function &quot;%&gt;%&quot;</code></pre>
 <p>At some point you may have reason to force the timezone of a <code>datetime</code> object to change without actually changing the date or time. To do so, use the function <code>force_tz()</code>:</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="dates.html#cb358-1" tabindex="-1"></a><span class="co"># Get current time in UTC/GMT</span></span>
-<span id="cb358-2"><a href="dates.html#cb358-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">now</span>(<span class="st">&#39;UTC&#39;</span>)</span>
-<span id="cb358-3"><a href="dates.html#cb358-3" tabindex="-1"></a>n</span>
-<span id="cb358-4"><a href="dates.html#cb358-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14 08:53:15 UTC&quot;</span></span>
-<span id="cb358-5"><a href="dates.html#cb358-5" tabindex="-1"></a></span>
-<span id="cb358-6"><a href="dates.html#cb358-6" tabindex="-1"></a><span class="co"># Change timezone to Central Standard Time without changing time: </span></span>
-<span id="cb358-7"><a href="dates.html#cb358-7" tabindex="-1"></a><span class="fu">force_tz</span>(n,<span class="at">tzone=</span><span class="st">&#39;America/Chicago&#39;</span>)</span>
-<span id="cb358-8"><a href="dates.html#cb358-8" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14 08:53:15 CST&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="dates.html#cb367-1" tabindex="-1"></a><span class="co"># Get current time in UTC/GMT</span></span>
+<span id="cb367-2"><a href="dates.html#cb367-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">now</span>(<span class="st">&#39;UTC&#39;</span>)</span>
+<span id="cb367-3"><a href="dates.html#cb367-3" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">now()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb367-4"><a href="dates.html#cb367-4" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;now&quot;</span></span>
+<span id="cb367-5"><a href="dates.html#cb367-5" tabindex="-1"></a>n</span>
+<span id="cb367-6"><a href="dates.html#cb367-6" tabindex="-1"></a>Error<span class="sc">:</span></span>
+<span id="cb367-7"><a href="dates.html#cb367-7" tabindex="-1"></a><span class="sc">!</span> object <span class="st">&#39;n&#39;</span> not found</span>
+<span id="cb367-8"><a href="dates.html#cb367-8" tabindex="-1"></a></span>
+<span id="cb367-9"><a href="dates.html#cb367-9" tabindex="-1"></a><span class="co"># Change timezone to Central Standard Time without changing time: </span></span>
+<span id="cb367-10"><a href="dates.html#cb367-10" tabindex="-1"></a><span class="fu">force_tz</span>(n,<span class="at">tzone=</span><span class="st">&#39;America/Chicago&#39;</span>)</span>
+<span id="cb367-11"><a href="dates.html#cb367-11" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">force_tz()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb367-12"><a href="dates.html#cb367-12" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;force_tz&quot;</span></span></code></pre></div>
 </div>
 <div id="using-timestamps-instead" class="section level3 unnumbered hasAnchor">
 <h3>Using timestamps instead<a href="dates.html#using-timestamps-instead" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One way to avoid timezone issues is to convert a <code>datetime</code> object to a numeric timestamp.</p>
 <p>Timesetamps record the number of seconds that have passed since midnight GMT on January 1, 1970. It doesn’t matter which timezone you are standing in; the seconds that have passed since that moment will be the same:</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="dates.html#cb359-1" tabindex="-1"></a><span class="co"># Time where I am</span></span>
-<span id="cb359-2"><a href="dates.html#cb359-2" tabindex="-1"></a><span class="fu">now</span>() <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
-<span id="cb359-3"><a href="dates.html#cb359-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1768380795</span></span>
-<span id="cb359-4"><a href="dates.html#cb359-4" tabindex="-1"></a></span>
-<span id="cb359-5"><a href="dates.html#cb359-5" tabindex="-1"></a><span class="fu">now</span>(<span class="st">&#39;UTC&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
-<span id="cb359-6"><a href="dates.html#cb359-6" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1768380795</span></span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="dates.html#cb368-1" tabindex="-1"></a><span class="co"># Time where I am</span></span>
+<span id="cb368-2"><a href="dates.html#cb368-2" tabindex="-1"></a><span class="fu">now</span>() <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb368-3"><a href="dates.html#cb368-3" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">now() %&gt;% as.numeric()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb368-4"><a href="dates.html#cb368-4" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span>
+<span id="cb368-5"><a href="dates.html#cb368-5" tabindex="-1"></a></span>
+<span id="cb368-6"><a href="dates.html#cb368-6" tabindex="-1"></a><span class="fu">now</span>(<span class="st">&#39;UTC&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb368-7"><a href="dates.html#cb368-7" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">now(&quot;UTC&quot;) %&gt;% as.numeric()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb368-8"><a href="dates.html#cb368-8" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 <p>Timestamps can simplify things when you are doing a lot of adding and substracting with time. Timestamps are just seconds; they are just numbers. So they are much less of a black box than <code>datetime</code> objects.</p>
 <p>You can always convert from a timestamp back into a <code>datetime</code> object:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="dates.html#cb360-1" tabindex="-1"></a><span class="co"># Convert to timestamp</span></span>
-<span id="cb360-2"><a href="dates.html#cb360-2" tabindex="-1"></a>ts <span class="ot">&lt;-</span> <span class="fu">now</span>() <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
-<span id="cb360-3"><a href="dates.html#cb360-3" tabindex="-1"></a>ts</span>
-<span id="cb360-4"><a href="dates.html#cb360-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1768380795</span></span>
-<span id="cb360-5"><a href="dates.html#cb360-5" tabindex="-1"></a></span>
-<span id="cb360-6"><a href="dates.html#cb360-6" tabindex="-1"></a><span class="co"># Convert back to datetime object</span></span>
-<span id="cb360-7"><a href="dates.html#cb360-7" tabindex="-1"></a>ts <span class="sc">%&gt;%</span> <span class="fu">as_datetime</span>()</span>
-<span id="cb360-8"><a href="dates.html#cb360-8" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2026-01-14 08:53:15 UTC&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="dates.html#cb369-1" tabindex="-1"></a><span class="co"># Convert to timestamp</span></span>
+<span id="cb369-2"><a href="dates.html#cb369-2" tabindex="-1"></a>ts <span class="ot">&lt;-</span> <span class="fu">now</span>() <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb369-3"><a href="dates.html#cb369-3" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">now() %&gt;% as.numeric()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb369-4"><a href="dates.html#cb369-4" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span>
+<span id="cb369-5"><a href="dates.html#cb369-5" tabindex="-1"></a>ts</span>
+<span id="cb369-6"><a href="dates.html#cb369-6" tabindex="-1"></a><span class="cf">function</span> (<span class="at">data =</span> <span class="cn">NA</span>, <span class="at">start =</span> <span class="dv">1</span>, <span class="at">end =</span> <span class="fu">numeric</span>(), <span class="at">frequency =</span> <span class="dv">1</span>, </span>
+<span id="cb369-7"><a href="dates.html#cb369-7" tabindex="-1"></a>    <span class="at">deltat =</span> <span class="dv">1</span>, <span class="at">ts.eps =</span> <span class="fu">getOption</span>(<span class="st">&quot;ts.eps&quot;</span>), <span class="at">class =</span> <span class="cf">if</span> (nseries <span class="sc">&gt;</span> </span>
+<span id="cb369-8"><a href="dates.html#cb369-8" tabindex="-1"></a>        <span class="dv">1</span>) <span class="fu">c</span>(<span class="st">&quot;mts&quot;</span>, <span class="st">&quot;ts&quot;</span>, <span class="st">&quot;matrix&quot;</span>, <span class="st">&quot;array&quot;</span>) <span class="cf">else</span> <span class="st">&quot;ts&quot;</span>, <span class="at">names =</span> <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(<span class="fu">dimnames</span>(data))) <span class="fu">colnames</span>(data) <span class="cf">else</span> <span class="fu">paste</span>(<span class="st">&quot;Series&quot;</span>, </span>
+<span id="cb369-9"><a href="dates.html#cb369-9" tabindex="-1"></a>        <span class="fu">seq</span>(nseries))) </span>
+<span id="cb369-10"><a href="dates.html#cb369-10" tabindex="-1"></a>{</span>
+<span id="cb369-11"><a href="dates.html#cb369-11" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.data.frame</span>(data)) </span>
+<span id="cb369-12"><a href="dates.html#cb369-12" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">data.matrix</span>(data)</span>
+<span id="cb369-13"><a href="dates.html#cb369-13" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.matrix</span>(data)) {</span>
+<span id="cb369-14"><a href="dates.html#cb369-14" tabindex="-1"></a>        nseries <span class="ot">&lt;-</span> <span class="fu">ncol</span>(data)</span>
+<span id="cb369-15"><a href="dates.html#cb369-15" tabindex="-1"></a>        ndata <span class="ot">&lt;-</span> <span class="fu">nrow</span>(data)</span>
+<span id="cb369-16"><a href="dates.html#cb369-16" tabindex="-1"></a>        <span class="fu">dimnames</span>(data) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="cn">NULL</span>, names)</span>
+<span id="cb369-17"><a href="dates.html#cb369-17" tabindex="-1"></a>    }</span>
+<span id="cb369-18"><a href="dates.html#cb369-18" tabindex="-1"></a>    <span class="cf">else</span> {</span>
+<span id="cb369-19"><a href="dates.html#cb369-19" tabindex="-1"></a>        nseries <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb369-20"><a href="dates.html#cb369-20" tabindex="-1"></a>        ndata <span class="ot">&lt;-</span> <span class="fu">length</span>(data)</span>
+<span id="cb369-21"><a href="dates.html#cb369-21" tabindex="-1"></a>    }</span>
+<span id="cb369-22"><a href="dates.html#cb369-22" tabindex="-1"></a>    <span class="cf">if</span> (ndata <span class="sc">==</span> <span class="dv">0</span>) </span>
+<span id="cb369-23"><a href="dates.html#cb369-23" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="st">&quot;&#39;ts&#39; object must have one or more observations&quot;</span>)</span>
+<span id="cb369-24"><a href="dates.html#cb369-24" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">missing</span>(frequency)) </span>
+<span id="cb369-25"><a href="dates.html#cb369-25" tabindex="-1"></a>        frequency <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>deltat</span>
+<span id="cb369-26"><a href="dates.html#cb369-26" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">missing</span>(deltat)) </span>
+<span id="cb369-27"><a href="dates.html#cb369-27" tabindex="-1"></a>        deltat <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>frequency</span>
+<span id="cb369-28"><a href="dates.html#cb369-28" tabindex="-1"></a>    <span class="cf">if</span> (frequency <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> <span class="dv">0</span> <span class="sc">&lt;</span> (d <span class="ot">&lt;-</span> <span class="fu">abs</span>(frequency <span class="sc">-</span> <span class="fu">round</span>(frequency))) <span class="sc">&amp;&amp;</span> </span>
+<span id="cb369-29"><a href="dates.html#cb369-29" tabindex="-1"></a>        d <span class="sc">&lt;</span> ts.eps) </span>
+<span id="cb369-30"><a href="dates.html#cb369-30" tabindex="-1"></a>        frequency <span class="ot">&lt;-</span> <span class="fu">round</span>(frequency)</span>
+<span id="cb369-31"><a href="dates.html#cb369-31" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">missing</span>(start)) </span>
+<span id="cb369-32"><a href="dates.html#cb369-32" tabindex="-1"></a>        start <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(start)</span>
+<span id="cb369-33"><a href="dates.html#cb369-33" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">length</span>(start) <span class="sc">&gt;</span> <span class="dv">1</span><span class="dt">L</span>) {</span>
+<span id="cb369-34"><a href="dates.html#cb369-34" tabindex="-1"></a>        start <span class="ot">&lt;-</span> start[<span class="dv">1</span><span class="dt">L</span>] <span class="sc">+</span> (start[<span class="dv">2</span><span class="dt">L</span>] <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>frequency</span>
+<span id="cb369-35"><a href="dates.html#cb369-35" tabindex="-1"></a>    }</span>
+<span id="cb369-36"><a href="dates.html#cb369-36" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">missing</span>(end)) </span>
+<span id="cb369-37"><a href="dates.html#cb369-37" tabindex="-1"></a>        end <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(end)</span>
+<span id="cb369-38"><a href="dates.html#cb369-38" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">length</span>(end) <span class="sc">&gt;</span> <span class="dv">1</span><span class="dt">L</span>) {</span>
+<span id="cb369-39"><a href="dates.html#cb369-39" tabindex="-1"></a>        end <span class="ot">&lt;-</span> end[<span class="dv">1</span><span class="dt">L</span>] <span class="sc">+</span> (end[<span class="dv">2</span><span class="dt">L</span>] <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>frequency</span>
+<span id="cb369-40"><a href="dates.html#cb369-40" tabindex="-1"></a>    }</span>
+<span id="cb369-41"><a href="dates.html#cb369-41" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">missing</span>(end)) </span>
+<span id="cb369-42"><a href="dates.html#cb369-42" tabindex="-1"></a>        end <span class="ot">&lt;-</span> start <span class="sc">+</span> (ndata <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>frequency</span>
+<span id="cb369-43"><a href="dates.html#cb369-43" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">missing</span>(start)) </span>
+<span id="cb369-44"><a href="dates.html#cb369-44" tabindex="-1"></a>        start <span class="ot">&lt;-</span> end <span class="sc">-</span> (ndata <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>frequency</span>
+<span id="cb369-45"><a href="dates.html#cb369-45" tabindex="-1"></a>    <span class="cf">if</span> (start <span class="sc">&gt;</span> end) </span>
+<span id="cb369-46"><a href="dates.html#cb369-46" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="st">&quot;&#39;start&#39; cannot be after &#39;end&#39;&quot;</span>)</span>
+<span id="cb369-47"><a href="dates.html#cb369-47" tabindex="-1"></a>    cycles <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>((end <span class="sc">-</span> start) <span class="sc">*</span> frequency)</span>
+<span id="cb369-48"><a href="dates.html#cb369-48" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">abs</span>(<span class="fu">round</span>(cycles) <span class="sc">-</span> cycles) <span class="sc">&gt;</span> ts.eps <span class="sc">*</span> <span class="fu">max</span>(cycles, <span class="dv">1</span>)) </span>
+<span id="cb369-49"><a href="dates.html#cb369-49" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="st">&quot;&#39;end&#39; must be a whole number of cycles after &#39;start&#39;&quot;</span>)</span>
+<span id="cb369-50"><a href="dates.html#cb369-50" tabindex="-1"></a>    nobs <span class="ot">&lt;-</span> <span class="fu">floor</span>(cycles <span class="sc">+</span> <span class="fl">1.01</span>)</span>
+<span id="cb369-51"><a href="dates.html#cb369-51" tabindex="-1"></a>    <span class="cf">if</span> (nobs <span class="sc">!=</span> ndata) </span>
+<span id="cb369-52"><a href="dates.html#cb369-52" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">NCOL</span>(data) <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb369-53"><a href="dates.html#cb369-53" tabindex="-1"></a>            <span class="cf">if</span> (ndata <span class="sc">&lt;</span> nobs) </span>
+<span id="cb369-54"><a href="dates.html#cb369-54" tabindex="-1"></a>                <span class="fu">rep_len</span>(data, nobs)</span>
+<span id="cb369-55"><a href="dates.html#cb369-55" tabindex="-1"></a>            <span class="cf">else</span> <span class="cf">if</span> (ndata <span class="sc">&gt;</span> nobs) </span>
+<span id="cb369-56"><a href="dates.html#cb369-56" tabindex="-1"></a>                data[<span class="dv">1</span><span class="dt">L</span><span class="sc">:</span>nobs]</span>
+<span id="cb369-57"><a href="dates.html#cb369-57" tabindex="-1"></a>        }</span>
+<span id="cb369-58"><a href="dates.html#cb369-58" tabindex="-1"></a>        <span class="cf">else</span> {</span>
+<span id="cb369-59"><a href="dates.html#cb369-59" tabindex="-1"></a>            <span class="cf">if</span> (ndata <span class="sc">&lt;</span> nobs) </span>
+<span id="cb369-60"><a href="dates.html#cb369-60" tabindex="-1"></a>                data[<span class="fu">rep_len</span>(<span class="dv">1</span><span class="dt">L</span><span class="sc">:</span>ndata, nobs), ]</span>
+<span id="cb369-61"><a href="dates.html#cb369-61" tabindex="-1"></a>            <span class="cf">else</span> <span class="cf">if</span> (ndata <span class="sc">&gt;</span> nobs) </span>
+<span id="cb369-62"><a href="dates.html#cb369-62" tabindex="-1"></a>                data[<span class="dv">1</span><span class="dt">L</span><span class="sc">:</span>nobs, ]</span>
+<span id="cb369-63"><a href="dates.html#cb369-63" tabindex="-1"></a>        }</span>
+<span id="cb369-64"><a href="dates.html#cb369-64" tabindex="-1"></a>    <span class="cf">if</span> (doEps <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">missing</span>(ts.eps) <span class="sc">&amp;&amp;</span> ts.eps <span class="sc">!=</span> <span class="fu">getOption</span>(<span class="st">&quot;ts.eps&quot;</span>)) {</span>
+<span id="cb369-65"><a href="dates.html#cb369-65" tabindex="-1"></a>        op <span class="ot">&lt;-</span> <span class="fu">options</span>(<span class="at">ts.eps =</span> ts.eps)</span>
+<span id="cb369-66"><a href="dates.html#cb369-66" tabindex="-1"></a>        <span class="fu">on.exit</span>(<span class="fu">options</span>(op))</span>
+<span id="cb369-67"><a href="dates.html#cb369-67" tabindex="-1"></a>    }</span>
+<span id="cb369-68"><a href="dates.html#cb369-68" tabindex="-1"></a>    <span class="fu">attr</span>(data, <span class="st">&quot;tsp&quot;</span>) <span class="ot">&lt;-</span> <span class="fu">c</span>(start, end, frequency)</span>
+<span id="cb369-69"><a href="dates.html#cb369-69" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(class) <span class="sc">&amp;&amp;</span> class[[<span class="dv">1</span>]] <span class="sc">!=</span> <span class="st">&quot;none&quot;</span>) </span>
+<span id="cb369-70"><a href="dates.html#cb369-70" tabindex="-1"></a>        <span class="fu">attr</span>(data, <span class="st">&quot;class&quot;</span>) <span class="ot">&lt;-</span> class</span>
+<span id="cb369-71"><a href="dates.html#cb369-71" tabindex="-1"></a>    data</span>
+<span id="cb369-72"><a href="dates.html#cb369-72" tabindex="-1"></a>}</span>
+<span id="cb369-73"><a href="dates.html#cb369-73" tabindex="-1"></a><span class="sc">&lt;</span>bytecode<span class="sc">:</span> <span class="dv">0x000001b74afa2820</span><span class="sc">&gt;</span></span>
+<span id="cb369-74"><a href="dates.html#cb369-74" tabindex="-1"></a><span class="er">&lt;</span>environment<span class="sc">:</span> namespace<span class="sc">:</span>stats<span class="sc">&gt;</span></span>
+<span id="cb369-75"><a href="dates.html#cb369-75" tabindex="-1"></a></span>
+<span id="cb369-76"><a href="dates.html#cb369-76" tabindex="-1"></a><span class="co"># Convert back to datetime object</span></span>
+<span id="cb369-77"><a href="dates.html#cb369-77" tabindex="-1"></a>ts <span class="sc">%&gt;%</span> <span class="fu">as_datetime</span>()</span>
+<span id="cb369-78"><a href="dates.html#cb369-78" tabindex="-1"></a>Error <span class="cf">in</span> <span class="st">`</span><span class="at">ts %&gt;% as_datetime()</span><span class="st">`</span><span class="sc">:</span></span>
+<span id="cb369-79"><a href="dates.html#cb369-79" tabindex="-1"></a><span class="sc">!</span> could not find <span class="cf">function</span> <span class="st">&quot;%&gt;%&quot;</span></span></code></pre></div>
 </div>
 <div id="exercises-9" class="section level3 unnumbered hasAnchor">
 <h3>Exercises<a href="dates.html#exercises-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -501,7 +604,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p> </p>
 <p><strong>Record of a child’s cough</strong></p>
 <p>First, download the data:</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="dates.html#cb361-1" tabindex="-1"></a>coughs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/databrew/intro-to-data-science/main/data/coughs.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="dates.html#cb370-1" tabindex="-1"></a>coughs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/databrew/intro-to-data-science/main/data/coughs.csv&#39;</span>)</span></code></pre></div>
 <p><strong>8.</strong> Create a <code>dow</code> (day of week) column.</p>
 <p><strong>9.</strong> Create a <code>date</code> (without time) column.</p>
 <p><strong>10.</strong> How many coughs happened each day?</p>
@@ -519,7 +622,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="river-discharge-doc-and-nitrate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-importance-of-data-standardisation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="text.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -571,6 +674,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

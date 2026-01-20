@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 9 Vectors | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 9 Vectors | R Training" />
   <meta property="og:type" content="book" />
@@ -249,17 +249,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>21</b> Brazzaville’s climate</a></li>
 <li class="chapter" data-level="22" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>22</b> Cleaning messy data</a></li>
 <li class="chapter" data-level="23" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>23</b> River discharge, DOC and nitrate</a></li>
+<li class="chapter" data-level="24" data-path="the-importance-of-data-standardisation.html"><a href="the-importance-of-data-standardisation.html"><i class="fa fa-check"></i><b>24</b> The Importance of Data Standardisation</a></li>
 <li class="part"><span><b>V Extra Information</b></span></li>
-<li class="chapter" data-level="24" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>24</b> Working with dates &amp; times</a>
+<li class="chapter" data-level="25" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>25</b> Working with dates &amp; times</a>
 <ul>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>25</b> Working with text</a>
+<li class="chapter" data-level="26" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>26</b> Working with text</a>
 <ul>
 <li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>26</b> Special Characters</a></li>
+<li class="chapter" data-level="27" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>27</b> Special Characters</a></li>
 </ul>
 
       </nav>
@@ -294,164 +295,166 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="declaring-and-using-vectors" class="section level2 unnumbered hasAnchor">
 <h2>Declaring and using vectors<a href="vectors.html#declaring-and-using-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To build up a vector in <code>R</code>, use the function <code>c()</code>, which is short for “concatenate”.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="vectors.html#cb96-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
-<span id="cb96-2"><a href="vectors.html#cb96-2" tabindex="-1"></a>x</span>
-<span id="cb96-3"><a href="vectors.html#cb96-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="vectors.html#cb97-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb97-2"><a href="vectors.html#cb97-2" tabindex="-1"></a>x</span>
+<span id="cb97-3"><a href="vectors.html#cb97-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span></span></code></pre></div>
 <p>Whenever you use the <code>c()</code> function, you are telling <code>R</code>: ‘Hey, get ready. I’m about to give you more than one value at once.’. Cough Cough.</p>
 <p>You can use the <code>c()</code> function to concatenate two vectors together:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="vectors.html#cb97-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
-<span id="cb97-2"><a href="vectors.html#cb97-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>)</span>
-<span id="cb97-3"><a href="vectors.html#cb97-3" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(x,y)</span>
-<span id="cb97-4"><a href="vectors.html#cb97-4" tabindex="-1"></a>z</span>
-<span id="cb97-5"><a href="vectors.html#cb97-5" tabindex="-1"></a>[<span class="dv">1</span>]  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span></span></code></pre></div>
-<p>You can also use <code>c()</code> to add values to a vector:</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="vectors.html#cb98-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
-<span id="cb98-2"><a href="vectors.html#cb98-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(x,<span class="dv">9</span>)</span>
-<span id="cb98-3"><a href="vectors.html#cb98-3" tabindex="-1"></a>x</span>
-<span id="cb98-4"><a href="vectors.html#cb98-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span></code></pre></div>
+<span id="cb98-2"><a href="vectors.html#cb98-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>)</span>
+<span id="cb98-3"><a href="vectors.html#cb98-3" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(x,y)</span>
+<span id="cb98-4"><a href="vectors.html#cb98-4" tabindex="-1"></a>z</span>
+<span id="cb98-5"><a href="vectors.html#cb98-5" tabindex="-1"></a>[<span class="dv">1</span>]  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span></span></code></pre></div>
+<p>You can also use <code>c()</code> to add values to a vector:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="vectors.html#cb99-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb99-2"><a href="vectors.html#cb99-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(x,<span class="dv">9</span>)</span>
+<span id="cb99-3"><a href="vectors.html#cb99-3" tabindex="-1"></a>x</span>
+<span id="cb99-4"><a href="vectors.html#cb99-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span></code></pre></div>
 <p>You can also put vectors through logical tests:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="vectors.html#cb99-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb99-2"><a href="vectors.html#cb99-2" tabindex="-1"></a><span class="dv">4</span> <span class="sc">==</span> x</span>
-<span id="cb99-3"><a href="vectors.html#cb99-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span> <span class="cn">FALSE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="vectors.html#cb100-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb100-2"><a href="vectors.html#cb100-2" tabindex="-1"></a><span class="dv">4</span> <span class="sc">==</span> x</span>
+<span id="cb100-3"><a href="vectors.html#cb100-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span> <span class="cn">FALSE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span></code></pre></div>
 <p>This command is asking <code>R</code> to tell you whether each element in <code>x</code> is equal to <code>4</code>.</p>
 <p>You can create vectors of any data class (i.e., data type).</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="vectors.html#cb100-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Greta&quot;</span>,<span class="st">&quot;Nika&quot;</span>,<span class="st">&quot;Crispin&quot;</span>) </span>
-<span id="cb100-2"><a href="vectors.html#cb100-2" tabindex="-1"></a>x</span>
-<span id="cb100-3"><a href="vectors.html#cb100-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;Greta&quot;</span>   <span class="st">&quot;Nika&quot;</span>    <span class="st">&quot;Crispin&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="vectors.html#cb101-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>)</span>
-<span id="cb101-2"><a href="vectors.html#cb101-2" tabindex="-1"></a>y</span>
-<span id="cb101-3"><a href="vectors.html#cb101-3" tabindex="-1"></a>[<span class="dv">1</span>]  <span class="cn">TRUE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="vectors.html#cb101-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Greta&quot;</span>,<span class="st">&quot;Nika&quot;</span>,<span class="st">&quot;Crispin&quot;</span>) </span>
+<span id="cb101-2"><a href="vectors.html#cb101-2" tabindex="-1"></a>x</span>
+<span id="cb101-3"><a href="vectors.html#cb101-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;Greta&quot;</span>   <span class="st">&quot;Nika&quot;</span>    <span class="st">&quot;Crispin&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="vectors.html#cb102-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>)</span>
+<span id="cb102-2"><a href="vectors.html#cb102-2" tabindex="-1"></a>y</span>
+<span id="cb102-3"><a href="vectors.html#cb102-3" tabindex="-1"></a>[<span class="dv">1</span>]  <span class="cn">TRUE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span></code></pre></div>
 <p>Note that all values within a vector <em>must</em> be of the same class. You can’t combine numerics and characters into the same vector. If you did, <code>R</code> would try to convert the numbers to characters. For example:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="vectors.html#cb102-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb102-2"><a href="vectors.html#cb102-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">&quot;6&quot;</span></span>
-<span id="cb102-3"><a href="vectors.html#cb102-3" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(x,y)</span>
-<span id="cb102-4"><a href="vectors.html#cb102-4" tabindex="-1"></a>z</span>
-<span id="cb102-5"><a href="vectors.html#cb102-5" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;4&quot;</span> <span class="st">&quot;6&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="vectors.html#cb103-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb103-2"><a href="vectors.html#cb103-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">&quot;6&quot;</span></span>
+<span id="cb103-3"><a href="vectors.html#cb103-3" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(x,y)</span>
+<span id="cb103-4"><a href="vectors.html#cb103-4" tabindex="-1"></a>z</span>
+<span id="cb103-5"><a href="vectors.html#cb103-5" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;4&quot;</span> <span class="st">&quot;6&quot;</span></span></code></pre></div>
 </div>
 <div id="math-with-two-vectors" class="section level2 unnumbered hasAnchor">
 <h2>Math with two vectors<a href="vectors.html#math-with-two-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When two vectors are of the same length, you can do arithmetic with them:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="vectors.html#cb103-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
-<span id="cb103-2"><a href="vectors.html#cb103-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>)</span>
-<span id="cb103-3"><a href="vectors.html#cb103-3" tabindex="-1"></a>x <span class="sc">+</span> y</span>
-<span id="cb103-4"><a href="vectors.html#cb103-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">14</span> <span class="dv">16</span> <span class="dv">18</span> <span class="dv">20</span></span></code></pre></div>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="vectors.html#cb104-1" tabindex="-1"></a>x <span class="sc">-</span> y</span>
-<span id="cb104-2"><a href="vectors.html#cb104-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">-</span><span class="dv">4</span> <span class="sc">-</span><span class="dv">4</span> <span class="sc">-</span><span class="dv">4</span> <span class="sc">-</span><span class="dv">4</span></span></code></pre></div>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="vectors.html#cb105-1" tabindex="-1"></a>x <span class="sc">*</span> y</span>
-<span id="cb105-2"><a href="vectors.html#cb105-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">45</span> <span class="dv">60</span> <span class="dv">77</span> <span class="dv">96</span></span></code></pre></div>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="vectors.html#cb106-1" tabindex="-1"></a>x <span class="sc">/</span> y</span>
-<span id="cb106-2"><a href="vectors.html#cb106-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.5555556</span> <span class="fl">0.6000000</span> <span class="fl">0.6363636</span> <span class="fl">0.6666667</span></span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="vectors.html#cb104-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb104-2"><a href="vectors.html#cb104-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>)</span>
+<span id="cb104-3"><a href="vectors.html#cb104-3" tabindex="-1"></a>x <span class="sc">+</span> y</span>
+<span id="cb104-4"><a href="vectors.html#cb104-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">14</span> <span class="dv">16</span> <span class="dv">18</span> <span class="dv">20</span></span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="vectors.html#cb105-1" tabindex="-1"></a>x <span class="sc">-</span> y</span>
+<span id="cb105-2"><a href="vectors.html#cb105-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">-</span><span class="dv">4</span> <span class="sc">-</span><span class="dv">4</span> <span class="sc">-</span><span class="dv">4</span> <span class="sc">-</span><span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="vectors.html#cb106-1" tabindex="-1"></a>x <span class="sc">*</span> y</span>
+<span id="cb106-2"><a href="vectors.html#cb106-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">45</span> <span class="dv">60</span> <span class="dv">77</span> <span class="dv">96</span></span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="vectors.html#cb107-1" tabindex="-1"></a>x <span class="sc">/</span> y</span>
+<span id="cb107-2"><a href="vectors.html#cb107-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.5555556</span> <span class="fl">0.6000000</span> <span class="fl">0.6363636</span> <span class="fl">0.6666667</span></span></code></pre></div>
 <p><strong>What happens when two vectors are <em>not</em> the same length?</strong></p>
 <p>Well, it depends. If one vector is length 1 (i.e., a single number), then things usually work out well.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="vectors.html#cb107-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb107-2"><a href="vectors.html#cb107-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">10</span>)</span>
-<span id="cb107-3"><a href="vectors.html#cb107-3" tabindex="-1"></a>x <span class="sc">+</span> y</span>
-<span id="cb107-4"><a href="vectors.html#cb107-4" tabindex="-1"></a>[<span class="dv">1</span>]  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">15</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="vectors.html#cb108-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb108-2"><a href="vectors.html#cb108-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">10</span>)</span>
+<span id="cb108-3"><a href="vectors.html#cb108-3" tabindex="-1"></a>x <span class="sc">+</span> y</span>
+<span id="cb108-4"><a href="vectors.html#cb108-4" tabindex="-1"></a>[<span class="dv">1</span>]  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">15</span></span></code></pre></div>
 <p>In this command, the single element of <code>x</code> gets added to each element of <code>y</code>.</p>
 <p>Another example, which you already saw above:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="vectors.html#cb108-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb108-2"><a href="vectors.html#cb108-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb108-3"><a href="vectors.html#cb108-3" tabindex="-1"></a>a <span class="sc">==</span> b</span>
-<span id="cb108-4"><a href="vectors.html#cb108-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span> <span class="cn">FALSE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="vectors.html#cb109-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb109-2"><a href="vectors.html#cb109-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb109-3"><a href="vectors.html#cb109-3" tabindex="-1"></a>a <span class="sc">==</span> b</span>
+<span id="cb109-4"><a href="vectors.html#cb109-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span> <span class="cn">FALSE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span></code></pre></div>
 <p>In this command, the single element of <code>b</code> gets compared to each element of <code>a</code>.</p>
 <p>However, when both vectors contain multiple values but are not the same length, <strong>be warned</strong>: wonky things can happen. This is because <code>R</code> will start recycling the shorter vector:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="vectors.html#cb109-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb109-2"><a href="vectors.html#cb109-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb109-3"><a href="vectors.html#cb109-3" tabindex="-1"></a>a <span class="sc">+</span> b</span>
-<span id="cb109-4"><a href="vectors.html#cb109-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">8</span></span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="vectors.html#cb110-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb110-2"><a href="vectors.html#cb110-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb110-3"><a href="vectors.html#cb110-3" tabindex="-1"></a>a <span class="sc">+</span> b</span>
+<span id="cb110-4"><a href="vectors.html#cb110-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">8</span> <span class="dv">8</span></span></code></pre></div>
 <p>As this warning implies, this doesn’t make much sense. The command will still run, but do not trust the result.</p>
 </div>
 <div id="functions-for-handling-vectors" class="section level2 unnumbered hasAnchor">
 <h2>Functions for handling vectors<a href="vectors.html#functions-for-handling-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We are about to list a bunch of core functions for working with vectors. Think of this like a toolbag. Each tool has a specific purpose and limited value: you can’t quite build a house with just a hammer. But when you learn how to use all of the tools in your tool bag <em>together</em>, you can build almost anything. But you have to know how to use each tool individually first.</p>
 <p><strong><code>length()</code></strong> tells you the number of elements in a vector:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="vectors.html#cb110-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb110-2"><a href="vectors.html#cb110-2" tabindex="-1"></a><span class="fu">length</span>(x)</span>
-<span id="cb110-3"><a href="vectors.html#cb110-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">2</span></span></code></pre></div>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="vectors.html#cb111-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>)</span>
-<span id="cb111-2"><a href="vectors.html#cb111-2" tabindex="-1"></a><span class="fu">length</span>(y)</span>
-<span id="cb111-3"><a href="vectors.html#cb111-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="vectors.html#cb111-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb111-2"><a href="vectors.html#cb111-2" tabindex="-1"></a><span class="fu">length</span>(x)</span>
+<span id="cb111-3"><a href="vectors.html#cb111-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="vectors.html#cb112-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>)</span>
+<span id="cb112-2"><a href="vectors.html#cb112-2" tabindex="-1"></a><span class="fu">length</span>(y)</span>
+<span id="cb112-3"><a href="vectors.html#cb112-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">4</span></span></code></pre></div>
 <p>The <strong>colon symbol <code>:</code></strong> creates a vector with every integer occurring between a min and max:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="vectors.html#cb112-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb112-2"><a href="vectors.html#cb112-2" tabindex="-1"></a>x</span>
-<span id="cb112-3"><a href="vectors.html#cb112-3" tabindex="-1"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="vectors.html#cb113-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb113-2"><a href="vectors.html#cb113-2" tabindex="-1"></a>x</span>
+<span id="cb113-3"><a href="vectors.html#cb113-3" tabindex="-1"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span></span></code></pre></div>
 <p><strong><code>seq()</code></strong> allows you to build a vector using evenly spaced <em>sequence</em> of values between a min and max:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="vectors.html#cb113-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="at">length=</span><span class="dv">11</span>)</span>
-<span id="cb113-2"><a href="vectors.html#cb113-2" tabindex="-1"></a> [<span class="dv">1</span>]   <span class="dv">0</span>  <span class="dv">10</span>  <span class="dv">20</span>  <span class="dv">30</span>  <span class="dv">40</span>  <span class="dv">50</span>  <span class="dv">60</span>  <span class="dv">70</span>  <span class="dv">80</span>  <span class="dv">90</span> <span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="vectors.html#cb114-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="at">length=</span><span class="dv">11</span>)</span>
+<span id="cb114-2"><a href="vectors.html#cb114-2" tabindex="-1"></a> [<span class="dv">1</span>]   <span class="dv">0</span>  <span class="dv">10</span>  <span class="dv">20</span>  <span class="dv">30</span>  <span class="dv">40</span>  <span class="dv">50</span>  <span class="dv">60</span>  <span class="dv">70</span>  <span class="dv">80</span>  <span class="dv">90</span> <span class="dv">100</span></span></code></pre></div>
 <p>In this command, you are telling <code>R</code> to give you a sequence of values from <code>0</code> to <code>100</code>, and you want the length of that vector to be <code>11</code>. <code>R</code> then figures out the spacing required between each value in order to make that happen.</p>
 <p>Alternatively, you can prescribe the interval between values instead of the length:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="vectors.html#cb114-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="at">by=</span><span class="dv">7</span>)</span>
-<span id="cb114-2"><a href="vectors.html#cb114-2" tabindex="-1"></a> [<span class="dv">1</span>]  <span class="dv">0</span>  <span class="dv">7</span> <span class="dv">14</span> <span class="dv">21</span> <span class="dv">28</span> <span class="dv">35</span> <span class="dv">42</span> <span class="dv">49</span> <span class="dv">56</span> <span class="dv">63</span> <span class="dv">70</span> <span class="dv">77</span> <span class="dv">84</span> <span class="dv">91</span> <span class="dv">98</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="vectors.html#cb115-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="at">by=</span><span class="dv">7</span>)</span>
+<span id="cb115-2"><a href="vectors.html#cb115-2" tabindex="-1"></a> [<span class="dv">1</span>]  <span class="dv">0</span>  <span class="dv">7</span> <span class="dv">14</span> <span class="dv">21</span> <span class="dv">28</span> <span class="dv">35</span> <span class="dv">42</span> <span class="dv">49</span> <span class="dv">56</span> <span class="dv">63</span> <span class="dv">70</span> <span class="dv">77</span> <span class="dv">84</span> <span class="dv">91</span> <span class="dv">98</span></span></code></pre></div>
 <p><strong><code>rep()</code></strong> allows you to repeat a single value a specified number of times:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="vectors.html#cb115-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="st">&quot;Hey!&quot;</span>,<span class="at">times=</span><span class="dv">5</span>)</span>
-<span id="cb115-2"><a href="vectors.html#cb115-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;Hey!&quot;</span> <span class="st">&quot;Hey!&quot;</span> <span class="st">&quot;Hey!&quot;</span> <span class="st">&quot;Hey!&quot;</span> <span class="st">&quot;Hey!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="vectors.html#cb116-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="st">&quot;Hey!&quot;</span>,<span class="at">times=</span><span class="dv">5</span>)</span>
+<span id="cb116-2"><a href="vectors.html#cb116-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;Hey!&quot;</span> <span class="st">&quot;Hey!&quot;</span> <span class="st">&quot;Hey!&quot;</span> <span class="st">&quot;Hey!&quot;</span> <span class="st">&quot;Hey!&quot;</span></span></code></pre></div>
 <p>You can also use <code>rep()</code> to repeat each element of a vector a set number of times:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="vectors.html#cb116-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Hey!&quot;</span>,<span class="st">&quot;Wohoo!&quot;</span>),<span class="at">each=</span><span class="dv">3</span>)</span>
-<span id="cb116-2"><a href="vectors.html#cb116-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;Hey!&quot;</span>   <span class="st">&quot;Hey!&quot;</span>   <span class="st">&quot;Hey!&quot;</span>   <span class="st">&quot;Wohoo!&quot;</span> <span class="st">&quot;Wohoo!&quot;</span> <span class="st">&quot;Wohoo!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="vectors.html#cb117-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Hey!&quot;</span>,<span class="st">&quot;Wohoo!&quot;</span>),<span class="at">each=</span><span class="dv">3</span>)</span>
+<span id="cb117-2"><a href="vectors.html#cb117-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;Hey!&quot;</span>   <span class="st">&quot;Hey!&quot;</span>   <span class="st">&quot;Hey!&quot;</span>   <span class="st">&quot;Wohoo!&quot;</span> <span class="st">&quot;Wohoo!&quot;</span> <span class="st">&quot;Wohoo!&quot;</span></span></code></pre></div>
 <p><strong><code>head()</code></strong> and <strong><code>tail()</code></strong> can be used to retrieve the first 6 or last 6 elements in a vector, respectively.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="vectors.html#cb117-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
-<span id="cb117-2"><a href="vectors.html#cb117-2" tabindex="-1"></a><span class="fu">head</span>(x)</span>
-<span id="cb117-3"><a href="vectors.html#cb117-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
-<span id="cb117-4"><a href="vectors.html#cb117-4" tabindex="-1"></a><span class="fu">tail</span>(x)</span>
-<span id="cb117-5"><a href="vectors.html#cb117-5" tabindex="-1"></a>[<span class="dv">1</span>]  <span class="dv">995</span>  <span class="dv">996</span>  <span class="dv">997</span>  <span class="dv">998</span>  <span class="dv">999</span> <span class="dv">1000</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="vectors.html#cb118-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
+<span id="cb118-2"><a href="vectors.html#cb118-2" tabindex="-1"></a><span class="fu">head</span>(x)</span>
+<span id="cb118-3"><a href="vectors.html#cb118-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
+<span id="cb118-4"><a href="vectors.html#cb118-4" tabindex="-1"></a><span class="fu">tail</span>(x)</span>
+<span id="cb118-5"><a href="vectors.html#cb118-5" tabindex="-1"></a>[<span class="dv">1</span>]  <span class="dv">995</span>  <span class="dv">996</span>  <span class="dv">997</span>  <span class="dv">998</span>  <span class="dv">999</span> <span class="dv">1000</span></span></code></pre></div>
 <p>You can also adjust how many elements to return:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="vectors.html#cb118-1" tabindex="-1"></a><span class="fu">head</span>(x,<span class="dv">2</span>)</span>
-<span id="cb118-2"><a href="vectors.html#cb118-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span></span>
-<span id="cb118-3"><a href="vectors.html#cb118-3" tabindex="-1"></a><span class="fu">tail</span>(x,<span class="dv">10</span>)</span>
-<span id="cb118-4"><a href="vectors.html#cb118-4" tabindex="-1"></a> [<span class="dv">1</span>]  <span class="dv">991</span>  <span class="dv">992</span>  <span class="dv">993</span>  <span class="dv">994</span>  <span class="dv">995</span>  <span class="dv">996</span>  <span class="dv">997</span>  <span class="dv">998</span>  <span class="dv">999</span> <span class="dv">1000</span></span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="vectors.html#cb119-1" tabindex="-1"></a><span class="fu">head</span>(x,<span class="dv">2</span>)</span>
+<span id="cb119-2"><a href="vectors.html#cb119-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span></span>
+<span id="cb119-3"><a href="vectors.html#cb119-3" tabindex="-1"></a><span class="fu">tail</span>(x,<span class="dv">10</span>)</span>
+<span id="cb119-4"><a href="vectors.html#cb119-4" tabindex="-1"></a> [<span class="dv">1</span>]  <span class="dv">991</span>  <span class="dv">992</span>  <span class="dv">993</span>  <span class="dv">994</span>  <span class="dv">995</span>  <span class="dv">996</span>  <span class="dv">997</span>  <span class="dv">998</span>  <span class="dv">999</span> <span class="dv">1000</span></span></code></pre></div>
 <p><strong><code>sort()</code></strong> allows you to order a vector from its smallest value to its largest:</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="vectors.html#cb119-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
-<span id="cb119-2"><a href="vectors.html#cb119-2" tabindex="-1"></a><span class="fu">sort</span>(x)</span>
-<span id="cb119-3"><a href="vectors.html#cb119-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span></code></pre></div>
-<p><strong><code>rev()</code></strong> lets you reverse the order of elements within a vector:</p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="vectors.html#cb120-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
-<span id="cb120-2"><a href="vectors.html#cb120-2" tabindex="-1"></a><span class="fu">rev</span>(x)</span>
-<span id="cb120-3"><a href="vectors.html#cb120-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">9</span> <span class="dv">6</span> <span class="dv">1</span> <span class="dv">8</span> <span class="dv">4</span></span></code></pre></div>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="vectors.html#cb121-1" tabindex="-1"></a><span class="fu">rev</span>(<span class="fu">sort</span>(x))</span>
-<span id="cb121-2"><a href="vectors.html#cb121-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">9</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">1</span></span></code></pre></div>
+<span id="cb120-2"><a href="vectors.html#cb120-2" tabindex="-1"></a><span class="fu">sort</span>(x)</span>
+<span id="cb120-3"><a href="vectors.html#cb120-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span></code></pre></div>
+<p><strong><code>rev()</code></strong> lets you reverse the order of elements within a vector:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="vectors.html#cb121-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
+<span id="cb121-2"><a href="vectors.html#cb121-2" tabindex="-1"></a><span class="fu">rev</span>(x)</span>
+<span id="cb121-3"><a href="vectors.html#cb121-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">2</span> <span class="dv">9</span> <span class="dv">6</span> <span class="dv">1</span> <span class="dv">8</span> <span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="vectors.html#cb122-1" tabindex="-1"></a><span class="fu">rev</span>(<span class="fu">sort</span>(x))</span>
+<span id="cb122-2"><a href="vectors.html#cb122-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">9</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">1</span></span></code></pre></div>
 <p><strong><code>min()</code></strong> and <strong><code>max()</code></strong> lets you find the smallest and largest value in a vector.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="vectors.html#cb122-1" tabindex="-1"></a><span class="fu">min</span>(x)</span>
-<span id="cb122-2"><a href="vectors.html#cb122-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span></span></code></pre></div>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="vectors.html#cb123-1" tabindex="-1"></a><span class="fu">max</span>(x)</span>
-<span id="cb123-2"><a href="vectors.html#cb123-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">9</span></span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="vectors.html#cb123-1" tabindex="-1"></a><span class="fu">min</span>(x)</span>
+<span id="cb123-2"><a href="vectors.html#cb123-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="vectors.html#cb124-1" tabindex="-1"></a><span class="fu">max</span>(x)</span>
+<span id="cb124-2"><a href="vectors.html#cb124-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">9</span></span></code></pre></div>
 <p><strong><code>which()</code></strong> allows you to ask, “For which elements of a vector is the following statement true?”</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="vectors.html#cb124-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb124-2"><a href="vectors.html#cb124-2" tabindex="-1"></a><span class="fu">which</span>(x<span class="sc">==</span><span class="dv">4</span>)</span>
-<span id="cb124-3"><a href="vectors.html#cb124-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">4</span></span></code></pre></div>
-<p>If no values within the vector meet the condition, a vector of length zero will be returned:</p>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="vectors.html#cb125-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb125-2"><a href="vectors.html#cb125-2" tabindex="-1"></a><span class="fu">which</span>(x <span class="sc">==</span> <span class="dv">11</span>)</span>
-<span id="cb125-3"><a href="vectors.html#cb125-3" tabindex="-1"></a><span class="fu">integer</span>(<span class="dv">0</span>)</span></code></pre></div>
+<span id="cb125-2"><a href="vectors.html#cb125-2" tabindex="-1"></a><span class="fu">which</span>(x<span class="sc">==</span><span class="dv">4</span>)</span>
+<span id="cb125-3"><a href="vectors.html#cb125-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">4</span></span></code></pre></div>
+<p>If no values within the vector meet the condition, a vector of length zero will be returned:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="vectors.html#cb126-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb126-2"><a href="vectors.html#cb126-2" tabindex="-1"></a><span class="fu">which</span>(x <span class="sc">==</span> <span class="dv">11</span>)</span>
+<span id="cb126-3"><a href="vectors.html#cb126-3" tabindex="-1"></a><span class="fu">integer</span>(<span class="dv">0</span>)</span></code></pre></div>
 <p><strong><code>which.min()</code></strong> and <strong><code>which.max()</code></strong> tells you which element is the smallest and largest in the vector, respectively:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="vectors.html#cb126-1" tabindex="-1"></a><span class="fu">which.min</span>(x)</span>
-<span id="cb126-2"><a href="vectors.html#cb126-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span></span></code></pre></div>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="vectors.html#cb127-1" tabindex="-1"></a><span class="fu">which.max</span>(x)</span>
-<span id="cb127-2"><a href="vectors.html#cb127-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="vectors.html#cb127-1" tabindex="-1"></a><span class="fu">which.min</span>(x)</span>
+<span id="cb127-2"><a href="vectors.html#cb127-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="vectors.html#cb128-1" tabindex="-1"></a><span class="fu">which.max</span>(x)</span>
+<span id="cb128-2"><a href="vectors.html#cb128-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">10</span></span></code></pre></div>
 <p><strong><code>%in%</code></strong> is a handy operator that allows you to ask whether a value occurs <em>within</em> a vector:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="vectors.html#cb128-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb128-2"><a href="vectors.html#cb128-2" tabindex="-1"></a><span class="dv">4</span> <span class="sc">%in%</span> x</span>
-<span id="cb128-3"><a href="vectors.html#cb128-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">TRUE</span></span></code></pre></div>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="vectors.html#cb129-1" tabindex="-1"></a><span class="dv">11</span> <span class="sc">%in%</span> x</span>
-<span id="cb129-2"><a href="vectors.html#cb129-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="vectors.html#cb129-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb129-2"><a href="vectors.html#cb129-2" tabindex="-1"></a><span class="dv">4</span> <span class="sc">%in%</span> x</span>
+<span id="cb129-3"><a href="vectors.html#cb129-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="vectors.html#cb130-1" tabindex="-1"></a><span class="dv">11</span> <span class="sc">%in%</span> x</span>
+<span id="cb130-2"><a href="vectors.html#cb130-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span></span></code></pre></div>
 <p><strong><code>is.na()</code></strong> is a way of asking whether a vector contains missing, broken, or erroneous values. In <code>R</code>, such values are referred to using the phrase <code>NA</code>. When you see <code>NA</code>, think of <code>R</code> telling you, <em>‘Nah ah! Nope! Not Available!’</em></p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="vectors.html#cb130-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="cn">NA</span>,<span class="dv">9</span>,<span class="dv">4</span>)</span>
-<span id="cb130-2"><a href="vectors.html#cb130-2" tabindex="-1"></a><span class="fu">is.na</span>(x)</span>
-<span id="cb130-3"><a href="vectors.html#cb130-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span> <span class="cn">FALSE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="vectors.html#cb131-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="cn">NA</span>,<span class="dv">9</span>,<span class="dv">4</span>)</span>
+<span id="cb131-2"><a href="vectors.html#cb131-2" tabindex="-1"></a><span class="fu">is.na</span>(x)</span>
+<span id="cb131-3"><a href="vectors.html#cb131-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">FALSE</span> <span class="cn">FALSE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span> <span class="cn">FALSE</span></span></code></pre></div>
 <p>This function is stepping through each element in the vector <code>x</code> and telling you whether that element is <code>NA</code>.</p>
 </div>
 <div id="subsetting-vectors" class="section level2 unnumbered hasAnchor">
 <h2>Subsetting vectors<a href="vectors.html#subsetting-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Since you will eventually be working with vectors that contain thousands of data points, it will be useful to have some tools for <em>subsetting</em> them – that is, looking at only a few select elements at a time.</p>
 <p>You can subset a vector using square brackets <code>[ ]</code>. Whenever you use you use brackets, you are telling <code>R</code>: ‘Hey, I want some numbers, but <em>not everything</em>: just certain ones.’</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="vectors.html#cb131-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">50</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb131-2"><a href="vectors.html#cb131-2" tabindex="-1"></a>x[<span class="dv">10</span>]</span>
-<span id="cb131-3"><a href="vectors.html#cb131-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">59</span></span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="vectors.html#cb132-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">50</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb132-2"><a href="vectors.html#cb132-2" tabindex="-1"></a>x[<span class="dv">10</span>]</span>
+<span id="cb132-3"><a href="vectors.html#cb132-3" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">59</span></span></code></pre></div>
 <p>This command is asking <code>R</code> to return the 10th element in the vector <code>x</code>.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="vectors.html#cb132-1" tabindex="-1"></a>x[<span class="dv">10</span><span class="sc">:</span><span class="dv">20</span>]</span>
-<span id="cb132-2"><a href="vectors.html#cb132-2" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span> <span class="dv">66</span> <span class="dv">67</span> <span class="dv">68</span> <span class="dv">69</span></span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="vectors.html#cb133-1" tabindex="-1"></a>x[<span class="dv">10</span><span class="sc">:</span><span class="dv">20</span>]</span>
+<span id="cb133-2"><a href="vectors.html#cb133-2" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span> <span class="dv">66</span> <span class="dv">67</span> <span class="dv">68</span> <span class="dv">69</span></span></code></pre></div>
 <p>This command is asking <code>R</code> to return elements <code>10:20</code> in the vector <code>x</code>.</p>
-<pre><code>Error in file(filename, &quot;r&quot;, encoding = encoding): cannot open the connection</code></pre>
-<pre><code>Error in teacher_tip(tip): could not find function &quot;teacher_tip&quot;</code></pre>
+<pre><code>Error in `file()`:
+! cannot open the connection</code></pre>
+<pre><code>Error in `teacher_tip()`:
+! could not find function &quot;teacher_tip&quot;</code></pre>
 <div id="exercises-3" class="section level4 unnumbered hasAnchor">
 <h4>Exercises<a href="vectors.html#exercises-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Creating sequences of numbers</strong></p>
@@ -590,6 +593,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

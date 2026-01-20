@@ -1,0 +1,89 @@
+# (PARTIE) Matériel de préformation {-}
+
+# Configuration de votre ordinateur
+
+Il est temps de configurer votre système. Prêt ? C'est parti.
+
+
+Installons les programmes appropriés sur votre ordinateur. Nous vous expliquerons ensuite ce qu'ils sont et pourquoi vous en avez besoin.   
+
+
+**Tout d'abord, téléchargez et installez `R` : **   
+
+Rendez-vous sur le site web suivant, cliquez sur le bouton *Télécharger* et suivez les instructions du site.
+[https://mirrors.nics.utk.edu/cran/](https://mirrors.nics.utk.edu/cran/){target=« blank »}
+
+&nbsp;
+
+
+**Ensuite, téléchargez et installez `RStudio` :**    
+
+Rendez-vous sur le site web suivant et choisissez la version Desktop gratuite :
+[https://rstudio.com/products/rstudio/download/](https://rstudio.com/products/rstudio/download/){target=« blank »}
+
+&nbsp;
+
+
+**Troisièmement, assurez-vous que `RStudio` s'ouvre correctement :**    
+
+Ouvrez l'application `RStudio`. Une fenêtre similaire à celle-ci devrait s'afficher :
+ 
+![](docs/img/R-home-screen.png)
+&nbsp;
+
+Quatrièmement, assurez-vous que `R` fonctionne correctement en arrière-plan :**    
+
+Dans `RStudio`, dans le volet de gauche (la « Console »), tapez 2+2 et appuyez sur Entrée.  
+Si `R` fonctionne correctement, le chiffre « 4 » s'affichera à la ligne suivante.
+
+![](docs/img/rstudio_224.png)
+
+&nbsp;
+
+**Enfin, quelques ajustements mineurs pour que `RStudio` fonctionne plus facilement (et ait un look plus sympa) :**
+
+Allez dans `Outils > Options globales` et assurez-vous que vos paramètres `Généraux` correspondent exactement à ceux-ci :
+
+![](docs/img/rstudio-settings.png)
+
+Plus précisément, **décochez** l'option sous *Espace de travail* pour « Restaurer .RData dans l'espace de travail au démarrage ».  
+
+Allez maintenant dans les paramètres « Apparence » et choisissez un thème sympa !
+
+![](docs/img/rstudio-theme.png)
+
+**Et voilà !**  R est désormais opérationnel. Il est temps d'installer quelques paquets.
+
+&nbsp;
+
+
+## Installer des paquets {.unnumbered}
+
+Les paquets sont ce qui rend R si formidable. Pour installer un paquet, ouvrez Rstudio, assurez-vous d'être connecté au Wi-Fi, puis tapez le code suivant dans la « Console » en bas à gauche
+
+
+```{r, eval = FALSE, echo = TRUE}
+install.packages(“packagename”)
+```
+
+Cela a-t-il fonctionné ? Probablement pas, car « nom du paquet » n'est pas un véritable paquet R. Les paquets que nous utiliserons sont les suivants :
+
+```
+tidyverse
+RColorBrewer
+leaflet
+ggthemes
+rmarkdown
+sp
+```
+
+Pour les installer tous, vous pouvez exécuter `install.packages` pour chaque paquet :
+
+```{r, eval = FALSE, echo=TRUE}
+install.packages(“tidyverse”)
+install.packages(“RColorBrewer”)
+# etc., etc.
+```
+
+Vous disposez désormais de R, RStudio et de quelques packages sympas. Bravo ! Vous êtes prêt pour le module suivant.
+

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 21 Brazzaville’s climate | R Training</title>
   <meta name="description" content="A resource &amp; workbook for learning R" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 21 Brazzaville’s climate | R Training" />
   <meta property="og:type" content="book" />
@@ -249,17 +249,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21" data-path="brazzavilles-climate.html"><a href="brazzavilles-climate.html"><i class="fa fa-check"></i><b>21</b> Brazzaville’s climate</a></li>
 <li class="chapter" data-level="22" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>22</b> Cleaning messy data</a></li>
 <li class="chapter" data-level="23" data-path="river-discharge-doc-and-nitrate.html"><a href="river-discharge-doc-and-nitrate.html"><i class="fa fa-check"></i><b>23</b> River discharge, DOC and nitrate</a></li>
+<li class="chapter" data-level="24" data-path="the-importance-of-data-standardisation.html"><a href="the-importance-of-data-standardisation.html"><i class="fa fa-check"></i><b>24</b> The Importance of Data Standardisation</a></li>
 <li class="part"><span><b>V Extra Information</b></span></li>
-<li class="chapter" data-level="24" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>24</b> Working with dates &amp; times</a>
+<li class="chapter" data-level="25" data-path="dates.html"><a href="dates.html"><i class="fa fa-check"></i><b>25</b> Working with dates &amp; times</a>
 <ul>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#the-lubridate-package"><i class="fa fa-check"></i>The <code>lubridate()</code> package</a></li>
 <li class="chapter" data-level="" data-path="dates.html"><a href="dates.html#common-tasks"><i class="fa fa-check"></i>Common tasks</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>25</b> Working with text</a>
+<li class="chapter" data-level="26" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>26</b> Working with text</a>
 <ul>
 <li class="chapter" data-level="" data-path="text.html"><a href="text.html#most-common-tools"><i class="fa fa-check"></i>Most common tools</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>26</b> Special Characters</a></li>
+<li class="chapter" data-level="27" data-path="special-characters.html"><a href="special-characters.html"><i class="fa fa-check"></i><b>27</b> Special Characters</a></li>
 </ul>
 
       </nav>
@@ -285,11 +286,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>This is a review exercise: apply the <code>dplyr</code> and <code>ggplot</code> skills introduced in the previous modules and the <code>Extra Info</code> modules on <em>Working with Dates and Times</em> and <em>Working with Text</em> to analyze climate records for Brazzaville, Congo, Africa.</li>
 </ul>
 <p> </p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="brazzavilles-climate.html#cb308-1" tabindex="-1"></a><span class="fu">library</span>(worldmet)</span>
-<span id="cb308-2"><a href="brazzavilles-climate.html#cb308-2" tabindex="-1"></a><span class="co"># Find stations near Brazzaville</span></span>
-<span id="cb308-3"><a href="brazzavilles-climate.html#cb308-3" tabindex="-1"></a>stations <span class="ot">&lt;-</span> <span class="fu">getMeta</span>(<span class="at">lat =</span> <span class="sc">-</span><span class="fl">4.27</span>, <span class="at">lon =</span> <span class="fl">15.27</span>)</span>
-<span id="cb308-4"><a href="brazzavilles-climate.html#cb308-4" tabindex="-1"></a><span class="co"># Download data for a station</span></span>
-<span id="cb308-5"><a href="brazzavilles-climate.html#cb308-5" tabindex="-1"></a>fc <span class="ot">&lt;-</span> <span class="fu">importNOAA</span>(<span class="at">code =</span> <span class="st">&quot;644500-99999&quot;</span>, <span class="at">year =</span> <span class="dv">2020</span><span class="sc">:</span><span class="dv">2025</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="brazzavilles-climate.html#cb312-1" tabindex="-1"></a><span class="fu">library</span>(worldmet)</span>
+<span id="cb312-2"><a href="brazzavilles-climate.html#cb312-2" tabindex="-1"></a><span class="co"># Find stations near Brazzaville</span></span>
+<span id="cb312-3"><a href="brazzavilles-climate.html#cb312-3" tabindex="-1"></a>stations <span class="ot">&lt;-</span> <span class="fu">getMeta</span>(<span class="at">lat =</span> <span class="sc">-</span><span class="fl">4.27</span>, <span class="at">lon =</span> <span class="fl">15.27</span>)</span>
+<span id="cb312-4"><a href="brazzavilles-climate.html#cb312-4" tabindex="-1"></a><span class="co"># Download data for a station</span></span>
+<span id="cb312-5"><a href="brazzavilles-climate.html#cb312-5" tabindex="-1"></a>fc <span class="ot">&lt;-</span> <span class="fu">importNOAA</span>(<span class="at">code =</span> <span class="st">&quot;644500-99999&quot;</span>, <span class="at">year =</span> <span class="dv">2020</span><span class="sc">:</span><span class="dv">2025</span>)</span></code></pre></div>
 <p><strong>1.</strong> Plot the forecasted temperature</p>
 <p><strong>2.</strong> Get average cloudiness by day.</p>
 <p><strong>3.</strong> Plot average cloudiness by day.</p>
@@ -362,6 +363,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

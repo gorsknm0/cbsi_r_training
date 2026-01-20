@@ -1,0 +1,54 @@
+# (PARTIE) Pour commencer {-}
+
+# Bienvenue !
+
+#### Objectifs d'apprentissage {-}
+
+* Découvrir le contenu de ce cours
+* Comprendre pourquoi
+* Commencer à coder
+
+&nbsp;  
+
+## Ce que c'est, et ce que ce n'est pas {-}
+
+Ce n'est ni un manuel scolaire ni une encyclopédie. Ce n'est pas non plus un manuel de référence. Ce n'est ni exhaustif ni complet.
+
+**Alors, qu'est-ce que c'est ?** Ce guide est un *accélérateur*, un *incubateur* conçu pour vous guider sur le chemin le plus direct entre votre première ligne de code et votre statut de chercheur compétent. Notre objectif est de vous aider à traverser la période la plus dangereuse de votre formation en science des données : vos tout premiers pas. Les trois premières semaines. C'est à ce moment-là que 99 % des gens abandonnent l'apprentissage du codage.  
+
+Mais cela ne doit pas nécessairement se passer ainsi. 
+
+Cette approche repose sur trois principes fondamentaux :
+
+**Principe n° 1 : c'est en pratiquant que l'on apprend le mieux.** Notre objectif est de vous faire *pratiquer* la science des données. Nous limiterons au maximum la théorie et les détails. Nous vous enseignerons les bases absolues, puis nous vous proposerons des exercices et des casse-têtes qui vous motiveront à apprendre le reste. Ensuite, une fois que vous aurez *pratiqué* la science des données pendant un certain temps, vous commencerez rapidement à *penser* comme un scientifique des données. Nous entendons par là aborder des problèmes ambigus avec persévérance, indépendance et créativité.  
+
+
+
+**Prémisse n° 2 : c'est en ayant un objectif que l'on apprend le mieux.** Une fois que vous maîtriserez les compétences de base, vous pourrez commencer à travailler sur des données réelles, pour des projets réels, avec un impact réel. Vous commencerez à vous intéresser à ce que vous codez. Et c'est là que la courbe d'apprentissage monte en flèche, car vous êtes motivé et vous apprenez de manière réactive, plutôt que de manière préventive. Notre objectif est de vous permettre d'atteindre le point de décollage le plus rapidement possible.  
+
+**Prémisse 3 : une simple boîte à outils suffit pour construire une maison.** Une fois que vous maîtrisez quelques outils de codage de base, vous pouvez construire à peu près tout ce que vous voulez. La boîte à outils n'a pas besoin d'être très grande ; si vous savez bien utiliser vos outils et si vous disposez de suffisamment de matériaux de construction (c'est-à-dire de données), les possibilités sont illimitées.  
+
+
+**Une dernière chose à préciser :** il ne s'agit pas d'un tutoriel interactif sophistiqué avec des fioritures. Nous l'avons délibérément conçu pour qu'il soit simple et « analogique ». Vous n'aurez pas à saisir votre code sur ce site web pour obtenir les commentaires d'un robot, ni à créer un compte pour suivre vos progrès, ni à obtenir de jolis badges ou des points lorsque vous aurez terminé chaque module.  
+
+Au lieu de cela, vous travaillerez sur votre *propre machine*, avec de *vrais dossiers et fichiers*, en téléchargeant des données et en les déplaçant, etc. -- tout ce que vous feriez en tant que véritable data scientist dans le monde réel.
+
+
+
+## Ce que vous apprendrez {-}
+
+- Au fur et à mesure que vous apprendrez à coder, nous vous présenterons les fondements conceptuels et les motivations de ce travail : ce qu'est la science des données, pourquoi elle est importante et les questions éthiques qui l'entourent : le bon, le mauvais et le laid. Au début, le plus important est de commencer à écrire du code.
+
+- L'objectif principal de ce cours est d'apprendre à utiliser « R » (dans « RStudio »). Vous ajouterez ici les premiers outils, et les plus importants, à votre boîte à outils : travailler avec des variables, des vecteurs, des tableaux de données, des scripts et des répertoires de fichiers.  
+
+- Vous acquerrez les compétences nécessaires pour importer vos propres données et les exploiter dans R. Vous apprendrez à produire de superbes graphiques et à réorganiser, filtrer et résumer vos ensembles de données. Vous apprendrez également à réaliser des statistiques de base, depuis l'analyse exploratoire des données (par exemple, la production et la comparaison de distributions) jusqu'aux tests de signification. 
+
+- Si vous maîtrisez tout ce qui précède, nous vous proposerons divers casse-têtes qui vous permettront d'appliquer les compétences de base acquises dans l'unité précédente à des questions et des scénarios amusants. Dans chacun de ces exercices, les questions sont classées par ordre croissant de difficulté, afin que les débutants ne se sentent pas bloqués dès le départ et que les codeurs expérimentés ne s'ennuient pas. C'est là que vous commencez vraiment à vous faire les dents sur des casse-têtes liés à des données réelles : vous apprenez à utiliser les outils R de votre boîte à outils pour résoudre un problème ambigu et fournir un excellent produit de données.  
+
+
+
+## D'où vient ce programme ? {-}
+
+Ce programme a été modifié à partir d'un programme initialement développé pour le [**DataLab**](https://new.sewanee.edu/sewanee-datalab/) de Sewanee : The University of the South, TN, États-Unis. Merci à Databrew, Eric Keen, Joe Brew, Ben Brew et Matthew Rudd.
+
+&nbsp;  
