@@ -1,18 +1,37 @@
-Welcome! 
+## Welcome!
+This Bookdown was used to teach students at the **CBSI Conference in January 2026**.
+Based on feedback from several post-docs, the initial plan was to cover the following topics:
 
-This is the bookdown that was used to teach students at the CBSI Conference in January 2026.
+- Understanding **R** and **RStudio**  
+- Importing data (CSV/Excel files)  
+- Producing simple summaries  
+- Basic calculations (e.g., mean)  
+- Cleaning data  
+- Searching for character strings (grepl(), str_detect())  
+- Basic analysis/statistics (ANOVA, statistical tests, t-tests)  
+- Plotting and visualization: **ggplot2**, **ggmap**, distributions (e.g., diameter), correlations  
 
-Based on comments from some post-docs, we hoped to cover the following:
+However, with a class size of nearly 50 students, it wasn’t possible to cover everything in depth. This list remains here as a reference for future trainings.
+In practice, we focused on:
 
--	Understanding R/RStudio  
--	Importing data: open a csv/excel file  
--	Producing simple summaries  
--	Basic calculations: mean  
--	Cleaning data
--	Search for a character string: grepl(), str_detect()
--	Basic analysis/statistics (ANOVA, statistical tests, t-tests)
--	Plotting/Visualization: ggplot, ggplot2, ggmap, distributions (eg. diameter), correlations
+- Understanding R/RStudio  
+- Importing data  
+- Basic plotting with ggplot2  
 
-However, with a class size of 50, it was very difficult to cover all of these concepts. This list is being left here in case it is helpful to use at the next training. In reality only importing data, ggplot, and understanding R/RStudio were covered.
 
-This bookdown creates the book using the `index.Rmd` and then all other Rmd files. However, you can also find some of the lessons translated withing `/french-translations`, presentations from the course in `/presentations`, and exercises that we did as a class in `/course-exercises`.
+## Structure of this Bookdown
+This Bookdown builds the course using the main index.Rmd plus all other chapter files.
+In addition to the main lessons, you can also find:
+
+- **French translations** of selected lessons in `/french-translations`  
+- **Course presentations** in `/presentations`  
+- **Class exercises** in `/course-exercises`  
+
+
+## Notes for Next Time
+To improve future trainings, here are a few practical suggestions:
+
+- Bring a **portable Wi-Fi device**.  
+- Ask all participants to **know their email and passwords** in advance for any required websites.  
+- Have all necessary files **pre-downloaded on a hard drive**.  
+- Bring **backup laptops and keyboards**.  
