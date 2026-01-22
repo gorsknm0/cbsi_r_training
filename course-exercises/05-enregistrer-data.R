@@ -1,3 +1,9 @@
+# ---- load libraries ----
+# Nous n'avons besoin d'aucun colis pour le moment.
+# mais voici quelques bons forfaits à connaître
+library(readxl)
+library(readr)
+
 # ---- set working directory / faire le repertoire de travail ---- 
 
 # cliquez session, set working directory, to source file location
